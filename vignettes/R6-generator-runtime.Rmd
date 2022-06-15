@@ -1,0 +1,55 @@
+---
+title: 'R6 Generator Runtime: Using R Datatypes in Java'
+author: "Rob Challen"
+date: "28/10/2020"
+output:
+  html_document: 
+    css: draft.css
+header-includes:
+  \usepackage{amsmath}
+  \usepackage{minted}
+  \usemintedstyle{emacs}
+  \setminted[java]{fontsize=\footnotesize,tabsize=3}
+  \setminted[xml]{fontsize=\footnotesize,tabsize=3}
+vignette: >
+  %\VignetteIndexEntry{R6 Generator Maven Plugin: Using R Datatypes in Java}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+here::i_am("vignettes/R6-generator-runtime.Rmd")
+source(here::here("vignettes/codeSnip.R"))
+```
+
+<div class="watermark">DRAFT</div>
+
+## Imports
+
+
+```{r results='asis', echo=FALSE}
+codeSnip("java",filename=here::here("src/src/test/java/uk/co/terminological/rjava/test/TestDatatypes.java"),startMatches = "CS01",endMatches = "CE01")
+```
+
+## Wrapping and unwrapping
+
+```{r results='asis', echo=FALSE}
+codeSnip("java",filename=here::here("src/src/test/java/uk/co/terminological/rjava/test/TestDatatypes.java"),startMatches = "CS04",endMatches = "CE04")
+```
+
+
+## RVector creation and transformation
+
+`RIntegerVector` examples:
+
+```{r results='asis', echo=FALSE}
+codeSnip("java",filename=here::here("src/src/test/java/uk/co/terminological/rjava/test/TestDatatypes.java"),startMatches = "CS02",endMatches = "CE02")
+```
+
+Other `RVector<?>` examples:
+
+```{r results='asis', echo=FALSE}
+codeSnip("java",filename=here::here("src/src/test/java/uk/co/terminological/rjava/test/TestDatatypes.java"),startMatches = "CS03",endMatches = "CE03")
+```
+TODO: many other code snippets in the data types test file.

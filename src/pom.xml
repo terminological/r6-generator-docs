@@ -1,0 +1,124 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+  <!--- DEPS_START -->
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<r6.version>0.3.0-SNAPSHOT</r6.version>
+	</properties>
+
+	<groupId>io.github.terminological</groupId>
+	<artifactId>r6-generator-docs</artifactId>
+	<version>main-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>R6 Generator Maven Plugin Test</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>io.github.terminological</groupId>
+			<artifactId>r6-generator-runtime</artifactId>
+			<version>${r6.version}</version>
+		</dependency>
+	<!--- DEPS_END -->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.4.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>5.4.0</version>
+			<scope>test</scope>
+		</dependency>
+	<!--- DEPS_START -->
+	</dependencies>
+	<!--- DEPS_END -->
+	
+
+  <!-- REPOSITORIES_START -->
+	<!-- Resolve runtime library on sonatype OSSRH -->
+	<repositories>
+		<repository>
+		    <id>Sonatype OSSRH</id>
+		    <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
+		</repository>
+	</repositories>
+
+	<!-- Resolve maven plugin on github -->
+	<pluginRepositories>
+		<pluginRepository>
+		    <id>Sonatype OSSRH</id>
+		    <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
+		</pluginRepository>
+	</pluginRepositories>
+	<!-- REPOSITORIES_END -->
+	
+	<!--- BUILD_START -->	
+	<build>
+		<plugins>
+		  <!--- BUILD_END -->
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>${maven.compiler.source}</source>
+					<target>${maven.compiler.target}</target>
+				</configuration>
+			</plugin>
+			<!--- BUILD_START -->	
+			<plugin>
+				<groupId>io.github.terminological</groupId>
+				<artifactId>r6-generator-maven-plugin</artifactId>
+				<version>${r6.version}</version>
+				<configuration>
+					<packageData>
+						<title>A test library</title>
+						<version>0.2.0.9000</version>
+						<url>https://terminological.github.io/r6-generator-docs/docs/</url>
+						<doi>10.5281/zenodo.6645134</doi>
+						<debug>false</debug>
+						<usePkgdown>true</usePkgdown>
+						<useRoxygen2>true</useRoxygen2>
+						<useJavadoc>true</useJavadoc>
+						<rjavaOpts>
+							<rjavaOpt>-Xmx256M</rjavaOpt>
+						</rjavaOpts>
+						<packageName>testRapi</packageName>
+						<license>MIT</license>
+						<description>
+							This package is a feature test of the R6 Generator Maven Plugin. It is not
+							intended to be useful beyond testing, demonstrating and documenting 
+							the features of the plugin.
+						</description>
+						<maintainerName>Rob</maintainerName>
+						<maintainerFamilyName>Challen</maintainerFamilyName>
+						<maintainerEmail>rc538@exeter.ac.uk</maintainerEmail>
+						<maintainerOrganisation>University of Exeter</maintainerOrganisation>
+					</packageData>
+					<outputDirectory>${project.basedir}/..</outputDirectory>
+				</configuration>
+				<executions>
+					<execution>
+						<id>compile-java-library</id>
+						<goals>
+							<goal>compile-java-library</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>generate-r-library</id>
+						<goals>
+							<goal>generate-r-library</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	<!--- BUILD_END -->
+</project>

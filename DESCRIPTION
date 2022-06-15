@@ -1,0 +1,28 @@
+Package: testRapi
+Title: A test library
+Version: 0.2.0.9000
+Authors@R: c(
+    person(given = "Rob",family = "Challen",email = "rc538@exeter.ac.uk",role = c("aut", "cre")),
+    person(given = "terminological",role = "aut"),
+    person(given = "given",family = "family",email = "email@example.com",comment = structure("ORCIDID", .Names = "ORCID"),role = "aut"))
+Description: This package is a feature test of the R6 Generator Maven Plugin. It is not intended to be useful beyond testing, demonstrating and documenting the features of the plugin.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+VignetteBuilder: knitr
+Suggests: 
+	here,
+	roxygen2,
+	devtools,
+	tidyverse,
+	knitr,
+	rmarkdown,
+	testthat
+Imports:
+	ggplot2,
+	tibble,
+	dplyr,
+	rJava,
+	R6,
+	fs
+RoxygenNote: 7.1.2

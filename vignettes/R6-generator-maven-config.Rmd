@@ -1,0 +1,85 @@
+---
+title: "R6 Generator Maven Plugin: Metadata and Maven configuration"
+author: "Rob Challen"
+date: "26/10/2020"
+output: 
+  html_document: 
+    css: draft.css
+header-includes:
+  \usepackage{amsmath}
+  \usepackage{minted}
+  \usemintedstyle{emacs}
+  \setminted[java]{fontsize=\footnotesize,tabsize=3}
+  \setminted[xml]{fontsize=\footnotesize,tabsize=3}
+vignette: >
+  %\VignetteIndexEntry{R6 Generator Maven Plugin: Metadata and Maven configuration}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+here::i_am("vignettes/R6-generator-maven-config.Rmd")
+source(here::here("vignettes/codeSnip.R"))
+```
+
+<div class="watermark">DRAFT</div>
+
+## Maven `pom.xml` options
+
+An example of the Maven configuration from this test project is shown below. The key parts of this configuration are described below:
+
+* Dependency on the `r6-generator-runtime` Java library.
+* Jitpack Maven repository declarations for both code and plugins.
+* Plugin configuration for the `r6-generator-maven-plugin`.
+
+### Sample `pom.xml`
+
+```{r results='asis', echo = FALSE}
+codeSnip(type="xml",filename=here::here("src/pom.xml"))
+```
+
+## The r6-generator-runtime Java library
+
+The `runtime` java library contains code needed in the development of R compatible libraries in Java. These are the annotations that identify a Java Class as part of the R Api, (`uk.co.terminological.rjava.RClass` and `uk.co.terminological.rjava.RMethod`), specialised data types that can be round tripped between R and Java (in package `uk.co.terminological.rjava.types.*`), and various data conversion helpers (e.g. `uk.co.terminological.rjava.RConverter`) which can be used to accelerate development of an R centric API in Java.
+
+## Jitpack maven repository declarations for both code and plugins
+
+Both the core maven plugin and the `runtime` library are available through the Jitpack repository. The `${r6.version}` property is here set to `master-SNAPSHOT` which retrieves the development version of the plugin. or could be `1.0` for stable versions. The most recent stable release version numbers will be available [on the github releases page](https://github.com/terminological/r6-generator-maven-plugin/tags)
+
+## Plugin configuration for the r6-generator-maven-plugin
+
+### outputDirectory
+
+The plugin needs to know where to output the R library. In the example above this is `<outputDirectory>${project.basedir}/r-library</outputDirectory>` which specifies the generated code will reside in the `r-library` sub-directory of the project. Keeping the source code within the project is a reasonable option as the resulting code can be committed to GitHub with the Java source. If it is generated in a sub-directory this must be specified if the library is intended to be installed via GitHub (e.g. `devtools::install_github("terminological/r6-generator-maven-plugin-test", subdir = "r-library")`. It is also equally possible to place the generated code into the root directory of the project (`${project.basedir}`) or indeed into a completely separate directory. 
+
+### packageData
+
+The package data section includes metadata that describes the R library and a few control flags:
+
+* `title`
+  + the title is used in description files and man pages
+* `version`
+* `debug` (optional - defaults to `false`)
+  + a `true` or `false` value that determines whether remote java debugging should be compiled into the R package. Remote debugging affects performance and can prevent the loading of the R package if previous versions have not been unload correctly. This is useful only for debugging R to Java integration problems.
+* `usePkgdown` (optional - defaults to `false`)
+  + If the generated R package is working and loads correctly we can use `r cran("pkgdown")` to generate online documentation. This will be generated in a `docs` sub-folder of the project `outputDirectory`. This can be pushed to GitHub and used as online documentation of the generated R library. Regardless of online documentation, the standard R `man` pages are generated for interactive help on the package. Pkgdown documentation will not be generated if the project is in debug mode.
+* `useRoxygen2` (optional - defaults to `false`)
+  + If the generated R package is working and loads correctly we can use `r cran("devtools")` to generate configuration files and man pages for the package using Roxygen2 annotations. This also allows co-existence of manually written and generated functions, within the same package. This is a fairly experimental feature and I can't promise that generated code will not accidentally over-write manually written code. Use it at your own risk. 
+* `useJavadoc` (optional - defaults to `false`)
+  + Along side the R documentation it may be helpful to provide Javadocs of the Java back end of the library. These are generated into the `docs\javadoc` sub-folder.
+* `rjavaOpts\rjavaOpt`
+  + A list of JVM flags can be provided that will be provided during the initialization of the Java Virtual Machine (JVM). In the example here the JVM is given 256Mb of heap space (`-Xmx256M`). Only one JVM is initialised regardless of how many different Java based R packages are used, and only the first one gets to decide the initial parameters. As such these options may be ignored by R if a JVM has already been created. Javadoc documentation will not be generated if the project is in debug mode.
+* `packageName`
+  + the most important entry - the desired name of the package forms the name space for the package so it is best that it is short and has not already been used for a R package - e.g. don't call it "stats".
+* `license`
+  + a license specification - it is best to use a [CRAN friendly license](https://cran.r-project.org/web/licenses/). N.B. This should be `MIT` rather than `MIT + file LICENSE`, the additional license file is added if needed.
+* `maintainerName`, `maintainerFamilyName`, `maintainerEmail`, `maintainerOrganisation`
+  + the author details used here are supplemented by any author details found in `@Author` Java doclet tags in the code.
+
+## Goals
+
+The plugin only two goals - "compile-java-library" and "generate-r-library"
+
+*TODO: explain what they are
