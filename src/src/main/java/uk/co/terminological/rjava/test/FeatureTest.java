@@ -30,7 +30,7 @@ import uk.co.terminological.rjava.types.RObject;
  * 
  * 
  * this is a details comment 
- * @author given family email@example.com ORCIDID
+ * @author Rob Challen rob@terminological.co.uk 0000-0002-5504-7768
  * 
  */
 @RClass(

@@ -16,10 +16,12 @@
 ^src/.project$
 
 # The following ignores can be used as we are deploying the fat jar to CRAN or github
-^src/pom.xml
-^src/.mvn$
-^src/mvnw$
-^src/mvnw.cmd$
+^src$
+# ^src/pom.xml
+# ^src/.mvn$
+# ^src/mvnw$
+# ^src/mvnw.cmd$
+
 
 
 index.html

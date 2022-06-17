@@ -86,7 +86,8 @@
 						<debug>false</debug>
 						<usePkgdown>true</usePkgdown>
 						<useRoxygen2>true</useRoxygen2>
-						<useJavadoc>true</useJavadoc>
+						<!-- building the javadocs into the documentation is nice but can add a lot to size fo the package -->
+						<useJavadoc>false</useJavadoc>
 						<rjavaOpts>
 							<rjavaOpt>-Xmx256M</rjavaOpt>
 						</rjavaOpts>
