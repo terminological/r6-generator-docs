@@ -17,8 +17,12 @@
 ## R CMD check results
 # TODO: insert R CMD check results here before submission
 
-## CRAN note justifications
+## CRAN warnings justifications
  
-* mvnw, mvnw.cmd, and pom.xml are necessary for compilation of java files from source, if the JAR files are >5Mb and too big to fit on CRAN. 
+* mvnw, mvnw.cmd, and pom.xml are required to allow compilation of java files from source, 
+which is required if the pre-compiled JAR files are >5Mb and too big to fit on CRAN.
+
+## CRAN notes justifications
+  
 * R6 is a build time dependency.
 * This is a new release.

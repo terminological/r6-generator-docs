@@ -4,9 +4,19 @@
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
+^cran-comments.md$
 
 # java maven directory layouts
 ^src/target$
+^src/.classpath
+^src/.settings
+# The following ignores can be used if we are deploying the fat jar to CRAN or github
+# as these files will otherwise cause a CRAN warning. The files are needed in the package if we 
+# are going to compile the library from source once installed, as may be needed in the fat JAR is too big for CRAN.
+# ^src/pom.xml
+# ^src/.mvn$
+# ^src/mvnw
+# ^src/mvnw.cmd
 
 index.html
 
