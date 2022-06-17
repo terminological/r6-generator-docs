@@ -17,12 +17,11 @@
 ## R CMD check results
 # TODO: insert R CMD check results here before submission
 
-## CRAN warnings justifications
- 
-* mvnw, mvnw.cmd, and pom.xml are required to allow compilation of java files from source, 
-which is required if the pre-compiled JAR files are >5Mb and too big to fit on CRAN.
 
 ## CRAN notes justifications
   
-* R6 is a build time dependency.
+* This library includes a precompiled java binary file. This often will exceed the 5Mb CRAN limits. Unfortunately the 
+alternative of building the library from source code causes a `R CMD check` warning due to inclusion of dependency management
+configuration `pom.xml` files. 
+* R6 is a build time dependency so appears unused when it is in fact not.
 * This is a new release.

@@ -7,16 +7,20 @@
 ^cran-comments.md$
 
 # java maven directory layouts
+# the java library is stting at the src path from the R package
+# a range of files may be created by the java IDE which need
+# to be ignored by R
 ^src/target$
-^src/.classpath
-^src/.settings
-# The following ignores can be used if we are deploying the fat jar to CRAN or github
-# as these files will otherwise cause a CRAN warning. The files are needed in the package if we 
-# are going to compile the library from source once installed, as may be needed in the fat JAR is too big for CRAN.
-# ^src/pom.xml
-# ^src/.mvn$
-# ^src/mvnw
-# ^src/mvnw.cmd
+^src/.classpath$
+^src/.settings$
+^src/.project$
+
+# The following ignores can be used as we are deploying the fat jar to CRAN or github
+^src/pom.xml
+^src/.mvn$
+^src/mvnw$
+^src/mvnw.cmd$
+
 
 index.html
 
