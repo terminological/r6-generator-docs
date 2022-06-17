@@ -27,7 +27,7 @@ This package is a feature test of the R6 Generator Maven Plugin. It is not inten
 
 Version: 0.2.0.9001
 
-Generated: 2022-06-17T15:54:16.371950
+Generated: 2022-06-17T16:58:35.834644
 }
 
 \author{\email{rc538@exeter.ac.uk}}

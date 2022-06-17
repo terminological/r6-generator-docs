@@ -11,7 +11,7 @@ library(devtools)
 # assuming you have cloned this repository locally:
 load_all("~/Git/r6-generator-docs")
 
-# install_github("terminological/r6-generator-docs",subdir="r-library")
+# install_github("terminological/r6-generator-docs")
 
 # a basic smoke test
 J <- testRapi::JavaApi$get()
