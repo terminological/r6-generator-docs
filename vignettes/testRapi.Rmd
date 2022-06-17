@@ -59,7 +59,7 @@ codeSnip("xml",
          filename=here::here("src/pom.xml"),"DEPS_START","DEPS_END") #,35,51)
 ```
 
-Repository configuration
+Repository configuration if you want to use the unstable `main-SNAPSHOT` version of the `r6-generator`.
 
 ```{r results='asis', echo=FALSE}
 codeSnip("xml",
@@ -82,10 +82,12 @@ Push your java source tree to github (Optional).
 ```{r}
 
 # library(devtools)
+
 # if you are using locally:
-# load_all("~/Git/your-project-id/r-library")
+# devtools::install_local("~/Git/your-project-id")
+# devtools::load_all("~/Git/your-project-id")
 # OR if you pushed the project to github
-# install_github("your-github-name/your-project-id",subdir="r-library")
+# install_github("your-github-name/your-project-id")
 
 # a basic smoke test
 
@@ -98,8 +100,8 @@ df = eg$demo(dataframe = diamonds, message = "The diamonds dataframe")
 nrow(df)
 ```
 
-For more options about the : 
-https://github.com/terminological/r6-generator-runtime
+For basic info about the plugin see: 
+https://github.com/terminological/r6-generator
 
 For a more complete working example and further documentation see: 
-https://github.com/terminological/r6-generator-maven-plugin-test
+https://github.com/terminological/r6-generator-docs

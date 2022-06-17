@@ -4,19 +4,13 @@
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
+
 # java maven directory layouts
+^src/target$
 
-^target$
-
-# The following ignores can be used if we are deploying the fat jar to CRAN or github 
-# ^src$
-# pom.xml
-# mvnw
-# mvnw.cmd
-
-.classpath
 index.html
-^.github$
 
 # created during rJava setup on github workflow.
+# this is specifically to prevent a NOTE on the github workflow.
+^.github$
 ^reconf.sh$

@@ -61,7 +61,7 @@ codeSnip("java",filename=here::here("src/src/main/java/uk/co/terminological/rjav
 ```
 
 ```{r}
-# devtools::install("~/Git/r6-generator-maven-plugin-test/r-library/")
+# devtools::install("~/Git/r6-generator-docs/")
 J = testRapi::JavaApi$get()
 b = J$BounceTest$new()
 

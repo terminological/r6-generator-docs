@@ -25,9 +25,9 @@
 \description{
 This package is a feature test of the R6 Generator Maven Plugin. It is not intended to be useful beyond testing, demonstrating and documenting the features of the plugin.
 
-Version: 0.2.0.9000
+Version: 0.2.0.9001
 
-Generated: 2022-06-15T15:59:37.690812
+Generated: 2022-06-17T15:54:16.371950
 }
 
 \author{\email{rc538@exeter.ac.uk}}

@@ -8,7 +8,7 @@
 \if{html}{\figure{logo.png}{options: align='right'}}
 This package is a feature test of the R6 Generator Maven Plugin. It is not intended to be useful beyond testing, demonstrating and documenting the features of the plugin.
 
-Version: 0.2.0.9000
+Version: 0.2.0.9001
 
 Classes:
 \itemize{ 
@@ -25,8 +25,8 @@ Classes:
 \author{
 \itemize{ 
    \item Rob Challen rc538@exeter.ac.uk 
-   \item given family email@example.com ORCIDID
    \item terminological   
+   \item given family email@example.com ORCIDID
 }
 }
 

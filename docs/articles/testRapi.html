@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">testRapi</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9001</span>
       </span>
     </div>
 
@@ -84,7 +84,7 @@
 
       
 
-      </header><div class="row">
+      </header><script src="testRapi_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>R6 Generator Maven Plugin: Getting started</h1>
@@ -105,7 +105,7 @@
 <a href="#rationale" class="anchor"></a>Rationale</h2>
 <p>R can use RJava or jsr223 to communicate with java. R has a class system called R6.</p>
 <p>If you want to use a java library in R there is potentially a lot of glue code needed, and R library specific packaging configuration required.</p>
-<p>However if you don't mind writing an R-centric API in Java you can generate all of this glue code using a few java annotations and the normal javadoc annotations. This plugin aims to provide an annotation processor that writes that glue code and creates a fairly transparent connection between java code and R code, with a minimum of hard work. The focus of this is streamlining the creation of R libraries by Java developers, rather than allowing access to arbitrary Java code from R.</p>
+<p>However if you don’t mind writing an R-centric API in Java you can generate all of this glue code using a few java annotations and the normal javadoc annotations. This plugin aims to provide an annotation processor that writes that glue code and creates a fairly transparent connection between java code and R code, with a minimum of hard work. The focus of this is streamlining the creation of R libraries by Java developers, rather than allowing access to arbitrary Java code from R.</p>
 <p>The ultimate aim of this plugin to allow java developers to provide simple APIs for their libraries, package their library using maven, push it to github and for that to become seamlessly available as an R library, with a minimal amount of fuss.</p>
 </div>
 <div id="basic-usage" class="section level2">
@@ -114,40 +114,40 @@
 <div id="write-a-java-api" class="section level3">
 <h3 class="hasAnchor">
 <a href="#write-a-java-api" class="anchor"></a>Write a java api:</h3>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">import org.slf4j.Logger;</span>
-<span class="kw">import org.slf4j.LoggerFactory;</span>
-
-<span class="kw">import uk.co.terminological.rjava.RClass;</span>
-<span class="kw">import uk.co.terminological.rjava.RMethod;</span>
-<span class="kw">import uk.co.terminological.rjava.types.RDataframe;</span>
-
-<span class="co">/**</span>
-<span class="co"> * This class is a very basic example of the features of the rJava maven plugin. &lt;br</span>&gt;
-<span class="er"> * The class is annotated with an @RClass to identify it as part of the R API. &lt;br&gt;</span>
-<span class="er"> */</span>
-<span class="fu">@RClass</span>
-<span class="er">public class MinimalExample {</span>
-
-<span class="er">    static Logger log = LoggerFactory.getLogger(MinimalExample.class);</span>
-<span class="er">    </span>
-<span class="er">    @RMethod(examples = {</span>
-<span class="er">        "minExample = J$MinimalExample$new()",</span>
-<span class="er">        "minExample$demo(dataframe=tibble::tibble(input=c(1,2,3)), message='Hello world')"</span>
-<span class="er">    })</span>
-<span class="er">    /**</span>
-<span class="er">     * Documentation of the method can be done in JavaDoc and these will be present in the R documentation </span>
-<span class="er">     * @param dataframe - a dataframe with an arbitrary number of columns</span>
-<span class="er">     * @param message - a message</span>
-<span class="er">     * @return the dataframe unchanged</span>
-<span class="er">     *  </span>
-<span class="er">     */</span>
-<span class="er">    public RDataframe demo(RDataframe dataframe, String message) {</span>
-<span class="er">        log.info("this dataframe has nrow="+dataframe.nrow());</span>
-<span class="er">        log.info(message);</span>
-<span class="er">        return dataframe;</span>
-<span class="er">    }</span>
-<span class="er">    </span>
-}</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">import</span><span class="im"> org.slf4j.Logger;</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">import</span><span class="im"> org.slf4j.LoggerFactory;</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="kw">import</span><span class="im"> uk.co.terminological.rjava.RClass;</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="kw">import</span><span class="im"> uk.co.terminological.rjava.RMethod;</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="kw">import</span><span class="im"> uk.co.terminological.rjava.types.RDataframe;</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="co">/**</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a> <span class="co">*</span> This class is a very basic example of the features of the rJava maven plugin<span class="co">. </span><span class="kw">&lt;br&gt;</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a> <span class="co">*</span> The class is annotated with an <span class="co">@</span>RClass to identify it as part of the R API<span class="co">.</span> <span class="kw">&lt;br&gt;</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a> <span class="co">*/</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="at">@RClass</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="kw">public</span> <span class="kw">class</span> MinimalExample {</span>
+<span id="cb1-14"><a href="#cb1-14"></a></span>
+<span id="cb1-15"><a href="#cb1-15"></a>    <span class="dt">static</span> <span class="bu">Logger</span> log = LoggerFactory.<span class="fu">getLogger</span>(MinimalExample.<span class="fu">class</span>);</span>
+<span id="cb1-16"><a href="#cb1-16"></a>    </span>
+<span id="cb1-17"><a href="#cb1-17"></a>    <span class="at">@RMethod</span>(examples = {</span>
+<span id="cb1-18"><a href="#cb1-18"></a>        <span class="st">"minExample = J$MinimalExample$new()"</span>,</span>
+<span id="cb1-19"><a href="#cb1-19"></a>        <span class="st">"minExample$demo(dataframe=tibble::tibble(input=c(1,2,3)), message='Hello world')"</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a>    })</span>
+<span id="cb1-21"><a href="#cb1-21"></a>    <span class="co">/**</span></span>
+<span id="cb1-22"><a href="#cb1-22"></a>     <span class="co">*</span> Documentation of the method can be done in JavaDoc and these will be present in the R documentation </span>
+<span id="cb1-23"><a href="#cb1-23"></a>     <span class="co">* </span><span class="an">@param dataframe </span><span class="co">-</span> a dataframe with an arbitrary number of columns</span>
+<span id="cb1-24"><a href="#cb1-24"></a>     <span class="co">*</span> <span class="an">@param message </span><span class="co">-</span> a message</span>
+<span id="cb1-25"><a href="#cb1-25"></a>     <span class="co">*</span> <span class="an">@return </span>the dataframe unchanged</span>
+<span id="cb1-26"><a href="#cb1-26"></a>     <span class="co">*</span>  </span>
+<span id="cb1-27"><a href="#cb1-27"></a>     <span class="co">*/</span></span>
+<span id="cb1-28"><a href="#cb1-28"></a>    <span class="kw">public</span> RDataframe <span class="fu">demo</span>(RDataframe dataframe, <span class="bu">String</span> message) {</span>
+<span id="cb1-29"><a href="#cb1-29"></a>        log.<span class="fu">info</span>(<span class="st">"this dataframe has nrow="</span>+dataframe.<span class="fu">nrow</span>());</span>
+<span id="cb1-30"><a href="#cb1-30"></a>        log.<span class="fu">info</span>(message);</span>
+<span id="cb1-31"><a href="#cb1-31"></a>        <span class="kw">return</span> dataframe;</span>
+<span id="cb1-32"><a href="#cb1-32"></a>    }</span>
+<span id="cb1-33"><a href="#cb1-33"></a>    </span>
+<span id="cb1-34"><a href="#cb1-34"></a>}</span></code></pre></div>
 <p>Key points:</p>
 <ul>
 <li>You can annotate multiple classes with <span class="citation">@RClass</span>.</li>
@@ -163,128 +163,134 @@
 <h3 class="hasAnchor">
 <a href="#package-it" class="anchor"></a>Package it:</h3>
 <p>Required Maven runtime dependency</p>
-<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml">    <span class="kw">&lt;properties&gt;</span>
-        <span class="kw">&lt;project.build.sourceEncoding&gt;</span>UTF-8<span class="kw">&lt;/project.build.sourceEncoding&gt;</span>
-        <span class="kw">&lt;maven.compiler.source&gt;</span>1.8<span class="kw">&lt;/maven.compiler.source&gt;</span>
-        <span class="kw">&lt;maven.compiler.target&gt;</span>1.8<span class="kw">&lt;/maven.compiler.target&gt;</span>
-        <span class="kw">&lt;r6.version&gt;</span>0.3.0-SNAPSHOT<span class="kw">&lt;/r6.version&gt;</span>
-    <span class="kw">&lt;/properties&gt;</span>
-
-    <span class="kw">&lt;groupId&gt;</span>io.github.terminological<span class="kw">&lt;/groupId&gt;</span>
-    <span class="kw">&lt;artifactId&gt;</span>r6-generator-docs<span class="kw">&lt;/artifactId&gt;</span>
-    <span class="kw">&lt;version&gt;</span>main-SNAPSHOT<span class="kw">&lt;/version&gt;</span>
-    <span class="kw">&lt;packaging&gt;</span>jar<span class="kw">&lt;/packaging&gt;</span>
-
-    <span class="kw">&lt;name&gt;</span>R6 Generator Maven Plugin Test<span class="kw">&lt;/name&gt;</span>
-
-    <span class="kw">&lt;dependencies&gt;</span>
-        <span class="kw">&lt;dependency&gt;</span>
-            <span class="kw">&lt;groupId&gt;</span>io.github.terminological<span class="kw">&lt;/groupId&gt;</span>
-            <span class="kw">&lt;artifactId&gt;</span>r6-generator-runtime<span class="kw">&lt;/artifactId&gt;</span>
-            <span class="kw">&lt;version&gt;</span>${r6.version}<span class="kw">&lt;/version&gt;</span>
-        <span class="kw">&lt;/dependency&gt;</span>
-...
-    <span class="kw">&lt;/dependencies&gt;</span></code></pre></div>
-<p>Repository configuration</p>
-<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml">    <span class="co">&lt;!-- Resolve runtime library on sonatype OSSRH --&gt;</span>
-    <span class="kw">&lt;repositories&gt;</span>
-        <span class="kw">&lt;repository&gt;</span>
-            <span class="kw">&lt;id&gt;</span>Sonatype OSSRH<span class="kw">&lt;/id&gt;</span>
-            <span class="kw">&lt;url&gt;</span>https://s01.oss.sonatype.org/content/repositories/snapshots/<span class="kw">&lt;/url&gt;</span>
-        <span class="kw">&lt;/repository&gt;</span>
-    <span class="kw">&lt;/repositories&gt;</span>
-
-    <span class="co">&lt;!-- Resolve maven plugin on github --&gt;</span>
-    <span class="kw">&lt;pluginRepositories&gt;</span>
-        <span class="kw">&lt;pluginRepository&gt;</span>
-            <span class="kw">&lt;id&gt;</span>Sonatype OSSRH<span class="kw">&lt;/id&gt;</span>
-            <span class="kw">&lt;url&gt;</span>https://s01.oss.sonatype.org/content/repositories/snapshots/<span class="kw">&lt;/url&gt;</span>
-        <span class="kw">&lt;/pluginRepository&gt;</span>
-    <span class="kw">&lt;/pluginRepositories&gt;</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb2-1"><a href="#cb2-1"></a>    <span class="kw">&lt;properties&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>        <span class="kw">&lt;project.build.sourceEncoding&gt;</span>UTF-8<span class="kw">&lt;/project.build.sourceEncoding&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>        <span class="kw">&lt;maven.compiler.source&gt;</span>1.8<span class="kw">&lt;/maven.compiler.source&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>        <span class="kw">&lt;maven.compiler.target&gt;</span>1.8<span class="kw">&lt;/maven.compiler.target&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>        <span class="kw">&lt;r6.version&gt;</span>main-SNAPSHOT<span class="kw">&lt;/r6.version&gt;</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>    <span class="kw">&lt;/properties&gt;</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a></span>
+<span id="cb2-8"><a href="#cb2-8"></a>    <span class="kw">&lt;groupId&gt;</span>io.github.terminological<span class="kw">&lt;/groupId&gt;</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a>    <span class="kw">&lt;artifactId&gt;</span>r6-generator-docs<span class="kw">&lt;/artifactId&gt;</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a>    <span class="kw">&lt;version&gt;</span>main-SNAPSHOT<span class="kw">&lt;/version&gt;</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a>    <span class="kw">&lt;packaging&gt;</span>jar<span class="kw">&lt;/packaging&gt;</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a></span>
+<span id="cb2-13"><a href="#cb2-13"></a>    <span class="kw">&lt;name&gt;</span>R6 Generator Maven Plugin Test<span class="kw">&lt;/name&gt;</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a></span>
+<span id="cb2-15"><a href="#cb2-15"></a>    <span class="kw">&lt;dependencies&gt;</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a>        <span class="kw">&lt;dependency&gt;</span></span>
+<span id="cb2-17"><a href="#cb2-17"></a>            <span class="kw">&lt;groupId&gt;</span>io.github.terminological<span class="kw">&lt;/groupId&gt;</span></span>
+<span id="cb2-18"><a href="#cb2-18"></a>            <span class="kw">&lt;artifactId&gt;</span>r6-generator-runtime<span class="kw">&lt;/artifactId&gt;</span></span>
+<span id="cb2-19"><a href="#cb2-19"></a>            <span class="kw">&lt;version&gt;</span>${r6.version}<span class="kw">&lt;/version&gt;</span></span>
+<span id="cb2-20"><a href="#cb2-20"></a>        <span class="kw">&lt;/dependency&gt;</span></span>
+<span id="cb2-21"><a href="#cb2-21"></a>...</span>
+<span id="cb2-22"><a href="#cb2-22"></a>    <span class="kw">&lt;/dependencies&gt;</span></span></code></pre></div>
+<p>Repository configuration if you want to use the unstable <code>main-SNAPSHOT</code> version of the <code>r6-generator</code>.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb3-1"><a href="#cb3-1"></a>    <span class="co">&lt;!-- Resolve runtime library on sonatype OSSRH --&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>    <span class="co">&lt;!-- not needed if you plan to use a stable version of the r6-generator-runtime and r6-generator-maven-plugin  --&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>    <span class="kw">&lt;repositories&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>        <span class="kw">&lt;repository&gt;</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>            <span class="kw">&lt;id&gt;</span>Sonatype OSSRH<span class="kw">&lt;/id&gt;</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a>            <span class="kw">&lt;url&gt;</span>https://s01.oss.sonatype.org/content/repositories/snapshots/<span class="kw">&lt;/url&gt;</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a>        <span class="kw">&lt;/repository&gt;</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a>    <span class="kw">&lt;/repositories&gt;</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a></span>
+<span id="cb3-10"><a href="#cb3-10"></a>    <span class="co">&lt;!-- Resolve maven plugin on sonatype OSSRH --&gt;</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a>    <span class="kw">&lt;pluginRepositories&gt;</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a>        <span class="kw">&lt;pluginRepository&gt;</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a>            <span class="kw">&lt;id&gt;</span>Sonatype OSSRH<span class="kw">&lt;/id&gt;</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a>            <span class="kw">&lt;url&gt;</span>https://s01.oss.sonatype.org/content/repositories/snapshots/<span class="kw">&lt;/url&gt;</span></span>
+<span id="cb3-15"><a href="#cb3-15"></a>        <span class="kw">&lt;/pluginRepository&gt;</span></span>
+<span id="cb3-16"><a href="#cb3-16"></a>    <span class="kw">&lt;/pluginRepositories&gt;</span></span></code></pre></div>
 <p>Maven plugin example configuration:</p>
-<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml">    <span class="kw">&lt;build&gt;</span>
-        <span class="kw">&lt;plugins&gt;</span>
-...
-            <span class="kw">&lt;plugin&gt;</span>
-                <span class="kw">&lt;groupId&gt;</span>io.github.terminological<span class="kw">&lt;/groupId&gt;</span>
-                <span class="kw">&lt;artifactId&gt;</span>r6-generator-maven-plugin<span class="kw">&lt;/artifactId&gt;</span>
-                <span class="kw">&lt;version&gt;</span>${r6.version}<span class="kw">&lt;/version&gt;</span>
-                <span class="kw">&lt;configuration&gt;</span>
-                    <span class="kw">&lt;packageData&gt;</span>
-                        <span class="kw">&lt;title&gt;</span>A test library<span class="kw">&lt;/title&gt;</span>
-                        <span class="kw">&lt;version&gt;</span>0.2.0.9000<span class="kw">&lt;/version&gt;</span>
-                        <span class="kw">&lt;url&gt;</span>https://terminological.github.io/r6-generator-docs/docs/<span class="kw">&lt;/url&gt;</span>
-                        <span class="kw">&lt;doi&gt;</span>10.5281/zenodo.6645134<span class="kw">&lt;/doi&gt;</span>
-                        <span class="kw">&lt;debug&gt;</span>false<span class="kw">&lt;/debug&gt;</span>
-                        <span class="kw">&lt;usePkgdown&gt;</span>true<span class="kw">&lt;/usePkgdown&gt;</span>
-                        <span class="kw">&lt;useRoxygen2&gt;</span>true<span class="kw">&lt;/useRoxygen2&gt;</span>
-                        <span class="kw">&lt;useJavadoc&gt;</span>true<span class="kw">&lt;/useJavadoc&gt;</span>
-                        <span class="kw">&lt;rjavaOpts&gt;</span>
-                            <span class="kw">&lt;rjavaOpt&gt;</span>-Xmx256M<span class="kw">&lt;/rjavaOpt&gt;</span>
-                        <span class="kw">&lt;/rjavaOpts&gt;</span>
-                        <span class="kw">&lt;packageName&gt;</span>testRapi<span class="kw">&lt;/packageName&gt;</span>
-                        <span class="kw">&lt;license&gt;</span>MIT<span class="kw">&lt;/license&gt;</span>
-                        <span class="kw">&lt;description&gt;</span>
-                            This package is a feature test of the R6 Generator Maven Plugin. It is not
-                            intended to be useful beyond testing, demonstrating and documenting 
-                            the features of the plugin.
-                        <span class="kw">&lt;/description&gt;</span>
-                        <span class="kw">&lt;maintainerName&gt;</span>Rob<span class="kw">&lt;/maintainerName&gt;</span>
-                        <span class="kw">&lt;maintainerFamilyName&gt;</span>Challen<span class="kw">&lt;/maintainerFamilyName&gt;</span>
-                        <span class="kw">&lt;maintainerEmail&gt;</span>rc538@exeter.ac.uk<span class="kw">&lt;/maintainerEmail&gt;</span>
-                        <span class="kw">&lt;maintainerOrganisation&gt;</span>University of Exeter<span class="kw">&lt;/maintainerOrganisation&gt;</span>
-                    <span class="kw">&lt;/packageData&gt;</span>
-                    <span class="kw">&lt;outputDirectory&gt;</span>${project.basedir}/..<span class="kw">&lt;/outputDirectory&gt;</span>
-                <span class="kw">&lt;/configuration&gt;</span>
-                <span class="kw">&lt;executions&gt;</span>
-                    <span class="kw">&lt;execution&gt;</span>
-                        <span class="kw">&lt;id&gt;</span>compile-java-library<span class="kw">&lt;/id&gt;</span>
-                        <span class="kw">&lt;goals&gt;</span>
-                            <span class="kw">&lt;goal&gt;</span>compile-java-library<span class="kw">&lt;/goal&gt;</span>
-                        <span class="kw">&lt;/goals&gt;</span>
-                    <span class="kw">&lt;/execution&gt;</span>
-                    <span class="kw">&lt;execution&gt;</span>
-                        <span class="kw">&lt;id&gt;</span>generate-r-library<span class="kw">&lt;/id&gt;</span>
-                        <span class="kw">&lt;goals&gt;</span>
-                            <span class="kw">&lt;goal&gt;</span>generate-r-library<span class="kw">&lt;/goal&gt;</span>
-                        <span class="kw">&lt;/goals&gt;</span>
-                    <span class="kw">&lt;/execution&gt;</span>
-                <span class="kw">&lt;/executions&gt;</span>
-            <span class="kw">&lt;/plugin&gt;</span>
-        <span class="kw">&lt;/plugins&gt;</span>
-    <span class="kw">&lt;/build&gt;</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb4-1"><a href="#cb4-1"></a>    <span class="kw">&lt;build&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>        <span class="kw">&lt;plugins&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>...</span>
+<span id="cb4-4"><a href="#cb4-4"></a>            <span class="kw">&lt;plugin&gt;</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a>                <span class="kw">&lt;groupId&gt;</span>io.github.terminological<span class="kw">&lt;/groupId&gt;</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>                <span class="kw">&lt;artifactId&gt;</span>r6-generator-maven-plugin<span class="kw">&lt;/artifactId&gt;</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a>                <span class="kw">&lt;version&gt;</span>${r6.version}<span class="kw">&lt;/version&gt;</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a>                <span class="kw">&lt;configuration&gt;</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a>                    <span class="kw">&lt;packageData&gt;</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a>                        <span class="kw">&lt;title&gt;</span>A test library<span class="kw">&lt;/title&gt;</span></span>
+<span id="cb4-11"><a href="#cb4-11"></a>                        <span class="kw">&lt;version&gt;</span>0.2.0.9001<span class="kw">&lt;/version&gt;</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a>                        <span class="kw">&lt;url&gt;</span>https://terminological.github.io/r6-generator-docs/docs/<span class="kw">&lt;/url&gt;</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a>                        <span class="kw">&lt;doi&gt;</span>10.5281/zenodo.6645134<span class="kw">&lt;/doi&gt;</span></span>
+<span id="cb4-14"><a href="#cb4-14"></a>                        <span class="kw">&lt;debug&gt;</span>false<span class="kw">&lt;/debug&gt;</span></span>
+<span id="cb4-15"><a href="#cb4-15"></a>                        <span class="kw">&lt;usePkgdown&gt;</span>true<span class="kw">&lt;/usePkgdown&gt;</span></span>
+<span id="cb4-16"><a href="#cb4-16"></a>                        <span class="kw">&lt;useRoxygen2&gt;</span>true<span class="kw">&lt;/useRoxygen2&gt;</span></span>
+<span id="cb4-17"><a href="#cb4-17"></a>                        <span class="kw">&lt;useJavadoc&gt;</span>true<span class="kw">&lt;/useJavadoc&gt;</span></span>
+<span id="cb4-18"><a href="#cb4-18"></a>                        <span class="kw">&lt;rjavaOpts&gt;</span></span>
+<span id="cb4-19"><a href="#cb4-19"></a>                            <span class="kw">&lt;rjavaOpt&gt;</span>-Xmx256M<span class="kw">&lt;/rjavaOpt&gt;</span></span>
+<span id="cb4-20"><a href="#cb4-20"></a>                        <span class="kw">&lt;/rjavaOpts&gt;</span></span>
+<span id="cb4-21"><a href="#cb4-21"></a>                        <span class="kw">&lt;packageName&gt;</span>testRapi<span class="kw">&lt;/packageName&gt;</span></span>
+<span id="cb4-22"><a href="#cb4-22"></a>                        <span class="kw">&lt;license&gt;</span>MIT<span class="kw">&lt;/license&gt;</span></span>
+<span id="cb4-23"><a href="#cb4-23"></a>                        <span class="kw">&lt;description&gt;</span></span>
+<span id="cb4-24"><a href="#cb4-24"></a>                            This package is a feature test of the R6 Generator Maven Plugin. It is not</span>
+<span id="cb4-25"><a href="#cb4-25"></a>                            intended to be useful beyond testing, demonstrating and documenting </span>
+<span id="cb4-26"><a href="#cb4-26"></a>                            the features of the plugin.</span>
+<span id="cb4-27"><a href="#cb4-27"></a>                        <span class="kw">&lt;/description&gt;</span></span>
+<span id="cb4-28"><a href="#cb4-28"></a>                        <span class="kw">&lt;maintainerName&gt;</span>Rob<span class="kw">&lt;/maintainerName&gt;</span></span>
+<span id="cb4-29"><a href="#cb4-29"></a>                        <span class="kw">&lt;maintainerFamilyName&gt;</span>Challen<span class="kw">&lt;/maintainerFamilyName&gt;</span></span>
+<span id="cb4-30"><a href="#cb4-30"></a>                        <span class="kw">&lt;maintainerEmail&gt;</span>rc538@exeter.ac.uk<span class="kw">&lt;/maintainerEmail&gt;</span></span>
+<span id="cb4-31"><a href="#cb4-31"></a>                        <span class="kw">&lt;maintainerOrganisation&gt;</span>University of Exeter<span class="kw">&lt;/maintainerOrganisation&gt;</span></span>
+<span id="cb4-32"><a href="#cb4-32"></a>                    <span class="kw">&lt;/packageData&gt;</span></span>
+<span id="cb4-33"><a href="#cb4-33"></a>                    <span class="co">&lt;!-- the best place to put the R package is in the directory above the java code --&gt;</span></span>
+<span id="cb4-34"><a href="#cb4-34"></a>                    <span class="co">&lt;!-- and to have the java code in a src subdirectory of a github repo. --&gt;</span></span>
+<span id="cb4-35"><a href="#cb4-35"></a>                    <span class="co">&lt;!-- i.e. this file would be src/pom.xml. This makes R optimally happy. --&gt;</span></span>
+<span id="cb4-36"><a href="#cb4-36"></a>                    <span class="kw">&lt;outputDirectory&gt;</span>${project.basedir}/..<span class="kw">&lt;/outputDirectory&gt;</span></span>
+<span id="cb4-37"><a href="#cb4-37"></a>                <span class="kw">&lt;/configuration&gt;</span></span>
+<span id="cb4-38"><a href="#cb4-38"></a>                <span class="kw">&lt;executions&gt;</span></span>
+<span id="cb4-39"><a href="#cb4-39"></a>                    <span class="kw">&lt;execution&gt;</span></span>
+<span id="cb4-40"><a href="#cb4-40"></a>                        <span class="kw">&lt;id&gt;</span>compile-java-library<span class="kw">&lt;/id&gt;</span></span>
+<span id="cb4-41"><a href="#cb4-41"></a>                        <span class="kw">&lt;goals&gt;</span></span>
+<span id="cb4-42"><a href="#cb4-42"></a>                            <span class="kw">&lt;goal&gt;</span>compile-java-library<span class="kw">&lt;/goal&gt;</span></span>
+<span id="cb4-43"><a href="#cb4-43"></a>                        <span class="kw">&lt;/goals&gt;</span></span>
+<span id="cb4-44"><a href="#cb4-44"></a>                    <span class="kw">&lt;/execution&gt;</span></span>
+<span id="cb4-45"><a href="#cb4-45"></a>                    <span class="kw">&lt;execution&gt;</span></span>
+<span id="cb4-46"><a href="#cb4-46"></a>                        <span class="kw">&lt;id&gt;</span>generate-r-library<span class="kw">&lt;/id&gt;</span></span>
+<span id="cb4-47"><a href="#cb4-47"></a>                        <span class="kw">&lt;goals&gt;</span></span>
+<span id="cb4-48"><a href="#cb4-48"></a>                            <span class="kw">&lt;goal&gt;</span>generate-r-library<span class="kw">&lt;/goal&gt;</span></span>
+<span id="cb4-49"><a href="#cb4-49"></a>                        <span class="kw">&lt;/goals&gt;</span></span>
+<span id="cb4-50"><a href="#cb4-50"></a>                    <span class="kw">&lt;/execution&gt;</span></span>
+<span id="cb4-51"><a href="#cb4-51"></a>                <span class="kw">&lt;/executions&gt;</span></span>
+<span id="cb4-52"><a href="#cb4-52"></a>            <span class="kw">&lt;/plugin&gt;</span></span>
+<span id="cb4-53"><a href="#cb4-53"></a>        <span class="kw">&lt;/plugins&gt;</span></span>
+<span id="cb4-54"><a href="#cb4-54"></a>    <span class="kw">&lt;/build&gt;</span></span></code></pre></div>
 <p>And with this in place, a call to mvn package or mvn install will create your R library by adding files to your java source tree in the directory. Push your java source tree to github (Optional).</p>
 </div>
 <div id="run-it-from-r" class="section level3">
 <h3 class="hasAnchor">
 <a href="#run-it-from-r" class="anchor"></a>Run it from R:</h3>
-<div class="sourceCode"><pre class="downlit">
+<div class="sourceCode" id="cb5"><pre class="downlit">
 <span class="co"># library(devtools)</span>
+
 <span class="co"># if you are using locally:</span>
-<span class="co"># load_all("~/Git/your-project-id/r-library")</span>
+<span class="co"># devtools::install_local("~/Git/your-project-id")</span>
+<span class="co"># devtools::load_all("~/Git/your-project-id")</span>
 <span class="co"># OR if you pushed the project to github</span>
-<span class="co"># install_github("your-github-name/your-project-id",subdir="r-library")</span>
+<span class="co"># install_github("your-github-name/your-project-id")</span>
 
 <span class="co"># a basic smoke test</span>
 
 <span class="co"># the JavaApi class is the entry point for R to your Java code.</span>
 <span class="va">J</span> <span class="op">&lt;-</span> <span class="fu">testRapi</span><span class="fu">::</span><span class="va"><a href="../reference/JavaApi.html">JavaApi</a></span><span class="op">$</span><span class="fu">get</span><span class="op">(</span><span class="op">)</span></pre></div>
 <pre><code>## Initialising A test library</code></pre>
-<pre><code>## Version: 0.2.0.9000</code></pre>
-<pre><code>## Generated: 2022-06-15T15:59:37.753466</code></pre>
-<pre><code>## Adding to classpath: /tmp/Rtmpm5kjlj/temp_libpath6fe96a0b29bb/testRapi/java/r6-generator-docs-main-SNAPSHOT-jar-with-dependencies.jar</code></pre>
-<pre><code>## 2022-06-15 16:00:18,500 INFO testRapi [main] Initialised testRapi</code></pre>
-<div class="sourceCode"><pre class="downlit">
+<pre><code>## Version: 0.2.0.9001</code></pre>
+<pre><code>## Generated: 2022-06-17T15:54:16.436571</code></pre>
+<pre><code>## Adding to classpath: /tmp/Rtmp4PCkHW/temp_libpath6dd31b9869a5/testRapi/java/r6-generator-docs-main-SNAPSHOT-jar-with-dependencies.jar</code></pre>
+<pre><code>## 2022-06-17 15:56:30,068 INFO testRapi [main] Initialised testRapi</code></pre>
+<div class="sourceCode" id="cb11"><pre class="downlit">
 <span class="co"># all the API classes and methods are classes attached to the J java api object</span>
 <span class="va">eg</span> <span class="op">=</span> <span class="va">J</span><span class="op">$</span><span class="va">MinimalExample</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span>
 <span class="va">df</span> <span class="op">=</span> <span class="va">eg</span><span class="op">$</span><span class="fu">demo</span><span class="op">(</span>dataframe <span class="op">=</span> <span class="va">diamonds</span>, message <span class="op">=</span> <span class="st">"The diamonds dataframe"</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-15 16:00:18,584 INFO uk.co.terminological.rjava.test.MinimalExample [main] this dataframe has nrow=53940
-## 2022-06-15 16:00:18,584 INFO uk.co.terminological.rjava.test.MinimalExample [main] The diamonds dataframe</code></pre>
-<div class="sourceCode"><pre class="downlit">
+<pre><code>## 2022-06-17 15:56:30,149 INFO uk.co.terminological.rjava.test.MinimalExample [main] this dataframe has nrow=53940
+## 2022-06-17 15:56:30,149 INFO uk.co.terminological.rjava.test.MinimalExample [main] The diamonds dataframe</code></pre>
+<div class="sourceCode" id="cb13"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></pre></div>
 <pre><code>## [1] 53940</code></pre>
-<p>For more options about the : <a href="https://github.com/terminological/r6-generator-runtime" class="uri">https://github.com/terminological/r6-generator-runtime</a></p>
-<p>For a more complete working example and further documentation see: <a href="https://github.com/terminological/r6-generator-maven-plugin-test" class="uri">https://github.com/terminological/r6-generator-maven-plugin-test</a></p>
+<p>For basic info about the plugin see: <a href="https://github.com/terminological/r6-generator" class="uri">https://github.com/terminological/r6-generator</a></p>
+<p>For a more complete working example and further documentation see: <a href="https://github.com/terminological/r6-generator-docs" class="uri">https://github.com/terminological/r6-generator-docs</a></p>
 </div>
 </div>
   </div>

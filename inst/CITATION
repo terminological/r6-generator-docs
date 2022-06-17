@@ -3,20 +3,20 @@ c(
 	bibentry(bibtype = "Manual",
 		title = "A test library",
 		year = 2022,
-		note = "R package version 0.2.0.9000; Maven artifact: io.github.terminological:r6-generator-docs:main-SNAPSHOT",
+		note = "R package version 0.2.0.9001; Maven artifact: io.github.terminological:r6-generator-docs:main-SNAPSHOT",
 		url = "https://terminological.github.io/r6-generator-docs/docs/",
 		doi = "10.5281/zenodo.6645134",
 		author = c(
 			person(given = "Rob",family = "Challen",email = "rc538@exeter.ac.uk",role = c("aut", "cre")),
-			person(given = "given",family = "family",email = "email@example.com",comment = structure("ORCIDID", .Names = "ORCID"),role = "aut"),
-			person(given = "terminological",role = "aut")		)
+			person(given = "terminological",role = "aut"),
+			person(given = "given",family = "family",email = "email@example.com",comment = structure("ORCIDID", .Names = "ORCID"),role = "aut")		)
 	),
 	bibentry(bibtype = "Manual",
 		title = "R6 generator maven plugin",
 		author = person(given="Rob", family="Challen",role="aut",email="rc538@exeter.ac.uk",comment = structure("0000-0002-5504-7768", .Names = "ORCID")),
-		note = "Maven plugin artifact: io.github.terminological:r6-generator-maven-plugin:0.3.0-SNAPSHOT",
+		note = "Maven plugin artifact: io.github.terminological:r6-generator-maven-plugin:main-SNAPSHOT",
 		year = 2022,
-		url = "https://github.com/terminological/r6-generator-maven-plugin",
-		doi = "10.5281/zenodo.6576054"
+		url = "https://github.com/terminological/r6-generator",
+		doi = "10.5281/zenodo.6644970"
 	)
 )

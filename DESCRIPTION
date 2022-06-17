@@ -1,6 +1,6 @@
 Package: testRapi
 Title: A test library
-Version: 0.2.0.9000
+Version: 0.2.0.9001
 Authors@R: c(
     person(given = "Rob",family = "Challen",email = "rc538@exeter.ac.uk",role = c("aut", "cre")),
     person(given = "terminological",role = "aut"),

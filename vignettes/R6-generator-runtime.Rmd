@@ -25,6 +25,8 @@ source(here::here("vignettes/codeSnip.R"))
 
 <div class="watermark">DRAFT</div>
 
+
+
 ## Imports
 
 
@@ -53,3 +55,18 @@ Other `RVector<?>` examples:
 codeSnip("java",filename=here::here("src/src/test/java/uk/co/terminological/rjava/test/TestDatatypes.java"),startMatches = "CS03",endMatches = "CE03")
 ```
 TODO: many other code snippets in the data types test file.
+
+## RDataframe binding to POJOs
+
+Define a POJO using `@RName` annotations
+
+```{r results='asis', echo=FALSE}
+codeSnip("java",filename=here::here("src/src/test/java/uk/co/terminological/rjava/test/DiamondPOJO.java"))
+```
+Bind that to a dataframe and stream the result:
+
+```{r results='asis', echo=FALSE}
+codeSnip("java",filename=here::here("src/src/test/java/uk/co/terminological/rjava/test/JavaConversionTest.java"),startMatches = "BOUND_START",endMatches = "BOUND_END")
+```
+
+## Streaming POJOs to RDataframes

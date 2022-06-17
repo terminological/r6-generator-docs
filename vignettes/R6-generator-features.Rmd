@@ -58,12 +58,12 @@ Restarting R maybe also required if there was a running java VM.
 
 ```{r echo=TRUE, eval=FALSE}
 # locally compiled
-devtools::install("~/Git/r6-generator-maven-plugin-test/r-library/", upgrade = "never")
+devtools::install("~/Git/r6-generator-docs", upgrade = "never")
 # pushed to github
-# devtools::install_github("terminological/r6-generator-maven-plugin-test", subdir = "r-library", upgrade = "never")
+# devtools::install_github("terminological/r6-generator-docs", upgrade = "never")
 # submitted to CRAN
 # install.packages("testRapi")
-source(here::here("vignettes/codeSnip.R"))
+
 ```
 
 The R6 api to the Java classes requires a running instance of the Java Virtual Machine and JNI bridge provided by `r cran("rJava")`. It also requires Java classpath dependencies to be loaded and application logging to be initialised. This is all managed by a specific generated R6 class called `JavaApi` and creating a singleton instance of this is the first step to using the library in R. In these examples the singleton instance `J` is referred to as the "root" of the api, as all the functions of the API stem from it.
@@ -292,22 +292,22 @@ J$Serialiser$deserialiseDataframe(filename=s) %>% glimpse()
 
 With serialised test data, as dataframes, lists or named lists, development of java functions and unit tests can be created that output values of the correct `RObject` datatype. Correct packaging and integration with R is a question of running `mvn install` to compile the Java into a jar file and generate R library code, then using `devtools::install` to install the generated R library. 
 
-```{bash echo=TRUE, eval=FALSE}
+```BASH
 # compile Java code and package R library using `mvn install` command
-cd ~/Git/r6-generator-maven-plugin-test
+cd ~/Git/r6-generator-docs/src
 mvn install
 ```
 
 
-```{r echo=TRUE, eval=FALSE}
-setwd("~/Git/r6-generator-maven-plugin-test")
+```R
+setwd("~/Git/r6-generator-docs")
 # remove previously installed versions
 try(detach("package:testRapi", unload = TRUE),silent = TRUE)
 remove.packages("testRapi")
 # rm(list = ls()) may be required to clear old versions of the library code
 # Restarting R maybe also required if there was a running java VM otherwise changes to the jars on the classpath are not picked up.
 # install locally compiled R library:
-devtools::install("~/Git/r6-generator-maven-plugin-test/r-library/", upgrade = "never")
+devtools::install("~/Git/r6-generator-docs", upgrade = "never")
 # N.B. devtools::load_all() does not appear to always successfully pick up changes in the compiled java code
 ```
 

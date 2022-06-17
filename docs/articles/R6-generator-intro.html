@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">testRapi</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9001</span>
       </span>
     </div>
 
@@ -84,22 +84,13 @@
 
       
 
-      </header>
-
-     =
-
-<div class="row">
+      </header><script src="R6-generator-intro_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>R6 Generator Maven Plugin: Bridging Java and R6 for Package Development</h1>
                         <h4 class="author">Robert Challen</h4>
             <address class="author_afil">
-      University of Exeter<br><a class="author_email" href="mailto:#"><script type="text/javascript">
-<!--
-h='&#x65;&#120;&#x65;&#116;&#x65;&#114;&#46;&#x61;&#x63;&#46;&#x75;&#x6b;';a='&#64;';n='&#114;&#x63;&#x35;&#x33;&#56;';e=n+a+h;
-document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+e+'<\/'+'a'+'>');
-// -->
-</script><noscript>rc538 at exeter dot ac dot uk</noscript></a>
+      University of Exeter<br><a class="author_email" href="mailto:#"></a><a href="mailto:rc538@exeter.ac.uk" class="email">rc538@exeter.ac.uk</a>
       </address>
                   
       
@@ -131,7 +122,7 @@ DRAFT
 <a href="#existing-integration-of-r-and-java" class="anchor"></a>Existing integration of R and Java</h2>
 <p>Integration between Java and R has existed since the release of <em>rJava</em> in 2003, which uses JNI to transfer data between a Java process and R process running on same machine, however successful use of Java libraries within R has remained difficult as JNI interface operates at a low level on primitive data structures. rJava provides infrastructure allowing execution of compiled Java code on a running JVM process, with data from R, but to do so requires an in depth knowledge of the behaviour of JNI in transferring data to on from Java. Writing R code to use Java libraries via JNI provides limited support for code completion, type analysis, and debugging of the state of variables within the Java Virtual Machine. In most applications of rJava, a native R library is provided that encapsulates the R code managing communication across the JNI and state, thus protecting the regular R user from the complexity. This is the case for libraries such as RMallet which provides a wrapper around the Java Mallet library. The problem with this is that Java integration in R is limited by the interest of the few people who have been through the learning curve required to create such wrappers, let alone maintain them as the Java libraries evolve.</p>
 <p>As an alternative to this there have been recent developments in the R jsr223 package. This provides a high level interface to Java by providing access to a middle layer provided by any of a number of Java based scripting languages, such as Kotlin, Groovy and Javascript. R code can interact directly with these scripting languages and pass variables back and forwards with relative ease and the java based scripting languages can communicate with native Java code running on the same JVM. This has a number of benefits</p>
-<p>A third approach is data only integration, e.g. Apache Arrow.</p>
+<p>A third approach is data only integration, e.g. Apache Arrow.</p>
 </div>
 </div>
 <div id="use-cases" class="section level1">
@@ -166,7 +157,7 @@ DRAFT
 <div id="feature-documentation" class="section level1">
 <h1 class="hasAnchor">
 <a href="#feature-documentation" class="anchor"></a>Feature documentation</h1>
-<p>Maven is a Java dependency management and build tool, which is one of the cornerstones of the Java development ecosystem. It has a flexible plugin mechanism which the R6 Generator Maven Plugin is based on, and allows us to write code that is executed during the Java compilation process, and allows for code generation basd on the structure of the Java code. When Maven is appropriately configured to build an R6 Generator enabled Java project, the project is compiled into a Java archive (jar) with all required dependencies, and an R6 class structure is created that mirrors the Java library structure in a specified sub-directory of the Maven Java project (in this case "r-library"). This sub-directory contains all of the components of a R package, including a set of R source files defining a set of R6 classes, DESCRIPTION and NAMESCAPE files, LICENSE and CITATION files and a set of Rd documentation files.</p>
+<p>Maven is a Java dependency management and build tool, which is one of the cornerstones of the Java development ecosystem. It has a flexible plugin mechanism which the R6 Generator Maven Plugin is based on, and allows us to write code that is executed during the Java compilation process, and allows for code generation basd on the structure of the Java code. When Maven is appropriately configured to build an R6 Generator enabled Java project, the project is compiled into a Java archive (jar) with all required dependencies, and an R6 class structure is created that mirrors the Java library structure in a specified sub-directory of the Maven Java project (in this case “r-library”). This sub-directory contains all of the components of a R package, including a set of R source files defining a set of R6 classes, DESCRIPTION and NAMESCAPE files, LICENSE and CITATION files and a set of Rd documentation files.</p>
 <div id="minimal-example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#minimal-example" class="anchor"></a>Minimal example</h2>
@@ -255,19 +246,19 @@ DRAFT
 <a href="#references" class="anchor"></a>References</h1>
 <div id="refs">
 <div id="ref-changR6EncapsulatedClasses2019">
-<p>Chang, Winston. 2019. <em>R6: Encapsulated Classes with Reference Semantics</em> (version 2.4.1). <a href="https://CRAN.R-project.org/package=R6" class="uri">https://CRAN.R-project.org/package=R6</a>.</p>
+<p>Chang, Winston. 2019. <em>R6: Encapsulated Classes with Reference Semantics</em> (version 2.4.1). <a href="https://CRAN.R-project.org/package=R6">https://CRAN.R-project.org/package=R6</a>.</p>
 </div>
 <div id="ref-gilbertJdxJavaData2020">
-<p>Gilbert, Floid R., and David B. Dahl. 2020a. <em>Jdx: ’Java’ Data Exchange for ’R’ and ’RJava’</em> (version 0.1.4). <a href="https://CRAN.R-project.org/package=jdx" class="uri">https://CRAN.R-project.org/package=jdx</a>.</p>
+<p>Gilbert, Floid R., and David B. Dahl. 2020a. <em>Jdx: ’Java’ Data Exchange for ’R’ and ’rJava’</em> (version 0.1.4). <a href="https://CRAN.R-project.org/package=jdx">https://CRAN.R-project.org/package=jdx</a>.</p>
 </div>
 <div id="ref-gilbertJsr223JavaPlatform2020">
-<p>———. 2020b. <em>Jsr223: A ’Java’ Platform Integration for ’R’ with Programming Languages ’Groovy’, ’JavaScript’, ’JRuby’ (’Ruby’), ’Jython’ (’Python’), and ’Kotlin’</em> (version 0.3.4). <a href="https://CRAN.R-project.org/package=jsr223" class="uri">https://CRAN.R-project.org/package=jsr223</a>.</p>
+<p>———. 2020b. <em>Jsr223: A ’Java’ Platform Integration for ’R’ with Programming Languages ’Groovy’, ’JavaScript’, ’JRuby’ (’Ruby’), ’Jython’ (’Python’), and ’Kotlin’</em> (version 0.3.4). <a href="https://CRAN.R-project.org/package=jsr223">https://CRAN.R-project.org/package=jsr223</a>.</p>
 </div>
 <div id="ref-TerminologicalR6generatormavenplugin2020">
-<p><em>Terminological/R6-Generator-Maven-Plugin</em>. (2020) 2020. terminological. <a href="https://github.com/terminological/r6-generator-maven-plugin" class="uri">https://github.com/terminological/r6-generator-maven-plugin</a>.</p>
+<p><em>Terminological/R6-Generator-Maven-Plugin</em>. (2020) 2020. terminological. <a href="https://github.com/terminological/r6-generator-maven-plugin">https://github.com/terminological/r6-generator-maven-plugin</a>.</p>
 </div>
 <div id="ref-urbanekRJavaLowLevelJava2020">
-<p>Urbanek, Simon. 2020. <em>RJava: Low-Level R to Java Interface</em> (version 0.9-13). <a href="https://CRAN.R-project.org/package=rJava" class="uri">https://CRAN.R-project.org/package=rJava</a>.</p>
+<p>Urbanek, Simon. 2020. <em>rJava: Low-Level R to Java Interface</em> (version 0.9-13). <a href="https://CRAN.R-project.org/package=rJava">https://CRAN.R-project.org/package=rJava</a>.</p>
 </div>
 </div>
 </div>

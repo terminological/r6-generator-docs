@@ -1,6 +1,6 @@
 # r6-generator-docs
 
-[![R-CMD-check](https://github.com/terminological/r6-generator-maven-plugin-test/workflows/R-CMD-check/badge.svg)](https://github.com/terminological/r6-generator-docs/actions)
+[![R-CMD-check](https://github.com/terminological/r6-generator-docs/workflows/R-CMD-check/badge.svg)](https://github.com/terminological/r6-generator-docs/actions)
 
 [![DOI](https://zenodo.org/badge/503699096.svg)](https://zenodo.org/badge/latestdoi/503699096)
 

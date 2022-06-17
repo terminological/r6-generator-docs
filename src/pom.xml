@@ -7,7 +7,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<r6.version>0.3.0-SNAPSHOT</r6.version>
+		<r6.version>main-SNAPSHOT</r6.version>
 	</properties>
 
 	<groupId>io.github.terminological</groupId>
@@ -43,6 +43,7 @@
 
   <!-- REPOSITORIES_START -->
 	<!-- Resolve runtime library on sonatype OSSRH -->
+	<!-- not needed if you plan to use a stable version of the r6-generator-runtime and r6-generator-maven-plugin  -->
 	<repositories>
 		<repository>
 		    <id>Sonatype OSSRH</id>
@@ -50,7 +51,7 @@
 		</repository>
 	</repositories>
 
-	<!-- Resolve maven plugin on github -->
+	<!-- Resolve maven plugin on sonatype OSSRH -->
 	<pluginRepositories>
 		<pluginRepository>
 		    <id>Sonatype OSSRH</id>
@@ -79,7 +80,7 @@
 				<configuration>
 					<packageData>
 						<title>A test library</title>
-						<version>0.2.0.9000</version>
+						<version>0.2.0.9001</version>
 						<url>https://terminological.github.io/r6-generator-docs/docs/</url>
 						<doi>10.5281/zenodo.6645134</doi>
 						<debug>false</debug>
@@ -101,6 +102,9 @@
 						<maintainerEmail>rc538@exeter.ac.uk</maintainerEmail>
 						<maintainerOrganisation>University of Exeter</maintainerOrganisation>
 					</packageData>
+					<!-- the best place to put the R package is in the directory above the java code -->
+					<!-- and to have the java code in a src subdirectory of a github repo. -->
+					<!-- i.e. this file would be src/pom.xml. This makes R optimally happy. -->
 					<outputDirectory>${project.basedir}/..</outputDirectory>
 				</configuration>
 				<executions>

@@ -52,7 +52,7 @@ Both the core maven plugin and the `runtime` library are available through the J
 
 ### outputDirectory
 
-The plugin needs to know where to output the R library. In the example above this is `<outputDirectory>${project.basedir}/r-library</outputDirectory>` which specifies the generated code will reside in the `r-library` sub-directory of the project. Keeping the source code within the project is a reasonable option as the resulting code can be committed to GitHub with the Java source. If it is generated in a sub-directory this must be specified if the library is intended to be installed via GitHub (e.g. `devtools::install_github("terminological/r6-generator-maven-plugin-test", subdir = "r-library")`. It is also equally possible to place the generated code into the root directory of the project (`${project.basedir}`) or indeed into a completely separate directory. 
+The plugin needs to know where to output the R library. In the example above this is `<outputDirectory>${project.basedir}/r-library</outputDirectory>` which specifies the generated code will reside in the `r-library` sub-directory of the project. Keeping the source code within the project is a reasonable option as the resulting code can be committed to GitHub with the Java source. If it is generated in a sub-directory this must be specified if the library is intended to be installed via GitHub (e.g. `devtools::install_github("terminological/r6-generator-docs")`. It is also equally possible to place the generated code into the root directory of the project (`${project.basedir}`) or indeed into a completely separate directory. 
 
 ### packageData
 
