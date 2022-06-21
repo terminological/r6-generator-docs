@@ -8,9 +8,9 @@
 #' 
 #' This is a class of the testRapi generated R library.
 #' 
-#' Version: 0.2.0.9001
+#' Version: 0.2.0.9002
 #' 
-#' Generated: 2022-06-17T23:08:47.657610
+#' Generated: 2022-06-21T17:06:29.306390
 #'
 #' @details
 	#' The feature test should allow mathjax in javadoc

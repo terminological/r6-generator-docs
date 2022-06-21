@@ -11,9 +11,9 @@
 \description{
 This class is a very basic example of the features of the rJava maven plugin. <br>
 
-Version: 0.2.0.9001
+Version: 0.2.0.9002
 
-Generated: 2022-06-17T23:08:47.673455
+Generated: 2022-06-21T17:06:29.327329
 }
 
 \details{

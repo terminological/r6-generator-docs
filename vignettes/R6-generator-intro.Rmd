@@ -21,7 +21,7 @@ bibliography: R6-generator-intro.bib
 #   rmarkdown::render(inputFile,  
 #     output_format = rticles::rjournal_article(), 
 output: 
-  html_document: 
+  html_vignette: 
     css: draft.css
   rticles::rjournal_article: default
 header-includes:

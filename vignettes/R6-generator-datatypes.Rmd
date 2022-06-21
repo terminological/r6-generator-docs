@@ -3,7 +3,7 @@ title: "R6 Generator Maven Plugin: Datatype conversion"
 author: "Rob Challen"
 date: "19/10/2020"
 output: 
-  html_document:
+  html_vignette:
     css: draft.css
 header-includes:
   \usepackage{amsmath}

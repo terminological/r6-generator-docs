@@ -4,24 +4,33 @@
 
 # N.B. this is only true is you have uncommented the correct lines in github actions workflow files
 (via GitHub actions)
-* ubuntu-latest; R-release 
-* windows-latest, oldrel-1
-* windows-latest, release
-* windows-latest, devel
-* macOS-latest, oldrel-1
-* macOS-latest, release
-* macOS-latest, devel
-* ubuntu-latest, oldrel-1
-* ubuntu-latest, devel
+ 
+* os: windows-latest, R: oldrel-1
+* os: windows-latest, R: release
+* os: windows-latest, R: devel
+* os: macOS-latest, R: oldrel-1
+* os: macOS-latest, R: release
+* os: macOS-latest, R: devel
+* os: ubuntu-latest; R: release
+* os: ubuntu-latest, R: oldrel-1
+* os: ubuntu-latest, R: devel
+
+for each environment the tests are run with both Java 8 and Java 11. 
 
 ## R CMD check results
 # TODO: insert R CMD check results here before submission
 
 
 ## CRAN notes justifications
-  
-* This library includes a precompiled java binary file. This often will exceed the 5Mb CRAN limits. Unfortunately the 
-alternative of building the library from source code causes a `R CMD check` warning due to inclusion of dependency management
-configuration `pom.xml` files. 
-* R6 is a build time dependency so appears unused when it is in fact not.
+
+* This project contains a Java library.
+
+* All Java library code and its transitive dependencies have already been bundled into a single binary (JAR file) which is part of
+the package. This minimises the complexity of getting a java library up and running on a target
+system. However bunding java libraries does tend to make the package quite large, and will often exceed the 5Mb CRAN limit. The whole of the JAR file 
+will have to be updated and re-installed for every change to the R package, however this is the most stable option with fewest dependencies on the target system.
+For certain situations, where dependencies are not publicly available, for example, this is the only option.
+
+* The R6 package is a build time dependency. The note that it is unused can be safely ignored.
+
 * This is a new release.

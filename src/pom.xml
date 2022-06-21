@@ -7,7 +7,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<r6.version>main-SNAPSHOT</r6.version>
+		<r6.version>0.4.0</r6.version>
+<!-- 		<r6.version>main-SNAPSHOT</r6.version> -->
 	</properties>
 
 	<groupId>io.github.terminological</groupId>
@@ -79,18 +80,11 @@
 				<version>${r6.version}</version>
 				<configuration>
 					<packageData>
+						<!-- R library metadata: -->
 						<title>A test library</title>
-						<version>0.2.0.9001</version>
+						<version>0.2.0.9002</version>
 						<url>https://terminological.github.io/r6-generator-docs/docs/</url>
 						<doi>10.5281/zenodo.6645134</doi>
-						<debug>false</debug>
-						<usePkgdown>true</usePkgdown>
-						<useRoxygen2>true</useRoxygen2>
-						<!-- building the javadocs into the documentation is nice but can add a lot to size fo the package -->
-						<useJavadoc>false</useJavadoc>
-						<rjavaOpts>
-							<rjavaOpt>-Xmx256M</rjavaOpt>
-						</rjavaOpts>
 						<packageName>testRapi</packageName>
 						<license>MIT</license>
 						<description>
@@ -102,6 +96,16 @@
 						<maintainerFamilyName>Challen</maintainerFamilyName>
 						<maintainerEmail>rc538@exeter.ac.uk</maintainerEmail>
 						<maintainerOrganisation>University of Exeter</maintainerOrganisation>
+						<!-- Build configuration options: -->
+						<debug>false</debug> <!-- starts the R library with java code in debugging mode -->
+						<usePkgdown>true</usePkgdown> <!-- Pkgdown will generate a nice looking site  -->
+						<useRoxygen2>true</useRoxygen2> <!-- Roxygen can integrate user supplied and generated R code, but requiresd a working R version on the system that generates the R package -->
+						<useJavadoc>false</useJavadoc> <!-- building the javadocs into the documentation is nice but can add a lot to size of the package -->
+						<preCompileBinary>true</preCompileBinary> <!-- pre-compiling the binary if probably a safer option -->
+						<packageAllDependencies>true</packageAllDependencies> <!-- packaging all dependencies is the most robust but results in a large package size that probably won;t be accepted on CRAN if that is a concern -->
+						<rjavaOpts>
+							<rjavaOpt>-Xmx256M</rjavaOpt> <!--  this example sets the maximum heap size -->
+						</rjavaOpts>
 					</packageData>
 					<!-- the best place to put the R package is in the directory above the java code -->
 					<!-- and to have the java code in a src subdirectory of a github repo. -->
@@ -109,12 +113,6 @@
 					<outputDirectory>${project.basedir}/..</outputDirectory>
 				</configuration>
 				<executions>
-					<execution>
-						<id>compile-java-library</id>
-						<goals>
-							<goal>compile-java-library</goal>
-						</goals>
-					</execution>
 					<execution>
 						<id>generate-r-library</id>
 						<goals>

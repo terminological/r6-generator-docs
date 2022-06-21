@@ -3,7 +3,7 @@ title: 'R6 Generator Runtime: Using R Datatypes in Java'
 author: "Rob Challen"
 date: "28/10/2020"
 output:
-  html_document: 
+  html_vignette: 
     css: draft.css
 header-includes:
   \usepackage{amsmath}
@@ -12,7 +12,7 @@ header-includes:
   \setminted[java]{fontsize=\footnotesize,tabsize=3}
   \setminted[xml]{fontsize=\footnotesize,tabsize=3}
 vignette: >
-  %\VignetteIndexEntry{R6 Generator Maven Plugin: Using R Datatypes in Java}
+  %\VignetteIndexEntry{R6 Generator Runtime: Using R Datatypes in Java}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

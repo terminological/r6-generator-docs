@@ -1,6 +1,6 @@
 Package: testRapi
 Title: A test library
-Version: 0.2.0.9001
+Version: 0.2.0.9002
 Authors@R: c(
     person(given = "Rob",family = "Challen",email = "rc538@exeter.ac.uk",role = c("aut", "cre")),
     person(given = "terminological",role = "aut"),
@@ -24,5 +24,8 @@ Imports:
 	dplyr,
 	rJava,
 	R6,
-	fs
+	fs,
+	rappdirs,
+	rprojroot,
+	utils
 RoxygenNote: 7.1.2
