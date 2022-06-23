@@ -17,9 +17,9 @@ jobs:
 
     runs-on: ${{ matrix.config.os }}
 
-    continue-on-error: ${{ matrix.config.fail }}
+    continue-on-error: false
 
-    name: ${{ matrix.config.os }} R:(${{ matrix.config.r }} Java:${{ matrix.java }})
+    name: ${{ matrix.config.os }} R:(${{ matrix.config.r }} Java:${{ matrix.config.java }})
 
     strategy:
       fail-fast: false

@@ -2,9 +2,7 @@
 
 ## Test environments
 
-N.B. this is only true is you have uncommented the correct lines in github actions workflow files
-(via GitHub actions)
- 
+GitHub actions test environments:
 * os: macOS Big Sur 11, R: 4.1.0, Java 11
 * os: Ubuntu 20.04; R: 4.1.0, Java 11
 * os: Ubuntu 20.04, R: 3.6.1, Java 8
