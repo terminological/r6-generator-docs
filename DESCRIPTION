@@ -26,6 +26,5 @@ Imports:
 	R6,
 	fs,
 	rappdirs,
-	rprojroot,
 	utils
 RoxygenNote: 7.1.2
