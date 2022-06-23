@@ -3,8 +3,8 @@ Title: A test library
 Version: 0.0.0.9999
 Authors@R: c(
     person(given = "Rob",family = "Challen",email = "rc538@exeter.ac.uk",role = c("aut", "cre")),
-    person(given = "terminological",role = "aut"),
-    person(given = "Rob",family = "Challen",email = "rob@terminological.co.uk",comment = structure("0000-0002-5504-7768", .Names = "ORCID"),role = "aut"))
+    person(given = "Rob",family = "Challen",email = "rob@terminological.co.uk",comment = structure("0000-0002-5504-7768", .Names = "ORCID"),role = "aut"),
+    person(given = "terminological",role = "aut"))
 Description: This package is a feature test of the R6 Generator Maven Plugin. It is not intended to be useful beyond testing, demonstrating and documenting the features of the plugin.
 License: MIT + file LICENSE
 Encoding: UTF-8

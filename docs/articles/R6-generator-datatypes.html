@@ -149,18 +149,18 @@ DRAFT
 <span class="va">J</span> <span class="op">=</span> <span class="fu">testRapi</span><span class="fu">::</span><span class="va"><a href="../reference/JavaApi.html">JavaApi</a></span><span class="op">$</span><span class="fu">get</span><span class="op">(</span><span class="op">)</span></pre></div>
 <pre><code>## Initialising A test library</code></pre>
 <pre><code>## Version: 0.0.0.9999</code></pre>
-<pre><code>## Generated: 2022-06-23T14:54:35.627346</code></pre>
-<pre><code>## 2022-06-23 14:54:48,753 INFO testRapi [main] Initialised testRapi</code></pre>
+<pre><code>## Generated: 2022-06-23T14:59:35.075438</code></pre>
+<pre><code>## 2022-06-23 14:59:48,530 INFO testRapi [main] Initialised testRapi</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">b</span> <span class="op">=</span> <span class="va">J</span><span class="op">$</span><span class="va">BounceTest</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 14:54:48,757 INFO uk.co.terminological.rjava.test.BounceTest [main] Tests the round tripping of supported datatypes</code></pre>
+<pre><code>## 2022-06-23 14:59:48,534 INFO uk.co.terminological.rjava.test.BounceTest [main] Tests the round tripping of supported datatypes</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceNull</span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 14:54:48,762 INFO uk.co.terminological.rjava.test.BounceTest [main] java: NULL
+<pre><code>## 2022-06-23 14:59:48,539 INFO uk.co.terminological.rjava.test.BounceTest [main] java: NULL
 ## NULL</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceVoid</span><span class="op">(</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 14:54:48,763 INFO uk.co.terminological.rjava.test.BounceTest [main] java void</code></pre>
+<pre><code>## 2022-06-23 14:59:48,540 INFO uk.co.terminological.rjava.test.BounceTest [main] java void</code></pre>
 </div>
 <div id="character-data" class="section level3">
 <h3 class="hasAnchor">
@@ -190,15 +190,15 @@ DRAFT
     </code></pre></div>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceString</span><span class="op">(</span><span class="st">"Hello"</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 14:54:48,931 INFO uk.co.terminological.rjava.test.BounceTest [main] java: Hello</code></pre>
+<pre><code>## 2022-06-23 14:59:48,711 INFO uk.co.terminological.rjava.test.BounceTest [main] java: Hello</code></pre>
 <pre><code>## [1] "Hello"</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceCharacter</span><span class="op">(</span><span class="st">"Hello"</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 14:54:48,933 INFO uk.co.terminological.rjava.test.BounceTest [main] java: Hello</code></pre>
+<pre><code>## 2022-06-23 14:59:48,713 INFO uk.co.terminological.rjava.test.BounceTest [main] java: Hello</code></pre>
 <pre><code>## [1] "Hello"</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceCharacterVector</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Hello"</span>,<span class="st">"World"</span><span class="op">)</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 14:54:48,940 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rcharacter[2]&gt;{Hello, World, ...}</code></pre>
+<pre><code>## 2022-06-23 14:59:48,720 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rcharacter[2]&gt;{Hello, World, ...}</code></pre>
 <pre><code>## [1] "Hello" "World"</code></pre>
 </div>
 <div id="numeric-data" class="section level3">
@@ -228,7 +228,7 @@ DRAFT
     </code></pre></div>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceDouble</span><span class="op">(</span><span class="fl">1.23</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 14:54:49,089 INFO uk.co.terminological.rjava.test.BounceTest [main] java: 1.23</code></pre>
+<pre><code>## 2022-06-23 14:59:48,865 INFO uk.co.terminological.rjava.test.BounceTest [main] java: 1.23</code></pre>
 <pre><code>## [1] 1.23</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="co"># throws an error as primitive double cannot be null</span>
@@ -237,32 +237,32 @@ DRAFT
 ##   cant use NA as input to java double</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceNumeric</span><span class="op">(</span><span class="fl">4.6</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 14:54:49,092 INFO uk.co.terminological.rjava.test.BounceTest [main] java: 4.6</code></pre>
+<pre><code>## 2022-06-23 14:59:48,868 INFO uk.co.terminological.rjava.test.BounceTest [main] java: 4.6</code></pre>
 <pre><code>## [1] 4.6</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceNumeric</span><span class="op">(</span><span class="cn">NA_real_</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 14:54:49,094 INFO uk.co.terminological.rjava.test.BounceTest [main] java: NA</code></pre>
+<pre><code>## 2022-06-23 14:59:48,869 INFO uk.co.terminological.rjava.test.BounceTest [main] java: NA</code></pre>
 <pre><code>## [1] NA</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceNumeric</span><span class="op">(</span><span class="cn">Inf</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 14:54:49,095 INFO uk.co.terminological.rjava.test.BounceTest [main] java: Infinity</code></pre>
+<pre><code>## 2022-06-23 14:59:48,871 INFO uk.co.terminological.rjava.test.BounceTest [main] java: Infinity</code></pre>
 <pre><code>## [1] Inf</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceNumeric</span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 14:54:49,097 INFO uk.co.terminological.rjava.test.BounceTest [main] java: -Infinity</code></pre>
+<pre><code>## 2022-06-23 14:59:48,872 INFO uk.co.terminological.rjava.test.BounceTest [main] java: -Infinity</code></pre>
 <pre><code>## [1] -Inf</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceNumeric</span><span class="op">(</span><span class="fl">0</span><span class="op">/</span><span class="fl">0</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 14:54:49,099 INFO uk.co.terminological.rjava.test.BounceTest [main] java: NaN</code></pre>
+<pre><code>## 2022-06-23 14:59:48,873 INFO uk.co.terminological.rjava.test.BounceTest [main] java: NaN</code></pre>
 <pre><code>## [1] NaN</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="co"># Wrongly typed input is coerced to numerics</span>
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceNumericVector</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2L</span>,<span class="fl">5L</span>,<span class="fl">34L</span><span class="op">)</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 14:54:49,101 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rnumeric[3]&gt;{2.0, 5.0, 34.0, ...}</code></pre>
+<pre><code>## 2022-06-23 14:59:48,875 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rnumeric[3]&gt;{2.0, 5.0, 34.0, ...}</code></pre>
 <pre><code>## [1]  2  5 34</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceNumericVector</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2.3</span>,<span class="fl">4.6</span>,<span class="cn">NA_real_</span>,<span class="fl">34</span>,<span class="cn">NaN</span>,<span class="cn">Inf</span>,<span class="op">-</span><span class="cn">Inf</span><span class="op">)</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 14:54:49,106 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rnumeric[7]&gt;{2.3, 4.6, NA, 34.0, NaN, Infinity, -Infinity, ...}</code></pre>
+<pre><code>## 2022-06-23 14:59:48,880 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rnumeric[7]&gt;{2.3, 4.6, NA, 34.0, NaN, Infinity, -Infinity, ...}</code></pre>
 <pre><code>## [1]  2.3  4.6   NA 34.0  NaN  Inf -Inf</code></pre>
 </div>
 <div id="integer-data" class="section level3">
@@ -292,23 +292,23 @@ DRAFT
     </code></pre></div>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceInt</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 14:54:49,247 INFO uk.co.terminological.rjava.test.BounceTest [main] java: 1</code></pre>
+<pre><code>## 2022-06-23 14:59:49,018 INFO uk.co.terminological.rjava.test.BounceTest [main] java: 1</code></pre>
 <pre><code>## [1] 1</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceInteger</span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 14:54:49,249 INFO uk.co.terminological.rjava.test.BounceTest [main] java: 3</code></pre>
+<pre><code>## 2022-06-23 14:59:49,020 INFO uk.co.terminological.rjava.test.BounceTest [main] java: 3</code></pre>
 <pre><code>## [1] 3</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceIntegerVector</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2L</span>,<span class="fl">3L</span>,<span class="fl">4L</span><span class="op">)</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 14:54:49,251 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rinteger[3]&gt;{2, 3, 4, ...}</code></pre>
+<pre><code>## 2022-06-23 14:59:49,022 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rinteger[3]&gt;{2, 3, 4, ...}</code></pre>
 <pre><code>## [1] 2 3 4</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceIntegerVector</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span><span class="op">)</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 14:54:49,254 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rinteger[3]&gt;{2, 3, 4, ...}</code></pre>
+<pre><code>## 2022-06-23 14:59:49,025 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rinteger[3]&gt;{2, 3, 4, ...}</code></pre>
 <pre><code>## [1] 2 3 4</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceIntegerVector</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2L</span>,<span class="cn">NA</span>,<span class="fl">4L</span><span class="op">)</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 14:54:49,256 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rinteger[3]&gt;{2, NA, 4, ...}</code></pre>
+<pre><code>## 2022-06-23 14:59:49,027 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rinteger[3]&gt;{2, NA, 4, ...}</code></pre>
 <pre><code>## [1]  2 NA  4</code></pre>
 </div>
 <div id="factors" class="section level3">
@@ -333,11 +333,11 @@ DRAFT
 <div class="sourceCode"><pre class="downlit">
 <span class="va">factorVec</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>,<span class="st">"b"</span>,<span class="st">"c"</span>,<span class="st">"b"</span>,<span class="st">"a"</span><span class="op">)</span><span class="op">)</span>
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceFactor</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">factorVec</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 14:54:49,399 INFO uk.co.terminological.rjava.test.BounceTest [main] java: a</code></pre>
+<pre><code>## 2022-06-23 14:59:49,168 INFO uk.co.terminological.rjava.test.BounceTest [main] java: a</code></pre>
 <pre><code>## [1] "a"</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceFactorVector</span><span class="op">(</span><span class="va">factorVec</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 14:54:49,401 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rfactor[5]&gt;{a, b, c, b, a, ...}</code></pre>
+<pre><code>## 2022-06-23 14:59:49,170 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rfactor[5]&gt;{a, b, c, b, a, ...}</code></pre>
 <pre><code>## [1] a b c b a
 ## Levels: a &lt; b &lt; c</code></pre>
 </div>
@@ -362,29 +362,29 @@ DRAFT
     </code></pre></div>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceDate</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"2001-02-03"</span><span class="op">)</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 14:54:49,544 INFO uk.co.terminological.rjava.test.BounceTest [main] java: 2001-02-03</code></pre>
+<pre><code>## 2022-06-23 14:59:49,310 INFO uk.co.terminological.rjava.test.BounceTest [main] java: 2001-02-03</code></pre>
 <pre><code>## [1] "2001-02-03"</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">b</span><span class="op">$</span><span class="fu">bounceDate</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"2001-02-03"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 14:54:49,546 INFO uk.co.terminological.rjava.test.BounceTest [main] java: 2001-02-03</code></pre>
+<pre><code>## 2022-06-23 14:59:49,312 INFO uk.co.terminological.rjava.test.BounceTest [main] java: 2001-02-03</code></pre>
 <pre><code>## [1] "Date"</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceDateVector</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"2001-02-03"</span>,<span class="st">"2001-02-04"</span>,<span class="st">"2001-02-05"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 14:54:49,548 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rdate[3]&gt;{2001-02-03, 2001-02-04, 2001-02-05, ...}</code></pre>
+<pre><code>## 2022-06-23 14:59:49,314 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rdate[3]&gt;{2001-02-03, 2001-02-04, 2001-02-05, ...}</code></pre>
 <pre><code>## [1] "2001-02-03" "2001-02-04" "2001-02-05"</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceDateVector</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"2001-02-03"</span>,<span class="cn">NA</span>,<span class="st">"2001-02-05"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 14:54:49,551 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rdate[3]&gt;{2001-02-03, NA, 2001-02-05, ...}</code></pre>
+<pre><code>## 2022-06-23 14:59:49,317 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rdate[3]&gt;{2001-02-03, NA, 2001-02-05, ...}</code></pre>
 <pre><code>## [1] "2001-02-03" NA           "2001-02-05"</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceDate</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"0000-01-01"</span><span class="op">)</span><span class="op">-</span><span class="fl">5</span><span class="op">)</span></pre></div>
 <pre><code>## dates smaller than 0001-01-01 will be converted to NA</code></pre>
-<pre><code>## 2022-06-23 14:54:49,553 INFO uk.co.terminological.rjava.test.BounceTest [main] java: NA</code></pre>
+<pre><code>## 2022-06-23 14:59:49,319 INFO uk.co.terminological.rjava.test.BounceTest [main] java: NA</code></pre>
 <pre><code>## [1] NA</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceDateVector</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"0000-01-01"</span>,<span class="st">"1-01-01"</span>,<span class="st">"11-01-01"</span>,<span class="st">"101-01-01"</span>,<span class="st">"1001-01-01"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></pre></div>
 <pre><code>## dates smaller than 0001-01-01 will be converted to NA</code></pre>
-<pre><code>## 2022-06-23 14:54:49,555 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rdate[5]&gt;{NA, 0001-01-01, 0011-01-01, 0101-01-01, 1001-01-01, ...}</code></pre>
+<pre><code>## 2022-06-23 14:59:49,321 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rdate[5]&gt;{NA, 0001-01-01, 0011-01-01, 0101-01-01, 1001-01-01, ...}</code></pre>
 <pre><code>## [1] NA           "1-01-01"    "11-01-01"   "101-01-01"  "1001-01-01"</code></pre>
 </div>
 <div id="logicals" class="section level3">
@@ -409,15 +409,15 @@ DRAFT
     </code></pre></div>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceLogical</span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 14:54:49,695 INFO uk.co.terminological.rjava.test.BounceTest [main] java: true</code></pre>
+<pre><code>## 2022-06-23 14:59:49,461 INFO uk.co.terminological.rjava.test.BounceTest [main] java: true</code></pre>
 <pre><code>## [1] TRUE</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceLogicalVector</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>,<span class="cn">TRUE</span>,<span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 14:54:49,697 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rlogical[3]&gt;{true, true, false, ...}</code></pre>
+<pre><code>## 2022-06-23 14:59:49,462 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rlogical[3]&gt;{true, true, false, ...}</code></pre>
 <pre><code>## [1]  TRUE  TRUE FALSE</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceLogicalVector</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>,<span class="cn">NA</span>,<span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 14:54:49,699 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rlogical[3]&gt;{true, NA, false, ...}</code></pre>
+<pre><code>## 2022-06-23 14:59:49,465 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rlogical[3]&gt;{true, NA, false, ...}</code></pre>
 <pre><code>## [1]  TRUE    NA FALSE</code></pre>
 </div>
 <div id="dataframes" class="section level3">
@@ -442,7 +442,7 @@ DRAFT
 <span class="va">testDf</span> <span class="op">=</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">testDf</span>,<span class="va">grp</span>,<span class="va">x</span><span class="op">)</span>
 
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceDataframe</span><span class="op">(</span><span class="va">testDf</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 14:54:49,855 INFO uk.co.terminological.rjava.test.BounceTest [main] java: groups: [grp, x]
+<pre><code>## 2022-06-23 14:59:49,621 INFO uk.co.terminological.rjava.test.BounceTest [main] java: groups: [grp, x]
 ## grp: &lt;rcharacter[6]&gt;{A, A, A, B, B, B, ...}
 ## x: &lt;rnumeric[6]&gt;{0.0, 1.0, 2.0, 4.0, 5.0, 6.0, ...}
 ## y: &lt;rinteger[6]&gt;{3, 2, 1, -1, -2, -3, ...}</code></pre>
@@ -465,7 +465,7 @@ DRAFT
   y<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3L</span>,<span class="fl">2L</span>,<span class="fl">1L</span><span class="op">)</span>,
   z<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"2001-02-03"</span>,<span class="cn">NA</span>,<span class="st">"2001-02-05"</span><span class="op">)</span><span class="op">)</span>
 <span class="op">)</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 14:54:49,949 INFO uk.co.terminological.rjava.test.BounceTest [main] java: groups: []
+<pre><code>## 2022-06-23 14:59:49,719 INFO uk.co.terminological.rjava.test.BounceTest [main] java: groups: []
 ## u: &lt;rfactor[3]&gt;{a, b, c, ...}
 ## v: &lt;rlogical[3]&gt;{true, NA, false, ...}
 ## w: &lt;rcharacter[3]&gt;{alpha, NA, gamma, ...}
@@ -485,7 +485,7 @@ DRAFT
 <div class="sourceCode"><pre class="downlit">
 <span class="va">test2DArr</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">9.9</span>,<span class="fl">0.1</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>,<span class="fl">10</span><span class="op">)</span><span class="op">)</span>
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceArray</span><span class="op">(</span><span class="va">test2DArr</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 14:54:50,037 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rnumeric[10]&gt;{
+<pre><code>## 2022-06-23 14:59:49,807 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rnumeric[10]&gt;{
 ## &lt;rnumeric[10]&gt;{0.0, 0.1, 0.2, 0.30000000000000004, 0.4, 0.5, 0.6000000000000001, 0.7000000000000001, 0.8, 0.9, ...},
 ## &lt;rnumeric[10]&gt;{1.0, 1.1, 1.2000000000000002, 1.3, 1.4000000000000001, 1.5, 1.6, 1.7000000000000002, 1.8, 1.9000000000000001, ...},
 ## &lt;rnumeric[10]&gt;{2.0, 2.1, 2.2, 2.3000000000000003, 2.4000000000000004, 2.5, 2.6, 2.7, 2.8000000000000003, 2.9000000000000004, ...},
@@ -511,7 +511,7 @@ DRAFT
 <div class="sourceCode"><pre class="downlit">
 <span class="va">test3DArr</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/array.html">array</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">63</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">8</span>,<span class="fl">4</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span>
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceArray</span><span class="op">(</span><span class="va">test3DArr</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 14:54:50,101 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rnumeric[2]&gt;{
+<pre><code>## 2022-06-23 14:59:49,872 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rnumeric[2]&gt;{
 ## &lt;rnumeric[4]&gt;{
 ## &lt;rnumeric[8]&gt;{0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, ...},
 ## &lt;rnumeric[8]&gt;{8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, ...},
@@ -570,7 +570,7 @@ DRAFT
     </code></pre></div>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceList</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"a"</span>,<span class="st">"b"</span>,<span class="st">"c"</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 14:54:50,244 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rlist&gt;{
+<pre><code>## 2022-06-23 14:59:50,013 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rlist&gt;{
 ## a,
 ## b,
 ## c,
@@ -591,7 +591,7 @@ DRAFT
 <div class="sourceCode"><pre class="downlit">
 <span class="va">input</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"a"</span>,<span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"b"</span>,<span class="fl">1</span>,<span class="st">"z"</span><span class="op">)</span>,<span class="st">"c"</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span>
 <span class="va">output</span> <span class="op">=</span> <span class="va">b</span><span class="op">$</span><span class="fu">bounceList</span><span class="op">(</span><span class="va">input</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 14:54:50,250 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rlist&gt;{
+<pre><code>## 2022-06-23 14:59:50,019 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rlist&gt;{
 ## a,
 ## &lt;rlist&gt;{
 ## b,
@@ -606,7 +606,7 @@ DRAFT
 <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="va">input</span>,<span class="va">output</span><span class="op">)</span><span class="op">)</span> <span class="kw"><a href="https://rdrr.io/r/base/stop.html">stop</a></span><span class="op">(</span><span class="st">"FAIL"</span><span class="op">)</span>
 
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceNamedList</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>x<span class="op">=</span><span class="st">"a"</span>,b<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>,<span class="cn">NA</span>,<span class="st">"c"</span><span class="op">)</span>,c<span class="op">=</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 14:54:50,254 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rnamedlist&gt;{
+<pre><code>## 2022-06-23 14:59:50,024 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rnamedlist&gt;{
 ## x: a,
 ## b: &lt;rcharacter[3]&gt;{a, NA, c, ...},
 ## c: 1.0
@@ -662,7 +662,7 @@ DRAFT
     </code></pre></div>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">g</span> <span class="op">=</span> <span class="va">J</span><span class="op">$</span><span class="va">FactoryTest</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 14:54:50,395 INFO uk.co.terminological.rjava.test.FactoryTest [main] Tests the java creation of supported datatypes</code></pre>
+<pre><code>## 2022-06-23 14:59:50,165 INFO uk.co.terminological.rjava.test.FactoryTest [main] Tests the java creation of supported datatypes</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">g</span><span class="op">$</span><span class="fu">generateCharacter</span><span class="op">(</span><span class="op">)</span></pre></div>
 <pre><code>## </code></pre>
@@ -845,7 +845,7 @@ DRAFT
 
 
       <footer><div class="copyright">
-  <p>Developed by Rob Challen, terminological, Rob Challen.</p>
+  <p>Developed by Rob Challen, Rob Challen, terminological.</p>
 </div>
 
 <div class="pkgdown">
