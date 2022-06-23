@@ -132,17 +132,17 @@ DRAFT
 <span class="va">J</span> <span class="op">=</span> <span class="fu">testRapi</span><span class="fu">::</span><span class="va"><a href="../reference/JavaApi.html">JavaApi</a></span><span class="op">$</span><span class="fu">get</span><span class="op">(</span>logLevel <span class="op">=</span> <span class="st">"WARN"</span><span class="op">)</span></pre></div>
 <pre><code>## Initialising A test library</code></pre>
 <pre><code>## Version: 0.0.0.9999</code></pre>
-<pre><code>## Generated: 2022-06-23T13:31:57.814440</code></pre>
+<pre><code>## Generated: 2022-06-23T14:51:07.457624</code></pre>
 <pre><code>## </code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">J</span><span class="op">$</span><span class="fu">changeLogLevel</span><span class="op">(</span><span class="st">"DEBUG"</span><span class="op">)</span>
 <span class="va">J</span><span class="op">$</span><span class="va">.log</span><span class="op">$</span><span class="fu">debug</span><span class="op">(</span><span class="st">"prove the logger is working and outputting debug statements..."</span><span class="op">)</span>
 <span class="va">J</span><span class="op">$</span><span class="fu">printMessages</span><span class="op">(</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 13:32:17,793 DEBUG testRapi [main] prove the logger is working and outputting debug statements...</code></pre>
+<pre><code>## 2022-06-23 14:51:27,641 DEBUG testRapi [main] prove the logger is working and outputting debug statements...</code></pre>
 <p>Using the <code>FeatureTest</code> class above requires a creating a new instance of the class. This is done through the root of the api as follows, and the <code>FeatureTest</code> constructor simply logs the <code>logMessage</code> parameter's value.</p>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">feat1</span> <span class="op">=</span> <span class="va">J</span><span class="op">$</span><span class="va">FeatureTest</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>logMessage <span class="op">=</span> <span class="st">"Hello world. Creating a new object"</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 13:32:17,865 INFO uk.co.terminological.rjava.test.FeatureTest [main] Hello world. Creating a new object</code></pre>
+<pre><code>## 2022-06-23 14:51:27,716 INFO uk.co.terminological.rjava.test.FeatureTest [main] Hello world. Creating a new object</code></pre>
 </div>
 <div id="predictable-data-type-conversion" class="section level2">
 <h2 class="hasAnchor">
@@ -168,11 +168,11 @@ DRAFT
 <pre><code>## [1] "numeric"</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">feat1</span><span class="op">$</span><span class="fu">doSum</span><span class="op">(</span><span class="fl">3.0</span>, <span class="cn">NA_real_</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 13:32:18,043 INFO uk.co.terminological.rjava.test.FeatureTest [main] Java threw a NPE - could have had a NA input?</code></pre>
+<pre><code>## 2022-06-23 14:51:27,897 INFO uk.co.terminological.rjava.test.FeatureTest [main] Java threw a NPE - could have had a NA input?</code></pre>
 <pre><code>## [1] NA</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">feat1</span><span class="op">$</span><span class="fu">doSum</span><span class="op">(</span><span class="fl">3.0</span>, <span class="cn">NA_real_</span><span class="op">)</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 13:32:18,044 INFO uk.co.terminological.rjava.test.FeatureTest [main] Java threw a NPE - could have had a NA input?</code></pre>
+<pre><code>## 2022-06-23 14:51:27,899 INFO uk.co.terminological.rjava.test.FeatureTest [main] Java threw a NPE - could have had a NA input?</code></pre>
 <pre><code>## [1] "numeric"</code></pre>
 <p>Wrapping and unwrapping every datatype is inconvenient for the Java programmer so some single valued primitive types are supported as parameters and return types of Java functions, particularly <code>int</code>, <code>char</code>, <code>double</code>, <code>boolean</code>, and <code>java.lang.String</code>, but these come with constraints on use, particularly around NA values in R.</p>
 <div class="sourceCode"><pre class="downlit">
@@ -203,7 +203,7 @@ DRAFT
 <p>Static java methods are also supported. R6 does not have a concept of static methods, so we use the root of the JavaApi as a place to hold the static methods, which in this case returns nothing (an R NULL is invisibly returned), but logs its input.</p>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">J</span><span class="op">$</span><span class="va">FeatureTest</span><span class="op">$</span><span class="fu">demoStatic</span><span class="op">(</span><span class="st">"Hello, static world."</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 13:32:18,192 INFO uk.co.terminological.rjava.test.FeatureTest [main] Hello, static world.</code></pre>
+<pre><code>## 2022-06-23 14:51:28,049 INFO uk.co.terminological.rjava.test.FeatureTest [main] Hello, static world.</code></pre>
 </div>
 <div id="more-complex-objects" class="section level2">
 <h2 class="hasAnchor">
@@ -213,7 +213,7 @@ DRAFT
 <p>The basic smoke tests of this are as follows</p>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">feat1</span><span class="op">$</span><span class="fu">doSomethingWithDataFrame</span><span class="op">(</span><span class="fu">ggplot2</span><span class="fu">::</span><span class="va"><a href="https://ggplot2.tidyverse.org/reference/diamonds.html">diamonds</a></span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 13:32:18,381 INFO uk.co.terminological.rjava.test.FeatureTest [main] dataframe length: 53940</code></pre>
+<pre><code>## 2022-06-23 14:51:28,244 INFO uk.co.terminological.rjava.test.FeatureTest [main] dataframe length: 53940</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">feat1</span><span class="op">$</span><span class="fu">generateDataFrame</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">glimpse</span><span class="op">(</span><span class="op">)</span></pre></div>
 <pre><code>## </code></pre>
@@ -299,11 +299,11 @@ DRAFT
 <div class="sourceCode"><pre class="downlit">
 <span class="co"># factory method from builder class</span>
 <span class="va">moreFeat1</span> <span class="op">=</span> <span class="va">feat1</span><span class="op">$</span><span class="fu">factoryMethod</span><span class="op">(</span><span class="st">"Hello"</span>,<span class="st">"World"</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 13:32:20,339 INFO uk.co.terminological.rjava.test.MoreFeatureTest [main] constuctor: Hello, World</code></pre>
+<pre><code>## 2022-06-23 14:51:30,241 INFO uk.co.terminological.rjava.test.MoreFeatureTest [main] constuctor: Hello, World</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="co"># static factory method accessed through the root of the API</span>
 <span class="va">moreFeat2</span> <span class="op">=</span> <span class="va">J</span><span class="op">$</span><span class="va">MoreFeatureTest</span><span class="op">$</span><span class="fu">create</span><span class="op">(</span><span class="st">"Ola"</span>,<span class="st">"El Mundo"</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 13:32:20,344 INFO uk.co.terminological.rjava.test.MoreFeatureTest [main] constuctor: Ola, El Mundo</code></pre>
+<pre><code>## 2022-06-23 14:51:30,245 INFO uk.co.terminological.rjava.test.MoreFeatureTest [main] constuctor: Ola, El Mundo</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="co"># either of these can be passed as a parameter</span>
 <span class="va">feat1</span><span class="op">$</span><span class="fu">objectAsParameter</span><span class="op">(</span><span class="va">moreFeat1</span><span class="op">)</span></pre></div>
@@ -325,11 +325,11 @@ DRAFT
 <span class="co"># Testing logging levels</span>
 <span class="va">J</span><span class="op">$</span><span class="fu">changeLogLevel</span><span class="op">(</span><span class="st">"ALL"</span><span class="op">)</span>
 <span class="va">moreFeat1</span><span class="op">$</span><span class="fu">testLogging</span><span class="op">(</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 13:32:20,484 ERROR uk.co.terminological.rjava.test.MoreFeatureTest [main] An error
-## 2022-06-23 13:32:20,484 WARN uk.co.terminological.rjava.test.MoreFeatureTest [main] A warning
-## 2022-06-23 13:32:20,484 INFO uk.co.terminological.rjava.test.MoreFeatureTest [main] A info
-## 2022-06-23 13:32:20,484 DEBUG uk.co.terminological.rjava.test.MoreFeatureTest [main] A debug
-## 2022-06-23 13:32:20,484 TRACE uk.co.terminological.rjava.test.MoreFeatureTest [main] A trace</code></pre>
+<pre><code>## 2022-06-23 14:51:30,389 ERROR uk.co.terminological.rjava.test.MoreFeatureTest [main] An error
+## 2022-06-23 14:51:30,389 WARN uk.co.terminological.rjava.test.MoreFeatureTest [main] A warning
+## 2022-06-23 14:51:30,389 INFO uk.co.terminological.rjava.test.MoreFeatureTest [main] A info
+## 2022-06-23 14:51:30,389 DEBUG uk.co.terminological.rjava.test.MoreFeatureTest [main] A debug
+## 2022-06-23 14:51:30,389 TRACE uk.co.terminological.rjava.test.MoreFeatureTest [main] A trace</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="co"># Suppressing errors</span>
 <span class="kw"><a href="https://rdrr.io/r/base/try.html">try</a></span><span class="op">(</span><span class="va">moreFeat1</span><span class="op">$</span><span class="fu">throwCatchable</span><span class="op">(</span><span class="op">)</span>,silent <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></pre></div>
@@ -356,7 +356,7 @@ DRAFT
 <div class="sourceCode"><pre class="downlit">
 <span class="va">J</span><span class="op">$</span><span class="fu">changeLogLevel</span><span class="op">(</span><span class="st">"ERROR"</span><span class="op">)</span>
 <span class="va">moreFeat1</span><span class="op">$</span><span class="fu">testLogging</span><span class="op">(</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 13:32:20,490 ERROR uk.co.terminological.rjava.test.MoreFeatureTest [main] An error</code></pre>
+<pre><code>## 2022-06-23 14:51:30,395 ERROR uk.co.terminological.rjava.test.MoreFeatureTest [main] An error</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="co"># J$reconfigureLog("/path/to/log4j.prop")</span></pre></div>
 </div>
@@ -376,8 +376,8 @@ DRAFT
 <span class="va">feat1</span> <span class="op">=</span> <span class="cn">NULL</span>
 <span class="fu"><a href="https://rdrr.io/r/base/gc.html">gc</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <pre><code>##           used (Mb) gc trigger  (Mb) max used  (Mb)
-## Ncells 1213638 64.9    2207460 117.9  2207460 117.9
-## Vcells 2491860 19.1    8388608  64.0  7318422  55.9</code></pre>
+## Ncells 1213638 64.9    2207465 117.9  2207465 117.9
+## Vcells 2491860 19.1    8388608  64.0  7318390  55.9</code></pre>
 <p>The finalizer should also be called implicitly when the R6 object goes out of scope in R.</p>
 </div>
 <div id="support-for-debugging" class="section level2">
@@ -434,7 +434,7 @@ DRAFT
 
 
       <footer><div class="copyright">
-  <p>Developed by Rob Challen, terminological, Rob Challen.</p>
+  <p>Developed by Rob Challen, Rob Challen, terminological.</p>
 </div>
 
 <div class="pkgdown">
