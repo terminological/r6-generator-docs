@@ -24,14 +24,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        java: [ 8, 11 ]
         config:
-          - {os: ubuntu-20.04, r: '4.1.0', fail: false, distribution: zulu}
-          - {os: macOS-11, r: '4.1.0', fail: false, distribution: zulu}
-          - {os: windows-2022, r: '4.1.0', fail: false, distribution: zulu}
-          - {os: ubuntu-20.04, r: '3.6.1', fail: true, distribution: zulu}
+          - {os: ubuntu-20.04, r: '4.1.0', java: 11, distribution: zulu}
+          - {os: macOS-11, r: '4.1.0', java: 11, distribution: zulu}
+          - {os: windows-2022, r: '4.1.0', java: 11, distribution: zulu}
+          - {os: ubuntu-20.04, r: '3.6.1', java: 8, distribution: zulu}
 ## uncomment this to run on multiple versions of R          
-#          - {os: ubuntu-20.04, r: '4.2.0', fail: true, distribution: zulu}
+#          - {os: ubuntu-22.04, r: '4.2.0', java: 17, distribution: zulu}
 
 
     env:
@@ -48,7 +47,7 @@ jobs:
 
       - uses: actions/setup-java@v3
         with:
-          java-version: ${{ matrix.java }}
+          java-version: ${{ matrix.config.java }}
           distribution: ${{ matrix.config.distribution }}
           java-package: jdk
           architecture: x64
