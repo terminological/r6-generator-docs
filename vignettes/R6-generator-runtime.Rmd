@@ -31,13 +31,13 @@ source(here::here("vignettes/codeSnip.R"))
 
 
 ```{r results='asis', echo=FALSE}
-codeSnip("java",filename=here::here("src/src/test/java/uk/co/terminological/rjava/test/TestDatatypes.java"),startMatches = "CS01",endMatches = "CE01")
+codeSnip("java",filename=here::here("java/src/test/java/uk/co/terminological/rjava/test/TestDatatypes.java"),startMatches = "CS01",endMatches = "CE01")
 ```
 
 ## Wrapping and unwrapping
 
 ```{r results='asis', echo=FALSE}
-codeSnip("java",filename=here::here("src/src/test/java/uk/co/terminological/rjava/test/TestDatatypes.java"),startMatches = "CS04",endMatches = "CE04")
+codeSnip("java",filename=here::here("java/src/test/java/uk/co/terminological/rjava/test/TestDatatypes.java"),startMatches = "CS04",endMatches = "CE04")
 ```
 
 
@@ -46,13 +46,13 @@ codeSnip("java",filename=here::here("src/src/test/java/uk/co/terminological/rjav
 `RIntegerVector` examples:
 
 ```{r results='asis', echo=FALSE}
-codeSnip("java",filename=here::here("src/src/test/java/uk/co/terminological/rjava/test/TestDatatypes.java"),startMatches = "CS02",endMatches = "CE02")
+codeSnip("java",filename=here::here("java/src/test/java/uk/co/terminological/rjava/test/TestDatatypes.java"),startMatches = "CS02",endMatches = "CE02")
 ```
 
 Other `RVector<?>` examples:
 
 ```{r results='asis', echo=FALSE}
-codeSnip("java",filename=here::here("src/src/test/java/uk/co/terminological/rjava/test/TestDatatypes.java"),startMatches = "CS03",endMatches = "CE03")
+codeSnip("java",filename=here::here("java/src/test/java/uk/co/terminological/rjava/test/TestDatatypes.java"),startMatches = "CS03",endMatches = "CE03")
 ```
 TODO: many other code snippets in the data types test file.
 
@@ -61,12 +61,12 @@ TODO: many other code snippets in the data types test file.
 Define a POJO using `@RName` annotations
 
 ```{r results='asis', echo=FALSE}
-codeSnip("java",filename=here::here("src/src/test/java/uk/co/terminological/rjava/test/DiamondPOJO.java"))
+codeSnip("java",filename=here::here("java/src/test/java/uk/co/terminological/rjava/test/DiamondPOJO.java"))
 ```
 Bind that to a dataframe and stream the result:
 
 ```{r results='asis', echo=FALSE}
-codeSnip("java",filename=here::here("src/src/test/java/uk/co/terminological/rjava/test/JavaConversionTest.java"),startMatches = "BOUND_START",endMatches = "BOUND_END")
+codeSnip("java",filename=here::here("java/src/test/java/uk/co/terminological/rjava/test/JavaConversionTest.java"),startMatches = "BOUND_START",endMatches = "BOUND_END")
 ```
 
 ## Streaming POJOs to RDataframes

@@ -57,7 +57,7 @@ knitr::include_graphics("./RClass.png")
 Ensuring an R NULL value is correctly returned requires a placeholder class in Java. This is `uk.co.terminological.rjava.types.RNull` and it enforces some of the identity constraints. Java void types can be best represented as `invisible(NULL)` which is almost the same as not returning anything from a method.
 
 ```{r results='asis', echo=FALSE}
-codeSnip("java",filename=here::here("src/src/main/java/uk/co/terminological/rjava/test/BounceTest.java"),startMatches = "SECTION_01",endMatches = "SECTION_02")
+codeSnip("java",filename=here::here("java/src/main/java/uk/co/terminological/rjava/test/BounceTest.java"),startMatches = "SECTION_01",endMatches = "SECTION_02")
 ```
 
 ```{r}
@@ -74,7 +74,7 @@ b$bounceVoid()
 Strings are the least contentious format with high similarity between R and Java, so long as we are all using UTF-8. An R character vector can be transferred to Java seamlessly except for the fact that asit is transferred it is as an array of characters in JNI. A java equivalent of `uk.co.terminological.rjava.types.RCharacter` is provided to mark the object as an R compatible datatype, in general though `java.lang.String` can used instead of singleton strings. For character vectors we have `uk.co.terminological.rjava.types.RCharacterVector` which is a specialised java collection of `uk.co.terminological.rjava.types.RCharacter`s
 
 ```{r results='asis', echo=FALSE}
-codeSnip("java",filename=here::here("src/src/main/java/uk/co/terminological/rjava/test/BounceTest.java"),startMatches = "SECTION_02",endMatches = "SECTION_03")
+codeSnip("java",filename=here::here("java/src/main/java/uk/co/terminological/rjava/test/BounceTest.java"),startMatches = "SECTION_02",endMatches = "SECTION_03")
 ```
 
 
@@ -89,7 +89,7 @@ b$bounceCharacterVector(c("Hello","World"))
 Numerics in R can be represented a number of ways in Java, and various Java types, such as `java.lang.Double`, `java.lang.Float`, `java.math.BigDecimal`, `java.lang.Long`, and their primitive counterparts are best be represented by R numerics. The `uk.co.terminological.rjava.types.RNumeric` type allows Java programmers to dynamically convert R Numerics to the desired native type, and the `uk.co.terminological.rjava.RConverter` provides various methods to convert native java types to `uk.co.terminological.rjava.types.RNumeric`s. This also handles the special values of `Inf` and `-Inf`, `NaN`, and `NA_real_` and their equivalent values in Java. To support the use of native Java, singleton `RNumeric`s can be substituted with primitive Java `double` as long as the inputs can never be `NA_real_`. Vector inputs are handled in the same way as before
 
 ```{r results='asis', echo=FALSE}
-codeSnip("java",filename=here::here("src/src/main/java/uk/co/terminological/rjava/test/BounceTest.java"),startMatches = "SECTION_03",endMatches = "SECTION_04")
+codeSnip("java",filename=here::here("java/src/main/java/uk/co/terminological/rjava/test/BounceTest.java"),startMatches = "SECTION_03",endMatches = "SECTION_04")
 ```
 
 
@@ -116,7 +116,7 @@ b$bounceNumericVector(c(2.3,4.6,NA_real_,34,NaN,Inf,-Inf))
 In an identical way to above `uk.co.terminological.rjava.types.RInteger` types hold integer values. R inputs to Java functions are coerced to integers and an error thrown if this is not possible. The primitive `int` Java type can be used for singletons if they are not `NA`, and vectors are handled in the same way.
 
 ```{r results='asis', echo=FALSE}
-codeSnip("java",filename=here::here("src/src/main/java/uk/co/terminological/rjava/test/BounceTest.java"),startMatches = "SECTION_04",endMatches = "SECTION_05")
+codeSnip("java",filename=here::here("java/src/main/java/uk/co/terminological/rjava/test/BounceTest.java"),startMatches = "SECTION_04",endMatches = "SECTION_05")
 ```
 
 
@@ -133,7 +133,7 @@ b$bounceIntegerVector(c(2L,NA,4L))
 Factors are somewhat complicated as a individual factor only makes sense in the context of a vector of possible options. However the `uk.co.terminological.rjava.types.RFactor` type and `uk.co.terminological.rjava.types.RFactorVector` collection allow information to be retained about the values and labels for R Factors. There is support for mapping R factors to Java `Enum` classes which is provided by `uk.co.terminological.rjava.RConverter` and creating R ordered factors from `Enum`s.
 
 ```{r results='asis', echo=FALSE}
-codeSnip("java",filename=here::here("src/src/main/java/uk/co/terminological/rjava/test/BounceTest.java"),startMatches = "SECTION_05",endMatches = "SECTION_06")
+codeSnip("java",filename=here::here("java/src/main/java/uk/co/terminological/rjava/test/BounceTest.java"),startMatches = "SECTION_05",endMatches = "SECTION_06")
 ```
 
 ```{r}
@@ -147,7 +147,7 @@ b$bounceFactorVector(factorVec)
 Date support is provided by `uk.co.terminological.rjava.types.RDate` which allows R Date and POSIXt tyeps to be represented in Java as `java.time.LocalDate`s. Vectors of dates are also supported as before. There is currently no support for datetime classes but this is a possible enhancement.
 
 ```{r results='asis', echo=FALSE}
-codeSnip("java",filename=here::here("src/src/main/java/uk/co/terminological/rjava/test/BounceTest.java"),startMatches = "SECTION_06",endMatches = "SECTION_07")
+codeSnip("java",filename=here::here("java/src/main/java/uk/co/terminological/rjava/test/BounceTest.java"),startMatches = "SECTION_06",endMatches = "SECTION_07")
 ```
 
 ```{r}
@@ -165,7 +165,7 @@ b$bounceDateVector(as.Date(c("0000-01-01","1-01-01","11-01-01","101-01-01","1001
 R logicals are mapped to `uk.co.terminological.rjava.types.RLogical` objects which can represent `NA_logical_` values faithfully. If `NA` values are not needed then primitive `boolean` types can be substituted as before, and vectors work as before.
 
 ```{r results='asis', echo=FALSE}
-codeSnip("java",filename=here::here("src/src/main/java/uk/co/terminological/rjava/test/BounceTest.java"),startMatches = "SECTION_07",endMatches = "SECTION_08")
+codeSnip("java",filename=here::here("java/src/main/java/uk/co/terminological/rjava/test/BounceTest.java"),startMatches = "SECTION_07",endMatches = "SECTION_08")
 ```
 
 ```{r}
@@ -180,7 +180,7 @@ b$bounceLogicalVector(c(TRUE,NA,FALSE))
 In Java R dataframes are modelled as a named collection of `uk.co.terminological.rjava.types.RVector<?>` of undetermined type. This is represented internally as a column wise Map, but the `uk.co.terminological.rjava.types.RDataframes` class contains a number of methods to make using dataframes intuitive in Java including support for Iterable and Stream interfaces that operate row-wise over the data, or which can map typed columns to a stream of proxy objects satisfying an interface specification supplied by the developer (more examples TBD). The dataframe can support any column with vector data types mentioned above. At present however it does not support named rows, as the focus is on tidy dataframes.
 
 ```{r results='asis', echo=FALSE}
-codeSnip("java",filename=here::here("src/src/main/java/uk/co/terminological/rjava/test/BounceTest.java"),startMatches = "SECTION_08",endMatches = "SECTION_09")
+codeSnip("java",filename=here::here("java/src/main/java/uk/co/terminological/rjava/test/BounceTest.java"),startMatches = "SECTION_08",endMatches = "SECTION_09")
 ```
 
 ```{r}
@@ -220,7 +220,7 @@ b$bounceArray(test3DArr)
 in R lists and named are complex objects with optionally named sequences of arbitrary typed data. They are analgous to JSON objects and it is tempting to serialise all R lists to JSON and use a JSON library to interpret them in Java. This would be possible but lose some of the support built into the R classes mentioned above. As such we took a hybrid approach where R lists and named lists are dynamically and recursively mapped to collection types from R to Java, and exported back from Java to R serialised as a character string containing R code, which is evaluated by the R interpreter. Despite being somewhat hacky this does a surprisingly good job at transferring lists from R to Java and back to R faithfully. However it is probably not well suited to very large lists and definitely could not support lists that have cyclical structures in the object graph. To support fluent use of R Lists in Java all classes that derive from `RObject` support the visitor pattern, which can be used to relatively simply select out datatypes of interest. Support for a XPath like syntax to access specific elements of nested lists is planned.
 
 ```{r results='asis', echo=FALSE}
-codeSnip("java",filename=here::here("src/src/main/java/uk/co/terminological/rjava/test/BounceTest.java"),startMatches = "SECTION_09",endMatches = "SECTION_10")
+codeSnip("java",filename=here::here("java/src/main/java/uk/co/terminological/rjava/test/BounceTest.java"),startMatches = "SECTION_09",endMatches = "SECTION_10")
 ```
 
 ```{r}
@@ -243,7 +243,7 @@ So far we have concentrated on the use case of transferring data from R to Java 
 the `RPrimitive` interface possesses a range of factory methods to generate appropriately typed `RPrimitive`s from Java primitives, boxed types, and enums.
 
 ```{r results='asis', echo=FALSE}
-codeSnip("java",filename=here::here("src/src/main/java/uk/co/terminological/rjava/test/FactoryTest.java"),"SECTION_01","SECTION_02")
+codeSnip("java",filename=here::here("java/src/main/java/uk/co/terminological/rjava/test/FactoryTest.java"),"SECTION_01","SECTION_02")
 ```
 
 
@@ -262,7 +262,7 @@ g$generateLogical()
 Similarly the `RVector` class supports a range of fluent builder methods which allow de novo creation of correctly typed RVectors. The `RConverter` class also provides a range of collectors that facilitate mapping Java Streams to R Vectors.
 
 ```{r results='asis', echo=FALSE}
-codeSnip("java",filename=here::here("src/src/main/java/uk/co/terminological/rjava/test/FactoryTest.java"),"SECTION_02","SECTION_03")
+codeSnip("java",filename=here::here("java/src/main/java/uk/co/terminological/rjava/test/FactoryTest.java"),"SECTION_02","SECTION_03")
 ```
 
 ```{r}
@@ -278,7 +278,7 @@ g$generateLogicalVec()
 Both `RDataframe` and `RList` classes implement fluent methods to allow the creation of complex data structures in a method familiar to java programmers. Again `RConverter` provides specialised collectors to map a stream of objects representing sequential rows of data to the columnar format of the `RDataframe` using `MapRule`s specified using functional lambda syntax to define the mapping from object to dataframe column.
 
 ```{r results='asis', echo=FALSE}
-codeSnip("java",filename=here::here("src/src/main/java/uk/co/terminological/rjava/test/FactoryTest.java"),"SECTION_03","SECTION_04")
+codeSnip("java",filename=here::here("java/src/main/java/uk/co/terminological/rjava/test/FactoryTest.java"),"SECTION_03","SECTION_04")
 ```
 
 ```{r}
@@ -289,7 +289,7 @@ g$generateStreamDataframe()
 Finally a note on list generation that contains enum values in Java cannot always be converted to factors in R. If this is not possible then the conversion will fall back to a character string of the label of the factor value.
 
 ```{r results='asis', echo=FALSE}
-codeSnip("java",filename=here::here("src/src/main/java/uk/co/terminological/rjava/test/FactoryTest.java"),"SECTION_04","SECTION_05")
+codeSnip("java",filename=here::here("java/src/main/java/uk/co/terminological/rjava/test/FactoryTest.java"),"SECTION_04","SECTION_05")
 ```
 
 ```{r}

@@ -37,7 +37,7 @@ The ultimate aim of this plugin to allow java developers to provide simple APIs 
 
 ```{r results='asis', echo=FALSE}
 codeSnip("java",
-         filename=here::here("src/src/main/java/uk/co/terminological/rjava/test/MinimalExample.java"),"START","END") #,35,51)
+         filename=here::here("java/src/main/java/uk/co/terminological/rjava/test/MinimalExample.java"),"START","END") #,35,51)
 ```
 
 Key points:

@@ -8,4 +8,4 @@ devtools::install("~/Git/r6-generator-docs", upgrade = "never")
 here::i_am("vignettes/UpdateDatasets.R")
 
 J = testRapi::JavaApi$get(logLevel = "WARN")
-J$Serialiser$serialiseDataframe(dataframe = ggplot2::diamonds, filename = here::here("src/src/main/resources/diamonds.ser"))
+J$Serialiser$serialiseDataframe(dataframe = ggplot2::diamonds, filename = here::here("java/src/main/resources/diamonds.ser"))

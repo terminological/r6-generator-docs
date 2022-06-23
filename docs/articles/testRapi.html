@@ -114,7 +114,40 @@
 <div id="write-a-java-api" class="section level3">
 <h3 class="hasAnchor">
 <a href="#write-a-java-api" class="anchor"></a>Write a java api:</h3>
-<pre><code>CANNOT FIND FILE - possibly if running in R-CMD-check</code></pre>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">import org.slf4j.Logger;</span>
+<span class="kw">import org.slf4j.LoggerFactory;</span>
+
+<span class="kw">import uk.co.terminological.rjava.RClass;</span>
+<span class="kw">import uk.co.terminological.rjava.RMethod;</span>
+<span class="kw">import uk.co.terminological.rjava.types.RDataframe;</span>
+
+<span class="co">/**</span>
+<span class="co"> * This class is a very basic example of the features of the rJava maven plugin. &lt;br</span>&gt;
+<span class="er"> * The class is annotated with an @RClass to identify it as part of the R API. &lt;br&gt;</span>
+<span class="er"> */</span>
+<span class="fu">@RClass</span>
+<span class="er">public class MinimalExample {</span>
+
+<span class="er">    static Logger log = LoggerFactory.getLogger(MinimalExample.class);</span>
+<span class="er">    </span>
+<span class="er">    @RMethod(examples = {</span>
+<span class="er">        "minExample = J$MinimalExample$new()",</span>
+<span class="er">        "minExample$demo(dataframe=tibble::tibble(input=c(1,2,3)), message='Hello world')"</span>
+<span class="er">    })</span>
+<span class="er">    /**</span>
+<span class="er">     * Documentation of the method can be done in JavaDoc and these will be present in the R documentation </span>
+<span class="er">     * @param dataframe - a dataframe with an arbitrary number of columns</span>
+<span class="er">     * @param message - a message</span>
+<span class="er">     * @return the dataframe unchanged</span>
+<span class="er">     *  </span>
+<span class="er">     */</span>
+<span class="er">    public RDataframe demo(RDataframe dataframe, String message) {</span>
+<span class="er">        log.info("this dataframe has nrow="+dataframe.nrow());</span>
+<span class="er">        log.info(message);</span>
+<span class="er">        return dataframe;</span>
+<span class="er">    }</span>
+<span class="er">    </span>
+}</code></pre></div>
 <p>Key points:</p>
 <ul>
 <li>You can annotate multiple classes with <span class="citation">@RClass</span>.</li>
@@ -155,16 +188,16 @@
 <span class="va">J</span> <span class="op">&lt;-</span> <span class="fu">testRapi</span><span class="fu">::</span><span class="va"><a href="../reference/JavaApi.html">JavaApi</a></span><span class="op">$</span><span class="fu">get</span><span class="op">(</span><span class="op">)</span></pre></div>
 <pre><code>## Initialising A test library</code></pre>
 <pre><code>## Version: 0.0.0.9999</code></pre>
-<pre><code>## Generated: 2022-06-23T14:51:07.457624</code></pre>
-<pre><code>## 2022-06-23 14:51:44,290 INFO testRapi [main] Initialised testRapi</code></pre>
+<pre><code>## Generated: 2022-06-23T14:54:35.627346</code></pre>
+<pre><code>## 2022-06-23 14:55:12,020 INFO testRapi [main] Initialised testRapi</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="co"># all the API classes and methods are classes attached to the J java api object</span>
 <span class="va">eg</span> <span class="op">=</span> <span class="va">J</span><span class="op">$</span><span class="va">MinimalExample</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></pre></div>
 <pre><code>## </code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">df</span> <span class="op">=</span> <span class="va">eg</span><span class="op">$</span><span class="fu">demo</span><span class="op">(</span>dataframe <span class="op">=</span> <span class="va">diamonds</span>, message <span class="op">=</span> <span class="st">"The diamonds dataframe"</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 14:51:44,355 INFO uk.co.terminological.rjava.test.MinimalExample [main] this dataframe has nrow=53940
-## 2022-06-23 14:51:44,355 INFO uk.co.terminological.rjava.test.MinimalExample [main] The diamonds dataframe</code></pre>
+<pre><code>## 2022-06-23 14:55:12,085 INFO uk.co.terminological.rjava.test.MinimalExample [main] this dataframe has nrow=53940
+## 2022-06-23 14:55:12,085 INFO uk.co.terminological.rjava.test.MinimalExample [main] The diamonds dataframe</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></pre></div>
 <pre><code>## [1] 53940</code></pre>
@@ -185,7 +218,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Rob Challen, Rob Challen, terminological.</p>
+  <p>Developed by Rob Challen, terminological, Rob Challen.</p>
 </div>
 
 <div class="pkgdown">

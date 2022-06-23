@@ -38,7 +38,7 @@ The `FeatureTest` Java class is designed to showcase the main aspects of the R6 
 
 ```{r results='asis', echo=FALSE}
 codeSnip("java",
-         filename=here::here("src/src/main/java/uk/co/terminological/rjava/test/FeatureTest.java"),"START_SNIP_1","END_SNIP_1") #,35,51)
+         filename=here::here("java/src/main/java/uk/co/terminological/rjava/test/FeatureTest.java"),"START_SNIP_1","END_SNIP_1") #,35,51)
 ```
 
 The packaging of this class into an R library is described [elsewhere](./R6-generator-intro). The package name (in this case `testRapi`), the directory of the library (in this example `~/Git/r6-generator-maven-plugin-test/r-library/`) and other metadata such as author and license details are defined in the Maven plugin configuration (in a file named `pom.xml`). This configuration is described in detail [elsewhere](./R6-generator-maven-config). For the purposes of this we assume the Java code has been compiled, generating the `testRapi` R package which is ready for installation.
@@ -85,7 +85,7 @@ feat1 = J$FeatureTest$new(logMessage = "Hello world. Creating a new object")
 
 ```{r results='asis', echo=FALSE}
 codeSnip("java",
-         filename=here::here("src/src/main/java/uk/co/terminological/rjava/test/FeatureTest.java"),"START_SNIP_2","END_SNIP_2")
+         filename=here::here("java/src/main/java/uk/co/terminological/rjava/test/FeatureTest.java"),"START_SNIP_2","END_SNIP_2")
 ```
 
 The `FeatureClass.doHelloWorld()` method takes no arguments and returns a value to R. A detailed discussion of R and Java data types is to be found elsewhere but our approach has involved developing a specific set of Java datatypes that have close relationships to the native R datatypes. This enables loss-less round tripping of data from R to Java and back again, but requires the mapping of Java data types to R. This is handled by the `uk.co.terminological.rjava.RConverter` class which provides a range of datatype transformers, and the `uk.co.terminological.rjava.types.*` classes which specify Java equivalents to R data types. These are needed as R's dynamic datatypes contain concepts which are not readily represented in the primitive java datatypes that are transferred across the JNI. Thus some marshaling is required on both sides to ensure translation is 100% accurate, including for example, conversion of R logical vectors containing NA values, to java `List<Boolean>` via JNI primitive arrays, or support for typed NA values (e.g. `NA_int_` versus `NA_logical_`). 
@@ -130,7 +130,7 @@ The generated API has support for the loss-less bi-directional transfer of a ran
 
 ```{r results='asis', echo=FALSE}
 codeSnip("java",
-         filename=here::here("src/src/main/java/uk/co/terminological/rjava/test/FeatureTest.java"),"START_SNIP_5","END_SNIP_5")
+         filename=here::here("java/src/main/java/uk/co/terminological/rjava/test/FeatureTest.java"),"START_SNIP_5","END_SNIP_5")
 ```
 
 The basic smoke tests of this are as follows
@@ -153,7 +153,7 @@ The generated R6 code can handle return of Java objects to R, as long as they ar
 
 ```{r results='asis', echo=FALSE}
 codeSnip("java",
-         filename=here::here("src/src/main/java/uk/co/terminological/rjava/test/FeatureTest.java"),"START_SNIP_3","END_SNIP_3")
+         filename=here::here("java/src/main/java/uk/co/terminological/rjava/test/FeatureTest.java"),"START_SNIP_3","END_SNIP_3")
 ```
 
 The `JavaApi` root manages R's perspective on the identity of objects in Java. This allows for fluent api methods, and method chaining. This is not flawless but should work for most common scenarios. It is possible that complex edge cases may appear equal in Java but not identical in R, so true equality should rely on the Java `equals()` method. 
@@ -189,13 +189,13 @@ Factory methods allow java methods to create and return Java objects. This is su
 
 ```{r results='asis', echo=FALSE}
 codeSnip("java",
-         filename=here::here("src/src/main/java/uk/co/terminological/rjava/test/FeatureTest.java"),"START_SNIP_4","END_SNIP_4")
+         filename=here::here("java/src/main/java/uk/co/terminological/rjava/test/FeatureTest.java"),"START_SNIP_4","END_SNIP_4")
 ```
 This java code from refers to another class - `MoreFeatureTest` which has the following basic structure:
 
 ```{r results='asis', echo=FALSE}
 codeSnip("java",
-         filename=here::here("src/src/main/java/uk/co/terminological/rjava/test/MoreFeatureTest.java"),"START_SNIP_1","END_SNIP_1")
+         filename=here::here("java/src/main/java/uk/co/terminological/rjava/test/MoreFeatureTest.java"),"START_SNIP_1","END_SNIP_1")
 ```
 The `FeatureTest.factoryMethod(a,b)` method allows us to construct instances of another class. This enables builder patterns in the R api. The `MoreFeatureTest.create(message1,message2)` method demonstrates static factory methods, which return instances of the same class. Static methods are implemented as methods in the `JavaApi` root, as demonstrated here, and accessed through the root object `J`:
 
@@ -219,7 +219,7 @@ The logging level can be controlled at runtime by a function in the `JavaApi` ro
 
 ```{r results='asis', echo=FALSE}
 codeSnip("java",
-         filename=here::here("src/src/main/java/uk/co/terminological/rjava/test/MoreFeatureTest.java"),"START_SNIP_2","END_SNIP_2")
+         filename=here::here("java/src/main/java/uk/co/terminological/rjava/test/MoreFeatureTest.java"),"START_SNIP_2","END_SNIP_2")
 ```
 
 ```{r}
@@ -281,7 +281,7 @@ Debugging compiled java code running in the context of a R is not for the faint-
 
 ```{r results='asis', echo=FALSE}
 codeSnip("java",
-         filename=here::here("src/src/main/java/uk/co/terminological/rjava/test/Serialiser.java"),"SNIPPET_1","SNIPPET_2")
+         filename=here::here("java/src/main/java/uk/co/terminological/rjava/test/Serialiser.java"),"SNIPPET_1","SNIPPET_2")
 ```
 
 ```{r}
