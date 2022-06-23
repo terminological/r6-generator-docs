@@ -8,9 +8,9 @@
 #' 
 #' This is a class of the testRapi generated R library.
 #' 
-#' Version: 0.2.0.9002
+#' Version: 0.0.0.9999
 #' 
-#' Generated: 2022-06-22T13:54:52.905740
+#' Generated: 2022-06-23T13:16:46.627952
 #'
 #' @details
 	#' no details

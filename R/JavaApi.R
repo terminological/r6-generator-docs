@@ -4,9 +4,9 @@
 #' @description
 #' A test library
 #'
-#' Version: 0.2.0.9002
+#' Version: 0.0.0.9999
 #'
-#' Generated: 2022-06-22T13:54:52.835513
+#' Generated: 2022-06-23T13:16:46.560136
 #'
 #' Contact: rc538@exeter.ac.uk
 #' @import ggplot2
@@ -60,7 +60,7 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 	#' @return nothing
 	printMessages = function() {
 		# check = FALSE here to stop exceptions being cleared from the stack.
-		cat(.jcall("uk/co/terminological/rjava/LogController", returnSig = "Ljava/lang/String;", method = "getSystemMessages", check=FALSE))
+		message(.jcall("uk/co/terminological/rjava/LogController", returnSig = "Ljava/lang/String;", method = "getSystemMessages", check=FALSE))
 		invisible(NULL)
 	},
 	
@@ -77,8 +77,8 @@ JavaApi = R6::R6Class("JavaApi", public=list(
  		if (is.null(JavaApi$singleton)) stop("Startup the java api with JavaApi$get() rather than using this constructor directly")
  	
  		message("Initialising A test library")
- 		message("Version: 0.2.0.9002")
-		message("Generated: 2022-06-22T13:54:52.842312")
+ 		message("Version: 0.0.0.9999")
+		message("Generated: 2022-06-23T13:16:46.560640")
  	
  	
 		if (!.jniInitialized) 
@@ -86,8 +86,6 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 		
 		# Java dependencies
 		jars = .checkDependencies(quiet = TRUE)
-		
-		message(paste0("Adding to classpath: ",jars,collapse='\n'))
 		.jaddClassPath(jars)
 		
 		# configure logging
@@ -96,9 +94,13 @@ JavaApi = R6::R6Class("JavaApi", public=list(
  		# TODO: this is the library build date code but it requires testing
  		buildDate = .jcall("uk/co/terminological/rjava/LogController", returnSig = "S", method = "getClassBuildTime")
 		self$.log = .jcall("org/slf4j/LoggerFactory", returnSig = "Lorg/slf4j/Logger;", method = "getLogger", "testRapi");
+		.jcall(self$.log,returnSig = "V",method = "debug", "Adding to classpath: ")
+		for (jar in jars) {
+		  .jcall(self$.log,returnSig = "V",method = "debug", jar)
+		}
 		.jcall(self$.log,returnSig = "V",method = "info","Initialised testRapi");
-		.jcall(self$.log,returnSig = "V",method = "debug","R package version: 0.2.0.9002");
-		.jcall(self$.log,returnSig = "V",method = "debug","R package generated: 2022-06-22T13:54:52.842563");
+		.jcall(self$.log,returnSig = "V",method = "debug","R package version: 0.0.0.9999");
+		.jcall(self$.log,returnSig = "V",method = "debug","R package generated: 2022-06-23T13:16:46.560728");
 		.jcall(self$.log,returnSig = "V",method = "debug","Java library version: io.github.terminological:r6-generator-docs:main-SNAPSHOT");
 		.jcall(self$.log,returnSig = "V",method = "debug",paste0("Java library compiled: ",buildDate));
 		.jcall(self$.log,returnSig = "V",method = "debug","Contact: rc538@exeter.ac.uk");
@@ -654,7 +656,7 @@ JavaApi$rebuildDependencies = function( ... ) {
 
 # package working directory
 .workingDir = function() {
-	tmp = path.expand(rappdirs::user_cache_dir("testRapi-0.2.0.9002"))
+	tmp = path.expand(rappdirs::user_cache_dir("testRapi-0.0.0.9999"))
 	fs::dir_create(tmp)
 	return(tmp)
 }
@@ -699,7 +701,7 @@ JavaApi$rebuildDependencies = function( ... ) {
 	as.POSIXct(file.info(original)$mtime) < as.POSIXct(file.info(test)$mtime)
 }
 
-# gets the pom.xml file for io.github.terminological:r6-generator-docs:main-SNAPSHOT from a  
+# gets the pom.xml file for io.github.terminological:r6-generator-docs:main-SNAPSHOT from a thin jar
 .extractPom = function() {
 	dir = .workingDir()
 	jarLoc = list.files(.here(c("inst/java","java")), pattern = "r6-generator-docs-main-SNAPSHOT\\.jar", full.names = TRUE)
@@ -766,15 +768,20 @@ JavaApi$rebuildDependencies = function( ... ) {
 			pomPath, 
 			goal = "dependency:build-classpath",		
 			opts = c(
-				paste0("-Dmdep.outputFile='",classpathLoc,"'"),
-				paste0("-Dmdep.pathSeparator='\n'"),
+				paste0("-Dmdep.outputFile=classpath.txt"),
 				paste0("-DincludeScope=runtime")
 			),
 			...
 		)
 		message("Dependencies updated")
 	}
-	classpathString = unique(readLines(classpathLoc,warn = FALSE))
+	
+	if(.Platform$OS.type == "windows") {
+	  classpathString = unique(scan(classpathLoc, what = "character", sep=";", quiet=TRUE))
+	} else {
+	  classpathString = unique(scan(classpathLoc, what = "character", sep=":", quiet=TRUE))
+	}
+	
 	if (!all(file.exists(classpathString))) 
 		stop("For some inexplicable reason, Maven cannot determine the classpaths of the dependencies of this library on this machine. You can try testRapi::JavaApi$rebuildDependencies()")
 	return(classpathString)
@@ -783,9 +790,15 @@ JavaApi$rebuildDependencies = function( ... ) {
 # executes a maven goal plus or minus info or debugging
 .executeMaven = function(pomPath, goal, opts = c(), quiet=TRUE, debug=FALSE, ...) {
 	mvnPath = .loadMavenWrapper()
-	args = c(goal, opts, paste0("-f '",pomPath,"'"))
+	args = c(goal, opts) #, paste0("-f '",pomPath,"'"))
 	if (quiet) args = c(args, "-q")
 	if (debug) args = c(args, "-X")
+	java_home = rJava::.jcall( 'java/lang/System', 'S', 'getProperty', 'java.home' )
+	Sys.setenv(JAVA_HOME=java_home)
+	# required due to an issue in Mvnw.cmd on windows.
+	wd = getwd()
+	setwd(.workingDir())
 	system2(mvnPath, args)
+	setwd(wd)
 }
 

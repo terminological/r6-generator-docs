@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">testRapi</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9002</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9999</span>
       </span>
     </div>
 
@@ -105,132 +105,29 @@ DRAFT
 <div id="imports" class="section level2">
 <h2 class="hasAnchor">
 <a href="#imports" class="anchor"></a>Imports</h2>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">import uk.co.terminological.rjava.types.*;</span>
-<span class="kw">import static uk.co.terminological.rjava.RConverter.*;</span>
-<span class="kw">import static uk.co.terminological.rjava.MapRule.*;</span>
-
-<span class="kw">import uk.co.terminological.rjava.IncompatibleTypeException;</span>
-<span class="kw">import uk.co.terminological.rjava.NameNotFoundException;</span>
-<span class="kw">import uk.co.terminological.rjava.RConverter;</span>
-<span class="kw">import uk.co.terminological.rjava.RFunctions;</span>
-<span class="kw">import uk.co.terminological.rjava.RName;</span></code></pre></div>
+<pre><code>CANNOT FIND FILE - possibly if running in R-CMD-check</code></pre>
 </div>
 <div id="wrapping-and-unwrapping" class="section level2">
 <h2 class="hasAnchor">
 <a href="#wrapping-and-unwrapping" class="anchor"></a>Wrapping and unwrapping</h2>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">        RDate date = RDate.<span class="fu">from</span>(<span class="st">"2020-02-02"</span>);
-        <span class="fu">assertTrue</span>(date.<span class="fu">opt</span>(LocalDate.<span class="fu">class</span>).<span class="fu">isPresent</span>());
-        <span class="fu">assertTrue</span>(date.<span class="fu">get</span>().<span class="fu">toString</span>().<span class="fu">equals</span>(<span class="st">"2020-02-02"</span>));
-        
-        <span class="co">// RPrimitive.as(Class&lt;?&gt;) returns an optional. NA or incorrect types both come out as Optional.empty()</span>
-        RNumeric num = RNumeric.<span class="fu">from</span>(<span class="fl">123.456</span>);
-        <span class="fu">assertTrue</span>(num.<span class="fu">opt</span>(BigDecimal.<span class="fu">class</span>).<span class="fu">isPresent</span>());
-        <span class="fu">assertTrue</span>(num.<span class="fu">opt</span>(Float.<span class="fu">class</span>).<span class="fu">isPresent</span>());
-        <span class="fu">assertTrue</span>(num.<span class="fu">opt</span>(Long.<span class="fu">class</span>).<span class="fu">isPresent</span>());
-        
-        <span class="co">// Will return an Optional.empty() as not a String</span>
-        <span class="fu">assertTrue</span>(!num.<span class="fu">opt</span>(String.<span class="fu">class</span>).<span class="fu">isPresent</span>());
-        
-        <span class="co">// RPrimitive.get() will return the main underlying implementation type (in this case a Double) or a null for a NA</span>
-        <span class="fu">assertTrue</span>(num.<span class="fu">get</span>().<span class="fu">doubleValue</span>() == <span class="fl">123.456</span>);
-        <span class="fu">assertTrue</span>(num.<span class="fu">get</span>(Float.<span class="fu">class</span>).<span class="fu">equals</span>(<span class="fl">123.</span>456F));
-        
-        <span class="co">// NA values are returned as Optional.empty() by RPrimitive.opt()</span>
-        <span class="fu">assertTrue</span>(!RInteger.<span class="fu">NA</span>.<span class="fu">opt</span>().<span class="fu">isPresent</span>());
-        <span class="fu">assertTrue</span>(RInteger.<span class="fu">from</span>(<span class="dv">234</span>).<span class="fu">opt</span>().<span class="fu">isPresent</span>());
-        </code></pre></div>
+<pre><code>CANNOT FIND FILE - possibly if running in R-CMD-check</code></pre>
 </div>
 <div id="rvector-creation-and-transformation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#rvector-creation-and-transformation" class="anchor"></a>RVector creation and transformation</h2>
 <p><code>RIntegerVector</code> examples:</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">        
-        <span class="co">// Java boxed arrays can be directly converted to vector from RVector</span>
-        <span class="co">// Integer.MIN_VALUE inputs are converted to nulls silently</span>
-        Integer[] tmp = {<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>, <span class="kw">null</span>, Integer.<span class="fu">MIN_VALUE</span>, <span class="dv">0</span>};
-        RIntegerVector col0 = RVector.<span class="fu">with</span>(tmp);
-        RIntegerVector col1 = <span class="fu">convert</span>(tmp);
-        
-        <span class="fu">assertTrue</span>(col1.<span class="fu">get</span>(<span class="dv">4</span>).<span class="fu">isNa</span>());
-        <span class="fu">assertTrue</span>(col1.<span class="fu">get</span>(<span class="dv">5</span>).<span class="fu">isNa</span>());
-        
-        <span class="fu">assertTrue</span>(!col1.<span class="fu">get</span>(<span class="dv">4</span>).<span class="fu">opt</span>().<span class="fu">isPresent</span>());
-        
-        <span class="co">// Alternatively RConverter has a set of collectors for Streams of convertible types.</span>
-        RIntegerVector col2 = Stream.<span class="fu">of</span>(tmp).<span class="fu">collect</span>(<span class="fu">integerCollector</span>());
-        <span class="fu">assertTrue</span>(col1.<span class="fu">equals</span>(col0));
-        <span class="fu">assertTrue</span>(col1.<span class="fu">equals</span>(col2));
-        
-        <span class="co">// Conversion using a CollectionConverter to convert arbitrary collection types</span>
-        RIntegerVector col3 = <span class="fu">using</span>(<span class="fu">integerCollector</span>()).<span class="fu">convert</span>(tmp);
-        RIntegerVector col4 = <span class="fu">using</span>(<span class="fu">integerCollector</span>()).<span class="fu">convert</span>(Arrays.<span class="fu">asList</span>(tmp));
-        RIntegerVector col5 = <span class="fu">using</span>(<span class="fu">integerCollector</span>()).<span class="fu">convert</span>(Arrays.<span class="fu">asList</span>(tmp).<span class="fu">iterator</span>());
-        RIntegerVector col6 = <span class="fu">using</span>(<span class="fu">integerCollector</span>()).<span class="fu">convert</span>(Stream.<span class="fu">of</span>(tmp));
-        <span class="co">// These should all be the same     </span>
-        <span class="fu">assertTrue</span>(col1.<span class="fu">equals</span>(col3));
-        <span class="fu">assertTrue</span>(col1.<span class="fu">equals</span>(col4));
-        <span class="fu">assertTrue</span>(col1.<span class="fu">equals</span>(col5));
-        <span class="fu">assertTrue</span>(col1.<span class="fu">equals</span>(col6));
-                
-        <span class="co">// But Converting collectors can also handle singleton conversions</span>
-        RIntegerVector i1 = <span class="fu">using</span>(<span class="fu">integerCollector</span>()).<span class="fu">convert</span>(tmp[<span class="dv">0</span>]);
-        <span class="fu">assertTrue</span>(i1.<span class="fu">get</span>(<span class="dv">0</span>) <span class="kw">instanceof</span> RInteger);
-        <span class="fu">assertTrue</span>(col1.<span class="fu">get</span>(<span class="dv">0</span>).<span class="fu">equals</span>(i1.<span class="fu">get</span>(<span class="dv">0</span>)));
-                        
-        <span class="co">// Primitive arrays are slightly less flexible but RConverter can process them</span>
-        <span class="co">// nulls are not allowed but the "equivalent" to NA is Integer.MIN_VALUE = RInteger.NA_INT</span>
-        <span class="co">// If they are converted to a boxed form by an IntStream they can be collected as above</span>
-        <span class="dt">int</span>[] tmp2 = {<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>, Integer.<span class="fu">MIN_VALUE</span>, Integer.<span class="fu">MIN_VALUE</span>, <span class="dv">0</span>};
-        RIntegerVector col7 = <span class="fu">convert</span>(tmp2);
-        RIntegerVector col8 = IntStream.<span class="fu">of</span>(tmp2).<span class="fu">boxed</span>().<span class="fu">collect</span>(<span class="fu">integerCollector</span>());
-        <span class="fu">assertTrue</span>(col1.<span class="fu">equals</span>(col7));
-        <span class="fu">assertTrue</span>(col1.<span class="fu">equals</span>(col8));
-        </code></pre></div>
+<pre><code>CANNOT FIND FILE - possibly if running in R-CMD-check</code></pre>
 <p>Other <code>RVector&lt;?&gt;</code> examples:</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">        
-        <span class="co">//Dates - difficulty is getting a stream of maybe null dates</span>
-        <span class="co">//Collect streams of other data types:</span>
-        RDateVector rdv = Stream
-                .<span class="fu">of</span>(<span class="st">"2020-03-01"</span>,<span class="st">"2020-03-02"</span>,<span class="st">"2020-03-03"</span>,<span class="kw">null</span>,<span class="st">"2020-03-05"</span>)
-                .<span class="fu">collect</span>(<span class="fu">dateFromStringCollector</span>());
-        RLogicalVector rlv1 = rdv.<span class="fu">stream</span>().<span class="fu">map</span>(d -&gt; d.<span class="fu">isNa</span>()).<span class="fu">collect</span>(<span class="fu">booleanCollector</span>());
-        <span class="co">//or use RConverter.convert on arrays</span>
-        <span class="dt">boolean</span>[] bools = {<span class="kw">false</span>,<span class="kw">false</span>,<span class="kw">false</span>,<span class="kw">true</span>,<span class="kw">false</span>};
-        <span class="dt">boolean</span>[] bools2 = {<span class="kw">false</span>,<span class="kw">false</span>,<span class="kw">false</span>,<span class="kw">true</span>,<span class="kw">true</span>};
-        <span class="fu">assertTrue</span>(rlv1.<span class="fu">equals</span>(<span class="fu">convert</span>(bools)));
-        <span class="fu">assertTrue</span>(!rlv1.<span class="fu">equals</span>(<span class="fu">convert</span>(bools2)));
-        </code></pre></div>
+<pre><code>CANNOT FIND FILE - possibly if running in R-CMD-check</code></pre>
 <p>TODO: many other code snippets in the data types test file.</p>
 </div>
 <div id="rdataframe-binding-to-pojos" class="section level2">
 <h2 class="hasAnchor">
 <a href="#rdataframe-binding-to-pojos" class="anchor"></a>RDataframe binding to POJOs</h2>
 <p>Define a POJO using <code>@RName</code> annotations</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">import uk.co.terminological.rjava.RName;</span>
-<span class="kw">import uk.co.terminological.rjava.types.RFactor;</span>
-<span class="kw">import uk.co.terminological.rjava.types.RInteger;</span>
-<span class="kw">import uk.co.terminological.rjava.types.RNumeric;</span>
-
-<span class="kw">public</span> <span class="kw">interface</span> DiamondPOJO {
-
-    <span class="fu">@RName</span>(<span class="st">"carat"</span>) <span class="kw">public</span> RNumeric <span class="fu">getCarat</span>();
-    <span class="fu">@RName</span>(<span class="st">"depth"</span>) <span class="kw">public</span> RNumeric <span class="fu">getDepth</span>();
-    <span class="fu">@RName</span>(<span class="st">"table"</span>) <span class="kw">public</span> RNumeric <span class="fu">getTable</span>();
-    <span class="fu">@RName</span>(<span class="st">"price"</span>) <span class="kw">public</span> RInteger <span class="fu">getPrice</span>();
-    <span class="fu">@RName</span>(<span class="st">"clarity"</span>) <span class="kw">public</span> RFactor <span class="fu">getClarity</span>();
-    
-}</code></pre></div>
+<pre><code>CANNOT FIND FILE - possibly if running in R-CMD-check</code></pre>
 <p>Bind that to a dataframe and stream the result:</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">            Stream&lt;DiamondPOJO&gt; bound = FeatureTest
-                .<span class="fu">diamonds</span>()
-                .<span class="fu">attach</span>(DiamondPOJO.<span class="fu">class</span>)
-                .<span class="fu">streamCoerce</span>();
-            
-            <span class="dt">double</span> averageDepth = bound.<span class="fu">mapToDouble</span>(d -&gt; d.<span class="fu">getDepth</span>().<span class="fu">get</span>()).<span class="fu">average</span>().<span class="fu">getAsDouble</span>();
-            System.<span class="fu">out</span>.<span class="fu">print</span>(<span class="st">"average depth: "</span>+averageDepth);
-            
-            <span class="co">// mean(diamonds$depth)</span>
-            <span class="co">// [1] 61.7494</span></code></pre></div>
+<pre><code>CANNOT FIND FILE - possibly if running in R-CMD-check</code></pre>
 </div>
 <div id="streaming-pojos-to-rdataframes" class="section level2">
 <h2 class="hasAnchor">
@@ -249,7 +146,7 @@ DRAFT
 
 
       <footer><div class="copyright">
-  <p>Developed by Rob Challen, Rob Challen, terminological.</p>
+  <p>Developed by Rob Challen, terminological, Rob Challen.</p>
 </div>
 
 <div class="pkgdown">

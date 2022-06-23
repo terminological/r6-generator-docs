@@ -3,7 +3,7 @@ c(
 	bibentry(bibtype = "Manual",
 		title = "A test library",
 		year = 2022,
-		note = "R package version 0.2.0.9002; Maven artifact: io.github.terminological:r6-generator-docs:main-SNAPSHOT",
+		note = "R package version 0.0.0.9999; Maven artifact: io.github.terminological:r6-generator-docs:main-SNAPSHOT",
 		url = "https://terminological.github.io/r6-generator-docs/docs/",
 		doi = "10.5281/zenodo.6645134",
 		author = c(
@@ -14,7 +14,7 @@ c(
 	bibentry(bibtype = "Manual",
 		title = "R6 generator maven plugin",
 		author = person(given="Rob", family="Challen",role="aut",email="rc538@exeter.ac.uk",comment = structure("0000-0002-5504-7768", .Names = "ORCID")),
-		note = "Maven plugin artifact: io.github.terminological:r6-generator-maven-plugin:0.4.0",
+		note = "Maven plugin artifact: io.github.terminological:r6-generator-maven-plugin:main-SNAPSHOT",
 		year = 2022,
 		url = "https://github.com/terminological/r6-generator",
 		doi = "10.5281/zenodo.6644970"

@@ -11,9 +11,9 @@
 \description{
 Actually useful class which takes an R dataframe and a filename
 
-Version: 0.2.0.9002
+Version: 0.0.0.9999
 
-Generated: 2022-06-22T13:54:52.935658
+Generated: 2022-06-23T13:16:46.652204
 }
 
 \details{

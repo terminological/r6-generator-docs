@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">testRapi</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9002</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9999</span>
       </span>
     </div>
 
@@ -115,99 +115,7 @@ DRAFT
 <h3 class="hasAnchor">
 <a href="#sample-pom-xml" class="anchor"></a>Sample <code>pom.xml</code>
 </h3>
-<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml">    <span class="kw">&lt;properties&gt;</span>
-        <span class="kw">&lt;project.build.sourceEncoding&gt;</span>UTF-8<span class="kw">&lt;/project.build.sourceEncoding&gt;</span>
-        <span class="kw">&lt;maven.compiler.source&gt;</span>1.8<span class="kw">&lt;/maven.compiler.source&gt;</span>
-        <span class="kw">&lt;maven.compiler.target&gt;</span>1.8<span class="kw">&lt;/maven.compiler.target&gt;</span>
-        <span class="kw">&lt;r6.version&gt;</span>0.4.0<span class="kw">&lt;/r6.version&gt;</span>
-<span class="co">&lt;!--        &lt;r6.version&gt;main-SNAPSHOT&lt;/r6.version&gt; --&gt;</span>
-    <span class="kw">&lt;/properties&gt;</span>
-
-    <span class="kw">&lt;groupId&gt;</span>io.github.terminological<span class="kw">&lt;/groupId&gt;</span>
-    <span class="kw">&lt;artifactId&gt;</span>r6-generator-docs<span class="kw">&lt;/artifactId&gt;</span>
-    <span class="kw">&lt;version&gt;</span>main-SNAPSHOT<span class="kw">&lt;/version&gt;</span>
-    <span class="kw">&lt;packaging&gt;</span>jar<span class="kw">&lt;/packaging&gt;</span>
-
-    <span class="kw">&lt;name&gt;</span>R6 Generator Maven Plugin Test<span class="kw">&lt;/name&gt;</span>
-
-    <span class="kw">&lt;dependencies&gt;</span>
-        <span class="kw">&lt;dependency&gt;</span>
-            <span class="kw">&lt;groupId&gt;</span>io.github.terminological<span class="kw">&lt;/groupId&gt;</span>
-            <span class="kw">&lt;artifactId&gt;</span>r6-generator-runtime<span class="kw">&lt;/artifactId&gt;</span>
-            <span class="kw">&lt;version&gt;</span>${r6.version}<span class="kw">&lt;/version&gt;</span>
-        <span class="kw">&lt;/dependency&gt;</span>
-...
-    <span class="kw">&lt;/dependencies&gt;</span>
-...
-    <span class="co">&lt;!-- Resolve runtime library on sonatype OSSRH --&gt;</span>
-    <span class="co">&lt;!-- not needed if you plan to use a stable version of the r6-generator-runtime and r6-generator-maven-plugin  --&gt;</span>
-    <span class="kw">&lt;repositories&gt;</span>
-        <span class="kw">&lt;repository&gt;</span>
-            <span class="kw">&lt;id&gt;</span>Sonatype OSSRH<span class="kw">&lt;/id&gt;</span>
-            <span class="kw">&lt;url&gt;</span>https://s01.oss.sonatype.org/content/repositories/snapshots/<span class="kw">&lt;/url&gt;</span>
-        <span class="kw">&lt;/repository&gt;</span>
-    <span class="kw">&lt;/repositories&gt;</span>
-
-    <span class="co">&lt;!-- Resolve maven plugin on sonatype OSSRH --&gt;</span>
-    <span class="kw">&lt;pluginRepositories&gt;</span>
-        <span class="kw">&lt;pluginRepository&gt;</span>
-            <span class="kw">&lt;id&gt;</span>Sonatype OSSRH<span class="kw">&lt;/id&gt;</span>
-            <span class="kw">&lt;url&gt;</span>https://s01.oss.sonatype.org/content/repositories/snapshots/<span class="kw">&lt;/url&gt;</span>
-        <span class="kw">&lt;/pluginRepository&gt;</span>
-    <span class="kw">&lt;/pluginRepositories&gt;</span>
-...
-    <span class="kw">&lt;build&gt;</span>
-        <span class="kw">&lt;plugins&gt;</span>
-...
-            <span class="kw">&lt;plugin&gt;</span>
-                <span class="kw">&lt;groupId&gt;</span>io.github.terminological<span class="kw">&lt;/groupId&gt;</span>
-                <span class="kw">&lt;artifactId&gt;</span>r6-generator-maven-plugin<span class="kw">&lt;/artifactId&gt;</span>
-                <span class="kw">&lt;version&gt;</span>${r6.version}<span class="kw">&lt;/version&gt;</span>
-                <span class="kw">&lt;configuration&gt;</span>
-                    <span class="kw">&lt;packageData&gt;</span>
-                        <span class="co">&lt;!-- R library metadata: --&gt;</span>
-                        <span class="kw">&lt;title&gt;</span>A test library<span class="kw">&lt;/title&gt;</span>
-                        <span class="kw">&lt;version&gt;</span>0.2.0.9002<span class="kw">&lt;/version&gt;</span>
-                        <span class="kw">&lt;url&gt;</span>https://terminological.github.io/r6-generator-docs/docs/<span class="kw">&lt;/url&gt;</span>
-                        <span class="kw">&lt;doi&gt;</span>10.5281/zenodo.6645134<span class="kw">&lt;/doi&gt;</span>
-                        <span class="kw">&lt;packageName&gt;</span>testRapi<span class="kw">&lt;/packageName&gt;</span>
-                        <span class="kw">&lt;license&gt;</span>MIT<span class="kw">&lt;/license&gt;</span>
-                        <span class="kw">&lt;description&gt;</span>
-                            This package is a feature test of the R6 Generator Maven Plugin. It is not
-                            intended to be useful beyond testing, demonstrating and documenting 
-                            the features of the plugin.
-                        <span class="kw">&lt;/description&gt;</span>
-                        <span class="kw">&lt;maintainerName&gt;</span>Rob<span class="kw">&lt;/maintainerName&gt;</span>
-                        <span class="kw">&lt;maintainerFamilyName&gt;</span>Challen<span class="kw">&lt;/maintainerFamilyName&gt;</span>
-                        <span class="kw">&lt;maintainerEmail&gt;</span>rc538@exeter.ac.uk<span class="kw">&lt;/maintainerEmail&gt;</span>
-                        <span class="kw">&lt;maintainerOrganisation&gt;</span>University of Exeter<span class="kw">&lt;/maintainerOrganisation&gt;</span>
-                        <span class="co">&lt;!-- Build configuration options: --&gt;</span>
-                        <span class="kw">&lt;debug&gt;</span>false<span class="kw">&lt;/debug&gt;</span> <span class="co">&lt;!-- starts the R library with java code in debugging mode --&gt;</span>
-                        <span class="kw">&lt;usePkgdown&gt;</span>true<span class="kw">&lt;/usePkgdown&gt;</span> <span class="co">&lt;!-- Pkgdown will generate a nice looking site  --&gt;</span>
-                        <span class="kw">&lt;useRoxygen2&gt;</span>true<span class="kw">&lt;/useRoxygen2&gt;</span> <span class="co">&lt;!-- Roxygen can integrate user supplied and generated R code, but requiresd a working R version on the system that generates the R package --&gt;</span>
-                        <span class="kw">&lt;useJavadoc&gt;</span>false<span class="kw">&lt;/useJavadoc&gt;</span> <span class="co">&lt;!-- building the javadocs into the documentation is nice but can add a lot to size of the package --&gt;</span>
-                        <span class="kw">&lt;preCompileBinary&gt;</span>true<span class="kw">&lt;/preCompileBinary&gt;</span> <span class="co">&lt;!-- pre-compiling the binary if probably a safer option --&gt;</span>
-                        <span class="kw">&lt;packageAllDependencies&gt;</span>true<span class="kw">&lt;/packageAllDependencies&gt;</span> <span class="co">&lt;!-- packaging all dependencies is the most robust but results in a large package size that probably won;t be accepted on CRAN if that is a concern --&gt;</span>
-                        <span class="kw">&lt;rjavaOpts&gt;</span>
-                            <span class="kw">&lt;rjavaOpt&gt;</span>-Xmx256M<span class="kw">&lt;/rjavaOpt&gt;</span> <span class="co">&lt;!--  this example sets the maximum heap size --&gt;</span>
-                        <span class="kw">&lt;/rjavaOpts&gt;</span>
-                    <span class="kw">&lt;/packageData&gt;</span>
-                    <span class="co">&lt;!-- the best place to put the R package is in the directory above the java code --&gt;</span>
-                    <span class="co">&lt;!-- and to have the java code in a src subdirectory of a github repo. --&gt;</span>
-                    <span class="co">&lt;!-- i.e. this file would be src/pom.xml. This makes R optimally happy. --&gt;</span>
-                    <span class="kw">&lt;outputDirectory&gt;</span>${project.basedir}/..<span class="kw">&lt;/outputDirectory&gt;</span>
-                <span class="kw">&lt;/configuration&gt;</span>
-                <span class="kw">&lt;executions&gt;</span>
-                    <span class="kw">&lt;execution&gt;</span>
-                        <span class="kw">&lt;id&gt;</span>generate-r-library<span class="kw">&lt;/id&gt;</span>
-                        <span class="kw">&lt;goals&gt;</span>
-                            <span class="kw">&lt;goal&gt;</span>generate-r-library<span class="kw">&lt;/goal&gt;</span>
-                        <span class="kw">&lt;/goals&gt;</span>
-                    <span class="kw">&lt;/execution&gt;</span>
-                <span class="kw">&lt;/executions&gt;</span>
-            <span class="kw">&lt;/plugin&gt;</span>
-        <span class="kw">&lt;/plugins&gt;</span>
-    <span class="kw">&lt;/build&gt;</span></code></pre></div>
+<pre><code>CANNOT FIND FILE - possibly if running in R-CMD-check</code></pre>
 </div>
 </div>
 <div id="the-r6-generator-runtime-java-library" class="section level2">
@@ -281,7 +189,7 @@ DRAFT
 
 
       <footer><div class="copyright">
-  <p>Developed by Rob Challen, Rob Challen, terminological.</p>
+  <p>Developed by Rob Challen, terminological, Rob Challen.</p>
 </div>
 
 <div class="pkgdown">
