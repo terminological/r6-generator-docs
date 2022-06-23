@@ -6,7 +6,7 @@
 #'
 #' Version: 0.0.0.9999
 #'
-#' Generated: 2022-06-23T13:16:46.560136
+#' Generated: 2022-06-23T13:31:57.814042
 #'
 #' Contact: rc538@exeter.ac.uk
 #' @import ggplot2
@@ -78,7 +78,7 @@ JavaApi = R6::R6Class("JavaApi", public=list(
  	
  		message("Initialising A test library")
  		message("Version: 0.0.0.9999")
-		message("Generated: 2022-06-23T13:16:46.560640")
+		message("Generated: 2022-06-23T13:31:57.814440")
  	
  	
 		if (!.jniInitialized) 
@@ -100,7 +100,7 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 		}
 		.jcall(self$.log,returnSig = "V",method = "info","Initialised testRapi");
 		.jcall(self$.log,returnSig = "V",method = "debug","R package version: 0.0.0.9999");
-		.jcall(self$.log,returnSig = "V",method = "debug","R package generated: 2022-06-23T13:16:46.560728");
+		.jcall(self$.log,returnSig = "V",method = "debug","R package generated: 2022-06-23T13:31:57.814510");
 		.jcall(self$.log,returnSig = "V",method = "debug","Java library version: io.github.terminological:r6-generator-docs:main-SNAPSHOT");
 		.jcall(self$.log,returnSig = "V",method = "debug",paste0("Java library compiled: ",buildDate));
 		.jcall(self$.log,returnSig = "V",method = "debug","Contact: rc538@exeter.ac.uk");
