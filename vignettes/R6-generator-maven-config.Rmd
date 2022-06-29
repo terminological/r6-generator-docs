@@ -3,8 +3,7 @@ title: "R6 Generator Maven Plugin: Metadata and Maven configuration"
 author: "Rob Challen"
 date: "26/10/2020"
 output: 
-  html_vignette: 
-    css: draft.css
+  html_vignette
 header-includes:
   \usepackage{amsmath}
   \usepackage{minted}

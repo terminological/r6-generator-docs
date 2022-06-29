@@ -63,7 +63,7 @@
       <a href="../articles/R6-generator-features.html">R6 Generator Maven Plugin: Key features</a>
     </li>
     <li>
-      <a href="../articles/R6-generator-intro.html">R6 Generator Maven Plugin: Bridging Java and R6 for Package Development</a>
+      <a href="../articles/R6-generator-maven-archetype.html">R6 generator maven archetype</a>
     </li>
     <li>
       <a href="../articles/R6-generator-maven-config.html">R6 Generator Maven Plugin: Metadata and Maven configuration</a>
@@ -175,26 +175,28 @@ DRAFT
 <p>The R6 api to the Java classes requires a running instance of the Java Virtual Machine and JNI bridge provided by <em>rJava</em>. It also requires Java classpath dependencies to be loaded and application logging to be initialised. This is all managed by a specific generated R6 class called <code>JavaApi</code> and creating a singleton instance of this is the first step to using the library in R. In these examples the singleton instance <code>J</code> is referred to as the "root" of the api, as all the functions of the API stem from it.</p>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">J</span> <span class="op">=</span> <span class="fu">testRapi</span><span class="fu">::</span><span class="va"><a href="../reference/JavaApi.html">JavaApi</a></span><span class="op">$</span><span class="fu">get</span><span class="op">(</span>logLevel <span class="op">=</span> <span class="st">"WARN"</span><span class="op">)</span></pre></div>
-<pre><code>## Initialising A test library</code></pre>
+<pre><code>## Initialising A Test Library</code></pre>
 <pre><code>## Version: 0.0.0.9999</code></pre>
-<pre><code>## Generated: 2022-06-23T15:59:23.093521</code></pre>
-<pre><code>## </code></pre>
+<pre><code>## Generated: 2022-06-29T23:54:07.855538</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">J</span><span class="op">$</span><span class="fu">changeLogLevel</span><span class="op">(</span><span class="st">"DEBUG"</span><span class="op">)</span>
 <span class="va">J</span><span class="op">$</span><span class="va">.log</span><span class="op">$</span><span class="fu">debug</span><span class="op">(</span><span class="st">"prove the logger is working and outputting debug statements..."</span><span class="op">)</span>
 <span class="va">J</span><span class="op">$</span><span class="fu">printMessages</span><span class="op">(</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 15:59:43,651 DEBUG testRapi [main] prove the logger is working and outputting debug statements...</code></pre>
+<pre><code>## 2022-06-29 23:54:45,268 DEBUG testRapi [main] prove the logger is working and outputting debug statements...</code></pre>
 <p>Using the <code>FeatureTest</code> class above requires a creating a new instance of the class. This is done through the root of the api as follows, and the <code>FeatureTest</code> constructor simply logs the <code>logMessage</code> parameter's value.</p>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">feat1</span> <span class="op">=</span> <span class="va">J</span><span class="op">$</span><span class="va">FeatureTest</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>logMessage <span class="op">=</span> <span class="st">"Hello world. Creating a new object"</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 15:59:43,726 INFO uk.co.terminological.rjava.test.FeatureTest [main] Hello world. Creating a new object</code></pre>
+<pre><code>## 2022-06-29 23:54:45,344 INFO uk.co.terminological.rjava.test.FeatureTest [main] Hello world. Creating a new object</code></pre>
 </div>
 <div id="predictable-data-type-conversion" class="section level2">
 <h2 class="hasAnchor">
 <a href="#predictable-data-type-conversion" class="anchor"></a>Predictable data type conversion</h2>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">    
     <span class="co">/**</span>
-<span class="co">     * Description of a hello world function</span>
+<span class="co">     * A hello world function</span>
+<span class="co">     * </span>
+<span class="co">     * More detailed description</span>
+<span class="co">     * </span>
 <span class="co">     * </span><span class="kw">@return </span><span class="co">this java method returns a String</span>
 <span class="co">     */</span>
     <span class="fu">@RMethod</span>(examples = {
@@ -206,6 +208,8 @@ DRAFT
     }
         
     <span class="co">/**</span>
+<span class="co">     * Add some numbers (1).</span>
+<span class="co">     * </span>
 <span class="co">     * The doSum function description = it adds two numerics</span>
 <span class="co">     * </span><span class="kw">@param a </span><span class="co">the A parameter, can be NA</span>
 <span class="co">     * </span><span class="kw">@param b </span><span class="co">the B parameter</span>
@@ -224,6 +228,8 @@ DRAFT
     
     
     <span class="co">/**</span>
+<span class="co">     * Adds some numbers</span>
+<span class="co">     * </span>
 <span class="co">     * Do sum 2 uses native ints rather than RNumerics</span>
 <span class="co">     * It should throw an error if given something that cannot be coerced to an integer. </span>
 <span class="co">     * This also demonstrated the use of the `@RDefault` annotation</span>
@@ -237,12 +243,16 @@ DRAFT
     }
     
     <span class="co">/**</span>
-<span class="co">     * Static methods are also supported. These are accessed through the</span>
-<span class="co">     * root of the R api.</span>
+<span class="co">     * Static methods are also supported. </span>
+<span class="co">     * </span>
+<span class="co">     * These are accessed through the</span>
+<span class="co">     * root of the R api, and as a functional interface</span>
+<span class="co">     * </span>
 <span class="co">     * </span><span class="kw">@param message </span><span class="co">a message</span>
 <span class="co">     */</span>
     <span class="fu">@RMethod</span>(examples = {
             <span class="st">"J$FeatureTest$demoStatic('Ola, el mundo')"</span>,
+            <span class="st">"demo_static('Bonjour, le monde')"</span>,
     })
     <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">demoStatic</span>(String message) {
         log.<span class="fu">info</span>(message);
@@ -252,45 +262,37 @@ DRAFT
 <p>The <code>doHelloWorld()</code> function returns a character vector, The <code>doSum()</code> function expects 2 R numeric values and seamlessly handles both datatype coercion and NA values.</p>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">feat1</span><span class="op">$</span><span class="fu">doHelloWorld</span><span class="op">(</span><span class="op">)</span></pre></div>
-<pre><code>## </code></pre>
 <pre><code>## [1] "Hello world from Java!"</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">feat1</span><span class="op">$</span><span class="fu">doHelloWorld</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></pre></div>
-<pre><code>## </code></pre>
 <pre><code>## [1] "character"</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">feat1</span><span class="op">$</span><span class="fu">doSum</span><span class="op">(</span><span class="fl">3L</span>, <span class="fl">4.1</span><span class="op">)</span></pre></div>
-<pre><code>## </code></pre>
 <pre><code>## [1] 7.1</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">feat1</span><span class="op">$</span><span class="fu">doSum</span><span class="op">(</span><span class="fl">3L</span>, <span class="fl">4.1</span><span class="op">)</span><span class="op">)</span></pre></div>
-<pre><code>## </code></pre>
 <pre><code>## [1] "numeric"</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">feat1</span><span class="op">$</span><span class="fu">doSum</span><span class="op">(</span><span class="fl">3.0</span>, <span class="cn">NA_real_</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 15:59:43,910 INFO uk.co.terminological.rjava.test.FeatureTest [main] Java threw a NPE - could have had a NA input?</code></pre>
+<pre><code>## 2022-06-29 23:54:45,532 INFO uk.co.terminological.rjava.test.FeatureTest [main] Java threw a NPE - could have had a NA input?</code></pre>
 <pre><code>## [1] NA</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">feat1</span><span class="op">$</span><span class="fu">doSum</span><span class="op">(</span><span class="fl">3.0</span>, <span class="cn">NA_real_</span><span class="op">)</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 15:59:43,911 INFO uk.co.terminological.rjava.test.FeatureTest [main] Java threw a NPE - could have had a NA input?</code></pre>
+<pre><code>## 2022-06-29 23:54:45,534 INFO uk.co.terminological.rjava.test.FeatureTest [main] Java threw a NPE - could have had a NA input?</code></pre>
 <pre><code>## [1] "numeric"</code></pre>
 <p>Wrapping and unwrapping every datatype is inconvenient for the Java programmer so some single valued primitive types are supported as parameters and return types of Java functions, particularly <code>int</code>, <code>char</code>, <code>double</code>, <code>boolean</code>, and <code>java.lang.String</code>, but these come with constraints on use, particularly around NA values in R.</p>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">feat1</span><span class="op">$</span><span class="fu">doSum2</span><span class="op">(</span><span class="fl">3L</span>, <span class="fl">4L</span><span class="op">)</span></pre></div>
-<pre><code>## </code></pre>
 <pre><code>## [1] 7</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">feat1</span><span class="op">$</span><span class="fu">doSum2</span><span class="op">(</span><span class="fl">3L</span>, <span class="fl">4L</span><span class="op">)</span><span class="op">)</span></pre></div>
-<pre><code>## </code></pre>
 <pre><code>## [1] "integer"</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="co"># casts inputs to integer</span>
 <span class="va">feat1</span><span class="op">$</span><span class="fu">doSum2</span><span class="op">(</span><span class="fl">3.0</span>,<span class="fl">4.0</span><span class="op">)</span></pre></div>
-<pre><code>## </code></pre>
 <pre><code>## [1] 7</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">feat1</span><span class="op">$</span><span class="fu">doSum2</span><span class="op">(</span><span class="fl">3.0</span>,<span class="fl">4.0</span><span class="op">)</span><span class="op">)</span></pre></div>
-<pre><code>## </code></pre>
 <pre><code>## [1] "integer"</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="co"># fails as expects an integer</span>
@@ -300,10 +302,14 @@ DRAFT
 <span class="co"># fails as NA values are not supported by primitive types</span>
 <span class="kw"><a href="https://rdrr.io/r/base/try.html">try</a></span><span class="op">(</span><span class="va">feat1</span><span class="op">$</span><span class="fu">doSum2</span><span class="op">(</span><span class="fl">3L</span>,<span class="cn">NA_integer_</span><span class="op">)</span><span class="op">)</span></pre></div>
 <pre><code>## Error in self$.api$.toJava$int(b) : cant use NA as input to java int</code></pre>
-<p>Static java methods are also supported. R6 does not have a concept of static methods, so we use the root of the JavaApi as a place to hold the static methods, which in this case returns nothing (an R NULL is invisibly returned), but logs its input.</p>
+<p>Static java methods are also supported. R6 does not have a concept of static methods, so to get the same look and feel as the object interface in Java, we use the root of the JavaApi as a place to hold the static methods. This enables auto-completion for static methods. In this example the static method <code>demoStatic</code> nothing (an R NULL is invisibly returned), but logs its input.</p>
 <div class="sourceCode"><pre class="downlit">
-<span class="va">J</span><span class="op">$</span><span class="va">FeatureTest</span><span class="op">$</span><span class="fu">demoStatic</span><span class="op">(</span><span class="st">"Hello, static world."</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 15:59:44,062 INFO uk.co.terminological.rjava.test.FeatureTest [main] Hello, static world.</code></pre>
+<span class="va">J</span><span class="op">$</span><span class="va">FeatureTest</span><span class="op">$</span><span class="fu">demoStatic</span><span class="op">(</span><span class="st">"Hello, static world, in a Java-like interface."</span><span class="op">)</span></pre></div>
+<pre><code>## 2022-06-29 23:54:45,690 INFO uk.co.terminological.rjava.test.FeatureTest [main] Hello, static world, in a Java-like interface.</code></pre>
+<p>As static methods are stateless they can also be implemented as more regular package functions, for which exactly the same functionality as the format above is made. For this to work all the static functions declared in the API must have different names. At the moment this is up to the developer to ensure this is the case, although at some point I will make a check for it. To differentiate the object style of call above from the function style more common in R packages we have converted static java method names from camel case to snake case. Therefore the same exact same call as above in the functional style is as follows. Both functional and object oriented interfaces are generated for all static methods:</p>
+<div class="sourceCode"><pre class="downlit">
+<span class="fu">testRapi</span><span class="fu">::</span><span class="fu"><a href="../reference/demo_static.html">demo_static</a></span><span class="op">(</span><span class="st">"Hello, static world, in a more regular R-like interface."</span><span class="op">)</span></pre></div>
+<pre><code>## 2022-06-29 23:54:45,761 INFO uk.co.terminological.rjava.test.FeatureTest [main] Hello, static world, in a more regular R-like interface.</code></pre>
 </div>
 <div id="more-complex-objects" class="section level2">
 <h2 class="hasAnchor">
@@ -337,7 +343,9 @@ DRAFT
     }
     
     <span class="co">/**</span>
-<span class="co">     * A copy of the ggplot2::diamonds dataframe serialised into java, using</span>
+<span class="co">     * The ggplot2::diamonds dataframe </span>
+<span class="co">     * </span>
+<span class="co">     * A copy serialised into java, using</span>
 <span class="co">     * RObject.writeRDS, saved within the jar file of the package, and exposed here</span>
 <span class="co">     * using RObject.readRDS. </span>
 <span class="co">     * </span><span class="kw">@return </span><span class="co">the ggplot2::diamonds dataframe</span>
@@ -355,17 +363,15 @@ DRAFT
 <p>The basic smoke tests of this are as follows</p>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">feat1</span><span class="op">$</span><span class="fu">doSomethingWithDataFrame</span><span class="op">(</span><span class="fu">ggplot2</span><span class="fu">::</span><span class="va"><a href="https://ggplot2.tidyverse.org/reference/diamonds.html">diamonds</a></span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 15:59:44,259 INFO uk.co.terminological.rjava.test.FeatureTest [main] dataframe length: 53940</code></pre>
+<pre><code>## 2022-06-29 23:54:45,961 INFO uk.co.terminological.rjava.test.FeatureTest [main] dataframe length: 53940</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">feat1</span><span class="op">$</span><span class="fu">generateDataFrame</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">glimpse</span><span class="op">(</span><span class="op">)</span></pre></div>
-<pre><code>## </code></pre>
 <pre><code>## Rows: 10
 ## Columns: 2
 ## $ index &lt;int&gt; 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
 ## $ value &lt;int&gt; 10, 9, 8, 7, 6, 5, 4, 3, 2, 1</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">J</span><span class="op">$</span><span class="va">FeatureTest</span><span class="op">$</span><span class="fu">diamonds</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">glimpse</span><span class="op">(</span><span class="op">)</span></pre></div>
-<pre><code>## </code></pre>
 <pre><code>## Rows: 53,940
 ## Columns: 10
 ## $ carat   &lt;dbl&gt; 0.23, 0.21, 0.23, 0.29, 0.31, 0.24, 0.24, 0.26, 0.22, 0.23, 0.…
@@ -384,7 +390,6 @@ DRAFT
 <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
   <span class="kw"><a href="https://rdrr.io/r/base/stop.html">stop</a></span><span class="op">(</span><span class="st">"FAIL: serialised diamonds from Java should be identical to the ggplot source"</span><span class="op">)</span>
 <span class="op">}</span></pre></div>
-<pre><code>## </code></pre>
 <pre><code>## PASS: round tripping ggplot2::diamonds including java serialisation and deserialisation works</code></pre>
 </div>
 <div id="objects-fluent-apis-and-factory-methods" class="section level2">
@@ -393,6 +398,8 @@ DRAFT
 <p>The generated R6 code can handle return of Java objects to R, as long as they are a part of the api and annotated with <code>@RClass</code>. A common use case for this is fluent Apis, where the Java object is manipulated by a method and returns itself.</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">    
     <span class="co">/**</span>
+<span class="co">     * Get the message</span>
+<span class="co">     * </span>
 <span class="co">     * message desciption</span>
 <span class="co">     * </span><span class="kw">@return </span><span class="co">The message (previously set by the constructor)</span>
 <span class="co">     */</span>
@@ -402,6 +409,8 @@ DRAFT
     }   
     
     <span class="co">/**</span>
+<span class="co">     * Set a message in a fluent way</span>
+<span class="co">     * </span>
 <span class="co">     * A fluent method which updates the message in this object, returning the</span>
 <span class="co">     * same object. This is differentiated from factory methods which produce a new</span>
 <span class="co">     * instance of the same class by checking to see if the returned Java object is equal</span>
@@ -418,14 +427,10 @@ DRAFT
 <p>The <code>JavaApi</code> root manages R's perspective on the identity of objects in Java. This allows for fluent api methods, and method chaining. This is not flawless but should work for most common scenarios. It is possible that complex edge cases may appear equal in Java but not identical in R, so true equality should rely on the Java <code>equals()</code> method.</p>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">feat1</span><span class="op">$</span><span class="fu">getMessage</span><span class="op">(</span><span class="op">)</span></pre></div>
-<pre><code>## </code></pre>
 <pre><code>## [1] "Hello world. Creating a new object"</code></pre>
 <div class="sourceCode"><pre class="downlit">
-<span class="va">feat2</span> <span class="op">=</span> <span class="va">feat1</span><span class="op">$</span><span class="fu">fluentSetMessage</span><span class="op">(</span><span class="st">"Hello world. updating message."</span><span class="op">)</span></pre></div>
-<pre><code>## </code></pre>
-<div class="sourceCode"><pre class="downlit">
+<span class="va">feat2</span> <span class="op">=</span> <span class="va">feat1</span><span class="op">$</span><span class="fu">fluentSetMessage</span><span class="op">(</span><span class="st">"Hello world. updating message."</span><span class="op">)</span>
 <span class="va">feat2</span><span class="op">$</span><span class="fu">getMessage</span><span class="op">(</span><span class="op">)</span></pre></div>
-<pre><code>## </code></pre>
 <pre><code>## [1] "Hello world. updating message."</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="va">feat1</span>,<span class="va">feat2</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
@@ -446,15 +451,11 @@ DRAFT
 <pre><code>## PASS: java based equality detection is supported</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">feat1</span><span class="op">$</span><span class="fu">getMessage</span><span class="op">(</span><span class="op">)</span></pre></div>
-<pre><code>## </code></pre>
 <pre><code>## [1] "Hello world. updating message."</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="co"># Operations on feat2 are occurring on feat1 as they are the same underlying object</span>
-<span class="va">feat2</span><span class="op">$</span><span class="fu">fluentSetMessage</span><span class="op">(</span><span class="st">"Hello world. updating message again."</span><span class="op">)</span></pre></div>
-<pre><code>## </code></pre>
-<div class="sourceCode"><pre class="downlit">
+<span class="va">feat2</span><span class="op">$</span><span class="fu">fluentSetMessage</span><span class="op">(</span><span class="st">"Hello world. updating message again."</span><span class="op">)</span>
 <span class="va">feat1</span><span class="op">$</span><span class="fu">getMessage</span><span class="op">(</span><span class="op">)</span></pre></div>
-<pre><code>## </code></pre>
 <pre><code>## [1] "Hello world. updating message again."</code></pre>
 <p>Factory methods allow java methods to create and return Java objects. This is supported as long as the objects are a part of the api and annotated with <code>@RClass</code>. Arbitrary java objects are not supported as return types and java code that tries to return such objects will throw an exception during the maven packaging phase. This is by design to enforce formal contracts between the Java code and the R api. If you want dynamic manipulation of the Java objects then the <em>jsr223</em> plugin is more appropriate for you.</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">    
@@ -514,15 +515,14 @@ DRAFT
 <div class="sourceCode"><pre class="downlit">
 <span class="co"># factory method from builder class</span>
 <span class="va">moreFeat1</span> <span class="op">=</span> <span class="va">feat1</span><span class="op">$</span><span class="fu">factoryMethod</span><span class="op">(</span><span class="st">"Hello"</span>,<span class="st">"World"</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 15:59:46,397 INFO uk.co.terminological.rjava.test.MoreFeatureTest [main] constuctor: Hello, World</code></pre>
+<pre><code>## 2022-06-29 23:54:48,008 INFO uk.co.terminological.rjava.test.MoreFeatureTest [main] constuctor: Hello, World</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="co"># static factory method accessed through the root of the API</span>
 <span class="va">moreFeat2</span> <span class="op">=</span> <span class="va">J</span><span class="op">$</span><span class="va">MoreFeatureTest</span><span class="op">$</span><span class="fu">create</span><span class="op">(</span><span class="st">"Ola"</span>,<span class="st">"El Mundo"</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 15:59:46,402 INFO uk.co.terminological.rjava.test.MoreFeatureTest [main] constuctor: Ola, El Mundo</code></pre>
+<pre><code>## 2022-06-29 23:54:48,013 INFO uk.co.terminological.rjava.test.MoreFeatureTest [main] constuctor: Ola, El Mundo</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="co"># either of these can be passed as a parameter</span>
 <span class="va">feat1</span><span class="op">$</span><span class="fu">objectAsParameter</span><span class="op">(</span><span class="va">moreFeat1</span><span class="op">)</span></pre></div>
-<pre><code>## </code></pre>
 <pre><code>## [1] "toString: World"</code></pre>
 </div>
 <div id="logging-printing-and-exceptions" class="section level2">
@@ -567,16 +567,15 @@ DRAFT
 <span class="co"># Testing logging levels</span>
 <span class="va">J</span><span class="op">$</span><span class="fu">changeLogLevel</span><span class="op">(</span><span class="st">"ALL"</span><span class="op">)</span>
 <span class="va">moreFeat1</span><span class="op">$</span><span class="fu">testLogging</span><span class="op">(</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 15:59:46,547 ERROR uk.co.terminological.rjava.test.MoreFeatureTest [main] An error
-## 2022-06-23 15:59:46,547 WARN uk.co.terminological.rjava.test.MoreFeatureTest [main] A warning
-## 2022-06-23 15:59:46,547 INFO uk.co.terminological.rjava.test.MoreFeatureTest [main] A info
-## 2022-06-23 15:59:46,547 DEBUG uk.co.terminological.rjava.test.MoreFeatureTest [main] A debug
-## 2022-06-23 15:59:46,547 TRACE uk.co.terminological.rjava.test.MoreFeatureTest [main] A trace</code></pre>
+<pre><code>## 2022-06-29 23:54:48,159 ERROR uk.co.terminological.rjava.test.MoreFeatureTest [main] An error
+## 2022-06-29 23:54:48,159 WARN uk.co.terminological.rjava.test.MoreFeatureTest [main] A warning
+## 2022-06-29 23:54:48,159 INFO uk.co.terminological.rjava.test.MoreFeatureTest [main] A info
+## 2022-06-29 23:54:48,159 DEBUG uk.co.terminological.rjava.test.MoreFeatureTest [main] A debug
+## 2022-06-29 23:54:48,159 TRACE uk.co.terminological.rjava.test.MoreFeatureTest [main] A trace</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="co"># Suppressing errors</span>
-<span class="kw"><a href="https://rdrr.io/r/base/try.html">try</a></span><span class="op">(</span><span class="va">moreFeat1</span><span class="op">$</span><span class="fu">throwCatchable</span><span class="op">(</span><span class="op">)</span>,silent <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></pre></div>
-<pre><code>## </code></pre>
-<div class="sourceCode"><pre class="downlit">
+<span class="kw"><a href="https://rdrr.io/r/base/try.html">try</a></span><span class="op">(</span><span class="va">moreFeat1</span><span class="op">$</span><span class="fu">throwCatchable</span><span class="op">(</span><span class="op">)</span>,silent <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+
 <span class="co"># Handling errors</span>
 <span class="kw"><a href="https://rdrr.io/r/base/conditions.html">tryCatch</a></span><span class="op">(</span>
   <span class="op">{</span>
@@ -590,7 +589,6 @@ DRAFT
   <span class="op">}</span>, 
   finally <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"finally"</span><span class="op">)</span>
 <span class="op">)</span></pre></div>
-<pre><code>## </code></pre>
 <pre><code>## the error object has a set of classes: RuntimeException;Exception;Throwable;Object;error;condition</code></pre>
 <pre><code>## Warning in value[[3L]](cond): error: java.lang.RuntimeException: A runtime
 ## exception has been thrown</code></pre>
@@ -598,7 +596,7 @@ DRAFT
 <div class="sourceCode"><pre class="downlit">
 <span class="va">J</span><span class="op">$</span><span class="fu">changeLogLevel</span><span class="op">(</span><span class="st">"ERROR"</span><span class="op">)</span>
 <span class="va">moreFeat1</span><span class="op">$</span><span class="fu">testLogging</span><span class="op">(</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 15:59:46,554 ERROR uk.co.terminological.rjava.test.MoreFeatureTest [main] An error</code></pre>
+<pre><code>## 2022-06-29 23:54:48,165 ERROR uk.co.terminological.rjava.test.MoreFeatureTest [main] An error</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="co"># J$reconfigureLog("/path/to/log4j.prop")</span></pre></div>
 </div>
@@ -607,19 +605,16 @@ DRAFT
 <a href="#finalising-and-clean-up" class="anchor"></a>Finalising and clean up</h2>
 <p>The java objects bound to R instances will stay in memory whilst they are needed. When they go out of scope they should automatically be garbage collected as a native feature of <code>rJava</code>. R6 object finalizers are also generated when specified by the code and these are triggered during release of the Java objects, and may call any closing code needed in the java library (e.g. closing input streams etc).</p>
 <div class="sourceCode"><pre class="downlit">
-<span class="va">feat1</span> <span class="op">=</span> <span class="va">J</span><span class="op">$</span><span class="va">FeatureTest</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>logMessage <span class="op">=</span> <span class="st">"Hello world. Creating a new object"</span><span class="op">)</span></pre></div>
-<pre><code>## </code></pre>
-<div class="sourceCode"><pre class="downlit">
+<span class="va">feat1</span> <span class="op">=</span> <span class="va">J</span><span class="op">$</span><span class="va">FeatureTest</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>logMessage <span class="op">=</span> <span class="st">"Hello world. Creating a new object"</span><span class="op">)</span>
 <span class="va">feat1</span><span class="op">$</span><span class="fu">doHelloWorld</span><span class="op">(</span><span class="op">)</span></pre></div>
-<pre><code>## </code></pre>
 <pre><code>## [1] "Hello world from Java!"</code></pre>
 <p>When an object goes out of scope the finalizer will be called. This can happen much later, and any errors thrown by the finaliser code could cause issues. Code run in these finalizers can throw unchecked exceptions which are ignored and converted to logged errors.</p>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">feat1</span> <span class="op">=</span> <span class="cn">NULL</span>
 <span class="fu"><a href="https://rdrr.io/r/base/gc.html">gc</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <pre><code>##           used (Mb) gc trigger  (Mb) max used  (Mb)
-## Ncells 1213890 64.9    2207388 117.9  2207388 117.9
-## Vcells 2493252 19.1    8388608  64.0  7182992  54.9</code></pre>
+## Ncells 1219468 65.2    2210678 118.1  2210678 118.1
+## Vcells 2503313 19.1    8388608  64.0  7073767  54.0</code></pre>
 <p>The finalizer should also be called implicitly when the R6 object goes out of scope in R.</p>
 </div>
 <div id="support-for-debugging" class="section level2">
@@ -643,11 +638,8 @@ DRAFT
     </code></pre></div>
 <div class="sourceCode"><pre class="downlit">
 <span class="va">s</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempfile</a></span><span class="op">(</span>pattern <span class="op">=</span> <span class="st">"diamonds"</span>, fileext <span class="op">=</span> <span class="st">".ser"</span><span class="op">)</span>
-<span class="va">J</span><span class="op">$</span><span class="va">Serialiser</span><span class="op">$</span><span class="fu">serialiseDataframe</span><span class="op">(</span>dataframe <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="va"><a href="https://ggplot2.tidyverse.org/reference/diamonds.html">diamonds</a></span>, filename <span class="op">=</span> <span class="va">s</span><span class="op">)</span></pre></div>
-<pre><code>## </code></pre>
-<div class="sourceCode"><pre class="downlit">
+<span class="va">J</span><span class="op">$</span><span class="va">Serialiser</span><span class="op">$</span><span class="fu">serialiseDataframe</span><span class="op">(</span>dataframe <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="va"><a href="https://ggplot2.tidyverse.org/reference/diamonds.html">diamonds</a></span>, filename <span class="op">=</span> <span class="va">s</span><span class="op">)</span>
 <span class="va">J</span><span class="op">$</span><span class="va">Serialiser</span><span class="op">$</span><span class="fu">deserialiseDataframe</span><span class="op">(</span>filename<span class="op">=</span><span class="va">s</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">glimpse</span><span class="op">(</span><span class="op">)</span></pre></div>
-<pre><code>## </code></pre>
 <pre><code>## Rows: 53,940
 ## Columns: 10
 ## $ carat   &lt;dbl&gt; 0.23, 0.21, 0.23, 0.29, 0.31, 0.24, 0.24, 0.26, 0.22, 0.23, 0.…
@@ -690,7 +682,7 @@ DRAFT
 
 
       <footer><div class="copyright">
-  <p>Developed by Rob Challen, Rob Challen, terminological.</p>
+  <p>Developed by Rob Challen, terminological, Rob Challen.</p>
 </div>
 
 <div class="pkgdown">

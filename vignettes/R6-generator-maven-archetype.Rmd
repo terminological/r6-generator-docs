@@ -1,0 +1,32 @@
+---
+title: "R6 generator maven archetype"
+author: "Rob Challen"
+date: "24/06/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Maven archetype
+
+https://stackoverflow.com/questions/70288880/rmarkdown-how-to-pass-arguments-to-bash-chunk-defined-as-variables-in-r
+
+```{bash}
+
+```
+
+```{r cars}
+fs::dir_tree(regexp="((.*/target)|docs|test)/.*", invert=TRUE)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

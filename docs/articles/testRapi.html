@@ -63,7 +63,7 @@
       <a href="../articles/R6-generator-features.html">R6 Generator Maven Plugin: Key features</a>
     </li>
     <li>
-      <a href="../articles/R6-generator-intro.html">R6 Generator Maven Plugin: Bridging Java and R6 for Package Development</a>
+      <a href="../articles/R6-generator-maven-archetype.html">R6 generator maven archetype</a>
     </li>
     <li>
       <a href="../articles/R6-generator-maven-config.html">R6 Generator Maven Plugin: Metadata and Maven configuration</a>
@@ -186,18 +186,16 @@
 
 <span class="co"># the JavaApi class is the entry point for R to your Java code.</span>
 <span class="va">J</span> <span class="op">&lt;-</span> <span class="fu">testRapi</span><span class="fu">::</span><span class="va"><a href="../reference/JavaApi.html">JavaApi</a></span><span class="op">$</span><span class="fu">get</span><span class="op">(</span><span class="op">)</span></pre></div>
-<pre><code>## Initialising A test library</code></pre>
+<pre><code>## Initialising A Test Library</code></pre>
 <pre><code>## Version: 0.0.0.9999</code></pre>
-<pre><code>## Generated: 2022-06-23T15:59:23.093521</code></pre>
-<pre><code>## 2022-06-23 16:00:00,986 INFO testRapi [main] Initialised testRapi</code></pre>
+<pre><code>## Generated: 2022-06-29T23:54:07.855538</code></pre>
+<pre><code>## 2022-06-29 23:55:02,551 INFO testRapi [main] Initialised testRapi</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="co"># all the API classes and methods are classes attached to the J java api object</span>
-<span class="va">eg</span> <span class="op">=</span> <span class="va">J</span><span class="op">$</span><span class="va">MinimalExample</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></pre></div>
-<pre><code>## </code></pre>
-<div class="sourceCode"><pre class="downlit">
+<span class="va">eg</span> <span class="op">=</span> <span class="va">J</span><span class="op">$</span><span class="va">MinimalExample</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span>
 <span class="va">df</span> <span class="op">=</span> <span class="va">eg</span><span class="op">$</span><span class="fu">demo</span><span class="op">(</span>dataframe <span class="op">=</span> <span class="va">diamonds</span>, message <span class="op">=</span> <span class="st">"The diamonds dataframe"</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-06-23 16:00:01,052 INFO uk.co.terminological.rjava.test.MinimalExample [main] this dataframe has nrow=53940
-## 2022-06-23 16:00:01,052 INFO uk.co.terminological.rjava.test.MinimalExample [main] The diamonds dataframe</code></pre>
+<pre><code>## 2022-06-29 23:55:02,620 INFO uk.co.terminological.rjava.test.MinimalExample [main] this dataframe has nrow=53940
+## 2022-06-29 23:55:02,620 INFO uk.co.terminological.rjava.test.MinimalExample [main] The diamonds dataframe</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></pre></div>
 <pre><code>## [1] 53940</code></pre>
@@ -218,7 +216,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Rob Challen, Rob Challen, terminological.</p>
+  <p>Developed by Rob Challen, terminological, Rob Challen.</p>
 </div>
 
 <div class="pkgdown">

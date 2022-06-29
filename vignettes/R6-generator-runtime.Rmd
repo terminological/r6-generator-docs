@@ -3,8 +3,7 @@ title: 'R6 Generator Runtime: Using R Datatypes in Java'
 author: "Rob Challen"
 date: "28/10/2020"
 output:
-  html_vignette: 
-    css: draft.css
+  html_vignette
 header-includes:
   \usepackage{amsmath}
   \usepackage{minted}

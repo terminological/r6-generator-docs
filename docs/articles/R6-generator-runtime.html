@@ -63,7 +63,7 @@
       <a href="../articles/R6-generator-features.html">R6 Generator Maven Plugin: Key features</a>
     </li>
     <li>
-      <a href="../articles/R6-generator-intro.html">R6 Generator Maven Plugin: Bridging Java and R6 for Package Development</a>
+      <a href="../articles/R6-generator-maven-archetype.html">R6 generator maven archetype</a>
     </li>
     <li>
       <a href="../articles/R6-generator-maven-config.html">R6 Generator Maven Plugin: Metadata and Maven configuration</a>
@@ -107,12 +107,12 @@ DRAFT
 <a href="#imports" class="anchor"></a>Imports</h2>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">import uk.co.terminological.rjava.types.*;</span>
 <span class="kw">import static uk.co.terminological.rjava.RConverter.*;</span>
-<span class="kw">import static uk.co.terminological.rjava.MapRule.*;</span>
+<span class="kw">import static uk.co.terminological.rjava.Rule.MapRule.*;</span>
 
 <span class="kw">import uk.co.terminological.rjava.IncompatibleTypeException;</span>
 <span class="kw">import uk.co.terminological.rjava.NameNotFoundException;</span>
 <span class="kw">import uk.co.terminological.rjava.RConverter;</span>
-<span class="kw">import uk.co.terminological.rjava.RFunctions;</span>
+<span class="kw">import uk.co.terminological.rjava.utils.RFunctions;</span>
 <span class="kw">import uk.co.terminological.rjava.RName;</span></code></pre></div>
 </div>
 <div id="wrapping-and-unwrapping" class="section level2">
@@ -249,7 +249,7 @@ DRAFT
 
 
       <footer><div class="copyright">
-  <p>Developed by Rob Challen, Rob Challen, terminological.</p>
+  <p>Developed by Rob Challen, terminological, Rob Challen.</p>
 </div>
 
 <div class="pkgdown">

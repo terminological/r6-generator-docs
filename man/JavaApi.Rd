@@ -4,7 +4,7 @@
 
 \alias{JavaApi}
 
-\title{A test library}
+\title{A Test Library}
 
 \section{Usage}{
 	\if{html}{\out{<div class="r">}}
@@ -27,7 +27,7 @@ This package is a feature test of the R6 Generator Maven Plugin. It is not inten
 
 Version: 0.0.0.9999
 
-Generated: 2022-06-23T15:59:23.042407
+Generated: 2022-06-29T23:54:07.828193
 }
 
 \author{\email{rc538@exeter.ac.uk}}
@@ -368,8 +368,10 @@ J$FeatureTest$new(logMessage)
 	\if{html}{\out{<a id="method-FeatureTest-demoStatic"></a>}}
 	
 	\subsection{Method \code{FeatureTest$demoStatic()}}{
-		Static methods are also supported. These are accessed through the
-root of the R api.
+		Static methods are also supported. 
+
+These are accessed through the
+root of the R api, and as a functional interface
 	
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
@@ -399,7 +401,9 @@ J$FeatureTest$demoStatic(message)
 	\if{html}{\out{<a id="method-FeatureTest-diamonds"></a>}}
 	
 	\subsection{Method \code{FeatureTest$diamonds()}}{
-		A copy of the ggplot2::diamonds dataframe serialised into java, using
+		The ggplot2::diamonds dataframe 
+
+A copy serialised into java, using
 RObject.writeRDS, saved within the jar file of the package, and exposed here
 using RObject.readRDS.
 	

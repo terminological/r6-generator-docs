@@ -3,9 +3,9 @@
 \name{testRapi-package}
 \alias{testRapi}
 \alias{testRapi-package}
-\title{testRapi: A test library}
+\title{testRapi: A Test Library}
 \description{
-\if{html}{\figure{logo.png}{options: align='right'}}
+% \if{html}{\figure{logo.png}{options: align='right'}}
 This package is a feature test of the R6 Generator Maven Plugin. It is not intended to be useful beyond testing, demonstrating and documenting the features of the plugin.
 
 Version: 0.0.0.9999
@@ -25,8 +25,8 @@ Classes:
 \author{
 \itemize{ 
    \item Rob Challen rc538@exeter.ac.uk 
-   \item Rob Challen rob@terminological.co.uk 0000-0002-5504-7768
    \item terminological   
+   \item Rob Challen rob@terminological.co.uk 0000-0002-5504-7768
 }
 }
 

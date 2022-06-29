@@ -2,11 +2,11 @@
 #' This is the main entry point of the testRapi generated R library.
 #'
 #' @description
-#' A test library
+#' A Test Library
 #'
 #' Version: 0.0.0.9999
 #'
-#' Generated: 2022-06-23T15:59:23.093125
+#' Generated: 2022-06-29T23:54:07.855114
 #'
 #' Contact: rc538@exeter.ac.uk
 #' @import ggplot2
@@ -60,7 +60,8 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 	#' @return nothing
 	printMessages = function() {
 		# check = FALSE here to stop exceptions being cleared from the stack.
-		message(.jcall("uk/co/terminological/rjava/LogController", returnSig = "Ljava/lang/String;", method = "getSystemMessages", check=FALSE))
+		msg = .jcall("uk/co/terminological/rjava/LogController", returnSig = "Ljava/lang/String;", method = "getSystemMessages", check=FALSE)
+		if (!is.null(msg) && trimws(msg) != "") message(trimws(msg))
 		invisible(NULL)
 	},
 	
@@ -76,13 +77,16 @@ JavaApi = R6::R6Class("JavaApi", public=list(
  	initialize = function(logLevel = "INFO") {
  		if (is.null(JavaApi$singleton)) stop("Startup the java api with JavaApi$get() rather than using this constructor directly")
  	
- 		message("Initialising A test library")
+ 		message("Initialising A Test Library")
  		message("Version: 0.0.0.9999")
-		message("Generated: 2022-06-23T15:59:23.093521")
+		message("Generated: 2022-06-29T23:54:07.855538")
  	
  	
-		if (!.jniInitialized) 
-			.jinit(parameters=getOption("java.parameters"),silent = TRUE, force.init = FALSE)
+ 		tryCatch({
+			if (!.jniInitialized) 
+				.jinit(parameters=getOption("java.parameters"),silent = TRUE, force.init = FALSE)
+		}, error = function(e) stop("Java cannot be initialised: ",e$message)
+		)
 		
 		# Java dependencies
 		jars = .checkDependencies(quiet = TRUE)
@@ -100,7 +104,7 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 		}
 		.jcall(self$.log,returnSig = "V",method = "info","Initialised testRapi");
 		.jcall(self$.log,returnSig = "V",method = "debug","R package version: 0.0.0.9999");
-		.jcall(self$.log,returnSig = "V",method = "debug","R package generated: 2022-06-23T15:59:23.093591");
+		.jcall(self$.log,returnSig = "V",method = "debug","R package generated: 2022-06-29T23:54:07.855659");
 		.jcall(self$.log,returnSig = "V",method = "debug","Java library version: io.github.terminological:r6-generator-docs:main-SNAPSHOT");
 		.jcall(self$.log,returnSig = "V",method = "debug",paste0("Java library compiled: ",buildDate));
 		.jcall(self$.log,returnSig = "V",method = "debug","Contact: rc538@exeter.ac.uk");
@@ -612,6 +616,8 @@ JavaApi$get = function(logLevel = "INFO") {
 JavaApi$rebuildDependencies = function( ... ) {
 	# remove working directory
 	unlink(.workingDir(), recursive = TRUE)
+	# remove previous versions of the compiled binary 
+	unlink(fs::path(.here("java"),"r6-generator-docs-main-SNAPSHOT-jar-with-dependencies.jar"))
 	# rebuild everything
 	classpath = .checkDependencies(quiet = FALSE, ...)
 	
@@ -641,8 +647,11 @@ JavaApi$rebuildDependencies = function( ... ) {
 
 .checkDependencies = function(...) {
 	# Java dependencies
-	# all java library code and dependencies have already been bundled into a single fat jar
-	# compilation was done on the library developers machine and has no external dependencies
+	# this is a sources only distribution. The java code must be compiled from the source (distributed in this package as a testRapi-0.0.0.9999-src.jar) 
+	# all the dependencies are resolved and packaged into a single fat jar on compilation
+	# N.b. successful compilation is a machine specific thing as the dependencies may have been installed into maven locally 
+	pomLoc = .extractSources()
+	.compileFatJar(pomLoc, ...)
 	classpath = NULL
 	
 	# find the jars that come bundled with the library:
@@ -797,7 +806,7 @@ JavaApi$rebuildDependencies = function( ... ) {
 	Sys.setenv(JAVA_HOME=java_home)
 	# required due to an issue in Mvnw.cmd on windows.
 	wd = getwd()
-	setwd(.workingDir())
+	setwd(fs::path_dir(pomPath))
 	system2(mvnPath, args)
 	setwd(wd)
 }

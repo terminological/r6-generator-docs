@@ -18,7 +18,7 @@ A test of the R6 generator templating
 
 Version: 0.0.0.9999
 
-Generated: 2022-06-23T15:59:23.156503
+Generated: 2022-06-29T23:54:07.980560
 }
 
 \details{
@@ -54,6 +54,7 @@ minExample$doHelloWorld()
 ## Method `FeatureTest$demoStatic`
 ## -----------------------------------
 J$FeatureTest$demoStatic('Ola, el mundo')
+demo_static('Bonjour, le monde')
 
 ## -----------------------------------
 ## Method `FeatureTest$getMessage`
@@ -167,7 +168,9 @@ J$FeatureTest$new(logMessage)
 	\if{html}{\out{<a id="method-doHelloWorld"></a>}}
 	
 	\subsection{Method \code{doHelloWorld()}}{
-		Description of a hello world function
+		A hello world function
+
+More detailed description
 	
 
 		\subsection{Usage}{
@@ -205,7 +208,9 @@ minExample$doHelloWorld()
 	\if{html}{\out{<a id="method-doSum"></a>}}
 	
 	\subsection{Method \code{doSum()}}{
-		The doSum function description = it adds two numerics
+		Add some numbers (1).
+
+The doSum function description = it adds two numerics
 	
 
 		\subsection{Usage}{
@@ -244,7 +249,9 @@ not available
 	\if{html}{\out{<a id="method-doSum2"></a>}}
 	
 	\subsection{Method \code{doSum2()}}{
-		Do sum 2 uses native ints rather than RNumerics
+		Adds some numbers
+
+Do sum 2 uses native ints rather than RNumerics
 It should throw an error if given something that cannot be coerced to an integer. 
 This also demonstrated the use of the `@RDefault` annotation
 	
@@ -284,8 +291,10 @@ not available
 	\if{html}{\out{<a id="method-demoStatic"></a>}}
 	
 	\subsection{Method \code{demoStatic()}}{
-		Static methods are also supported. These are accessed through the
-root of the R api.
+		Static methods are also supported. 
+
+These are accessed through the
+root of the R api, and as a functional interface
 	
 
 		\subsection{Usage}{
@@ -313,6 +322,7 @@ J$FeatureTest$demoStatic(message)
 			\if{html}{\out{<div class="r example copy">}}
 			\preformatted{
 J$FeatureTest$demoStatic('Ola, el mundo')
+demo_static('Bonjour, le monde')
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -321,7 +331,9 @@ J$FeatureTest$demoStatic('Ola, el mundo')
 	\if{html}{\out{<a id="method-getMessage"></a>}}
 	
 	\subsection{Method \code{getMessage()}}{
-		message desciption
+		Get the message
+
+message desciption
 	
 
 		\subsection{Usage}{
@@ -358,7 +370,9 @@ not available
 	\if{html}{\out{<a id="method-fluentSetMessage"></a>}}
 	
 	\subsection{Method \code{fluentSetMessage()}}{
-		A fluent method which updates the message in this object, returning the
+		Set a message in a fluent way
+
+A fluent method which updates the message in this object, returning the
 same object. This is differentiated from factory methods which produce a new
 instance of the same class by checking to see if the returned Java object is equal
 to the calling Java object.
@@ -547,7 +561,9 @@ not available
 	\if{html}{\out{<a id="method-diamonds"></a>}}
 	
 	\subsection{Method \code{diamonds()}}{
-		A copy of the ggplot2::diamonds dataframe serialised into java, using
+		The ggplot2::diamonds dataframe 
+
+A copy serialised into java, using
 RObject.writeRDS, saved within the jar file of the package, and exposed here
 using RObject.readRDS.
 	
@@ -585,7 +601,7 @@ J$FeatureTest$diamonds()
 	\if{html}{\out{<a id="method-errorThrower"></a>}}
 	
 	\subsection{Method \code{errorThrower()}}{
-		just throws an error
+		Throws an error
 	
 
 		\subsection{Usage}{

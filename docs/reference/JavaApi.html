@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>A test library — JavaApi • testRapi</title>
+<title>A Test Library — JavaApi • testRapi</title>
 
 
 <!-- jquery -->
@@ -39,10 +39,10 @@
 
 
 
-<meta property="og:title" content="A test library — JavaApi" />
+<meta property="og:title" content="A Test Library — JavaApi" />
 <meta property="og:description" content="This package is a feature test of the R6 Generator Maven Plugin. It is not intended to be useful beyond testing, demonstrating and documenting the features of the plugin.
 Version: 0.0.0.9999
-Generated: 2022-06-23T15:59:23.042407" />
+Generated: 2022-06-29T23:54:07.828193" />
 
 
 
@@ -106,7 +106,7 @@ Generated: 2022-06-23T15:59:23.042407" />
       <a href="../articles/R6-generator-features.html">R6 Generator Maven Plugin: Key features</a>
     </li>
     <li>
-      <a href="../articles/R6-generator-intro.html">R6 Generator Maven Plugin: Bridging Java and R6 for Package Development</a>
+      <a href="../articles/R6-generator-maven-archetype.html">R6 generator maven archetype</a>
     </li>
     <li>
       <a href="../articles/R6-generator-maven-config.html">R6 Generator Maven Plugin: Metadata and Maven configuration</a>
@@ -132,7 +132,7 @@ Generated: 2022-06-23T15:59:23.042407" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>A test library</h1>
+    <h1>A Test Library</h1>
     
     <div class="hidden name"><code>JavaApi.Rd</code></div>
     </div>
@@ -140,7 +140,7 @@ Generated: 2022-06-23T15:59:23.042407" />
     <div class="ref-description">
     <p>This package is a feature test of the R6 Generator Maven Plugin. It is not intended to be useful beyond testing, demonstrating and documenting the features of the plugin.</p>
 <p>Version: 0.0.0.9999</p>
-<p>Generated: 2022-06-23T15:59:23.042407</p>
+<p>Generated: 2022-06-29T23:54:07.828193</p>
     </div>
 
 
@@ -405,8 +405,9 @@ included in the R Api (i.e. not annotated with @RMethod.) &lt;br&gt;</p>
 <p><hr>
 	<a id="method-FeatureTest-demoStatic"></a></p>	
 <p></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>FeatureTest$demoStatic()</code></h3>
-<p>Static methods are also supported. These are accessed through the
-root of the R api.</p>	
+<p>Static methods are also supported.</p>
+<p>These are accessed through the
+root of the R api, and as a functional interface</p>	
 <p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
 <p><div class="r"></p><pre>
 <span class='va'>J</span> <span class='op'>=</span> <span class='fu'>testRapi</span><span class='fu'>::</span><span class='va'>JavaApi</span><span class='op'>$</span><span class='fu'>get</span><span class='op'>(</span><span class='op'>)</span>
@@ -427,7 +428,8 @@ root of the R api.</p>
 <p><hr>
 	<a id="method-FeatureTest-diamonds"></a></p>	
 <p></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>FeatureTest$diamonds()</code></h3>
-<p>A copy of the ggplot2::diamonds dataframe serialised into java, using
+<p>The ggplot2::diamonds dataframe</p>
+<p>A copy serialised into java, using
 RObject.writeRDS, saved within the jar file of the package, and exposed here
 using RObject.readRDS.</p>	
 <p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
@@ -547,7 +549,7 @@ using RObject.readRDS.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Rob Challen, Rob Challen, terminological.</p>
+  <p>Developed by Rob Challen, terminological, Rob Challen.</p>
 </div>
 
 <div class="pkgdown">

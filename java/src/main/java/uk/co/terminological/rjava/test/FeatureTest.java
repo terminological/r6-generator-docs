@@ -63,7 +63,10 @@ public class FeatureTest {
 	//START_SNIP_2
 	
 	/**
-	 * Description of a hello world function
+	 * A hello world function
+	 * 
+	 * More detailed description
+	 * 
 	 * @return this java method returns a String
 	 */
 	@RMethod(examples = {
@@ -75,6 +78,8 @@ public class FeatureTest {
 	}
 		
 	/**
+	 * Add some numbers (1).
+	 * 
 	 * The doSum function description = it adds two numerics
 	 * @param a the A parameter, can be NA
 	 * @param b the B parameter
@@ -93,6 +98,8 @@ public class FeatureTest {
 	
 	
 	/**
+	 * Adds some numbers
+	 * 
 	 * Do sum 2 uses native ints rather than RNumerics
 	 * It should throw an error if given something that cannot be coerced to an integer. 
 	 * This also demonstrated the use of the `@RDefault` annotation
@@ -106,12 +113,16 @@ public class FeatureTest {
 	}
 	
 	/**
-	 * Static methods are also supported. These are accessed through the
-	 * root of the R api.
+	 * Static methods are also supported. 
+	 * 
+	 * These are accessed through the
+	 * root of the R api, and as a functional interface
+	 * 
 	 * @param message a message
 	 */
 	@RMethod(examples = {
 			"J$FeatureTest$demoStatic('Ola, el mundo')",
+			"demo_static('Bonjour, le monde')",
 	})
 	public static void demoStatic(String message) {
 		log.info(message);
@@ -121,6 +132,8 @@ public class FeatureTest {
 	//START_SNIP_3
 	
 	/**
+	 * Get the message
+	 * 
 	 * message desciption
 	 * @return The message (previously set by the constructor)
 	 */
@@ -130,6 +143,8 @@ public class FeatureTest {
 	}	
 	
 	/**
+	 * Set a message in a fluent way
+	 * 
 	 * A fluent method which updates the message in this object, returning the
 	 * same object. This is differentiated from factory methods which produce a new
 	 * instance of the same class by checking to see if the returned Java object is equal
@@ -192,7 +207,9 @@ public class FeatureTest {
 	}
 	
 	/**
-	 * A copy of the ggplot2::diamonds dataframe serialised into java, using
+	 * The ggplot2::diamonds dataframe 
+	 * 
+	 * A copy serialised into java, using
 	 * RObject.writeRDS, saved within the jar file of the package, and exposed here
 	 * using RObject.readRDS. 
 	 * @return the ggplot2::diamonds dataframe
@@ -212,7 +229,7 @@ public class FeatureTest {
 	//START_SNIP_6
 	
 	/**
-	 * just throws an error
+	 * Throws an error
 	 */
 	@RMethod
 	public void errorThrower() {

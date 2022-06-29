@@ -3,8 +3,7 @@ title: "R6 Generator Maven Plugin: Key features"
 author: "Rob Challen"
 date: "19/10/2020"
 output: 
-  html_vignette: 
-    css: draft.css
+  html_vignette
 header-includes:
   \usepackage{amsmath}
   \usepackage{minted}
@@ -118,10 +117,17 @@ try(feat1$doSum2(3.0,4.5))
 # fails as NA values are not supported by primitive types
 try(feat1$doSum2(3L,NA_integer_))
 ```
-Static java methods are also supported. R6 does not have a concept of static methods, so we use the root of the JavaApi as a place to hold the static methods, which in this case returns nothing (an R NULL is invisibly returned), but logs its input.
+
+Static java methods are also supported. R6 does not have a concept of static methods, so to get the same look and feel as the object interface in Java, we use the root of the JavaApi as a place to hold the static methods. This enables auto-completion for static methods. In this example the static method `demoStatic` nothing (an R NULL is invisibly returned), but logs its input.
 
 ```{r}
-J$FeatureTest$demoStatic("Hello, static world.")
+J$FeatureTest$demoStatic("Hello, static world, in a Java-like interface.")
+```
+
+As static methods are stateless they can also be implemented as more regular package functions, for which exactly the same functionality as the format above is made. For this to work all the static functions declared in the API must have different names. At the moment this is up to the developer to ensure this is the case, although at some point I will make a check for it. To differentiate the object style of call above from the function style more common in R packages we have converted static java method names from camel case to snake case. Therefore the same exact same call as above in the functional style is as follows. Both functional and object oriented interfaces are generated for all static methods:
+
+```{r}
+testRapi::demo_static("Hello, static world, in a more regular R-like interface.")
 ```
 
 ## More complex objects

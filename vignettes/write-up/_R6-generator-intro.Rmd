@@ -21,8 +21,6 @@ bibliography: R6-generator-intro.bib
 #   rmarkdown::render(inputFile,  
 #     output_format = rticles::rjournal_article(), 
 output: 
-  html_vignette: 
-    css: draft.css
   rticles::rjournal_article: default
 header-includes:
   \usepackage{amsmath}
@@ -39,7 +37,7 @@ vignette: >
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
-here::i_am("vignettes/R6-generator-intro.Rmd")
+here::i_am("vignettes/write-up/R6-generator-intro.Rmd")
 source(here::here("vignettes/codeSnip.R"))
 ```
 
@@ -100,16 +98,13 @@ Maven is a Java dependency management and build tool, which is one of the corner
 ## Minimal example
 
 ```{r results='asis',echo=FALSE}
-codeSnip("java",filename=here::here("../src/main/java/uk/co/terminological/rjava/test/MinimalExample.java"))
+codeSnip("java",filename=here::here("java/src/main/java/uk/co/terminological/rjava/test/MinimalExample.java"))
 ```
 
 
 
 ```{r results='asis',echo=FALSE}
-codeSnipByLine(type="xml",filename=here::here("../pom.xml"),
-         starts = c(5,19,27,43,53),
-         ends = c(10,25,41,44,Inf), 
-         sep = "\n...\n")
+codeSnip(type="xml",filename=here::here("java/pom.xml"))
 ```
 
 
@@ -117,12 +112,13 @@ codeSnipByLine(type="xml",filename=here::here("../pom.xml"),
 
 ```{r, include=FALSE}
 # fs::dir_tree(path = here::here("../"), recurse = TRUE)
+fs::dir_tree(here::here(), regexp=".*/(target|docs|src/test|vignettes)/.*", invert=TRUE)
 ```
 ## Maven packaging
 ## Generated R6 documentation
 
 ```{r out.width="100%"}
-knitr::include_graphics(here::here("vignettes/screenshots.png"))
+knitr::include_graphics(here::here("vignettes/write-up/screenshots.png"))
 ```
 
 ## Datatype transformation

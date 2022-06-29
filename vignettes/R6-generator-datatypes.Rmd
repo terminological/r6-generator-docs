@@ -3,8 +3,7 @@ title: "R6 Generator Maven Plugin: Datatype conversion"
 author: "Rob Challen"
 date: "19/10/2020"
 output: 
-  html_vignette:
-    css: draft.css
+  html_vignette
 header-includes:
   \usepackage{amsmath}
   \usepackage{minted}
@@ -46,9 +45,19 @@ By inspecting the Java code at compilation time, and by imposing constraints on 
 
 ## Round tripping data from R to Java to R
 
-```{r out.width="100%"}
-knitr::include_graphics("./RClass.png")
+```{r out.width="50%"}
+# knitr::include_graphics("./RClass.png")
 # TODO: https://github.com/rstudio/nomnoml
+
+uml = readr::read_file(here::here("java/target/generated-docs/RTypes.txt"))
+# uml2 = uml %>% stringr::str_replace("@startuml","@startuml\n\n!pragma layout visjs\n\n!pragma graphattributes rankir=LR;")
+uml2 = stringr::str_replace(uml,"@startuml","@startuml\n\nleft to right direction")
+# devtools::install_github("rkrug/plantuml")
+# plantuml::plantuml_update()
+
+p = plantuml::plantuml(uml2)
+invisible(plot(p,file = here::here("docs/articles/RTypes.svg")))
+knitr::include_graphics(here::here("docs/articles/RTypes.svg" ))
 ```
 
 

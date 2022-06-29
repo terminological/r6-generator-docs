@@ -42,7 +42,7 @@
 <meta property="og:title" content="FeatureTest — FeatureTest" />
 <meta property="og:description" content="A test of the R6 generator templating
 Version: 0.0.0.9999
-Generated: 2022-06-23T15:59:23.156503" />
+Generated: 2022-06-29T23:54:07.980560" />
 
 
 
@@ -106,7 +106,7 @@ Generated: 2022-06-23T15:59:23.156503" />
       <a href="../articles/R6-generator-features.html">R6 Generator Maven Plugin: Key features</a>
     </li>
     <li>
-      <a href="../articles/R6-generator-intro.html">R6 Generator Maven Plugin: Bridging Java and R6 for Package Development</a>
+      <a href="../articles/R6-generator-maven-archetype.html">R6 generator maven archetype</a>
     </li>
     <li>
       <a href="../articles/R6-generator-maven-config.html">R6 Generator Maven Plugin: Metadata and Maven configuration</a>
@@ -140,7 +140,7 @@ Generated: 2022-06-23T15:59:23.156503" />
     <div class="ref-description">
     <p>A test of the R6 generator templating</p>
 <p>Version: 0.0.0.9999</p>
-<p>Generated: 2022-06-23T15:59:23.156503</p>
+<p>Generated: 2022-06-29T23:54:07.980560</p>
     </div>
 
 
@@ -216,7 +216,8 @@ included in the R Api (i.e. not annotated with @RMethod.) &lt;br&gt;</p>
       </pre><p></div></p><p></p><p><hr>
 	<a id="method-doHelloWorld"></a></p>	
 <p></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>doHelloWorld()</code></h3>
-<p>Description of a hello world function</p>	
+<p>A hello world function</p>
+<p>More detailed description</p>	
 
 <p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
 <p><div class="r"></p><pre>
@@ -240,6 +241,7 @@ included in the R Api (i.e. not annotated with @RMethod.) &lt;br&gt;</p>
       </pre><p></div></p><p></p><p><hr>
 	<a id="method-doSum"></a></p>	
 <p></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>doSum()</code></h3>
+<p>Add some numbers (1).</p>
 <p>The doSum function description = it adds two numerics</p>	
 
 <p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
@@ -265,6 +267,7 @@ not available
 			</pre><p></div></p><p></p><p><hr>
 	<a id="method-doSum2"></a></p>	
 <p></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>doSum2()</code></h3>
+<p>Adds some numbers</p>
 <p>Do sum 2 uses native ints rather than RNumerics
 It should throw an error if given something that cannot be coerced to an integer. 
 This also demonstrated the use of the `@RDefault` annotation</p>	
@@ -291,8 +294,9 @@ not available
 			</pre><p></div></p><p></p><p><hr>
 	<a id="method-demoStatic"></a></p>	
 <p></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>demoStatic()</code></h3>
-<p>Static methods are also supported. These are accessed through the
-root of the R api.</p>	
+<p>Static methods are also supported.</p>
+<p>These are accessed through the
+root of the R api, and as a functional interface</p>	
 
 <p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
 <p><div class="r"></p><pre>
@@ -311,9 +315,11 @@ root of the R api.</p>
 <p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Examples</h4>
 <p><div class="r example copy"></p><pre>
 <span class='va'>J</span><span class='op'>$</span><span class='va'>FeatureTest</span><span class='op'>$</span><span class='fu'>demoStatic</span><span class='op'>(</span><span class='st'>'Ola, el mundo'</span><span class='op'>)</span>
+<span class='fu'><a href='demo_static.html'>demo_static</a></span><span class='op'>(</span><span class='st'>'Bonjour, le monde'</span><span class='op'>)</span>
       </pre><p></div></p><p></p><p><hr>
 	<a id="method-getMessage"></a></p>	
 <p></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>getMessage()</code></h3>
+<p>Get the message</p>
 <p>message desciption</p>	
 
 <p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
@@ -337,6 +343,7 @@ not available
 			</pre><p></div></p><p></p><p><hr>
 	<a id="method-fluentSetMessage"></a></p>	
 <p></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>fluentSetMessage()</code></h3>
+<p>Set a message in a fluent way</p>
 <p>A fluent method which updates the message in this object, returning the
 same object. This is differentiated from factory methods which produce a new
 instance of the same class by checking to see if the returned Java object is equal
@@ -455,8 +462,9 @@ not available
 not available
 			</pre><p></div></p><p></p><p><hr>
 	<a id="method-diamonds"></a></p>	
-<p></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>diamonds()</code></h3>
-<p>A copy of the ggplot2::diamonds dataframe serialised into java, using
+<p></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code><a href='diamonds.html'>diamonds()</a></code></h3>
+<p>The ggplot2::diamonds dataframe</p>
+<p>A copy serialised into java, using
 RObject.writeRDS, saved within the jar file of the package, and exposed here
 using RObject.readRDS.</p>	
 
@@ -480,7 +488,7 @@ using RObject.readRDS.</p>
       </pre><p></div></p><p></p><p><hr>
 	<a id="method-errorThrower"></a></p>	
 <p></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>errorThrower()</code></h3>
-<p>just throws an error</p>	
+<p>Throws an error</p>	
 
 <p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
 <p><div class="r"></p><pre>
@@ -526,6 +534,7 @@ not available
 <span class='co'>## Method `FeatureTest$demoStatic`</span>
 <span class='co'>## -----------------------------------</span>
 <span class='va'>J</span><span class='op'>$</span><span class='va'>FeatureTest</span><span class='op'>$</span><span class='fu'>demoStatic</span><span class='op'>(</span><span class='st'>'Ola, el mundo'</span><span class='op'>)</span>
+<span class='fu'><a href='demo_static.html'>demo_static</a></span><span class='op'>(</span><span class='st'>'Bonjour, le monde'</span><span class='op'>)</span>
 
 <span class='co'>## -----------------------------------</span>
 <span class='co'>## Method `FeatureTest$getMessage`</span>
@@ -572,7 +581,7 @@ not available
 
       <footer>
       <div class="copyright">
-  <p>Developed by Rob Challen, Rob Challen, terminological.</p>
+  <p>Developed by Rob Challen, terminological, Rob Challen.</p>
 </div>
 
 <div class="pkgdown">
