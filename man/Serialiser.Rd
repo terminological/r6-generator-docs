@@ -11,9 +11,9 @@
 \description{
 Actually useful class which takes an R dataframe and a filename
 
-Version: 0.0.0.9999
+Version: 0.5.1
 
-Generated: 2022-06-29T23:54:07.957884
+Generated: 2022-07-07T16:10:04.247
 }
 
 \details{
@@ -118,7 +118,7 @@ not available
 	\if{html}{\out{<a id="method-serialiseDataframe"></a>}}
 	
 	\subsection{Method \code{serialiseDataframe()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -155,7 +155,7 @@ not available
 	\if{html}{\out{<a id="method-deserialiseDataframe"></a>}}
 	
 	\subsection{Method \code{deserialiseDataframe()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -191,7 +191,7 @@ not available
 	\if{html}{\out{<a id="method-serialiseList"></a>}}
 	
 	\subsection{Method \code{serialiseList()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -228,7 +228,7 @@ not available
 	\if{html}{\out{<a id="method-deserialiseList"></a>}}
 	
 	\subsection{Method \code{deserialiseList()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -264,7 +264,7 @@ not available
 	\if{html}{\out{<a id="method-serialiseNamedList"></a>}}
 	
 	\subsection{Method \code{serialiseNamedList()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -301,7 +301,7 @@ not available
 	\if{html}{\out{<a id="method-deserialiseNamedList"></a>}}
 	
 	\subsection{Method \code{deserialiseNamedList()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{

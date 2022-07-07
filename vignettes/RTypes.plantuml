@@ -1,0 +1,179 @@
+@startuml
+
+interface uk.co.terminological.rjava.types.JNIPrimitive {
+}
+
+
+abstract class uk.co.terminological.rjava.types.RArray {
+}
+
+
+class uk.co.terminological.rjava.types.RBoundDataframe {
+}
+
+
+class uk.co.terminological.rjava.types.RBoundDataframeRow {
+}
+
+
+class uk.co.terminological.rjava.types.RCharacter {
+}
+
+
+class uk.co.terminological.rjava.types.RCharacterVector {
+}
+
+
+interface uk.co.terminological.rjava.types.RCollection {
+}
+
+
+class uk.co.terminological.rjava.types.RDataframe {
+}
+
+
+class uk.co.terminological.rjava.types.RDataframeRow {
+}
+
+
+class uk.co.terminological.rjava.types.RDate {
+}
+
+
+class uk.co.terminological.rjava.types.RDateVector {
+}
+
+
+class uk.co.terminological.rjava.types.RFactor {
+}
+
+
+class uk.co.terminological.rjava.types.RFactorVector {
+}
+
+
+class uk.co.terminological.rjava.types.RInteger {
+}
+
+
+class uk.co.terminological.rjava.types.RIntegerVector {
+}
+
+
+class uk.co.terminological.rjava.types.RList {
+}
+
+
+class uk.co.terminological.rjava.types.RLogical {
+}
+
+
+class uk.co.terminological.rjava.types.RLogicalVector {
+}
+
+
+class uk.co.terminological.rjava.types.RNamed {
+}
+
+
+class uk.co.terminological.rjava.types.RNamedList {
+}
+
+
+class uk.co.terminological.rjava.types.RNamedPrimitives {
+}
+
+
+class uk.co.terminological.rjava.types.RNull {
+}
+
+
+class uk.co.terminological.rjava.types.RNumeric {
+}
+
+
+class uk.co.terminological.rjava.types.RNumericArray {
+}
+
+
+class uk.co.terminological.rjava.types.RNumericVector {
+}
+
+
+interface uk.co.terminological.rjava.types.RObject {
+}
+
+
+interface uk.co.terminological.rjava.types.RPrimitive {
+}
+
+
+class uk.co.terminological.rjava.types.RUntypedNa {
+}
+
+
+class uk.co.terminological.rjava.types.RUntypedNaVector {
+}
+
+
+abstract class uk.co.terminological.rjava.types.RVector {
+}
+
+
+
+
+uk.co.terminological.rjava.types.RArray ..|>  uk.co.terminological.rjava.types.RObject
+uk.co.terminological.rjava.types.RBoundDataframe --|>  uk.co.terminological.rjava.types.RDataframe
+uk.co.terminological.rjava.types.RBoundDataframeRow -->  uk.co.terminological.rjava.types.RBoundDataframe : boundDataframe
+uk.co.terminological.rjava.types.RBoundDataframeRow --|>  uk.co.terminological.rjava.types.RDataframeRow
+uk.co.terminological.rjava.types.RCharacter -->  uk.co.terminological.rjava.types.RCharacter : NA
+uk.co.terminological.rjava.types.RCharacter ..|>  uk.co.terminological.rjava.types.JNIPrimitive
+uk.co.terminological.rjava.types.RCharacter ..|>  uk.co.terminological.rjava.types.RPrimitive
+uk.co.terminological.rjava.types.RCharacterVector --|>  uk.co.terminological.rjava.types.RVector
+uk.co.terminological.rjava.types.RCharacterVector ..|>  uk.co.terminological.rjava.types.JNIPrimitive
+uk.co.terminological.rjava.types.RCollection ..|>  uk.co.terminological.rjava.types.RObject
+uk.co.terminological.rjava.types.RDataframe ..|>  uk.co.terminological.rjava.types.RCollection
+uk.co.terminological.rjava.types.RDataframeRow -->  uk.co.terminological.rjava.types.RDataframe : dataframe
+uk.co.terminological.rjava.types.RDataframeRow --|>  uk.co.terminological.rjava.types.RNamedPrimitives
+uk.co.terminological.rjava.types.RDataframeRow ..|>  uk.co.terminological.rjava.types.RObject
+uk.co.terminological.rjava.types.RDate -->  uk.co.terminological.rjava.types.RDate : NA
+uk.co.terminological.rjava.types.RDate ..|>  uk.co.terminological.rjava.types.JNIPrimitive
+uk.co.terminological.rjava.types.RDate ..|>  uk.co.terminological.rjava.types.RPrimitive
+uk.co.terminological.rjava.types.RDateVector --|>  uk.co.terminological.rjava.types.RVector
+uk.co.terminological.rjava.types.RDateVector ..|>  uk.co.terminological.rjava.types.JNIPrimitive
+uk.co.terminological.rjava.types.RFactor -->  uk.co.terminological.rjava.types.RFactor : NA
+uk.co.terminological.rjava.types.RFactor ..|>  uk.co.terminological.rjava.types.RPrimitive
+uk.co.terminological.rjava.types.RFactorVector --|>  uk.co.terminological.rjava.types.RVector
+uk.co.terminological.rjava.types.RInteger -->  uk.co.terminological.rjava.types.RInteger : MAX_VALUE
+uk.co.terminological.rjava.types.RInteger -->  uk.co.terminological.rjava.types.RInteger : MIN_VALUE
+uk.co.terminological.rjava.types.RInteger -->  uk.co.terminological.rjava.types.RInteger : NA
+uk.co.terminological.rjava.types.RInteger ..|>  uk.co.terminological.rjava.types.JNIPrimitive
+uk.co.terminological.rjava.types.RInteger ..|>  uk.co.terminological.rjava.types.RPrimitive
+uk.co.terminological.rjava.types.RIntegerVector --|>  uk.co.terminological.rjava.types.RVector
+uk.co.terminological.rjava.types.RIntegerVector ..|>  uk.co.terminological.rjava.types.JNIPrimitive
+uk.co.terminological.rjava.types.RList ..|>  uk.co.terminological.rjava.types.RCollection
+uk.co.terminological.rjava.types.RLogical -->  uk.co.terminological.rjava.types.RLogical : NA
+uk.co.terminological.rjava.types.RLogical ..|>  uk.co.terminological.rjava.types.JNIPrimitive
+uk.co.terminological.rjava.types.RLogical ..|>  uk.co.terminological.rjava.types.RPrimitive
+uk.co.terminological.rjava.types.RLogicalVector --|>  uk.co.terminological.rjava.types.RVector
+uk.co.terminological.rjava.types.RLogicalVector ..|>  uk.co.terminological.rjava.types.JNIPrimitive
+uk.co.terminological.rjava.types.RNamed -->  uk.co.terminological.rjava.types.RObject : object
+uk.co.terminological.rjava.types.RNamed ..|>  uk.co.terminological.rjava.types.RObject
+uk.co.terminological.rjava.types.RNamedList ..|>  uk.co.terminological.rjava.types.RCollection
+uk.co.terminological.rjava.types.RNull ..|>  uk.co.terminological.rjava.types.RObject
+uk.co.terminological.rjava.types.RNumeric -->  uk.co.terminological.rjava.types.RNumeric : NA
+uk.co.terminological.rjava.types.RNumeric ..|>  uk.co.terminological.rjava.types.JNIPrimitive
+uk.co.terminological.rjava.types.RNumeric ..|>  uk.co.terminological.rjava.types.RPrimitive
+uk.co.terminological.rjava.types.RNumericArray -->  uk.co.terminological.rjava.types.RNumericVector : vector
+uk.co.terminological.rjava.types.RNumericArray --|>  uk.co.terminological.rjava.types.RArray
+uk.co.terminological.rjava.types.RNumericArray ..|>  uk.co.terminological.rjava.types.JNIPrimitive
+uk.co.terminological.rjava.types.RNumericVector --|>  uk.co.terminological.rjava.types.RVector
+uk.co.terminological.rjava.types.RNumericVector ..|>  uk.co.terminological.rjava.types.JNIPrimitive
+uk.co.terminological.rjava.types.RPrimitive ..|>  uk.co.terminological.rjava.types.RObject
+uk.co.terminological.rjava.types.RUntypedNa -->  uk.co.terminological.rjava.types.RUntypedNa : NA
+uk.co.terminological.rjava.types.RUntypedNa ..|>  uk.co.terminological.rjava.types.RPrimitive
+uk.co.terminological.rjava.types.RUntypedNaVector --|>  uk.co.terminological.rjava.types.RVector
+uk.co.terminological.rjava.types.RVector ..|>  uk.co.terminological.rjava.types.RObject
+
+
+@enduml

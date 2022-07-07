@@ -2,9 +2,8 @@
 
 \name{deserialise_named_list}
 \alias{deserialise_named_list}
-\title{no description}
-\usage{
-deserialise_named_list(
+\title{no title}
+\usage{deserialise_named_list(
 	filename
 )
 }
@@ -17,10 +16,7 @@ deserialise_named_list(
 RNamedList: 
 }
 \description{
-
-}
-\examples{\dontrun{
-}
+no description
 }
 \keyword{java api}
 

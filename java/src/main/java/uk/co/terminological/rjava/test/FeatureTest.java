@@ -34,7 +34,7 @@ import uk.co.terminological.rjava.types.RObject;
  * 
  */
 @RClass(
-		imports = {"ggplot2","dplyr","tibble"},
+		imports = {"ggplot2","dplyr","tibble","readr","stringr"},
 		suggests = {"roxygen2","devtools","here","tidyverse"}
 		)
 public class FeatureTest {

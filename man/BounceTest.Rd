@@ -11,9 +11,9 @@
 \description{
 missing description
 
-Version: 0.0.0.9999
+Version: 0.5.1
 
-Generated: 2022-06-29T23:54:07.940190
+Generated: 2022-07-07T16:10:04.382
 }
 
 \details{
@@ -191,7 +191,7 @@ not available
 	\if{html}{\out{<a id="method-bounceNull"></a>}}
 	
 	\subsection{Method \code{bounceNull()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -228,7 +228,7 @@ not available
 	\if{html}{\out{<a id="method-bounceVoid"></a>}}
 	
 	\subsection{Method \code{bounceVoid()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -265,7 +265,7 @@ not available
 	\if{html}{\out{<a id="method-bounceString"></a>}}
 	
 	\subsection{Method \code{bounceString()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -302,7 +302,7 @@ not available
 	\if{html}{\out{<a id="method-bounceCharacter"></a>}}
 	
 	\subsection{Method \code{bounceCharacter()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -339,7 +339,7 @@ not available
 	\if{html}{\out{<a id="method-bounceCharacterVector"></a>}}
 	
 	\subsection{Method \code{bounceCharacterVector()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -376,7 +376,7 @@ not available
 	\if{html}{\out{<a id="method-bounceDouble"></a>}}
 	
 	\subsection{Method \code{bounceDouble()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -413,7 +413,7 @@ not available
 	\if{html}{\out{<a id="method-bounceNumeric"></a>}}
 	
 	\subsection{Method \code{bounceNumeric()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -450,7 +450,7 @@ not available
 	\if{html}{\out{<a id="method-bounceNumericVector"></a>}}
 	
 	\subsection{Method \code{bounceNumericVector()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -487,7 +487,7 @@ not available
 	\if{html}{\out{<a id="method-bounceInt"></a>}}
 	
 	\subsection{Method \code{bounceInt()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -524,7 +524,7 @@ not available
 	\if{html}{\out{<a id="method-bounceInteger"></a>}}
 	
 	\subsection{Method \code{bounceInteger()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -561,7 +561,7 @@ not available
 	\if{html}{\out{<a id="method-bounceIntegerVector"></a>}}
 	
 	\subsection{Method \code{bounceIntegerVector()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -598,7 +598,7 @@ not available
 	\if{html}{\out{<a id="method-bounceFactor"></a>}}
 	
 	\subsection{Method \code{bounceFactor()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -635,7 +635,7 @@ not available
 	\if{html}{\out{<a id="method-bounceFactorVector"></a>}}
 	
 	\subsection{Method \code{bounceFactorVector()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -672,7 +672,7 @@ not available
 	\if{html}{\out{<a id="method-bounceDate"></a>}}
 	
 	\subsection{Method \code{bounceDate()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -709,7 +709,7 @@ not available
 	\if{html}{\out{<a id="method-bounceDateVector"></a>}}
 	
 	\subsection{Method \code{bounceDateVector()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -746,7 +746,7 @@ not available
 	\if{html}{\out{<a id="method-bounceLogical"></a>}}
 	
 	\subsection{Method \code{bounceLogical()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -783,7 +783,7 @@ not available
 	\if{html}{\out{<a id="method-bounceLogicalVector"></a>}}
 	
 	\subsection{Method \code{bounceLogicalVector()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -820,7 +820,7 @@ not available
 	\if{html}{\out{<a id="method-bounceDataframe"></a>}}
 	
 	\subsection{Method \code{bounceDataframe()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -857,7 +857,7 @@ not available
 	\if{html}{\out{<a id="method-bounceList"></a>}}
 	
 	\subsection{Method \code{bounceList()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -894,7 +894,7 @@ not available
 	\if{html}{\out{<a id="method-bounceNamedList"></a>}}
 	
 	\subsection{Method \code{bounceNamedList()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -931,7 +931,7 @@ not available
 	\if{html}{\out{<a id="method-bounceArray"></a>}}
 	
 	\subsection{Method \code{bounceArray()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{

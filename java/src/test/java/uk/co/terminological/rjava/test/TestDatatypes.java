@@ -130,12 +130,13 @@ class TestDatatypes {
 		
 		// Java boxed arrays can be directly converted to vector from RVector
 		// Integer.MIN_VALUE inputs are converted to nulls silently
-		Integer[] tmp = {1,3,5,7, null, Integer.MIN_VALUE, 0};
+		Integer[] tmp = {1,3,5,7, null, Integer.MIN_VALUE, Integer.MIN_VALUE+1, 0};
 		RIntegerVector col0 = RVector.with(tmp);
 		RIntegerVector col1 = convert(tmp);
 		
 		assertTrue(col1.get(4).isNa());
 		assertTrue(col1.get(5).isNa());
+		assertFalse(col1.get(6).isNa());
 		
 		assertTrue(!col1.get(4).opt().isPresent());
 		
@@ -163,7 +164,7 @@ class TestDatatypes {
 		// Primitive arrays are slightly less flexible but RConverter can process them
 		// nulls are not allowed but the "equivalent" to NA is Integer.MIN_VALUE = RInteger.NA_INT
 		// If they are converted to a boxed form by an IntStream they can be collected as above
-		int[] tmp2 = {1,3,5,7, Integer.MIN_VALUE, Integer.MIN_VALUE, 0};
+		int[] tmp2 = {1,3,5,7, Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE+1, 0};
 		RIntegerVector col7 = convert(tmp2);
 		RIntegerVector col8 = IntStream.of(tmp2).boxed().collect(integerCollector());
 		assertTrue(col1.equals(col7));

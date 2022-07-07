@@ -22,9 +22,6 @@ here::i_am("vignettes/R6-generator-runtime.Rmd")
 source(here::here("vignettes/codeSnip.R"))
 ```
 
-<div class="watermark">DRAFT</div>
-
-
 
 ## Imports
 

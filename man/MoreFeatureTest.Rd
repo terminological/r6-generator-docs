@@ -17,9 +17,9 @@
 \description{
 This has no documentation
 
-Version: 0.0.0.9999
+Version: 0.5.1
 
-Generated: 2022-06-29T23:54:08.011391
+Generated: 2022-07-07T16:10:04.191
 }
 
 \details{
@@ -160,7 +160,7 @@ J$MoreFeatureTest$create('Hello,',' World')
 	\if{html}{\out{<a id="method-testLogging"></a>}}
 	
 	\subsection{Method \code{testLogging()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -197,7 +197,7 @@ not available
 	\if{html}{\out{<a id="method-throwCatchable"></a>}}
 	
 	\subsection{Method \code{throwCatchable()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -234,7 +234,7 @@ not available
 	\if{html}{\out{<a id="method-printMessage"></a>}}
 	
 	\subsection{Method \code{printMessage()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -271,7 +271,7 @@ not available
 	\if{html}{\out{<a id="method-throwRuntime"></a>}}
 	
 	\subsection{Method \code{throwRuntime()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -308,7 +308,7 @@ not available
 	\if{html}{\out{<a id="method-concat"></a>}}
 	
 	\subsection{Method \code{concat()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{

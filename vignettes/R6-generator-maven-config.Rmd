@@ -36,7 +36,7 @@ An example of the Maven configuration from this test project is shown below. The
 ### Sample `pom.xml`
 
 ```{r results='asis', echo = FALSE}
-codeSnip(type="xml",filename=here::here("src/pom.xml"))
+codeSnip(type="xml",filename=here::here("java/pom.xml"))
 ```
 
 ## The r6-generator-runtime Java library
@@ -81,6 +81,6 @@ The package data section includes metadata that describes the R library and a fe
 
 ## Goals
 
-The plugin only two goals - "compile-java-library" and "generate-r-library"
+The plugin only two goals - "clean-r-library", "flatten-pom" and "generate-r-library"
 
 *TODO: explain what they are

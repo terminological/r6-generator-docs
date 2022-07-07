@@ -11,9 +11,9 @@
 \description{
 missing description
 
-Version: 0.0.0.9999
+Version: 0.5.1
 
-Generated: 2022-06-29T23:54:07.928062
+Generated: 2022-07-07T16:10:04.464
 }
 
 \details{
@@ -156,7 +156,7 @@ not available
 	\if{html}{\out{<a id="method-generateCharacter"></a>}}
 	
 	\subsection{Method \code{generateCharacter()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -193,7 +193,7 @@ not available
 	\if{html}{\out{<a id="method-generateNumeric"></a>}}
 	
 	\subsection{Method \code{generateNumeric()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -230,7 +230,7 @@ not available
 	\if{html}{\out{<a id="method-generateInteger"></a>}}
 	
 	\subsection{Method \code{generateInteger()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -267,7 +267,7 @@ not available
 	\if{html}{\out{<a id="method-generateFactor"></a>}}
 	
 	\subsection{Method \code{generateFactor()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -304,7 +304,7 @@ not available
 	\if{html}{\out{<a id="method-generateLogical"></a>}}
 	
 	\subsection{Method \code{generateLogical()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -341,7 +341,7 @@ not available
 	\if{html}{\out{<a id="method-generateCharacterVec"></a>}}
 	
 	\subsection{Method \code{generateCharacterVec()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -378,7 +378,7 @@ not available
 	\if{html}{\out{<a id="method-generateNumericVec"></a>}}
 	
 	\subsection{Method \code{generateNumericVec()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -415,7 +415,7 @@ not available
 	\if{html}{\out{<a id="method-generateIntegerVec"></a>}}
 	
 	\subsection{Method \code{generateIntegerVec()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -452,7 +452,7 @@ not available
 	\if{html}{\out{<a id="method-generateFactorVec"></a>}}
 	
 	\subsection{Method \code{generateFactorVec()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -489,7 +489,7 @@ not available
 	\if{html}{\out{<a id="method-generateLogicalVec"></a>}}
 	
 	\subsection{Method \code{generateLogicalVec()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -526,7 +526,7 @@ not available
 	\if{html}{\out{<a id="method-generateDataframe"></a>}}
 	
 	\subsection{Method \code{generateDataframe()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -563,7 +563,7 @@ not available
 	\if{html}{\out{<a id="method-generateStreamDataframe"></a>}}
 	
 	\subsection{Method \code{generateStreamDataframe()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{
@@ -637,7 +637,7 @@ not available
 	\if{html}{\out{<a id="method-generateNamedList"></a>}}
 	
 	\subsection{Method \code{generateNamedList()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{

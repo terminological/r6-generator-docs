@@ -8,9 +8,9 @@
 #' 
 #' This is a class of the testRapi generated R library.
 #' 
-#' Version: 0.0.0.9999
+#' Version: 0.5.1
 #' 
-#' Generated: 2022-06-29T23:54:08.014653
+#' Generated: 2022-07-07T16:10:04.227
 #'
 #' @details
 	#' This has no documentation
@@ -40,7 +40,7 @@ MoreFeatureTest = R6::R6Class("MoreFeatureTest", public=list(
 	
 	#' @description 
 	#' testLogging: 
-	#' no description
+	#' no title
 	#' @return void: 
 	#' 
 	testLogging = function() {
@@ -57,7 +57,7 @@ MoreFeatureTest = R6::R6Class("MoreFeatureTest", public=list(
 	},
 	#' @description 
 	#' throwCatchable: 
-	#' no description
+	#' no title
 	#' @return RCharacter: 
 	#' 
 	throwCatchable = function() {
@@ -74,7 +74,7 @@ MoreFeatureTest = R6::R6Class("MoreFeatureTest", public=list(
 	},
 	#' @description 
 	#' printMessage: 
-	#' no description
+	#' no title
 	#' @return void: 
 	#' 
 	printMessage = function() {
@@ -91,7 +91,7 @@ MoreFeatureTest = R6::R6Class("MoreFeatureTest", public=list(
 	},
 	#' @description 
 	#' throwRuntime: 
-	#' no description
+	#' no title
 	#' @return RCharacter: 
 	#' 
 	throwRuntime = function() {

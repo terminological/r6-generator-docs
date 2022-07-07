@@ -8,9 +8,9 @@
 #' 
 #' This is a class of the testRapi generated R library.
 #' 
-#' Version: 0.0.0.9999
+#' Version: 0.5.1
 #' 
-#' Generated: 2022-06-29T23:54:07.949854
+#' Generated: 2022-07-07T16:10:04.416
 #'
 #' @details
 	#' no details
@@ -40,7 +40,7 @@ BounceTest = R6::R6Class("BounceTest", public=list(
 	
 	#' @description 
 	#' bounceNull: 
-	#' no description
+	#' no title
 	#' @param x - (java expects a RNull)
 	#' @return RNull: 
 	#' 
@@ -59,7 +59,7 @@ BounceTest = R6::R6Class("BounceTest", public=list(
 	},
 	#' @description 
 	#' bounceVoid: 
-	#' no description
+	#' no title
 	#' @return void: 
 	#' 
 	bounceVoid = function() {
@@ -76,7 +76,7 @@ BounceTest = R6::R6Class("BounceTest", public=list(
 	},
 	#' @description 
 	#' bounceString: 
-	#' no description
+	#' no title
 	#' @param x - (java expects a String)
 	#' @return String: 
 	#' 
@@ -95,7 +95,7 @@ BounceTest = R6::R6Class("BounceTest", public=list(
 	},
 	#' @description 
 	#' bounceCharacter: 
-	#' no description
+	#' no title
 	#' @param x - (java expects a RCharacter)
 	#' @return RCharacter: 
 	#' 
@@ -114,7 +114,7 @@ BounceTest = R6::R6Class("BounceTest", public=list(
 	},
 	#' @description 
 	#' bounceCharacterVector: 
-	#' no description
+	#' no title
 	#' @param x - (java expects a RCharacterVector)
 	#' @return RCharacterVector: 
 	#' 
@@ -133,7 +133,7 @@ BounceTest = R6::R6Class("BounceTest", public=list(
 	},
 	#' @description 
 	#' bounceDouble: 
-	#' no description
+	#' no title
 	#' @param x - (java expects a double)
 	#' @return double: 
 	#' 
@@ -152,7 +152,7 @@ BounceTest = R6::R6Class("BounceTest", public=list(
 	},
 	#' @description 
 	#' bounceNumeric: 
-	#' no description
+	#' no title
 	#' @param x - (java expects a RNumeric)
 	#' @return RNumeric: 
 	#' 
@@ -171,7 +171,7 @@ BounceTest = R6::R6Class("BounceTest", public=list(
 	},
 	#' @description 
 	#' bounceNumericVector: 
-	#' no description
+	#' no title
 	#' @param x - (java expects a RNumericVector)
 	#' @return RNumericVector: 
 	#' 
@@ -190,7 +190,7 @@ BounceTest = R6::R6Class("BounceTest", public=list(
 	},
 	#' @description 
 	#' bounceInt: 
-	#' no description
+	#' no title
 	#' @param x - (java expects a int)
 	#' @return int: 
 	#' 
@@ -209,7 +209,7 @@ BounceTest = R6::R6Class("BounceTest", public=list(
 	},
 	#' @description 
 	#' bounceInteger: 
-	#' no description
+	#' no title
 	#' @param x - (java expects a RInteger)
 	#' @return RInteger: 
 	#' 
@@ -228,7 +228,7 @@ BounceTest = R6::R6Class("BounceTest", public=list(
 	},
 	#' @description 
 	#' bounceIntegerVector: 
-	#' no description
+	#' no title
 	#' @param x - (java expects a RIntegerVector)
 	#' @return RIntegerVector: 
 	#' 
@@ -247,7 +247,7 @@ BounceTest = R6::R6Class("BounceTest", public=list(
 	},
 	#' @description 
 	#' bounceFactor: 
-	#' no description
+	#' no title
 	#' @param x - (java expects a RFactor)
 	#' @return RFactor: 
 	#' 
@@ -266,7 +266,7 @@ BounceTest = R6::R6Class("BounceTest", public=list(
 	},
 	#' @description 
 	#' bounceFactorVector: 
-	#' no description
+	#' no title
 	#' @param x - (java expects a RFactorVector)
 	#' @return RFactorVector: 
 	#' 
@@ -285,7 +285,7 @@ BounceTest = R6::R6Class("BounceTest", public=list(
 	},
 	#' @description 
 	#' bounceDate: 
-	#' no description
+	#' no title
 	#' @param x - (java expects a RDate)
 	#' @return RDate: 
 	#' 
@@ -304,7 +304,7 @@ BounceTest = R6::R6Class("BounceTest", public=list(
 	},
 	#' @description 
 	#' bounceDateVector: 
-	#' no description
+	#' no title
 	#' @param x - (java expects a RDateVector)
 	#' @return RDateVector: 
 	#' 
@@ -323,7 +323,7 @@ BounceTest = R6::R6Class("BounceTest", public=list(
 	},
 	#' @description 
 	#' bounceLogical: 
-	#' no description
+	#' no title
 	#' @param x - (java expects a RLogical)
 	#' @return RLogical: 
 	#' 
@@ -342,7 +342,7 @@ BounceTest = R6::R6Class("BounceTest", public=list(
 	},
 	#' @description 
 	#' bounceLogicalVector: 
-	#' no description
+	#' no title
 	#' @param x - (java expects a RLogicalVector)
 	#' @return RLogicalVector: 
 	#' 
@@ -361,7 +361,7 @@ BounceTest = R6::R6Class("BounceTest", public=list(
 	},
 	#' @description 
 	#' bounceDataframe: 
-	#' no description
+	#' no title
 	#' @param x - (java expects a RDataframe)
 	#' @return RDataframe: 
 	#' 
@@ -380,7 +380,7 @@ BounceTest = R6::R6Class("BounceTest", public=list(
 	},
 	#' @description 
 	#' bounceList: 
-	#' no description
+	#' no title
 	#' @param x - (java expects a RList)
 	#' @return RList: 
 	#' 
@@ -399,7 +399,7 @@ BounceTest = R6::R6Class("BounceTest", public=list(
 	},
 	#' @description 
 	#' bounceNamedList: 
-	#' no description
+	#' no title
 	#' @param x - (java expects a RNamedList)
 	#' @return RNamedList: 
 	#' 
@@ -418,7 +418,7 @@ BounceTest = R6::R6Class("BounceTest", public=list(
 	},
 	#' @description 
 	#' bounceArray: 
-	#' no description
+	#' no title
 	#' @param x - (java expects a RNumericArray)
 	#' @return RNumericArray: 
 	#' 

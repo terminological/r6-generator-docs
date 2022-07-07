@@ -16,9 +16,9 @@
 \description{
 A test of the R6 generator templating
 
-Version: 0.0.0.9999
+Version: 0.5.1
 
-Generated: 2022-06-29T23:54:07.980560
+Generated: 2022-07-07T16:10:04.306
 }
 
 \details{
@@ -450,7 +450,7 @@ not available
 	\if{html}{\out{<a id="method-objectAsParameter"></a>}}
 	
 	\subsection{Method \code{objectAsParameter()}}{
-		no description
+		no title
 	
 
 		\subsection{Usage}{

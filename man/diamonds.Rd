@@ -3,20 +3,12 @@
 \name{diamonds}
 \alias{diamonds}
 \title{The ggplot2::diamonds dataframe }
-\usage{
-diamonds(
-	
-)
-}
-\arguments{
-	\if{html}{\out{<div class="arguments">}}
-	\if{html}{\out{</div>}}
+\usage{diamonds()
 }
 \value{
 RDataframe: the ggplot2::diamonds dataframe
 }
 \description{
-
 A copy serialised into java, using
 RObject.writeRDS, saved within the jar file of the package, and exposed here
 using RObject.readRDS.

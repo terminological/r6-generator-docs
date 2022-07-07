@@ -2,9 +2,8 @@
 
 \name{concat}
 \alias{concat}
-\title{no description}
-\usage{
-concat(
+\title{no title}
+\usage{concat(
 	message1,
 	message2
 )
@@ -19,10 +18,7 @@ concat(
 RCharacter: 
 }
 \description{
-
-}
-\examples{\dontrun{
-}
+no description
 }
 \keyword{java api}
 

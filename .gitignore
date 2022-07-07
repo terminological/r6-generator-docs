@@ -1,23 +1,19 @@
-# Default gitignore for r6-generator-maven-plugin projects 
-# the general setup is to build and include the binary fat JAR
+# Default gitignore for r6-generator-maven-plugin projects.
+# The general setup is to build and include the binary fat JAR
 # during library development and deploy it from github
 # however this may fall foul of CRAN's size policies.
 # The alternative is to compile the source if needed during
 # the first use of the R package.
-# In this case we need to uncomment the following line to prevent
-# development JAR files from being deployed to github:
 
-# inst/java/*.jar  
+# The standard Java exclusions are in the java subdirectory's own .gitignore
+# the Java project is set up to be in subdirectory "java"
+# meaning pom will be in java/pom.xml from the root of the java part of the project
 
-# The standard Java exclusions are in the src subdirectory's own .gitignore
-# the Java project is set up to be in subdirectory "src"
-# which is R-package src (not java libraries src)
-# meaning pom will be in src/pom.xml
-
-# The standard R exclusions: R / RStudio project files assuming R package is in root directory of repository
+# The standard R exclusions that follow assume the R package is in root directory of repository
 # This is the default for the r6-generator-maven-plugin and makes most sense for packages deployed into a joint
-# repository for Java and R code onto github where the root of the maven project is /src/pom.xml, 
+# repository for Java and R code onto github where the root of the maven project is java/pom.xml, 
 # The R package is then tested with github workflows and installed into R with devtools from github.
+# most of these files are side effects of RStudio or package build tools.
 
 # History files
 .Rhistory

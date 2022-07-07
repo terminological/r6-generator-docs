@@ -7,9 +7,8 @@ GitHub actions test environments:
 * os: Ubuntu 20.04; R: 4.1.0, Java 11
 * os: Ubuntu 20.04, R: 3.6.1, Java 8
 * os: Windows Server 2022, R: 4.1.0, Java 11
-
-not run on
-* os: Ubuntu 22.04, R: 4.2.0, Java 17
+* os: Ubuntu 20.04, R: 4.2.0, Java 17
+* os: Ubuntu 20.04, R: devel, Java 17
 
 ## R CMD check results
 # TODO: insert R CMD check results here before submission
@@ -22,12 +21,11 @@ This generates wrapper R6 code, documentation, DESCRIPTION and NAMESPACE files, 
 github workflows. If there are specific issues with the way these files are generated please could you raise issues on the r6-generator project on the link above
 so they can be fixed for all future projects.
 
-* Only the Java source code is supplied with this distribution, packaged in a JAR file. The Java code must be compiled from the source
-which will be performed upon first use of the library, including the transitive resolution and the download of any dependencies needed. All dependencies must be 
-publicaly available in canonical Maven repositories. This is the most transparent option in terms of the openness of the source code of this R package. 
-However, the build process may be relatively time consuming and a potential point of failure. This is mitigated as much as possible by using battle tested
-standard Java tooling for compilation and dependency management. This strategy should have a relatively small footprint for the R package, and minimise the
-size required for distribution. 
+* All Java library code and its transitive dependencies have already been bundled into a single binary (JAR file) which is part of
+the package. This minimises the complexity of getting a java library up and running on a target
+system. However bunding java libraries does tend to make the package quite large, and will often exceed the 5Mb CRAN limit. The whole of the JAR file 
+will have to be updated and re-installed for every change to the R package, however this is the most stable option with fewest dependencies on the target system.
+For certain situations, where dependencies are not publicly available, for example, this is the only option.
 
 * The R6 package is a build time dependency. The note that it is unused can be safely ignored.
 

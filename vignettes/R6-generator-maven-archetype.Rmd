@@ -1,32 +1,47 @@
 ---
-title: "R6 generator maven archetype"
+title: "R6 Generator Maven Archetype: Recommended project setup"
 author: "Rob Challen"
-date: "24/06/2022"
-output: html_document
+output: html_vignette
+vignette: >
+  %\VignetteIndexEntry{R6 Generator Maven Archetype: Recommended project setup}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+dir = fs::path(tempdir(),"testProject")
+fs::dir_create(dir)
+Sys.setenv(TMP_DIR=dir)
 ```
 
 ## Maven archetype
 
-https://stackoverflow.com/questions/70288880/rmarkdown-how-to-pass-arguments-to-bash-chunk-defined-as-variables-in-r
+
 
 ```{bash}
-
+cd $TMP_DIR
+rm -r examplePackage ||: 
+mvn archetype:generate -B \
+  -DarchetypeGroupId=io.github.terminological \
+  -DarchetypeArtifactId=r6-generator-maven-archetype \
+  -DarchetypeVersion=0.5.0 \
+  -DgithubOrganisation=exampleOrganisation \
+  -DgithubRepository=examplePackage
 ```
 
-```{r cars}
-fs::dir_tree(regexp="((.*/target)|docs|test)/.*", invert=TRUE)
+```{r}
+fs::dir_tree(dir,regexp="((.*/target)|docs)/.*", invert=TRUE)
 ```
 
-## Including Plots
+## Building the project
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{bash}
+cd $TMP_DIR/examplePackage/java
+mvn install
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+```{r}
+fs::dir_tree(dir,regexp="((.*/target)|docs)/.*", invert=TRUE)
+```
+

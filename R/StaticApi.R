@@ -2,14 +2,51 @@
 # This is a collection of the static methods described in the Java API
 # and serves as an alternative R centric entry point of the testRapi generated R library.
 
-# Version: 0.0.0.9999
-# Generated: 2022-06-29T23:54:07.876304
+# Version: 0.5.1
+# Generated: 2022-07-07T16:10:04.091
 # Contact: rc538@exeter.ac.uk
 
-# FactoryTest class static methods ----
+# MoreFeatureTest class static methods ----
 
 
-# BounceTest class static methods ----
+#' create:
+#' 
+#' A static object constructor
+#' @param message1 - the message to be printed - (java expects a RCharacter)
+#' @param message2 - will be used for toString - (java expects a RCharacter)
+#' @return R6 MoreFeatureTest object: 
+#' A MoreFeatureTest R6 object
+#' @examples
+#' \dontrun{
+#' J$MoreFeatureTest$create('Hello,',' World')
+#' }
+#' @export
+create = function(message1, message2) {
+	# get the API singleton
+	J = JavaApi$get()
+	# execute the R6 function call with the same parameters
+	out = J$MoreFeatureTest$create(message1, message2)
+	if(is.null(out)) return(invisible(out))
+	return(out)
+}
+
+
+#' concat:
+#' 
+#' no title
+#' @param message1 - (java expects a RCharacter)
+#' @param message2 - (java expects a RCharacter)
+#' @return RCharacter: 
+#' 
+#' @export
+concat = function(message1, message2) {
+	# get the API singleton
+	J = JavaApi$get()
+	# execute the R6 function call with the same parameters
+	out = J$MoreFeatureTest$concat(message1, message2)
+	if(is.null(out)) return(invisible(out))
+	return(out)
+}
 
 
 # Serialiser class static methods ----
@@ -17,7 +54,7 @@
 
 #' serialiseDataframe:
 #' 
-#' no description
+#' no title
 #' @param dataframe - (java expects a RDataframe)
 #' @param filename - (java expects a String)
 #' @return void: 
@@ -35,7 +72,7 @@ serialise_dataframe = function(dataframe, filename) {
 
 #' deserialiseDataframe:
 #' 
-#' no description
+#' no title
 #' @param filename - (java expects a String)
 #' @return RDataframe: 
 #' 
@@ -52,7 +89,7 @@ deserialise_dataframe = function(filename) {
 
 #' serialiseList:
 #' 
-#' no description
+#' no title
 #' @param dataframe - (java expects a RList)
 #' @param filename - (java expects a String)
 #' @return void: 
@@ -70,7 +107,7 @@ serialise_list = function(dataframe, filename) {
 
 #' deserialiseList:
 #' 
-#' no description
+#' no title
 #' @param filename - (java expects a String)
 #' @return RList: 
 #' 
@@ -87,7 +124,7 @@ deserialise_list = function(filename) {
 
 #' serialiseNamedList:
 #' 
-#' no description
+#' no title
 #' @param dataframe - (java expects a RNamedList)
 #' @param filename - (java expects a String)
 #' @return void: 
@@ -105,7 +142,7 @@ serialise_named_list = function(dataframe, filename) {
 
 #' deserialiseNamedList:
 #' 
-#' no description
+#' no title
 #' @param filename - (java expects a String)
 #' @return RNamedList: 
 #' 
@@ -172,50 +209,13 @@ diamonds = function() {
 }
 
 
+# BounceTest class static methods ----
+
+
+# FactoryTest class static methods ----
+
+
 # MinimalExample class static methods ----
-
-
-# MoreFeatureTest class static methods ----
-
-
-#' create:
-#' 
-#' A static object constructor
-#' @param message1 - the message to be printed - (java expects a RCharacter)
-#' @param message2 - will be used for toString - (java expects a RCharacter)
-#' @return R6 MoreFeatureTest object: 
-#' A MoreFeatureTest R6 object
-#' @examples
-#' \dontrun{
-#' J$MoreFeatureTest$create('Hello,',' World')
-#' }
-#' @export
-create = function(message1, message2) {
-	# get the API singleton
-	J = JavaApi$get()
-	# execute the R6 function call with the same parameters
-	out = J$MoreFeatureTest$create(message1, message2)
-	if(is.null(out)) return(invisible(out))
-	return(out)
-}
-
-
-#' concat:
-#' 
-#' no description
-#' @param message1 - (java expects a RCharacter)
-#' @param message2 - (java expects a RCharacter)
-#' @return RCharacter: 
-#' 
-#' @export
-concat = function(message1, message2) {
-	# get the API singleton
-	J = JavaApi$get()
-	# execute the R6 function call with the same parameters
-	out = J$MoreFeatureTest$concat(message1, message2)
-	if(is.null(out)) return(invisible(out))
-	return(out)
-}
 
 
 

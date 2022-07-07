@@ -8,9 +8,9 @@
 #' 
 #' This is a class of the testRapi generated R library.
 #' 
-#' Version: 0.0.0.9999
+#' Version: 0.5.1
 #' 
-#' Generated: 2022-06-29T23:54:07.935959
+#' Generated: 2022-07-07T16:10:04.471
 #'
 #' @details
 	#' no details
@@ -40,7 +40,7 @@ FactoryTest = R6::R6Class("FactoryTest", public=list(
 	
 	#' @description 
 	#' generateCharacter: 
-	#' no description
+	#' no title
 	#' @return RCharacter: 
 	#' 
 	generateCharacter = function() {
@@ -57,7 +57,7 @@ FactoryTest = R6::R6Class("FactoryTest", public=list(
 	},
 	#' @description 
 	#' generateNumeric: 
-	#' no description
+	#' no title
 	#' @return RNumeric: 
 	#' 
 	generateNumeric = function() {
@@ -74,7 +74,7 @@ FactoryTest = R6::R6Class("FactoryTest", public=list(
 	},
 	#' @description 
 	#' generateInteger: 
-	#' no description
+	#' no title
 	#' @return RInteger: 
 	#' 
 	generateInteger = function() {
@@ -91,7 +91,7 @@ FactoryTest = R6::R6Class("FactoryTest", public=list(
 	},
 	#' @description 
 	#' generateFactor: 
-	#' no description
+	#' no title
 	#' @return RFactor: 
 	#' 
 	generateFactor = function() {
@@ -108,7 +108,7 @@ FactoryTest = R6::R6Class("FactoryTest", public=list(
 	},
 	#' @description 
 	#' generateLogical: 
-	#' no description
+	#' no title
 	#' @return RLogical: 
 	#' 
 	generateLogical = function() {
@@ -125,7 +125,7 @@ FactoryTest = R6::R6Class("FactoryTest", public=list(
 	},
 	#' @description 
 	#' generateCharacterVec: 
-	#' no description
+	#' no title
 	#' @return RCharacterVector: 
 	#' 
 	generateCharacterVec = function() {
@@ -142,7 +142,7 @@ FactoryTest = R6::R6Class("FactoryTest", public=list(
 	},
 	#' @description 
 	#' generateNumericVec: 
-	#' no description
+	#' no title
 	#' @return RNumericVector: 
 	#' 
 	generateNumericVec = function() {
@@ -159,7 +159,7 @@ FactoryTest = R6::R6Class("FactoryTest", public=list(
 	},
 	#' @description 
 	#' generateIntegerVec: 
-	#' no description
+	#' no title
 	#' @return RIntegerVector: 
 	#' 
 	generateIntegerVec = function() {
@@ -176,7 +176,7 @@ FactoryTest = R6::R6Class("FactoryTest", public=list(
 	},
 	#' @description 
 	#' generateFactorVec: 
-	#' no description
+	#' no title
 	#' @return RFactorVector: 
 	#' 
 	generateFactorVec = function() {
@@ -193,7 +193,7 @@ FactoryTest = R6::R6Class("FactoryTest", public=list(
 	},
 	#' @description 
 	#' generateLogicalVec: 
-	#' no description
+	#' no title
 	#' @return RLogicalVector: 
 	#' 
 	generateLogicalVec = function() {
@@ -210,7 +210,7 @@ FactoryTest = R6::R6Class("FactoryTest", public=list(
 	},
 	#' @description 
 	#' generateDataframe: 
-	#' no description
+	#' no title
 	#' @return RDataframe: 
 	#' 
 	generateDataframe = function() {
@@ -227,7 +227,7 @@ FactoryTest = R6::R6Class("FactoryTest", public=list(
 	},
 	#' @description 
 	#' generateStreamDataframe: 
-	#' no description
+	#' no title
 	#' @return RDataframe: 
 	#' 
 	generateStreamDataframe = function() {
@@ -261,7 +261,7 @@ FactoryTest = R6::R6Class("FactoryTest", public=list(
 	},
 	#' @description 
 	#' generateNamedList: 
-	#' no description
+	#' no title
 	#' @return RNamedList: 
 	#' 
 	generateNamedList = function() {

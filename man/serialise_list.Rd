@@ -2,9 +2,8 @@
 
 \name{serialise_list}
 \alias{serialise_list}
-\title{no description}
-\usage{
-serialise_list(
+\title{no title}
+\usage{serialise_list(
 	dataframe,
 	filename
 )
@@ -19,10 +18,7 @@ serialise_list(
 void: 
 }
 \description{
-
-}
-\examples{\dontrun{
-}
+no description
 }
 \keyword{java api}
 

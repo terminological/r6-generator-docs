@@ -2,9 +2,8 @@
 
 \name{serialise_named_list}
 \alias{serialise_named_list}
-\title{no description}
-\usage{
-serialise_named_list(
+\title{no title}
+\usage{serialise_named_list(
 	dataframe,
 	filename
 )
@@ -19,10 +18,7 @@ serialise_named_list(
 void: 
 }
 \description{
-
-}
-\examples{\dontrun{
-}
+no description
 }
 \keyword{java api}
 

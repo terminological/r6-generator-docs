@@ -2,9 +2,8 @@
 
 \name{deserialise_list}
 \alias{deserialise_list}
-\title{no description}
-\usage{
-deserialise_list(
+\title{no title}
+\usage{deserialise_list(
 	filename
 )
 }
@@ -17,10 +16,7 @@ deserialise_list(
 RList: 
 }
 \description{
-
-}
-\examples{\dontrun{
-}
+no description
 }
 \keyword{java api}
 

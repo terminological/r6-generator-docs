@@ -4,13 +4,15 @@
 #' @description
 #' A Test Library
 #'
-#' Version: 0.0.0.9999
+#' Version: 0.5.1
 #'
-#' Generated: 2022-06-29T23:54:07.855114
+#' Generated: 2022-07-07T16:10:04.015
 #'
 #' Contact: rc538@exeter.ac.uk
 #' @import ggplot2
+#' @import stringr
 #' @import tibble
+#' @import readr
 #' @import dplyr
 #' @import rJava
 #' @export
@@ -24,18 +26,18 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 	.toJava = NULL,
 	#' @field .reg the list of references to java objects created by this API 
 	.reg = list(),
-	#' @field FactoryTest the FactoryTest class contructors and static methods
-	FactoryTest = NULL,
-	#' @field BounceTest the BounceTest class contructors and static methods
-	BounceTest = NULL,
+	#' @field MoreFeatureTest the MoreFeatureTest class contructors and static methods
+	MoreFeatureTest = NULL,
 	#' @field Serialiser the Serialiser class contructors and static methods
 	Serialiser = NULL,
 	#' @field FeatureTest the FeatureTest class contructors and static methods
 	FeatureTest = NULL,
+	#' @field BounceTest the BounceTest class contructors and static methods
+	BounceTest = NULL,
+	#' @field FactoryTest the FactoryTest class contructors and static methods
+	FactoryTest = NULL,
 	#' @field MinimalExample the MinimalExample class contructors and static methods
 	MinimalExample = NULL,
-	#' @field MoreFeatureTest the MoreFeatureTest class contructors and static methods
-	MoreFeatureTest = NULL,
 
 	#' @description
 	#' change the java logging level
@@ -78,8 +80,8 @@ JavaApi = R6::R6Class("JavaApi", public=list(
  		if (is.null(JavaApi$singleton)) stop("Startup the java api with JavaApi$get() rather than using this constructor directly")
  	
  		message("Initialising A Test Library")
- 		message("Version: 0.0.0.9999")
-		message("Generated: 2022-06-29T23:54:07.855538")
+ 		message("Version: 0.5.1")
+		message("Generated: 2022-07-07T16:10:04.020")
  	
  	
  		tryCatch({
@@ -103,8 +105,8 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 		  .jcall(self$.log,returnSig = "V",method = "debug", jar)
 		}
 		.jcall(self$.log,returnSig = "V",method = "info","Initialised testRapi");
-		.jcall(self$.log,returnSig = "V",method = "debug","R package version: 0.0.0.9999");
-		.jcall(self$.log,returnSig = "V",method = "debug","R package generated: 2022-06-29T23:54:07.855659");
+		.jcall(self$.log,returnSig = "V",method = "debug","R package version: 0.5.1");
+		.jcall(self$.log,returnSig = "V",method = "debug","R package generated: 2022-07-07T16:10:04.020");
 		.jcall(self$.log,returnSig = "V",method = "debug","Java library version: io.github.terminological:r6-generator-docs:main-SNAPSHOT");
 		.jcall(self$.log,returnSig = "V",method = "debug",paste0("Java library compiled: ",buildDate));
 		.jcall(self$.log,returnSig = "V",method = "debug","Contact: rc538@exeter.ac.uk");
@@ -147,13 +149,6 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 				tmp = as.numeric(rObj)[[1]]
 				return(rJava::.jnew('uk/co/terminological/rjava/types/RNumeric',tmp))
 			},
-			RFactor=function(rObj) {
-				if (is.na(rObj)) return(rJava::.jnew('uk/co/terminological/rjava/types/RFactor'))
-				if (length(rObj) > 1) stop('input too long')
-				tmp = as.integer(rObj)[[1]]
-				tmpLabel = levels(rObj)[[tmp]]
-				return(rJava::.jnew('uk/co/terminological/rjava/types/RFactor',tmp, tmpLabel))
-			},
 			RLogical=function(rObj) {
 				if (is.na(rObj)) return(rJava::.jnew('uk/co/terminological/rjava/types/RLogical'))
 				if (length(rObj) > 1) stop('input too long')
@@ -161,15 +156,22 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 				tmp = as.integer(rObj)[[1]]
 				return(rJava::.jnew('uk/co/terminological/rjava/types/RLogical',tmp))
 			},
-			RNull=function(rObj) {
-				if (!is.null(rObj)) stop('input expected to be NULL')
-				return(rJava::.jnew('uk/co/terminological/rjava/types/RNull'))
+			RFactor=function(rObj) {
+				if (is.na(rObj)) return(rJava::.jnew('uk/co/terminological/rjava/types/RFactor'))
+				if (length(rObj) > 1) stop('input too long')
+				tmp = as.integer(rObj)[[1]]
+				tmpLabel = levels(rObj)[[tmp]]
+				return(rJava::.jnew('uk/co/terminological/rjava/types/RFactor',tmp, tmpLabel))
 			},
 			RLogicalVector=function(rObj) {
 				if (is.null(rObj)) return(rJava::.jnew('uk/co/terminological/rjava/types/RLogicalVector'))
 				if (!is.logical(rObj)) stop('expected a vector of logicals')
 				tmp = as.integer(rObj)
 				return(rJava::.jnew('uk/co/terminological/rjava/types/RLogicalVector',rJava::.jarray(tmp)))
+			},
+			RNull=function(rObj) {
+				if (!is.null(rObj)) stop('input expected to be NULL')
+				return(rJava::.jnew('uk/co/terminological/rjava/types/RNull'))
 			},
 			RCharacter=function(rObj) {
 				if (is.na(rObj)) return(rJava::.jnew('uk/co/terminological/rjava/types/RCharacter'))
@@ -332,10 +334,10 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 			RCharacterVector=function(jObj) as.character(rJava::.jcall(jObj,returnSig='[Ljava/lang/String;',method='rPrimitive')),
 			FeatureTest=function(jObj) return(jObj),
 			RNumeric=function(jObj) as.numeric(rJava::.jcall(jObj,returnSig='D',method='rPrimitive')),
-			RFactor=function(jObj) as.character(rJava::.jcall(jObj,returnSig='Ljava/lang/String;',method='rLabel')),
 			RLogical=function(jObj) as.logical(rJava::.jcall(jObj,returnSig='I',method='rPrimitive')),
-			RNull=function(jObj) return(NULL),
+			RFactor=function(jObj) as.character(rJava::.jcall(jObj,returnSig='Ljava/lang/String;',method='rLabel')),
 			RLogicalVector=function(jObj) as.logical(rJava::.jcall(jObj,returnSig='[I',method='rPrimitive')),
+			RNull=function(jObj) return(NULL),
 			RCharacter=function(jObj) as.character(rJava::.jcall(jObj,returnSig='Ljava/lang/String;',method='rPrimitive')),
 			Serialiser=function(jObj) return(jObj),
 			String=function(jObj) return(as.character(jObj)),
@@ -377,38 +379,51 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 	
 		# initialise java class constructors and static method definitions
 		
-		self$FactoryTest = list(
-			new = function() {
+		self$MoreFeatureTest = list(
+			new = function(message1, message2) {
 				# constructor
 				# convert parameters to java
+				tmp_message1 = self$.toJava$RCharacter(message1);
+				tmp_message2 = self$.toJava$RCharacter(message2);
 				# invoke constructor method
-				tmp_out = .jnew("uk/co/terminological/rjava/test/FactoryTest" , check=FALSE);
+				tmp_out = .jnew("uk/co/terminological/rjava/test/MoreFeatureTest" , tmp_message1, tmp_message2, check=FALSE);
 				self$printMessages()
 				.jcheck() 
 				# convert result back to R (should be a identity conversion)
-				tmp_r6 = FactoryTest$new(
-					self$.fromJava$FactoryTest(tmp_out),
+				tmp_r6 = MoreFeatureTest$new(
+					self$.fromJava$MoreFeatureTest(tmp_out),
 					self
 				);
 				return(tmp_r6)
-			}
-	)
-		self$BounceTest = list(
-			new = function() {
-				# constructor
-				# convert parameters to java
-				# invoke constructor method
-				tmp_out = .jnew("uk/co/terminological/rjava/test/BounceTest" , check=FALSE);
+			},
+			create = function(message1, message2) {
+				# copy parameters
+				tmp_message1 = self$.toJava$RCharacter(message1);
+				tmp_message2 = self$.toJava$RCharacter(message2);
+				#execute static call
+				tmp_out = .jcall("uk/co/terminological/rjava/test/MoreFeatureTest", returnSig = "Luk/co/terminological/rjava/test/MoreFeatureTest;", method="create" , tmp_message1, tmp_message2, check=FALSE);
 				self$printMessages()
 				.jcheck() 
-				# convert result back to R (should be a identity conversion)
-				tmp_r6 = BounceTest$new(
-					self$.fromJava$BounceTest(tmp_out),
+				# wrap return java object in R6 class 
+				out = MoreFeatureTest$new(
+					self$.fromJava$MoreFeatureTest(tmp_out),
 					self
 				);
-				return(tmp_r6)
-			}
-	)
+				return(out)
+			},
+			concat = function(message1, message2) {
+				# copy parameters
+				tmp_message1 = self$.toJava$RCharacter(message1);
+				tmp_message2 = self$.toJava$RCharacter(message2);
+				#execute static call
+				tmp_out = .jcall("uk/co/terminological/rjava/test/MoreFeatureTest", returnSig = "Luk/co/terminological/rjava/types/RCharacter;", method="concat" , tmp_message1, tmp_message2, check=FALSE);
+				self$printMessages()
+				.jcheck() 
+				# convert java object back to R
+				out = self$.fromJava$RCharacter(tmp_out);
+				if(is.null(out)) return(invisible(out))
+				return(out)
+			}	)
 		self$Serialiser = list(
 			new = function() {
 				# constructor
@@ -538,6 +553,38 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 				if(is.null(out)) return(invisible(out))
 				return(out)
 			}	)
+		self$BounceTest = list(
+			new = function() {
+				# constructor
+				# convert parameters to java
+				# invoke constructor method
+				tmp_out = .jnew("uk/co/terminological/rjava/test/BounceTest" , check=FALSE);
+				self$printMessages()
+				.jcheck() 
+				# convert result back to R (should be a identity conversion)
+				tmp_r6 = BounceTest$new(
+					self$.fromJava$BounceTest(tmp_out),
+					self
+				);
+				return(tmp_r6)
+			}
+	)
+		self$FactoryTest = list(
+			new = function() {
+				# constructor
+				# convert parameters to java
+				# invoke constructor method
+				tmp_out = .jnew("uk/co/terminological/rjava/test/FactoryTest" , check=FALSE);
+				self$printMessages()
+				.jcheck() 
+				# convert result back to R (should be a identity conversion)
+				tmp_r6 = FactoryTest$new(
+					self$.fromJava$FactoryTest(tmp_out),
+					self
+				);
+				return(tmp_r6)
+			}
+	)
 		self$MinimalExample = list(
 			new = function() {
 				# constructor
@@ -554,51 +601,6 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 				return(tmp_r6)
 			}
 	)
-		self$MoreFeatureTest = list(
-			new = function(message1, message2) {
-				# constructor
-				# convert parameters to java
-				tmp_message1 = self$.toJava$RCharacter(message1);
-				tmp_message2 = self$.toJava$RCharacter(message2);
-				# invoke constructor method
-				tmp_out = .jnew("uk/co/terminological/rjava/test/MoreFeatureTest" , tmp_message1, tmp_message2, check=FALSE);
-				self$printMessages()
-				.jcheck() 
-				# convert result back to R (should be a identity conversion)
-				tmp_r6 = MoreFeatureTest$new(
-					self$.fromJava$MoreFeatureTest(tmp_out),
-					self
-				);
-				return(tmp_r6)
-			},
-			create = function(message1, message2) {
-				# copy parameters
-				tmp_message1 = self$.toJava$RCharacter(message1);
-				tmp_message2 = self$.toJava$RCharacter(message2);
-				#execute static call
-				tmp_out = .jcall("uk/co/terminological/rjava/test/MoreFeatureTest", returnSig = "Luk/co/terminological/rjava/test/MoreFeatureTest;", method="create" , tmp_message1, tmp_message2, check=FALSE);
-				self$printMessages()
-				.jcheck() 
-				# wrap return java object in R6 class 
-				out = MoreFeatureTest$new(
-					self$.fromJava$MoreFeatureTest(tmp_out),
-					self
-				);
-				return(out)
-			},
-			concat = function(message1, message2) {
-				# copy parameters
-				tmp_message1 = self$.toJava$RCharacter(message1);
-				tmp_message2 = self$.toJava$RCharacter(message2);
-				#execute static call
-				tmp_out = .jcall("uk/co/terminological/rjava/test/MoreFeatureTest", returnSig = "Luk/co/terminological/rjava/types/RCharacter;", method="concat" , tmp_message1, tmp_message2, check=FALSE);
-				self$printMessages()
-				.jcheck() 
-				# convert java object back to R
-				out = self$.fromJava$RCharacter(tmp_out);
-				if(is.null(out)) return(invisible(out))
-				return(out)
-			}	)
 	}
 ))
 
@@ -616,8 +618,6 @@ JavaApi$get = function(logLevel = "INFO") {
 JavaApi$rebuildDependencies = function( ... ) {
 	# remove working directory
 	unlink(.workingDir(), recursive = TRUE)
-	# remove previous versions of the compiled binary 
-	unlink(fs::path(.here("java"),"r6-generator-docs-main-SNAPSHOT-jar-with-dependencies.jar"))
 	# rebuild everything
 	classpath = .checkDependencies(quiet = FALSE, ...)
 	
@@ -647,11 +647,8 @@ JavaApi$rebuildDependencies = function( ... ) {
 
 .checkDependencies = function(...) {
 	# Java dependencies
-	# this is a sources only distribution. The java code must be compiled from the source (distributed in this package as a testRapi-0.0.0.9999-src.jar) 
-	# all the dependencies are resolved and packaged into a single fat jar on compilation
-	# N.b. successful compilation is a machine specific thing as the dependencies may have been installed into maven locally 
-	pomLoc = .extractSources()
-	.compileFatJar(pomLoc, ...)
+	# all java library code and dependencies have already been bundled into a single fat jar
+	# compilation was done on the library developers machine and has no external dependencies
 	classpath = NULL
 	
 	# find the jars that come bundled with the library:
@@ -665,7 +662,7 @@ JavaApi$rebuildDependencies = function( ... ) {
 
 # package working directory
 .workingDir = function() {
-	tmp = path.expand(rappdirs::user_cache_dir("testRapi-0.0.0.9999"))
+	tmp = path.expand(rappdirs::user_cache_dir("testRapi-0.5.1"))
 	fs::dir_create(tmp)
 	return(tmp)
 }

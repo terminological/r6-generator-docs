@@ -1,7 +1,6 @@
 ---
 title: "R6 Generator Maven Plugin: Datatype conversion"
 author: "Rob Challen"
-date: "19/10/2020"
 output: 
   html_vignette
 header-includes:
@@ -24,8 +23,6 @@ source(here::here("vignettes/codeSnip.R"))
 
 ```
 
-<div class="watermark">DRAFT</div>
-
 # Datatype conversion
 
 R and Java have quite different philosophy on datatypes that mean that loss less round tripping of data through the limited expressibility of the JNI bridge is a non trivial exercise. This is why a code generation library is valuable as it removes the need for developers to understand the grim complexity of the details. The following areas proved to be the most difficult:
@@ -45,19 +42,29 @@ By inspecting the Java code at compilation time, and by imposing constraints on 
 
 ## Round tripping data from R to Java to R
 
-```{r out.width="50%"}
+R data types converted into Java.
+
+```{r out.width="100%", echo=FALSE, eval=FALSE}
 # knitr::include_graphics("./RClass.png")
 # TODO: https://github.com/rstudio/nomnoml
 
-uml = readr::read_file(here::here("java/target/generated-docs/RTypes.txt"))
+uml = readr::read_file(here::here("vignettes/RTypes.plantuml"))
 # uml2 = uml %>% stringr::str_replace("@startuml","@startuml\n\n!pragma layout visjs\n\n!pragma graphattributes rankir=LR;")
 uml2 = stringr::str_replace(uml,"@startuml","@startuml\n\nleft to right direction")
 # devtools::install_github("rkrug/plantuml")
 # plantuml::plantuml_update()
 
-p = plantuml::plantuml(uml2)
-invisible(plot(p,file = here::here("docs/articles/RTypes.svg")))
-knitr::include_graphics(here::here("docs/articles/RTypes.svg" ))
+try({
+  if (requireNamespace("plantuml", quietly=TRUE)) {
+    p = plantuml::plantuml(uml2)
+    invisible(plot(p,file = here::here("vignettes/RTypes.svg")))
+  }
+})
+```
+
+```{r out.width="100%", echo=FALSE}
+knitr::include_graphics(here::here("vignettes/RTypes.svg" ))
+
 ```
 
 
@@ -80,7 +87,7 @@ b$bounceVoid()
 
 ### Character data
 
-Strings are the least contentious format with high similarity between R and Java, so long as we are all using UTF-8. An R character vector can be transferred to Java seamlessly except for the fact that asit is transferred it is as an array of characters in JNI. A java equivalent of `uk.co.terminological.rjava.types.RCharacter` is provided to mark the object as an R compatible datatype, in general though `java.lang.String` can used instead of singleton strings. For character vectors we have `uk.co.terminological.rjava.types.RCharacterVector` which is a specialised java collection of `uk.co.terminological.rjava.types.RCharacter`s
+Strings are the least contentious format with high similarity between R and Java, so long as we are all using UTF-8. An R character vector can be transferred to Java seamlessly except for the fact that it is transferred as an array of characters over JNI. A java equivalent of `uk.co.terminological.rjava.types.RCharacter` is provided to mark the object as an R compatible datatype, in general though `java.lang.String` can used instead of singleton strings. For character vectors we have `uk.co.terminological.rjava.types.RCharacterVector` which is a specialised java collection of `uk.co.terminological.rjava.types.RCharacter`.
 
 ```{r results='asis', echo=FALSE}
 codeSnip("java",filename=here::here("java/src/main/java/uk/co/terminological/rjava/test/BounceTest.java"),startMatches = "SECTION_02",endMatches = "SECTION_03")
@@ -95,7 +102,7 @@ b$bounceCharacterVector(c("Hello","World"))
 
 ### Numeric data
 
-Numerics in R can be represented a number of ways in Java, and various Java types, such as `java.lang.Double`, `java.lang.Float`, `java.math.BigDecimal`, `java.lang.Long`, and their primitive counterparts are best be represented by R numerics. The `uk.co.terminological.rjava.types.RNumeric` type allows Java programmers to dynamically convert R Numerics to the desired native type, and the `uk.co.terminological.rjava.RConverter` provides various methods to convert native java types to `uk.co.terminological.rjava.types.RNumeric`s. This also handles the special values of `Inf` and `-Inf`, `NaN`, and `NA_real_` and their equivalent values in Java. To support the use of native Java, singleton `RNumeric`s can be substituted with primitive Java `double` as long as the inputs can never be `NA_real_`. Vector inputs are handled in the same way as before
+Numerics in R can be represented a number of ways in Java with different degrees of precision. Various Java types, such as `java.lang.Double`, `java.lang.Float`, `java.math.BigDecimal`, `java.lang.Long`, and their primitive counterparts `double`,`float`,`long` are all best represented by R numeric values. The `uk.co.terminological.rjava.types.RNumeric` type allows Java programmers to dynamically convert input R Numeric values to a specific native Java type. The `uk.co.terminological.rjava.RConverter` class provides various methods to convert native Java types to `uk.co.terminological.rjava.types.RNumeric` for output. These functions also handles the special values of `Inf` and `-Inf`, `NaN`, and `NA_real_` and their equivalent values in Java. To support the use of native Java, singleton `RNumeric` values can be substituted with primitive Java `double` as long as the inputs can never be `NA_real_`. Vector numeric inputs from R are specified by the `uk.co.terminological.rjava.types.RNumericVector` class, which is a collection of `RNumeric` values.
 
 ```{r results='asis', echo=FALSE}
 codeSnip("java",filename=here::here("java/src/main/java/uk/co/terminological/rjava/test/BounceTest.java"),startMatches = "SECTION_03",endMatches = "SECTION_04")
@@ -122,7 +129,7 @@ b$bounceNumericVector(c(2.3,4.6,NA_real_,34,NaN,Inf,-Inf))
 
 ### Integer data
 
-In an identical way to above `uk.co.terminological.rjava.types.RInteger` types hold integer values. R inputs to Java functions are coerced to integers and an error thrown if this is not possible. The primitive `int` Java type can be used for singletons if they are not `NA`, and vectors are handled in the same way.
+In an identical way to above `uk.co.terminological.rjava.types.RInteger` types hold integer values. R inputs to Java functions are coerced to integers and an error thrown if this is not possible. The primitive `int` Java type can be used for singletons if they are not `NA`, and vectors are handled in the same way as before with a specialist `uk.co.terminological.rjava.types.RIntegerVector`. Non integer numeric types are not coerced to integer, but rather a runtime error is thrown to the user if they try and use the wrong type. 
 
 ```{r results='asis', echo=FALSE}
 codeSnip("java",filename=here::here("java/src/main/java/uk/co/terminological/rjava/test/BounceTest.java"),startMatches = "SECTION_04",endMatches = "SECTION_05")
@@ -153,7 +160,7 @@ b$bounceFactorVector(factorVec)
 
 ### Dates
 
-Date support is provided by `uk.co.terminological.rjava.types.RDate` which allows R Date and POSIXt tyeps to be represented in Java as `java.time.LocalDate`s. Vectors of dates are also supported as before. There is currently no support for datetime classes but this is a possible enhancement.
+Date support is provided by `uk.co.terminological.rjava.types.RDate` which allows R Date and POSIXt types to be represented in Java as `java.time.LocalDate`s. Vectors of dates are also supported as before. There is currently no support for datetime classes but this is a possible enhancement. There is a `uk.co.terminological.rjava.types.RDateVector` class for collections.
 
 ```{r results='asis', echo=FALSE}
 codeSnip("java",filename=here::here("java/src/main/java/uk/co/terminological/rjava/test/BounceTest.java"),startMatches = "SECTION_06",endMatches = "SECTION_07")
@@ -186,7 +193,7 @@ b$bounceLogicalVector(c(TRUE,NA,FALSE))
 
 ### Dataframes
 
-In Java R dataframes are modelled as a named collection of `uk.co.terminological.rjava.types.RVector<?>` of undetermined type. This is represented internally as a column wise Map, but the `uk.co.terminological.rjava.types.RDataframes` class contains a number of methods to make using dataframes intuitive in Java including support for Iterable and Stream interfaces that operate row-wise over the data, or which can map typed columns to a stream of proxy objects satisfying an interface specification supplied by the developer (more examples TBD). The dataframe can support any column with vector data types mentioned above. At present however it does not support named rows, as the focus is on tidy dataframes.
+In Java R dataframes are modelled as a named list of `uk.co.terminological.rjava.types.RVector<?>` each holding columnar data of unspecified type. This is represented internally as a column wise Map, but the `uk.co.terminological.rjava.types.RDataframe` class contains a number of methods to make using dataframes intuitive in Java. This includes support for Iterable and Stream interfaces operating row-wise over the data. The `uk.co.terminological.rjava.types.RBoundDataframe` can map typed columns to a stream of proxy objects satisfying an interface specification. This can be used to convert a `RDataframe` into a stream of custom POJOs (more examples TBD). The dataframe can support any column with vector data types mentioned above. At present however it does not support named rows, as the focus is on tidy dataframes, nor does it support `purrr` style list columns.
 
 ```{r results='asis', echo=FALSE}
 codeSnip("java",filename=here::here("java/src/main/java/uk/co/terminological/rjava/test/BounceTest.java"),startMatches = "SECTION_08",endMatches = "SECTION_09")

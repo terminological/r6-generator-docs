@@ -8,7 +8,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<r6.version>main-SNAPSHOT</r6.version>
+		<r6.version>0.5.1</r6.version>
 	</properties>
 
 	<groupId>io.github.terminological</groupId>
@@ -44,8 +44,8 @@
 
 	<!-- REPOSITORIES_START -->
 	<!-- Resolve runtime library on sonatype OSSRH -->
-	<!-- not needed if you plan to use a stable version of the r6-generator-runtime 
-		and r6-generator-maven-plugin -->
+	<!-- not needed if you plan to use a stable r6.version of the r6-generator-runtime 
+		and r6-generator-maven-plugin rather than main-SNAPSHOT -->
 	<repositories>
 		<repository>
 			<id>Sonatype OSSRH</id>
@@ -74,6 +74,7 @@
 					<target>${maven.compiler.target}</target>
 				</configuration>
 			</plugin>
+			<!--  generate documentation UML file -->
 			<plugin>
 				<artifactId>plantuml-generator-maven-plugin</artifactId>
 				<groupId>de.elnarion.maven</groupId>
@@ -87,7 +88,8 @@
 						</goals>
 						<phase>generate-test-sources</phase>
 						<configuration>
-							<outputFilename>RTypes.txt</outputFilename>
+							<outputDirectory>${project.basedir}/../vignettes</outputDirectory>
+							<outputFilename>RTypes.plantuml</outputFilename>
 							<removeFields>true</removeFields>
 							<removeMethods>true</removeMethods>
 <!-- 							<maxVisibilityMethods>PUBLIC</maxVisibilityMethods> -->
@@ -108,42 +110,62 @@
 				<version>${r6.version}</version>
 				<configuration>
 					<packageData>
-						<!-- R library metadata: -->
+						<!-- R package metadata: -->
 						<title>A test library</title>
-						<version>${version}</version> <!-- sync Java artifact and R package versions -->
+						
+						<!-- As this project is documenting the r6-generator-maven-plugin I am syncing R package version with the -->
+						<!-- r6-generator version. this is unlikely to be what you want to do. -->
+						<version>${r6.version}</version>
+						 
+						<!-- Instead you most likely want to sync the R package version to your Java artifact version in a "normal" project -->
+						<!-- <version>${version}</version> -->
+						<!-- Alternatively you can manage the R package version manually by putting whatever you like in here -->
+						<!-- Although semantic versioning of the format 0.1.0.9000 is expected -->
+						<!-- <version>0.1.0.9000</version> -->
+						
 						<url>https://terminological.github.io/r6-generator-docs/docs/</url>
 						<doi>10.5281/zenodo.6645134</doi>
 						<packageName>testRapi</packageName>
 						<license>MIT</license>
+						
+						<!-- this is the Description field in the R DESCRIPTION file -->
+						<!-- CRAN specifies some standards for this, such as it shoudl not start with the package name and must pass spellchecks -->
+						<!-- any references to other packages mut be in single quotes -->
 						<description>
-							This package is a feature test of the R6 Generator
-							Maven Plugin. It is not
-							intended to be useful beyond testing,
-							demonstrating and documenting
-							the features of the plugin.
+							Documents the features of the 'r6-generator-maven-plugin' by providing an example
+							of an R package automatically generated from Java code by the plugin. 
+							It is not intended to be useful beyond testing,	demonstrating and documenting the features of the plugin.
 						</description>
 						<maintainerName>Rob</maintainerName>
 						<maintainerFamilyName>Challen</maintainerFamilyName>
 						<maintainerEmail>rc538@exeter.ac.uk</maintainerEmail>
 						<maintainerOrganisation>University of Exeter</maintainerOrganisation>
+						
 						<!-- Build configuration options: -->
 						<debug>false</debug> <!-- starts the R library with java code in debugging mode -->
-						<usePkgdown>true</usePkgdown> <!-- Pkgdown will generate a nice looking site -->
-						<useRoxygen2>true</useRoxygen2> <!-- Roxygen can integrate user supplied and generated R code, but requiresd 
+						<usePkgdown>false</usePkgdown> <!-- Pkgdown will generate a nice looking site -->
+						<useRoxygen2>false</useRoxygen2> <!-- Roxygen can integrate user supplied and generated R code, but requires 
 							a working R version on the system that generates the R package -->
-						<useJavadoc>false</useJavadoc> <!-- building the javadocs into the documentation is nice but can add a lot 
-							to size of the package -->
-						<preCompileBinary>false</preCompileBinary> <!-- pre-compiling the binary if probably a safer option -->
-						<packageAllDependencies>false</packageAllDependencies> <!-- packaging all dependencies is the most robust but results in a large 
-							package size that probably won;t be accepted on CRAN if that is a concern -->
+						<useJavadoc>false</useJavadoc> <!-- building the javadocs into the documentation is nice but can add 
+							to the size of the package which is not helpful if submitting to CRAN -->
+							
+						<!-- pre-compiling the binary if probably a safer option -->
+						<!-- the alternative is to fetch all dependencies and compile the java from source on first use of the library -->
+						<preCompileBinary>true</preCompileBinary> 
+						
+						 <!-- packaging all dependencies is the most robust but results in a large package size that may not be accepted on CRAN -->
+						 <!-- the alternative is to fetch all dependencies on first library use. -->
+						<packageAllDependencies>true</packageAllDependencies>
+						
+						<!-- any rJava VM start up options can be added here -->
 						<rjavaOpts>
 							<rjavaOpt>-Xmx256M</rjavaOpt> <!-- this example sets the maximum heap size -->
 						</rjavaOpts>
+						
 					</packageData>
-					<!-- the best place to put the R package is in the directory above the 
-						java code -->
-					<!-- and to have the java code in a src subdirectory of a github repo. -->
-					<!-- i.e. this file would be src/pom.xml. This makes R optimally happy. -->
+					<!-- the best place to put the R package is in the directory above the java code -->
+					<!-- and to have the java code in a `java` subdirectory of a github repo. -->
+					<!-- i.e. this file would be `java/pom.xml`. This makes R optimally happy and is the best layout for new projects. -->
 					<outputDirectory>${project.basedir}/..</outputDirectory>
 				</configuration>
 				<executions>

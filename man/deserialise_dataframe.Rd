@@ -2,9 +2,8 @@
 
 \name{deserialise_dataframe}
 \alias{deserialise_dataframe}
-\title{no description}
-\usage{
-deserialise_dataframe(
+\title{no title}
+\usage{deserialise_dataframe(
 	filename
 )
 }
@@ -17,10 +16,7 @@ deserialise_dataframe(
 RDataframe: 
 }
 \description{
-
-}
-\examples{\dontrun{
-}
+no description
 }
 \keyword{java api}
 

@@ -1,10 +1,8 @@
 ---
 title: "R6 Generator Maven Plugin: Getting started"
 author: "Rob Challen"
-date: "19/10/2020"
 output: 
-  html_document:
-    css: draft.css
+  html_document
 vignette: >
   %\VignetteIndexEntry{R6 Generator Maven Plugin: Getting started}
   %\VignetteEngine{knitr::rmarkdown}
@@ -56,21 +54,21 @@ Required Maven runtime dependency
 
 ```{r results='asis', echo=FALSE}
 codeSnip("xml",
-         filename=here::here("src/pom.xml"),"DEPS_START","DEPS_END") #,35,51)
+         filename=here::here("java/pom.xml"),"DEPS_START","DEPS_END") #,35,51)
 ```
 
 Repository configuration if you want to use the unstable `main-SNAPSHOT` version of the `r6-generator`.
 
 ```{r results='asis', echo=FALSE}
 codeSnip("xml",
-         filename=here::here("src/pom.xml"),"REPOSITORIES_START","REPOSITORIES_END") #,35,51)
+         filename=here::here("java/pom.xml"),"REPOSITORIES_START","REPOSITORIES_END") #,35,51)
 ```
 
 Maven plugin example configuration:
 
 ```{r results='asis', echo=FALSE}
 codeSnip("xml",
-         filename=here::here("src/pom.xml"),"BUILD_START","BUILD_END") #,35,51)
+         filename=here::here("java/pom.xml"),"BUILD_START","BUILD_END") #,35,51)
 ```
 
 And with this in place, a call to mvn package or mvn install will create your R library by adding files to your java source tree in the directory.

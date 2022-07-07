@@ -3,8 +3,7 @@
 \name{create}
 \alias{create}
 \title{A static object constructor}
-\usage{
-create(
+\usage{create(
 	message1,
 	message2
 )
@@ -19,7 +18,7 @@ create(
 R6 MoreFeatureTest object: A MoreFeatureTest R6 object
 }
 \description{
-
+no description
 }
 \examples{\dontrun{
 J$MoreFeatureTest$create('Hello,',' World')

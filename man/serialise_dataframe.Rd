@@ -2,9 +2,8 @@
 
 \name{serialise_dataframe}
 \alias{serialise_dataframe}
-\title{no description}
-\usage{
-serialise_dataframe(
+\title{no title}
+\usage{serialise_dataframe(
 	dataframe,
 	filename
 )
@@ -19,10 +18,7 @@ serialise_dataframe(
 void: 
 }
 \description{
-
-}
-\examples{\dontrun{
-}
+no description
 }
 \keyword{java api}
 

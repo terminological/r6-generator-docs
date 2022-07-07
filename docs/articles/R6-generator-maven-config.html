@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">testRapi</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9999</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9999</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../articles/testRapi.html">Get started</a>
 </li>
@@ -50,7 +46,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -63,7 +59,7 @@
       <a href="../articles/R6-generator-features.html">R6 Generator Maven Plugin: Key features</a>
     </li>
     <li>
-      <a href="../articles/R6-generator-maven-archetype.html">R6 generator maven archetype</a>
+      <a href="../articles/R6-generator-maven-archetype.html">R6 Generator Maven Archetype: Recommended project setup</a>
     </li>
     <li>
       <a href="../articles/R6-generator-maven-config.html">R6 Generator Maven Plugin: Metadata and Maven configuration</a>
@@ -88,9 +84,9 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>R6 Generator Maven Plugin: Metadata and Maven configuration</h1>
-                        <h4 class="author">Rob Challen</h4>
+                        <h4 data-toc-skip class="author">Rob Challen</h4>
             
-            <h4 class="date">26/10/2020</h4>
+            <h4 data-toc-skip class="date">26/10/2020</h4>
       
       
       <div class="hidden name"><code>R6-generator-maven-config.Rmd</code></div>
@@ -102,44 +98,173 @@
 <div class="watermark">
 DRAFT
 </div>
-<div id="maven-pom-xml-options" class="section level2">
-<h2 class="hasAnchor">
-<a href="#maven-pom-xml-options" class="anchor"></a>Maven <code>pom.xml</code> options</h2>
+<div class="section level2">
+<h2 id="maven-pom-xml-options">Maven <code>pom.xml</code> options<a class="anchor" aria-label="anchor" href="#maven-pom-xml-options"></a>
+</h2>
 <p>An example of the Maven configuration from this test project is shown below. The key parts of this configuration are described below:</p>
 <ul>
 <li>Dependency on the <code>r6-generator-runtime</code> Java library.</li>
 <li>Jitpack Maven repository declarations for both code and plugins.</li>
 <li>Plugin configuration for the <code>r6-generator-maven-plugin</code>.</li>
 </ul>
-<div id="sample-pom-xml" class="section level3">
-<h3 class="hasAnchor">
-<a href="#sample-pom-xml" class="anchor"></a>Sample <code>pom.xml</code>
+<div class="section level3">
+<h3 id="sample-pom-xml">Sample <code>pom.xml</code><a class="anchor" aria-label="anchor" href="#sample-pom-xml"></a>
 </h3>
-<pre><code>CANNOT FIND FILE - possibly if running in R-CMD-check</code></pre>
+<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml">    <span class="kw">&lt;properties&gt;</span>
+        <span class="kw">&lt;project.build.sourceEncoding&gt;</span>UTF-8<span class="kw">&lt;/project.build.sourceEncoding&gt;</span>
+        <span class="kw">&lt;maven.compiler.source&gt;</span>1.8<span class="kw">&lt;/maven.compiler.source&gt;</span>
+        <span class="kw">&lt;maven.compiler.target&gt;</span>1.8<span class="kw">&lt;/maven.compiler.target&gt;</span>
+        <span class="kw">&lt;r6.version&gt;</span>main-SNAPSHOT<span class="kw">&lt;/r6.version&gt;</span>
+    <span class="kw">&lt;/properties&gt;</span>
+
+    <span class="kw">&lt;groupId&gt;</span>io.github.terminological<span class="kw">&lt;/groupId&gt;</span>
+    <span class="kw">&lt;artifactId&gt;</span>r6-generator-docs<span class="kw">&lt;/artifactId&gt;</span>
+    <span class="kw">&lt;version&gt;</span>main-SNAPSHOT<span class="kw">&lt;/version&gt;</span>
+    <span class="kw">&lt;packaging&gt;</span>jar<span class="kw">&lt;/packaging&gt;</span>
+
+    <span class="kw">&lt;name&gt;</span>R6 Generator Maven Plugin Test<span class="kw">&lt;/name&gt;</span>
+
+    <span class="kw">&lt;dependencies&gt;</span>
+        <span class="kw">&lt;dependency&gt;</span>
+            <span class="kw">&lt;groupId&gt;</span>io.github.terminological<span class="kw">&lt;/groupId&gt;</span>
+            <span class="kw">&lt;artifactId&gt;</span>r6-generator-runtime<span class="kw">&lt;/artifactId&gt;</span>
+            <span class="kw">&lt;version&gt;</span>${r6.version}<span class="kw">&lt;/version&gt;</span>
+        <span class="kw">&lt;/dependency&gt;</span>
+...
+    <span class="kw">&lt;/dependencies&gt;</span>
+...
+    <span class="co">&lt;!-- Resolve runtime library on sonatype OSSRH --&gt;</span>
+    <span class="co">&lt;!-- not needed if you plan to use a stable r6.version of the r6-generator-runtime </span>
+<span class="co">        and r6-generator-maven-plugin rather than main-SNAPSHOT --&gt;</span>
+    <span class="kw">&lt;repositories&gt;</span>
+        <span class="kw">&lt;repository&gt;</span>
+            <span class="kw">&lt;id&gt;</span>Sonatype OSSRH<span class="kw">&lt;/id&gt;</span>
+            <span class="kw">&lt;url&gt;</span>https://s01.oss.sonatype.org/content/repositories/snapshots/<span class="kw">&lt;/url&gt;</span>
+        <span class="kw">&lt;/repository&gt;</span>
+    <span class="kw">&lt;/repositories&gt;</span>
+
+    <span class="co">&lt;!-- Resolve maven plugin on sonatype OSSRH --&gt;</span>
+    <span class="kw">&lt;pluginRepositories&gt;</span>
+        <span class="kw">&lt;pluginRepository&gt;</span>
+            <span class="kw">&lt;id&gt;</span>Sonatype OSSRH<span class="kw">&lt;/id&gt;</span>
+            <span class="kw">&lt;url&gt;</span>https://s01.oss.sonatype.org/content/repositories/snapshots/<span class="kw">&lt;/url&gt;</span>
+        <span class="kw">&lt;/pluginRepository&gt;</span>
+    <span class="kw">&lt;/pluginRepositories&gt;</span>
+...
+    <span class="kw">&lt;build&gt;</span>
+        <span class="kw">&lt;plugins&gt;</span>
+...
+            <span class="kw">&lt;plugin&gt;</span>
+                <span class="kw">&lt;groupId&gt;</span>io.github.terminological<span class="kw">&lt;/groupId&gt;</span>
+                <span class="kw">&lt;artifactId&gt;</span>r6-generator-maven-plugin<span class="kw">&lt;/artifactId&gt;</span>
+                <span class="kw">&lt;version&gt;</span>${r6.version}<span class="kw">&lt;/version&gt;</span>
+                <span class="kw">&lt;configuration&gt;</span>
+                    <span class="kw">&lt;packageData&gt;</span>
+                        <span class="co">&lt;!-- R package metadata: --&gt;</span>
+                        <span class="kw">&lt;title&gt;</span>A test library<span class="kw">&lt;/title&gt;</span>
+                        
+                        <span class="co">&lt;!-- As this project is documenting the r6-generator-maven-plugin I am syncing R package version with the --&gt;</span>
+                        <span class="co">&lt;!-- r6-generator version. this is unlikely to be what you want to do. --&gt;</span>
+                        <span class="kw">&lt;version&gt;</span>${r6.version}<span class="kw">&lt;/version&gt;</span>
+                         
+                        <span class="co">&lt;!-- Instead you most likely want to sync the R package version to your Java artifact version in a "normal" project --&gt;</span>
+                        <span class="co">&lt;!-- &lt;version&gt;${version}&lt;/version&gt; --&gt;</span>
+                        <span class="co">&lt;!-- Alternatively you can manage the R package version manually by putting whatever you like in here --&gt;</span>
+                        <span class="co">&lt;!-- Although semantic versioning of the format 0.1.0.9000 is expected --&gt;</span>
+                        <span class="co">&lt;!-- &lt;version&gt;0.1.0.9000&lt;/version&gt; --&gt;</span>
+                        
+                        <span class="kw">&lt;url&gt;</span>https://terminological.github.io/r6-generator-docs/docs/<span class="kw">&lt;/url&gt;</span>
+                        <span class="kw">&lt;doi&gt;</span>10.5281/zenodo.6645134<span class="kw">&lt;/doi&gt;</span>
+                        <span class="kw">&lt;packageName&gt;</span>testRapi<span class="kw">&lt;/packageName&gt;</span>
+                        <span class="kw">&lt;license&gt;</span>MIT<span class="kw">&lt;/license&gt;</span>
+                        
+                        <span class="co">&lt;!-- this is the Description field in the R DESCRIPTION file --&gt;</span>
+                        <span class="co">&lt;!-- CRAN specifies some standards for this, such as it shoudl not start with the package name and must pass spellchecks --&gt;</span>
+                        <span class="co">&lt;!-- any references to other packages mut be in single quotes --&gt;</span>
+                        <span class="kw">&lt;description&gt;</span>
+                            Documents the features of the 'r6-generator-maven-plugin' by providing an example
+                            of an R package automatically generated from Java code by the plugin. 
+                            It is not intended to be useful beyond testing, demonstrating and documenting the features of the plugin.
+                        <span class="kw">&lt;/description&gt;</span>
+                        <span class="kw">&lt;maintainerName&gt;</span>Rob<span class="kw">&lt;/maintainerName&gt;</span>
+                        <span class="kw">&lt;maintainerFamilyName&gt;</span>Challen<span class="kw">&lt;/maintainerFamilyName&gt;</span>
+                        <span class="kw">&lt;maintainerEmail&gt;</span>rc538@exeter.ac.uk<span class="kw">&lt;/maintainerEmail&gt;</span>
+                        <span class="kw">&lt;maintainerOrganisation&gt;</span>University of Exeter<span class="kw">&lt;/maintainerOrganisation&gt;</span>
+                        
+                        <span class="co">&lt;!-- Build configuration options: --&gt;</span>
+                        <span class="kw">&lt;debug&gt;</span>false<span class="kw">&lt;/debug&gt;</span> <span class="co">&lt;!-- starts the R library with java code in debugging mode --&gt;</span>
+                        <span class="kw">&lt;usePkgdown&gt;</span>true<span class="kw">&lt;/usePkgdown&gt;</span> <span class="co">&lt;!-- Pkgdown will generate a nice looking site --&gt;</span>
+                        <span class="kw">&lt;useRoxygen2&gt;</span>false<span class="kw">&lt;/useRoxygen2&gt;</span> <span class="co">&lt;!-- Roxygen can integrate user supplied and generated R code, but requires </span>
+<span class="co">                            a working R version on the system that generates the R package --&gt;</span>
+                        <span class="kw">&lt;useJavadoc&gt;</span>false<span class="kw">&lt;/useJavadoc&gt;</span> <span class="co">&lt;!-- building the javadocs into the documentation is nice but can add </span>
+<span class="co">                            to the size of the package which is not helpful if submitting to CRAN --&gt;</span>
+                            
+                        <span class="co">&lt;!-- pre-compiling the binary if probably a safer option --&gt;</span>
+                        <span class="co">&lt;!-- the alternative is to fetch all dependencies and compile the java from source on first use of the library --&gt;</span>
+                        <span class="kw">&lt;preCompileBinary&gt;</span>true<span class="kw">&lt;/preCompileBinary&gt;</span> 
+                        
+                         <span class="co">&lt;!-- packaging all dependencies is the most robust but results in a large package size that may not be accepted on CRAN --&gt;</span>
+                         <span class="co">&lt;!-- the alternative is to fetch all dependencies on first library use. --&gt;</span>
+                        <span class="kw">&lt;packageAllDependencies&gt;</span>true<span class="kw">&lt;/packageAllDependencies&gt;</span>
+                        
+                        <span class="co">&lt;!-- any rJava VM start up options can be added here --&gt;</span>
+                        <span class="kw">&lt;rjavaOpts&gt;</span>
+                            <span class="kw">&lt;rjavaOpt&gt;</span>-Xmx256M<span class="kw">&lt;/rjavaOpt&gt;</span> <span class="co">&lt;!-- this example sets the maximum heap size --&gt;</span>
+                        <span class="kw">&lt;/rjavaOpts&gt;</span>
+                        
+                    <span class="kw">&lt;/packageData&gt;</span>
+                    <span class="co">&lt;!-- the best place to put the R package is in the directory above the java code --&gt;</span>
+                    <span class="co">&lt;!-- and to have the java code in a `java` subdirectory of a github repo. --&gt;</span>
+                    <span class="co">&lt;!-- i.e. this file would be `java/pom.xml`. This makes R optimally happy and is the best layout for new projects. --&gt;</span>
+                    <span class="kw">&lt;outputDirectory&gt;</span>${project.basedir}/..<span class="kw">&lt;/outputDirectory&gt;</span>
+                <span class="kw">&lt;/configuration&gt;</span>
+                <span class="kw">&lt;executions&gt;</span>
+                    <span class="kw">&lt;execution&gt;</span>
+                        <span class="kw">&lt;id&gt;</span>clean-r-library<span class="kw">&lt;/id&gt;</span>
+                        <span class="kw">&lt;goals&gt;</span>
+                            <span class="kw">&lt;goal&gt;</span>clean-r-library<span class="kw">&lt;/goal&gt;</span>
+                        <span class="kw">&lt;/goals&gt;</span>
+                    <span class="kw">&lt;/execution&gt;</span>
+                    <span class="kw">&lt;execution&gt;</span>
+                        <span class="kw">&lt;id&gt;</span>flatten-pom<span class="kw">&lt;/id&gt;</span>
+                        <span class="kw">&lt;goals&gt;</span>
+                            <span class="kw">&lt;goal&gt;</span>flatten-pom<span class="kw">&lt;/goal&gt;</span>
+                        <span class="kw">&lt;/goals&gt;</span>
+                    <span class="kw">&lt;/execution&gt;</span>
+                    <span class="kw">&lt;execution&gt;</span>
+                        <span class="kw">&lt;id&gt;</span>generate-r-library<span class="kw">&lt;/id&gt;</span>
+                        <span class="kw">&lt;goals&gt;</span>
+                            <span class="kw">&lt;goal&gt;</span>generate-r-library<span class="kw">&lt;/goal&gt;</span>
+                        <span class="kw">&lt;/goals&gt;</span>
+                    <span class="kw">&lt;/execution&gt;</span>
+                <span class="kw">&lt;/executions&gt;</span>
+            <span class="kw">&lt;/plugin&gt;</span>
+        <span class="kw">&lt;/plugins&gt;</span>
+    <span class="kw">&lt;/build&gt;</span></code></pre></div>
 </div>
 </div>
-<div id="the-r6-generator-runtime-java-library" class="section level2">
-<h2 class="hasAnchor">
-<a href="#the-r6-generator-runtime-java-library" class="anchor"></a>The r6-generator-runtime Java library</h2>
+<div class="section level2">
+<h2 id="the-r6-generator-runtime-java-library">The r6-generator-runtime Java library<a class="anchor" aria-label="anchor" href="#the-r6-generator-runtime-java-library"></a>
+</h2>
 <p>The <code>runtime</code> java library contains code needed in the development of R compatible libraries in Java. These are the annotations that identify a Java Class as part of the R Api, (<code>uk.co.terminological.rjava.RClass</code> and <code>uk.co.terminological.rjava.RMethod</code>), specialised data types that can be round tripped between R and Java (in package <code>uk.co.terminological.rjava.types.*</code>), and various data conversion helpers (e.g. <code>uk.co.terminological.rjava.RConverter</code>) which can be used to accelerate development of an R centric API in Java.</p>
 </div>
-<div id="jitpack-maven-repository-declarations-for-both-code-and-plugins" class="section level2">
-<h2 class="hasAnchor">
-<a href="#jitpack-maven-repository-declarations-for-both-code-and-plugins" class="anchor"></a>Jitpack maven repository declarations for both code and plugins</h2>
-<p>Both the core maven plugin and the <code>runtime</code> library are available through the Jitpack repository. The <code>${r6.version}</code> property is here set to <code>master-SNAPSHOT</code> which retrieves the development version of the plugin. or could be <code>1.0</code> for stable versions. The most recent stable release version numbers will be available <a href="https://github.com/terminological/r6-generator-maven-plugin/tags">on the github releases page</a></p>
+<div class="section level2">
+<h2 id="jitpack-maven-repository-declarations-for-both-code-and-plugins">Jitpack maven repository declarations for both code and plugins<a class="anchor" aria-label="anchor" href="#jitpack-maven-repository-declarations-for-both-code-and-plugins"></a>
+</h2>
+<p>Both the core maven plugin and the <code>runtime</code> library are available through the Jitpack repository. The <code>${r6.version}</code> property is here set to <code>master-SNAPSHOT</code> which retrieves the development version of the plugin. or could be <code>1.0</code> for stable versions. The most recent stable release version numbers will be available <a href="https://github.com/terminological/r6-generator-maven-plugin/tags" class="external-link">on the github releases page</a></p>
 </div>
-<div id="plugin-configuration-for-the-r6-generator-maven-plugin" class="section level2">
-<h2 class="hasAnchor">
-<a href="#plugin-configuration-for-the-r6-generator-maven-plugin" class="anchor"></a>Plugin configuration for the r6-generator-maven-plugin</h2>
-<div id="outputdirectory" class="section level3">
-<h3 class="hasAnchor">
-<a href="#outputdirectory" class="anchor"></a>outputDirectory</h3>
+<div class="section level2">
+<h2 id="plugin-configuration-for-the-r6-generator-maven-plugin">Plugin configuration for the r6-generator-maven-plugin<a class="anchor" aria-label="anchor" href="#plugin-configuration-for-the-r6-generator-maven-plugin"></a>
+</h2>
+<div class="section level3">
+<h3 id="outputdirectory">outputDirectory<a class="anchor" aria-label="anchor" href="#outputdirectory"></a>
+</h3>
 <p>The plugin needs to know where to output the R library. In the example above this is <code>&lt;outputDirectory&gt;${project.basedir}/..&lt;/outputDirectory&gt;</code> which specifies the generated code will reside in the directory above the java <code>pom.xml</code>. Keeping the Java source code within the R project is the best option as the resulting R package can be committed to GitHub with the Java source in the <code>src</code> directory (which is where R expects sources to be). Thi smay however be impossible if the Java library requires that is in the root of the github project. In this case the R and Java code can co-exist, and the <code>pom.xml</code> can be in the project root. This will be OK however if you plan on submitting your library to CRAN it will generate a few NOTES that will need to be explained.</p>
-<p>If the R package is generated in a sub-directory of the java code this has implications for the ability to compile that code from source from within R, and is generally a bad idea. In this case the fat JAR must be distributed with the R package and the fact that the R package is in a sub-directory will need to be be specified if the library is intended to be installed via GitHub (e.g. using <code><a href="https://devtools.r-lib.org/reference/remote-reexports.html">devtools::install_github("my-org/my-project")</a></code>. It is also equally possible to place the generated code into the root directory of the project (<code>${project.basedir}</code>) or indeed into a completely separate directory.</p>
+<p>If the R package is generated in a sub-directory of the java code this has implications for the ability to compile that code from source from within R, and is generally a bad idea. In this case the fat JAR must be distributed with the R package and the fact that the R package is in a sub-directory will need to be be specified if the library is intended to be installed via GitHub (e.g. using <code>devtools::install_github("my-org/my-project")</code>. It is also equally possible to place the generated code into the root directory of the project (<code>${project.basedir}</code>) or indeed into a completely separate directory.</p>
 </div>
-<div id="packagedata" class="section level3">
-<h3 class="hasAnchor">
-<a href="#packagedata" class="anchor"></a>packageData</h3>
+<div class="section level3">
+<h3 id="packagedata">packageData<a class="anchor" aria-label="anchor" href="#packagedata"></a>
+</h3>
 <p>The package data section includes metadata that describes the R library and a few control flags:</p>
 <ul>
 <li><code>title</code></li>
@@ -162,7 +287,7 @@ DRAFT
 <li><code>packageName</code></li>
 <li>the most important entry - the desired name of the package forms the name space for the package so it is best that it is short and has not already been used for a R package - e.g. don't call it "stats".</li>
 <li><code>license</code></li>
-<li>a license specification - it is best to use a <a href="https://cran.r-project.org/web/licenses/">CRAN friendly license</a>. N.B. This should be <code>MIT</code> rather than <code>MIT + file LICENSE</code>, the additional license file is added if needed.</li>
+<li>a license specification - it is best to use a <a href="https://cran.r-project.org/web/licenses/" class="external-link">CRAN friendly license</a>. N.B. This should be <code>MIT</code> rather than <code>MIT + file LICENSE</code>, the additional license file is added if needed.</li>
 <li>
 <code>maintainerName</code>, <code>maintainerFamilyName</code>, <code>maintainerEmail</code>, <code>maintainerOrganisation</code>
 </li>
@@ -170,10 +295,10 @@ DRAFT
 </ul>
 </div>
 </div>
-<div id="goals" class="section level2">
-<h2 class="hasAnchor">
-<a href="#goals" class="anchor"></a>Goals</h2>
-<p>The plugin only two goals - "compile-java-library" and "generate-r-library"</p>
+<div class="section level2">
+<h2 id="goals">Goals<a class="anchor" aria-label="anchor" href="#goals"></a>
+</h2>
+<p>The plugin only two goals - "clean-r-library", "flatten-pom" and "generate-r-library"</p>
 <p>*TODO: explain what they are</p>
 </div>
   </div>
@@ -189,11 +314,13 @@ DRAFT
 
 
       <footer><div class="copyright">
-  <p>Developed by Rob Challen, terminological, Rob Challen.</p>
+  <p></p>
+<p>Developed by Rob Challen, terminological, Rob Challen.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer>
@@ -201,6 +328,8 @@ DRAFT
 
   
 
+
+  
 
   </body>
 </html>

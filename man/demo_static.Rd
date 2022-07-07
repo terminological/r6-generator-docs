@@ -3,8 +3,7 @@
 \name{demo_static}
 \alias{demo_static}
 \title{Static methods are also supported. }
-\usage{
-demo_static(
+\usage{demo_static(
 	message
 )
 }
@@ -17,7 +16,6 @@ demo_static(
 void: 
 }
 \description{
-
 These are accessed through the
 root of the R api, and as a functional interface
 }
