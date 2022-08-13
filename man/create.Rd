@@ -20,9 +20,9 @@ R6 MoreFeatureTest object: A MoreFeatureTest R6 object
 \description{
 no description
 }
-\examples{\dontrun{
+\examples{
+J = JavaApi$get()
 J$MoreFeatureTest$create('Hello,',' World')
-}
 }
 \keyword{java api}
 

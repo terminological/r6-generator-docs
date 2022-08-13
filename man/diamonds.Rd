@@ -13,9 +13,8 @@ A copy serialised into java, using
 RObject.writeRDS, saved within the jar file of the package, and exposed here
 using RObject.readRDS.
 }
-\examples{\dontrun{
-J$FeatureTest$diamonds()
-}
+\examples{
+diamonds()
 }
 \keyword{java api}
 

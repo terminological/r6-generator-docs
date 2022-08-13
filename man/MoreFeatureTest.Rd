@@ -17,45 +17,57 @@
 \description{
 This has no documentation
 
-Version: 0.5.1
+Version: 0.0.0.9999
 
-Generated: 2022-07-07T16:10:04.191
+Generated: 2022-08-13T01:21:12.019
 }
 
 \details{
 	This has no documentation
 }
 
-\examples{\dontrun{
-J = testRapi::JavaApi$get();
+\examples{
+## -----------------------------------
+## Construct new instance of MoreFeatureTest
+## -----------------------------------
+\dontrun{
+J = testRapi::JavaApi$get()
+# appropriate parameter values must be provided
 instance = J$MoreFeatureTest$new(message1, message2)
+}
 
 ## -----------------------------------
-## Method `MoreFeatureTest$create`
+## Method `MoreFeatureTest$testLogging()`
 ## -----------------------------------
-J$MoreFeatureTest$create('Hello,',' World')
+\dontrun{
+# appropriate parameter values must be provided
+instance$testLogging()
+}
 
 ## -----------------------------------
-## Method `MoreFeatureTest$testLogging`
+## Method `MoreFeatureTest$throwCatchable()`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$throwCatchable()
+}
 
 ## -----------------------------------
-## Method `MoreFeatureTest$throwCatchable`
+## Method `MoreFeatureTest$printMessage()`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$printMessage()
+}
 
 ## -----------------------------------
-## Method `MoreFeatureTest$printMessage`
+## Method `MoreFeatureTest$throwRuntime()`
 ## -----------------------------------
-
-## -----------------------------------
-## Method `MoreFeatureTest$throwRuntime`
-## -----------------------------------
-
-## -----------------------------------
-## Method `MoreFeatureTest$concat`
-## -----------------------------------
-
-}}
+\dontrun{
+# appropriate parameter values must be provided
+instance$throwRuntime()
+}
+}
 
 \keyword{java api}
 
@@ -65,13 +77,7 @@ J$MoreFeatureTest$create('Hello,',' World')
 			\item \href{#method-new}{\code{J$MoreFeatureTest$new(message1, message2)}}
 		}
 	}
-	\subsection{Static methods}{
-		\itemize{
-			\item \href{#method-create}{\code{J$MoreFeatureTest$create(message1, message2)}}
-			\item \href{#method-concat}{\code{J$MoreFeatureTest$concat(message1, message2)}}
-		}
-	}
-	\subsection{Instance methods}{
+	\subsection{Class methods}{
 		\itemize{
 			\item \href{#method-testLogging}{\code{instance$testLogging()}}
 			\item \href{#method-throwCatchable}{\code{instance$throwCatchable()}}
@@ -85,15 +91,14 @@ J$MoreFeatureTest$create('Hello,',' World')
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-new"></a>}}
 	
-	\subsection{Method \code{new()}}{
-		the first constructor is used if there are none annotated
-	
+	\subsection{Constructor \code{new()}}{
+the first constructor is used if there are none annotated
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-J$MoreFeatureTest$new(message1, message2)
+instance = J$MoreFeatureTest$new(message1, message2);
   			}
 			\if{html}{\out{</div>}}
 		}
@@ -108,66 +113,22 @@ J$MoreFeatureTest$new(message1, message2)
 		}
 
 		\subsection{Returns}{
-			R6 MoreFeatureTest object: 
+the new R6 MoreFeatureTest object
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
-	\if{html}{\out{<hr>}}
-	\if{html}{\out{<a id="method-create"></a>}}
-	
-	\subsection{Method \code{create()}}{
-		A static object constructor
-	
 
-		\subsection{Usage}{
-			\if{html}{\out{<div class="r">}}
-			\preformatted{
-J = testRapi::JavaApi$get()
-J$MoreFeatureTest$create(message1, message2)
-  			}
-			\if{html}{\out{</div>}}
-		}
-	
-		\subsection{Arguments}{
-			\if{html}{\out{<div class="arguments">}}
-			\itemize{
-				\item{message1 - the message to be printed}{ - (java expects a RCharacter)}
-				\item{message2 - will be used for toString}{ - (java expects a RCharacter)}
-			}
-			\if{html}{\out{</div>}}
-		}
-
-		\subsection{Returns}{
-			R6 MoreFeatureTest object: A MoreFeatureTest R6 object
-		}
-
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-J$MoreFeatureTest$create('Hello,',' World')
-			}
-			\if{html}{\out{</div>}}
-		}
-	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-testLogging"></a>}}
 	
 	\subsection{Method \code{testLogging()}}{
-		no title
-	
+no title
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$MoreFeatureTest$new(...);
+instance = J$MoreFeatureTest$new(message1, message2);
 instance$testLogging()
   			}
 			\if{html}{\out{</div>}}
@@ -182,29 +143,21 @@ instance$testLogging()
 		}
 
 		\subsection{Returns}{
-			void: 
+void: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-throwCatchable"></a>}}
 	
 	\subsection{Method \code{throwCatchable()}}{
-		no title
-	
+no title
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$MoreFeatureTest$new(...);
+instance = J$MoreFeatureTest$new(message1, message2);
 instance$throwCatchable()
   			}
 			\if{html}{\out{</div>}}
@@ -219,29 +172,21 @@ instance$throwCatchable()
 		}
 
 		\subsection{Returns}{
-			RCharacter: 
+RCharacter: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-printMessage"></a>}}
 	
 	\subsection{Method \code{printMessage()}}{
-		no title
-	
+no title
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$MoreFeatureTest$new(...);
+instance = J$MoreFeatureTest$new(message1, message2);
 instance$printMessage()
   			}
 			\if{html}{\out{</div>}}
@@ -256,29 +201,21 @@ instance$printMessage()
 		}
 
 		\subsection{Returns}{
-			void: 
+void: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-throwRuntime"></a>}}
 	
 	\subsection{Method \code{throwRuntime()}}{
-		no title
-	
+no title
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$MoreFeatureTest$new(...);
+instance = J$MoreFeatureTest$new(message1, message2);
 instance$throwRuntime()
   			}
 			\if{html}{\out{</div>}}
@@ -293,52 +230,8 @@ instance$throwRuntime()
 		}
 
 		\subsection{Returns}{
-			RCharacter: 
+RCharacter: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
-	}
-	\if{html}{\out{<hr>}}
-	\if{html}{\out{<a id="method-concat"></a>}}
-	
-	\subsection{Method \code{concat()}}{
-		no title
-	
-
-		\subsection{Usage}{
-			\if{html}{\out{<div class="r">}}
-			\preformatted{
-J = testRapi::JavaApi$get()
-J$MoreFeatureTest$concat(message1, message2)
-  			}
-			\if{html}{\out{</div>}}
-		}
-	
-		\subsection{Arguments}{
-			\if{html}{\out{<div class="arguments">}}
-			\itemize{
-				\item{message1}{ - (java expects a RCharacter)}
-				\item{message2}{ - (java expects a RCharacter)}
-			}
-			\if{html}{\out{</div>}}
-		}
-
-		\subsection{Returns}{
-			RCharacter: 
-		}
-
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 }

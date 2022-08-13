@@ -8,9 +8,9 @@
 #' 
 #' This is a class of the testRapi generated R library.
 #' 
-#' Version: 0.5.1
+#' Version: 0.0.0.9999
 #' 
-#' Generated: 2022-07-07T16:10:04.268
+#' Generated: 2022-08-13T01:21:11.976
 #'
 #' @details
 	#' string and serialises the dataframe so it can be used natively in java
@@ -32,8 +32,11 @@ Serialiser = R6::R6Class("Serialiser", public=list(
 	#' @param api The R6 api library class.
 	#' @return A new Serialiser object.
 	#' @examples
-	#' J = testRapi::JavaApi$get();
+	#' \dontrun{
+	#' J = testRapi::JavaApi$get()
+	#' # This constructor must be called via the JavaApi where an appropriate set of parameters must be provided.
 	#' instance = J$Serialiser$new()
+	#' }	
 	initialize = function(jobj,api){
 		self$.jobj = jobj;
 		self$.api = api;

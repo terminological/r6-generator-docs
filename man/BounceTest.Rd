@@ -11,104 +11,193 @@
 \description{
 missing description
 
-Version: 0.5.1
+Version: 0.0.0.9999
 
-Generated: 2022-07-07T16:10:04.382
+Generated: 2022-08-13T01:21:11.965
 }
 
 \details{
 	no details
 }
 
-\examples{\dontrun{
-J = testRapi::JavaApi$get();
+\examples{
+## -----------------------------------
+## Construct new instance of BounceTest
+## -----------------------------------
+\dontrun{
+J = testRapi::JavaApi$get()
+# appropriate parameter values must be provided
 instance = J$BounceTest$new()
+}
 
 ## -----------------------------------
-## Method `BounceTest$bounceNull`
+## Method `BounceTest$bounceNull(x)`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$bounceNull(x)
+}
 
 ## -----------------------------------
-## Method `BounceTest$bounceVoid`
+## Method `BounceTest$bounceVoid()`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$bounceVoid()
+}
 
 ## -----------------------------------
-## Method `BounceTest$bounceString`
+## Method `BounceTest$bounceString(x)`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$bounceString(x)
+}
 
 ## -----------------------------------
-## Method `BounceTest$bounceCharacter`
+## Method `BounceTest$bounceCharacter(x)`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$bounceCharacter(x)
+}
 
 ## -----------------------------------
-## Method `BounceTest$bounceCharacterVector`
+## Method `BounceTest$bounceCharacterVector(x)`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$bounceCharacterVector(x)
+}
 
 ## -----------------------------------
-## Method `BounceTest$bounceDouble`
+## Method `BounceTest$bounceDouble(x)`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$bounceDouble(x)
+}
 
 ## -----------------------------------
-## Method `BounceTest$bounceNumeric`
+## Method `BounceTest$bounceNumeric(x)`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$bounceNumeric(x)
+}
 
 ## -----------------------------------
-## Method `BounceTest$bounceNumericVector`
+## Method `BounceTest$bounceNumericVector(x)`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$bounceNumericVector(x)
+}
 
 ## -----------------------------------
-## Method `BounceTest$bounceInt`
+## Method `BounceTest$bounceInt(x)`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$bounceInt(x)
+}
 
 ## -----------------------------------
-## Method `BounceTest$bounceInteger`
+## Method `BounceTest$bounceInteger(x)`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$bounceInteger(x)
+}
 
 ## -----------------------------------
-## Method `BounceTest$bounceIntegerVector`
+## Method `BounceTest$bounceIntegerVector(x)`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$bounceIntegerVector(x)
+}
 
 ## -----------------------------------
-## Method `BounceTest$bounceFactor`
+## Method `BounceTest$bounceFactor(x)`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$bounceFactor(x)
+}
 
 ## -----------------------------------
-## Method `BounceTest$bounceFactorVector`
+## Method `BounceTest$bounceFactorVector(x)`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$bounceFactorVector(x)
+}
 
 ## -----------------------------------
-## Method `BounceTest$bounceDate`
+## Method `BounceTest$bounceDate(x)`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$bounceDate(x)
+}
 
 ## -----------------------------------
-## Method `BounceTest$bounceDateVector`
+## Method `BounceTest$bounceDateVector(x)`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$bounceDateVector(x)
+}
 
 ## -----------------------------------
-## Method `BounceTest$bounceLogical`
+## Method `BounceTest$bounceLogical(x)`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$bounceLogical(x)
+}
 
 ## -----------------------------------
-## Method `BounceTest$bounceLogicalVector`
+## Method `BounceTest$bounceLogicalVector(x)`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$bounceLogicalVector(x)
+}
 
 ## -----------------------------------
-## Method `BounceTest$bounceDataframe`
+## Method `BounceTest$bounceDataframe(x)`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$bounceDataframe(x)
+}
 
 ## -----------------------------------
-## Method `BounceTest$bounceList`
+## Method `BounceTest$bounceList(x)`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$bounceList(x)
+}
 
 ## -----------------------------------
-## Method `BounceTest$bounceNamedList`
+## Method `BounceTest$bounceNamedList(x)`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$bounceNamedList(x)
+}
 
 ## -----------------------------------
-## Method `BounceTest$bounceArray`
+## Method `BounceTest$bounceArray(x)`
 ## -----------------------------------
-
-}}
+\dontrun{
+# appropriate parameter values must be provided
+instance$bounceArray(x)
+}
+}
 
 \keyword{java api}
 
@@ -118,12 +207,7 @@ instance = J$BounceTest$new()
 			\item \href{#method-new}{\code{J$BounceTest$new()}}
 		}
 	}
-	\subsection{Static methods}{
-		\itemize{
-			\item{none}
-		}
-	}
-	\subsection{Instance methods}{
+	\subsection{Class methods}{
 		\itemize{
 			\item \href{#method-bounceNull}{\code{instance$bounceNull(x)}}
 			\item \href{#method-bounceVoid}{\code{instance$bounceVoid()}}
@@ -154,15 +238,14 @@ instance = J$BounceTest$new()
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-new"></a>}}
 	
-	\subsection{Method \code{new()}}{
-		the default no-args constructor
-	
+	\subsection{Constructor \code{new()}}{
+the default no-args constructor
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-J$BounceTest$new()
+instance = J$BounceTest$new();
   			}
 			\if{html}{\out{</div>}}
 		}
@@ -176,29 +259,22 @@ J$BounceTest$new()
 		}
 
 		\subsection{Returns}{
-			R6 BounceTest object: 
+the new R6 BounceTest object
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
+
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-bounceNull"></a>}}
 	
 	\subsection{Method \code{bounceNull()}}{
-		no title
-	
+no title
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$BounceTest$new(...);
+instance = J$BounceTest$new();
 instance$bounceNull(x)
   			}
 			\if{html}{\out{</div>}}
@@ -213,29 +289,21 @@ instance$bounceNull(x)
 		}
 
 		\subsection{Returns}{
-			RNull: 
+RNull: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-bounceVoid"></a>}}
 	
 	\subsection{Method \code{bounceVoid()}}{
-		no title
-	
+no title
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$BounceTest$new(...);
+instance = J$BounceTest$new();
 instance$bounceVoid()
   			}
 			\if{html}{\out{</div>}}
@@ -250,29 +318,21 @@ instance$bounceVoid()
 		}
 
 		\subsection{Returns}{
-			void: 
+void: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-bounceString"></a>}}
 	
 	\subsection{Method \code{bounceString()}}{
-		no title
-	
+no title
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$BounceTest$new(...);
+instance = J$BounceTest$new();
 instance$bounceString(x)
   			}
 			\if{html}{\out{</div>}}
@@ -287,29 +347,21 @@ instance$bounceString(x)
 		}
 
 		\subsection{Returns}{
-			String: 
+String: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-bounceCharacter"></a>}}
 	
 	\subsection{Method \code{bounceCharacter()}}{
-		no title
-	
+no title
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$BounceTest$new(...);
+instance = J$BounceTest$new();
 instance$bounceCharacter(x)
   			}
 			\if{html}{\out{</div>}}
@@ -324,29 +376,21 @@ instance$bounceCharacter(x)
 		}
 
 		\subsection{Returns}{
-			RCharacter: 
+RCharacter: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-bounceCharacterVector"></a>}}
 	
 	\subsection{Method \code{bounceCharacterVector()}}{
-		no title
-	
+no title
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$BounceTest$new(...);
+instance = J$BounceTest$new();
 instance$bounceCharacterVector(x)
   			}
 			\if{html}{\out{</div>}}
@@ -361,29 +405,21 @@ instance$bounceCharacterVector(x)
 		}
 
 		\subsection{Returns}{
-			RCharacterVector: 
+RCharacterVector: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-bounceDouble"></a>}}
 	
 	\subsection{Method \code{bounceDouble()}}{
-		no title
-	
+no title
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$BounceTest$new(...);
+instance = J$BounceTest$new();
 instance$bounceDouble(x)
   			}
 			\if{html}{\out{</div>}}
@@ -398,29 +434,21 @@ instance$bounceDouble(x)
 		}
 
 		\subsection{Returns}{
-			double: 
+double: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-bounceNumeric"></a>}}
 	
 	\subsection{Method \code{bounceNumeric()}}{
-		no title
-	
+no title
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$BounceTest$new(...);
+instance = J$BounceTest$new();
 instance$bounceNumeric(x)
   			}
 			\if{html}{\out{</div>}}
@@ -435,29 +463,21 @@ instance$bounceNumeric(x)
 		}
 
 		\subsection{Returns}{
-			RNumeric: 
+RNumeric: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-bounceNumericVector"></a>}}
 	
 	\subsection{Method \code{bounceNumericVector()}}{
-		no title
-	
+no title
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$BounceTest$new(...);
+instance = J$BounceTest$new();
 instance$bounceNumericVector(x)
   			}
 			\if{html}{\out{</div>}}
@@ -472,29 +492,21 @@ instance$bounceNumericVector(x)
 		}
 
 		\subsection{Returns}{
-			RNumericVector: 
+RNumericVector: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-bounceInt"></a>}}
 	
 	\subsection{Method \code{bounceInt()}}{
-		no title
-	
+no title
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$BounceTest$new(...);
+instance = J$BounceTest$new();
 instance$bounceInt(x)
   			}
 			\if{html}{\out{</div>}}
@@ -509,29 +521,21 @@ instance$bounceInt(x)
 		}
 
 		\subsection{Returns}{
-			int: 
+int: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-bounceInteger"></a>}}
 	
 	\subsection{Method \code{bounceInteger()}}{
-		no title
-	
+no title
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$BounceTest$new(...);
+instance = J$BounceTest$new();
 instance$bounceInteger(x)
   			}
 			\if{html}{\out{</div>}}
@@ -546,29 +550,21 @@ instance$bounceInteger(x)
 		}
 
 		\subsection{Returns}{
-			RInteger: 
+RInteger: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-bounceIntegerVector"></a>}}
 	
 	\subsection{Method \code{bounceIntegerVector()}}{
-		no title
-	
+no title
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$BounceTest$new(...);
+instance = J$BounceTest$new();
 instance$bounceIntegerVector(x)
   			}
 			\if{html}{\out{</div>}}
@@ -583,29 +579,21 @@ instance$bounceIntegerVector(x)
 		}
 
 		\subsection{Returns}{
-			RIntegerVector: 
+RIntegerVector: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-bounceFactor"></a>}}
 	
 	\subsection{Method \code{bounceFactor()}}{
-		no title
-	
+no title
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$BounceTest$new(...);
+instance = J$BounceTest$new();
 instance$bounceFactor(x)
   			}
 			\if{html}{\out{</div>}}
@@ -620,29 +608,21 @@ instance$bounceFactor(x)
 		}
 
 		\subsection{Returns}{
-			RFactor: 
+RFactor: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-bounceFactorVector"></a>}}
 	
 	\subsection{Method \code{bounceFactorVector()}}{
-		no title
-	
+no title
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$BounceTest$new(...);
+instance = J$BounceTest$new();
 instance$bounceFactorVector(x)
   			}
 			\if{html}{\out{</div>}}
@@ -657,29 +637,21 @@ instance$bounceFactorVector(x)
 		}
 
 		\subsection{Returns}{
-			RFactorVector: 
+RFactorVector: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-bounceDate"></a>}}
 	
 	\subsection{Method \code{bounceDate()}}{
-		no title
-	
+no title
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$BounceTest$new(...);
+instance = J$BounceTest$new();
 instance$bounceDate(x)
   			}
 			\if{html}{\out{</div>}}
@@ -694,29 +666,21 @@ instance$bounceDate(x)
 		}
 
 		\subsection{Returns}{
-			RDate: 
+RDate: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-bounceDateVector"></a>}}
 	
 	\subsection{Method \code{bounceDateVector()}}{
-		no title
-	
+no title
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$BounceTest$new(...);
+instance = J$BounceTest$new();
 instance$bounceDateVector(x)
   			}
 			\if{html}{\out{</div>}}
@@ -731,29 +695,21 @@ instance$bounceDateVector(x)
 		}
 
 		\subsection{Returns}{
-			RDateVector: 
+RDateVector: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-bounceLogical"></a>}}
 	
 	\subsection{Method \code{bounceLogical()}}{
-		no title
-	
+no title
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$BounceTest$new(...);
+instance = J$BounceTest$new();
 instance$bounceLogical(x)
   			}
 			\if{html}{\out{</div>}}
@@ -768,29 +724,21 @@ instance$bounceLogical(x)
 		}
 
 		\subsection{Returns}{
-			RLogical: 
+RLogical: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-bounceLogicalVector"></a>}}
 	
 	\subsection{Method \code{bounceLogicalVector()}}{
-		no title
-	
+no title
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$BounceTest$new(...);
+instance = J$BounceTest$new();
 instance$bounceLogicalVector(x)
   			}
 			\if{html}{\out{</div>}}
@@ -805,29 +753,21 @@ instance$bounceLogicalVector(x)
 		}
 
 		\subsection{Returns}{
-			RLogicalVector: 
+RLogicalVector: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-bounceDataframe"></a>}}
 	
 	\subsection{Method \code{bounceDataframe()}}{
-		no title
-	
+no title
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$BounceTest$new(...);
+instance = J$BounceTest$new();
 instance$bounceDataframe(x)
   			}
 			\if{html}{\out{</div>}}
@@ -842,29 +782,21 @@ instance$bounceDataframe(x)
 		}
 
 		\subsection{Returns}{
-			RDataframe: 
+RDataframe: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-bounceList"></a>}}
 	
 	\subsection{Method \code{bounceList()}}{
-		no title
-	
+no title
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$BounceTest$new(...);
+instance = J$BounceTest$new();
 instance$bounceList(x)
   			}
 			\if{html}{\out{</div>}}
@@ -879,29 +811,21 @@ instance$bounceList(x)
 		}
 
 		\subsection{Returns}{
-			RList: 
+RList: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-bounceNamedList"></a>}}
 	
 	\subsection{Method \code{bounceNamedList()}}{
-		no title
-	
+no title
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$BounceTest$new(...);
+instance = J$BounceTest$new();
 instance$bounceNamedList(x)
   			}
 			\if{html}{\out{</div>}}
@@ -916,29 +840,21 @@ instance$bounceNamedList(x)
 		}
 
 		\subsection{Returns}{
-			RNamedList: 
+RNamedList: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-bounceArray"></a>}}
 	
 	\subsection{Method \code{bounceArray()}}{
-		no title
-	
+no title
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$BounceTest$new(...);
+instance = J$BounceTest$new();
 instance$bounceArray(x)
   			}
 			\if{html}{\out{</div>}}
@@ -953,15 +869,8 @@ instance$bounceArray(x)
 		}
 
 		\subsection{Returns}{
-			RNumericArray: 
+RNumericArray: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 }

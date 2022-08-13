@@ -35,8 +35,14 @@ import uk.co.terminological.rjava.types.RObject;
  */
 @RClass(
 		imports = {"ggplot2","dplyr","tibble","readr","stringr"},
-		suggests = {"roxygen2","devtools","here","tidyverse"}
-		)
+		suggests = {"roxygen2","devtools","here","tidyverse"},
+		exampleSetup = {
+				"J = JavaApi$get()"
+		},
+		testSetup = {
+				"J = JavaApi$get()"
+		}
+	)
 public class FeatureTest {
 
 	String message;
@@ -52,7 +58,7 @@ public class FeatureTest {
 	 * @param logMessage - a message which will be logged
 	 */
 	@RMethod(examples = {
-			"minExample = J$FeatureTest$new('Hello from Java constructor!')",
+			"minExample = J$FeatureTest$new('Hello from Java constructor!')"
 		})
 	public FeatureTest(String logMessage) {
 		log.info(logMessage);
@@ -86,7 +92,11 @@ public class FeatureTest {
 	 * @return A+B of course, NAs in inputs are converted to null in Java. This catches the resulting NPE in java idiom and returns an explicit NA. 
 	 * This only matters if you care about the difference between NA_real_ and NaN in R. 
 	 */
-	@RMethod
+	@RMethod(tests = {
+			"minExample = J$FeatureTest$new('Hello from Java constructor!')",
+			"result = minExample$doSum(2,7.5)",
+			"expect_equal(result,9.5)"
+	})
 	public RNumeric doSum(RNumeric a, RNumeric b) {
 		try {
 			return RConverter.convert(a.get()+b.get());
@@ -121,8 +131,9 @@ public class FeatureTest {
 	 * @param message a message
 	 */
 	@RMethod(examples = {
+			"J = JavaApi$get()",
 			"J$FeatureTest$demoStatic('Ola, el mundo')",
-			"demo_static('Bonjour, le monde')",
+			"demo_static('Bonjour, le monde')"
 	})
 	public static void demoStatic(String message) {
 		log.info(message);
@@ -215,9 +226,14 @@ public class FeatureTest {
 	 * @return the ggplot2::diamonds dataframe
 	 * @throws IOException if the serialised data file could not be found 
 	 */
-	@RMethod(examples = {
-			"J$FeatureTest$diamonds()",
-	})
+	@RMethod(
+		examples = {
+			"diamonds()"
+		},
+		tests = {
+			"expect_equal(diamonds(), ggplot2::diamonds)"
+		}
+	)
 	public static RDataframe diamonds() throws IOException {
 		InputStream is = FeatureTest.class.getResourceAsStream("/diamonds.ser");
 		if(is==null) throw new IOException("Could not locate /diamonds.ser");

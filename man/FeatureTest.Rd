@@ -16,9 +16,9 @@
 \description{
 A test of the R6 generator templating
 
-Version: 0.5.1
+Version: 0.0.0.9999
 
-Generated: 2022-07-07T16:10:04.306
+Generated: 2022-08-13T01:21:11.988
 }
 
 \details{
@@ -32,64 +32,93 @@ $$e = mc^2$$
 this is a details comment
 }
 
-\examples{\dontrun{
-J = testRapi::JavaApi$get();
-instance = J$FeatureTest$new(logMessage)
+\examples{
+## -----------------------------------
+## Construct new instance of FeatureTest
+## -----------------------------------
+J = JavaApi$get()
+  
+			minExample = J$FeatureTest$new('Hello from Java constructor!')
 
 ## -----------------------------------
-## Method `FeatureTest$doHelloWorld`
+## Method `FeatureTest$doHelloWorld()`
 ## -----------------------------------
+J = JavaApi$get()
 minExample = J$FeatureTest$new('Hello, R World!')
 minExample$doHelloWorld()
 
 ## -----------------------------------
-## Method `FeatureTest$doSum`
+## Method `FeatureTest$doSum(a, b)`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$doSum(a, b)
+}
 
 ## -----------------------------------
-## Method `FeatureTest$doSum2`
+## Method `FeatureTest$doSum2(a, b)`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$doSum2(a, b)
+}
 
 ## -----------------------------------
-## Method `FeatureTest$demoStatic`
+## Method `FeatureTest$getMessage()`
 ## -----------------------------------
-J$FeatureTest$demoStatic('Ola, el mundo')
-demo_static('Bonjour, le monde')
+\dontrun{
+# appropriate parameter values must be provided
+instance$getMessage()
+}
 
 ## -----------------------------------
-## Method `FeatureTest$getMessage`
+## Method `FeatureTest$fluentSetMessage(message)`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$fluentSetMessage(message)
+}
 
 ## -----------------------------------
-## Method `FeatureTest$fluentSetMessage`
+## Method `FeatureTest$factoryMethod(a, b)`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$factoryMethod(a, b)
+}
 
 ## -----------------------------------
-## Method `FeatureTest$factoryMethod`
+## Method `FeatureTest$objectAsParameter(otherObj)`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$objectAsParameter(otherObj)
+}
 
 ## -----------------------------------
-## Method `FeatureTest$objectAsParameter`
+## Method `FeatureTest$doSomethingWithDataFrame(dataframe)`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$doSomethingWithDataFrame(dataframe)
+}
 
 ## -----------------------------------
-## Method `FeatureTest$doSomethingWithDataFrame`
+## Method `FeatureTest$generateDataFrame()`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$generateDataFrame()
+}
 
 ## -----------------------------------
-## Method `FeatureTest$generateDataFrame`
+## Method `FeatureTest$errorThrower()`
 ## -----------------------------------
-
-## -----------------------------------
-## Method `FeatureTest$diamonds`
-## -----------------------------------
-J$FeatureTest$diamonds()
-
-## -----------------------------------
-## Method `FeatureTest$errorThrower`
-## -----------------------------------
-
-}}
+\dontrun{
+# appropriate parameter values must be provided
+instance$errorThrower()
+}
+}
 
 \keyword{java api}
 
@@ -99,13 +128,7 @@ J$FeatureTest$diamonds()
 			\item \href{#method-new}{\code{J$FeatureTest$new(logMessage)}}
 		}
 	}
-	\subsection{Static methods}{
-		\itemize{
-			\item \href{#method-demoStatic}{\code{J$FeatureTest$demoStatic(message)}}
-			\item \href{#method-diamonds}{\code{J$FeatureTest$diamonds()}}
-		}
-	}
-	\subsection{Instance methods}{
+	\subsection{Class methods}{
 		\itemize{
 			\item \href{#method-doHelloWorld}{\code{instance$doHelloWorld()}}
 			\item \href{#method-doSum}{\code{instance$doSum(a, b)}}
@@ -125,20 +148,19 @@ J$FeatureTest$diamonds()
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-new"></a>}}
 	
-	\subsection{Method \code{new()}}{
-		A maximum of one constructor of any signature can be used. <br>
+	\subsection{Constructor \code{new()}}{
+A maximum of one constructor of any signature can be used. <br>
 
 If different constructors are needed then they may be used but not 
 included in the R Api (i.e. not annotated with @RMethod.) <br>
 
 Static factory methods can be used instead.
-	
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-J$FeatureTest$new(logMessage)
+instance = J$FeatureTest$new(logMessage);
   			}
 			\if{html}{\out{</div>}}
 		}
@@ -152,32 +174,33 @@ J$FeatureTest$new(logMessage)
 		}
 
 		\subsection{Returns}{
-			R6 FeatureTest object: 
+the new R6 FeatureTest object
 		}
 
 		\subsection{Examples}{
 			\if{html}{\out{<div class="r example copy">}}
 			\preformatted{
+J = JavaApi$get()
   
 			minExample = J$FeatureTest$new('Hello from Java constructor!')
 			}
 			\if{html}{\out{</div>}}
 		}
 	}
+
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-doHelloWorld"></a>}}
 	
 	\subsection{Method \code{doHelloWorld()}}{
-		A hello world function
+A hello world function
 
 More detailed description
-	
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$FeatureTest$new(...);
+instance = J$FeatureTest$new(logMessage);
 instance$doHelloWorld()
   			}
 			\if{html}{\out{</div>}}
@@ -192,12 +215,13 @@ instance$doHelloWorld()
 		}
 
 		\subsection{Returns}{
-			RCharacter: this java method returns a String
+RCharacter: this java method returns a String
 		}
 
 		\subsection{Examples}{
 			\if{html}{\out{<div class="r example copy">}}
 			\preformatted{
+J = JavaApi$get()
 minExample = J$FeatureTest$new('Hello, R World!')
 minExample$doHelloWorld()
 			}
@@ -208,16 +232,15 @@ minExample$doHelloWorld()
 	\if{html}{\out{<a id="method-doSum"></a>}}
 	
 	\subsection{Method \code{doSum()}}{
-		Add some numbers (1).
+Add some numbers (1).
 
 The doSum function description = it adds two numerics
-	
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$FeatureTest$new(...);
+instance = J$FeatureTest$new(logMessage);
 instance$doSum(a, b)
   			}
 			\if{html}{\out{</div>}}
@@ -233,34 +256,26 @@ instance$doSum(a, b)
 		}
 
 		\subsection{Returns}{
-			RNumeric: A+B of course, NAs in inputs are converted to null in Java. This catches the resulting NPE in java idiom and returns an explicit NA. 
+RNumeric: A+B of course, NAs in inputs are converted to null in Java. This catches the resulting NPE in java idiom and returns an explicit NA. 
 This only matters if you care about the difference between NA_real_ and NaN in R.
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-doSum2"></a>}}
 	
 	\subsection{Method \code{doSum2()}}{
-		Adds some numbers
+Adds some numbers
 
 Do sum 2 uses native ints rather than RNumerics
 It should throw an error if given something that cannot be coerced to an integer. 
 This also demonstrated the use of the `@RDefault` annotation
-	
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$FeatureTest$new(...);
+instance = J$FeatureTest$new(logMessage);
 instance$doSum2(a, b)
   			}
 			\if{html}{\out{</div>}}
@@ -276,71 +291,23 @@ instance$doSum2(a, b)
 		}
 
 		\subsection{Returns}{
-			int: A+B of course
+int: A+B of course
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
-	}
-	\if{html}{\out{<hr>}}
-	\if{html}{\out{<a id="method-demoStatic"></a>}}
-	
-	\subsection{Method \code{demoStatic()}}{
-		Static methods are also supported. 
-
-These are accessed through the
-root of the R api, and as a functional interface
-	
-
-		\subsection{Usage}{
-			\if{html}{\out{<div class="r">}}
-			\preformatted{
-J = testRapi::JavaApi$get()
-J$FeatureTest$demoStatic(message)
-  			}
-			\if{html}{\out{</div>}}
-		}
-	
-		\subsection{Arguments}{
-			\if{html}{\out{<div class="arguments">}}
-			\itemize{
-				\item{message a message}{ - (java expects a String)}
-			}
-			\if{html}{\out{</div>}}
-		}
-
-		\subsection{Returns}{
-			void: 
-		}
-
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-J$FeatureTest$demoStatic('Ola, el mundo')
-demo_static('Bonjour, le monde')
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-getMessage"></a>}}
 	
 	\subsection{Method \code{getMessage()}}{
-		Get the message
+Get the message
 
 message desciption
-	
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$FeatureTest$new(...);
+instance = J$FeatureTest$new(logMessage);
 instance$getMessage()
   			}
 			\if{html}{\out{</div>}}
@@ -355,34 +322,26 @@ instance$getMessage()
 		}
 
 		\subsection{Returns}{
-			RCharacter: The message (previously set by the constructor)
+RCharacter: The message (previously set by the constructor)
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-fluentSetMessage"></a>}}
 	
 	\subsection{Method \code{fluentSetMessage()}}{
-		Set a message in a fluent way
+Set a message in a fluent way
 
 A fluent method which updates the message in this object, returning the
 same object. This is differentiated from factory methods which produce a new
 instance of the same class by checking to see if the returned Java object is equal
 to the calling Java object.
-	
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$FeatureTest$new(...);
+instance = J$FeatureTest$new(logMessage);
 instance$fluentSetMessage(message)
   			}
 			\if{html}{\out{</div>}}
@@ -397,29 +356,21 @@ instance$fluentSetMessage(message)
 		}
 
 		\subsection{Returns}{
-			R6 FeatureTest object: this should return exactly the same R6 object.
+R6 FeatureTest object: this should return exactly the same R6 object.
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-factoryMethod"></a>}}
 	
 	\subsection{Method \code{factoryMethod()}}{
-		A factory or builder method which constructs an object of another class from some parameters
-	
+A factory or builder method which constructs an object of another class from some parameters
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$FeatureTest$new(...);
+instance = J$FeatureTest$new(logMessage);
 instance$factoryMethod(a, b)
   			}
 			\if{html}{\out{</div>}}
@@ -435,29 +386,21 @@ instance$factoryMethod(a, b)
 		}
 
 		\subsection{Returns}{
-			R6 MoreFeatureTest object: A MoreFeatureTest R6 reference
+R6 MoreFeatureTest object: A MoreFeatureTest R6 reference
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-objectAsParameter"></a>}}
 	
 	\subsection{Method \code{objectAsParameter()}}{
-		no title
-	
+no title
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$FeatureTest$new(...);
+instance = J$FeatureTest$new(logMessage);
 instance$objectAsParameter(otherObj)
   			}
 			\if{html}{\out{</div>}}
@@ -472,29 +415,21 @@ instance$objectAsParameter(otherObj)
 		}
 
 		\subsection{Returns}{
-			String: 
+String: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-doSomethingWithDataFrame"></a>}}
 	
 	\subsection{Method \code{doSomethingWithDataFrame()}}{
-		Consumes a data frame and logs its length
-	
+Consumes a data frame and logs its length
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$FeatureTest$new(...);
+instance = J$FeatureTest$new(logMessage);
 instance$doSomethingWithDataFrame(dataframe)
   			}
 			\if{html}{\out{</div>}}
@@ -509,29 +444,21 @@ instance$doSomethingWithDataFrame(dataframe)
 		}
 
 		\subsection{Returns}{
-			void: 
+void: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-generateDataFrame"></a>}}
 	
 	\subsection{Method \code{generateDataFrame()}}{
-		Creates a basic dataframe and returns it
-	
+Creates a basic dataframe and returns it
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$FeatureTest$new(...);
+instance = J$FeatureTest$new(logMessage);
 instance$generateDataFrame()
   			}
 			\if{html}{\out{</div>}}
@@ -546,69 +473,21 @@ instance$generateDataFrame()
 		}
 
 		\subsection{Returns}{
-			RDataframe: a daatframe
+RDataframe: a daatframe
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
-	}
-	\if{html}{\out{<hr>}}
-	\if{html}{\out{<a id="method-diamonds"></a>}}
-	
-	\subsection{Method \code{diamonds()}}{
-		The ggplot2::diamonds dataframe 
-
-A copy serialised into java, using
-RObject.writeRDS, saved within the jar file of the package, and exposed here
-using RObject.readRDS.
-	
-
-		\subsection{Usage}{
-			\if{html}{\out{<div class="r">}}
-			\preformatted{
-J = testRapi::JavaApi$get()
-J$FeatureTest$diamonds()
-  			}
-			\if{html}{\out{</div>}}
-		}
-	
-		\subsection{Arguments}{
-			\if{html}{\out{<div class="arguments">}}
-			\itemize{
-				\item{none}
-			}
-			\if{html}{\out{</div>}}
-		}
-
-		\subsection{Returns}{
-			RDataframe: the ggplot2::diamonds dataframe
-		}
-
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-J$FeatureTest$diamonds()
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-errorThrower"></a>}}
 	
 	\subsection{Method \code{errorThrower()}}{
-		Throws an error
-	
+Throws an error
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$FeatureTest$new(...);
+instance = J$FeatureTest$new(logMessage);
 instance$errorThrower()
   			}
 			\if{html}{\out{</div>}}
@@ -623,15 +502,8 @@ instance$errorThrower()
 		}
 
 		\subsection{Returns}{
-			void: 
+void: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 }

@@ -11,9 +11,9 @@
 \description{
 Actually useful class which takes an R dataframe and a filename
 
-Version: 0.5.1
+Version: 0.0.0.9999
 
-Generated: 2022-07-07T16:10:04.247
+Generated: 2022-08-13T01:21:11.973
 }
 
 \details{
@@ -22,35 +22,16 @@ string and serialises the dataframe so it can be used natively in java
 for testing purposes.
 }
 
-\examples{\dontrun{
-J = testRapi::JavaApi$get();
+\examples{
+## -----------------------------------
+## Construct new instance of Serialiser
+## -----------------------------------
+\dontrun{
+J = testRapi::JavaApi$get()
+# appropriate parameter values must be provided
 instance = J$Serialiser$new()
-
-## -----------------------------------
-## Method `Serialiser$serialiseDataframe`
-## -----------------------------------
-
-## -----------------------------------
-## Method `Serialiser$deserialiseDataframe`
-## -----------------------------------
-
-## -----------------------------------
-## Method `Serialiser$serialiseList`
-## -----------------------------------
-
-## -----------------------------------
-## Method `Serialiser$deserialiseList`
-## -----------------------------------
-
-## -----------------------------------
-## Method `Serialiser$serialiseNamedList`
-## -----------------------------------
-
-## -----------------------------------
-## Method `Serialiser$deserialiseNamedList`
-## -----------------------------------
-
-}}
+}
+}
 
 \keyword{java api}
 
@@ -60,17 +41,7 @@ instance = J$Serialiser$new()
 			\item \href{#method-new}{\code{J$Serialiser$new()}}
 		}
 	}
-	\subsection{Static methods}{
-		\itemize{
-			\item \href{#method-serialiseDataframe}{\code{J$Serialiser$serialiseDataframe(dataframe, filename)}}
-			\item \href{#method-deserialiseDataframe}{\code{J$Serialiser$deserialiseDataframe(filename)}}
-			\item \href{#method-serialiseList}{\code{J$Serialiser$serialiseList(dataframe, filename)}}
-			\item \href{#method-deserialiseList}{\code{J$Serialiser$deserialiseList(filename)}}
-			\item \href{#method-serialiseNamedList}{\code{J$Serialiser$serialiseNamedList(dataframe, filename)}}
-			\item \href{#method-deserialiseNamedList}{\code{J$Serialiser$deserialiseNamedList(filename)}}
-		}
-	}
-	\subsection{Instance methods}{
+	\subsection{Class methods}{
 		\itemize{
 			\item{none}
 			\item \code{instance$clone()}
@@ -81,15 +52,14 @@ instance = J$Serialiser$new()
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-new"></a>}}
 	
-	\subsection{Method \code{new()}}{
-		the default no-args constructor
-	
+	\subsection{Constructor \code{new()}}{
+the default no-args constructor
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-J$Serialiser$new()
+instance = J$Serialiser$new();
   			}
 			\if{html}{\out{</div>}}
 		}
@@ -103,234 +73,9 @@ J$Serialiser$new()
 		}
 
 		\subsection{Returns}{
-			R6 Serialiser object: 
+the new R6 Serialiser object
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
-	\if{html}{\out{<hr>}}
-	\if{html}{\out{<a id="method-serialiseDataframe"></a>}}
-	
-	\subsection{Method \code{serialiseDataframe()}}{
-		no title
-	
 
-		\subsection{Usage}{
-			\if{html}{\out{<div class="r">}}
-			\preformatted{
-J = testRapi::JavaApi$get()
-J$Serialiser$serialiseDataframe(dataframe, filename)
-  			}
-			\if{html}{\out{</div>}}
-		}
-	
-		\subsection{Arguments}{
-			\if{html}{\out{<div class="arguments">}}
-			\itemize{
-				\item{dataframe}{ - (java expects a RDataframe)}
-				\item{filename}{ - (java expects a String)}
-			}
-			\if{html}{\out{</div>}}
-		}
-
-		\subsection{Returns}{
-			void: 
-		}
-
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
-	}
-	\if{html}{\out{<hr>}}
-	\if{html}{\out{<a id="method-deserialiseDataframe"></a>}}
-	
-	\subsection{Method \code{deserialiseDataframe()}}{
-		no title
-	
-
-		\subsection{Usage}{
-			\if{html}{\out{<div class="r">}}
-			\preformatted{
-J = testRapi::JavaApi$get()
-J$Serialiser$deserialiseDataframe(filename)
-  			}
-			\if{html}{\out{</div>}}
-		}
-	
-		\subsection{Arguments}{
-			\if{html}{\out{<div class="arguments">}}
-			\itemize{
-				\item{filename}{ - (java expects a String)}
-			}
-			\if{html}{\out{</div>}}
-		}
-
-		\subsection{Returns}{
-			RDataframe: 
-		}
-
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
-	}
-	\if{html}{\out{<hr>}}
-	\if{html}{\out{<a id="method-serialiseList"></a>}}
-	
-	\subsection{Method \code{serialiseList()}}{
-		no title
-	
-
-		\subsection{Usage}{
-			\if{html}{\out{<div class="r">}}
-			\preformatted{
-J = testRapi::JavaApi$get()
-J$Serialiser$serialiseList(dataframe, filename)
-  			}
-			\if{html}{\out{</div>}}
-		}
-	
-		\subsection{Arguments}{
-			\if{html}{\out{<div class="arguments">}}
-			\itemize{
-				\item{dataframe}{ - (java expects a RList)}
-				\item{filename}{ - (java expects a String)}
-			}
-			\if{html}{\out{</div>}}
-		}
-
-		\subsection{Returns}{
-			void: 
-		}
-
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
-	}
-	\if{html}{\out{<hr>}}
-	\if{html}{\out{<a id="method-deserialiseList"></a>}}
-	
-	\subsection{Method \code{deserialiseList()}}{
-		no title
-	
-
-		\subsection{Usage}{
-			\if{html}{\out{<div class="r">}}
-			\preformatted{
-J = testRapi::JavaApi$get()
-J$Serialiser$deserialiseList(filename)
-  			}
-			\if{html}{\out{</div>}}
-		}
-	
-		\subsection{Arguments}{
-			\if{html}{\out{<div class="arguments">}}
-			\itemize{
-				\item{filename}{ - (java expects a String)}
-			}
-			\if{html}{\out{</div>}}
-		}
-
-		\subsection{Returns}{
-			RList: 
-		}
-
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
-	}
-	\if{html}{\out{<hr>}}
-	\if{html}{\out{<a id="method-serialiseNamedList"></a>}}
-	
-	\subsection{Method \code{serialiseNamedList()}}{
-		no title
-	
-
-		\subsection{Usage}{
-			\if{html}{\out{<div class="r">}}
-			\preformatted{
-J = testRapi::JavaApi$get()
-J$Serialiser$serialiseNamedList(dataframe, filename)
-  			}
-			\if{html}{\out{</div>}}
-		}
-	
-		\subsection{Arguments}{
-			\if{html}{\out{<div class="arguments">}}
-			\itemize{
-				\item{dataframe}{ - (java expects a RNamedList)}
-				\item{filename}{ - (java expects a String)}
-			}
-			\if{html}{\out{</div>}}
-		}
-
-		\subsection{Returns}{
-			void: 
-		}
-
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
-	}
-	\if{html}{\out{<hr>}}
-	\if{html}{\out{<a id="method-deserialiseNamedList"></a>}}
-	
-	\subsection{Method \code{deserialiseNamedList()}}{
-		no title
-	
-
-		\subsection{Usage}{
-			\if{html}{\out{<div class="r">}}
-			\preformatted{
-J = testRapi::JavaApi$get()
-J$Serialiser$deserialiseNamedList(filename)
-  			}
-			\if{html}{\out{</div>}}
-		}
-	
-		\subsection{Arguments}{
-			\if{html}{\out{<div class="arguments">}}
-			\itemize{
-				\item{filename}{ - (java expects a String)}
-			}
-			\if{html}{\out{</div>}}
-		}
-
-		\subsection{Returns}{
-			RNamedList: 
-		}
-
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
-	}
 }

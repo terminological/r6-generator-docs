@@ -37,7 +37,8 @@ public class MoreFeatureTest {
 	 * @return A MoreFeatureTest R6 object
 	 */
 	@RMethod(examples = {
-		"J$MoreFeatureTest$create('Hello,',' World')",
+		"J = JavaApi$get()",
+		"J$MoreFeatureTest$create('Hello,',' World')"
 	})
 	public static MoreFeatureTest create(RCharacter message1, RCharacter message2) {
 		return new MoreFeatureTest(message1,message2);

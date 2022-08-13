@@ -8,9 +8,9 @@
 #' 
 #' This is a class of the testRapi generated R library.
 #' 
-#' Version: 0.5.1
+#' Version: 0.0.0.9999
 #' 
-#' Generated: 2022-07-07T16:10:04.227
+#' Generated: 2022-08-13T01:21:12.019
 #'
 #' @details
 	#' This has no documentation
@@ -31,8 +31,11 @@ MoreFeatureTest = R6::R6Class("MoreFeatureTest", public=list(
 	#' @param api The R6 api library class.
 	#' @return A new MoreFeatureTest object.
 	#' @examples
-	#' J = testRapi::JavaApi$get();
+	#' \dontrun{
+	#' J = testRapi::JavaApi$get()
+	#' # This constructor must be called via the JavaApi where an appropriate set of parameters must be provided.
 	#' instance = J$MoreFeatureTest$new(message1, message2)
+	#' }	
 	initialize = function(jobj,api){
 		self$.jobj = jobj;
 		self$.api = api;

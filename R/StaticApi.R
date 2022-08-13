@@ -2,51 +2,14 @@
 # This is a collection of the static methods described in the Java API
 # and serves as an alternative R centric entry point of the testRapi generated R library.
 
-# Version: 0.5.1
-# Generated: 2022-07-07T16:10:04.091
+# Version: 0.0.0.9999
+# Generated: 2022-08-13T01:21:11.906
 # Contact: rc538@exeter.ac.uk
 
-# MoreFeatureTest class static methods ----
+# FactoryTest class static methods ----
 
 
-#' create:
-#' 
-#' A static object constructor
-#' @param message1 - the message to be printed - (java expects a RCharacter)
-#' @param message2 - will be used for toString - (java expects a RCharacter)
-#' @return R6 MoreFeatureTest object: 
-#' A MoreFeatureTest R6 object
-#' @examples
-#' \dontrun{
-#' J$MoreFeatureTest$create('Hello,',' World')
-#' }
-#' @export
-create = function(message1, message2) {
-	# get the API singleton
-	J = JavaApi$get()
-	# execute the R6 function call with the same parameters
-	out = J$MoreFeatureTest$create(message1, message2)
-	if(is.null(out)) return(invisible(out))
-	return(out)
-}
-
-
-#' concat:
-#' 
-#' no title
-#' @param message1 - (java expects a RCharacter)
-#' @param message2 - (java expects a RCharacter)
-#' @return RCharacter: 
-#' 
-#' @export
-concat = function(message1, message2) {
-	# get the API singleton
-	J = JavaApi$get()
-	# execute the R6 function call with the same parameters
-	out = J$MoreFeatureTest$concat(message1, message2)
-	if(is.null(out)) return(invisible(out))
-	return(out)
-}
+# BounceTest class static methods ----
 
 
 # Serialiser class static methods ----
@@ -170,10 +133,9 @@ deserialise_named_list = function(filename) {
 #' @return void: 
 #' 
 #' @examples
-#' \dontrun{
+#' J = JavaApi$get()
 #' J$FeatureTest$demoStatic('Ola, el mundo')
 #' demo_static('Bonjour, le monde')
-#' }
 #' @export
 demo_static = function(message) {
 	# get the API singleton
@@ -195,9 +157,7 @@ demo_static = function(message) {
 #' @return RDataframe: 
 #' the ggplot2::diamonds dataframe
 #' @examples
-#' \dontrun{
-#' J$FeatureTest$diamonds()
-#' }
+#' diamonds()
 #' @export
 diamonds = function() {
 	# get the API singleton
@@ -209,13 +169,49 @@ diamonds = function() {
 }
 
 
-# BounceTest class static methods ----
-
-
-# FactoryTest class static methods ----
-
-
 # MinimalExample class static methods ----
+
+
+# MoreFeatureTest class static methods ----
+
+
+#' create:
+#' 
+#' A static object constructor
+#' @param message1 - the message to be printed - (java expects a RCharacter)
+#' @param message2 - will be used for toString - (java expects a RCharacter)
+#' @return R6 MoreFeatureTest object: 
+#' A MoreFeatureTest R6 object
+#' @examples
+#' J = JavaApi$get()
+#' J$MoreFeatureTest$create('Hello,',' World')
+#' @export
+create = function(message1, message2) {
+	# get the API singleton
+	J = JavaApi$get()
+	# execute the R6 function call with the same parameters
+	out = J$MoreFeatureTest$create(message1, message2)
+	if(is.null(out)) return(invisible(out))
+	return(out)
+}
+
+
+#' concat:
+#' 
+#' no title
+#' @param message1 - (java expects a RCharacter)
+#' @param message2 - (java expects a RCharacter)
+#' @return RCharacter: 
+#' 
+#' @export
+concat = function(message1, message2) {
+	# get the API singleton
+	J = JavaApi$get()
+	# execute the R6 function call with the same parameters
+	out = J$MoreFeatureTest$concat(message1, message2)
+	if(is.null(out)) return(invisible(out))
+	return(out)
+}
 
 
 

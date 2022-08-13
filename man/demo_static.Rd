@@ -19,10 +19,10 @@ void:
 These are accessed through the
 root of the R api, and as a functional interface
 }
-\examples{\dontrun{
+\examples{
+J = JavaApi$get()
 J$FeatureTest$demoStatic('Ola, el mundo')
 demo_static('Bonjour, le monde')
-}
 }
 \keyword{java api}
 

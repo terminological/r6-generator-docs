@@ -11,76 +11,137 @@
 \description{
 missing description
 
-Version: 0.5.1
+Version: 0.0.0.9999
 
-Generated: 2022-07-07T16:10:04.464
+Generated: 2022-08-13T01:21:11.937
 }
 
 \details{
 	no details
 }
 
-\examples{\dontrun{
-J = testRapi::JavaApi$get();
+\examples{
+## -----------------------------------
+## Construct new instance of FactoryTest
+## -----------------------------------
+\dontrun{
+J = testRapi::JavaApi$get()
+# appropriate parameter values must be provided
 instance = J$FactoryTest$new()
+}
 
 ## -----------------------------------
-## Method `FactoryTest$generateCharacter`
+## Method `FactoryTest$generateCharacter()`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$generateCharacter()
+}
 
 ## -----------------------------------
-## Method `FactoryTest$generateNumeric`
+## Method `FactoryTest$generateNumeric()`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$generateNumeric()
+}
 
 ## -----------------------------------
-## Method `FactoryTest$generateInteger`
+## Method `FactoryTest$generateInteger()`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$generateInteger()
+}
 
 ## -----------------------------------
-## Method `FactoryTest$generateFactor`
+## Method `FactoryTest$generateFactor()`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$generateFactor()
+}
 
 ## -----------------------------------
-## Method `FactoryTest$generateLogical`
+## Method `FactoryTest$generateLogical()`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$generateLogical()
+}
 
 ## -----------------------------------
-## Method `FactoryTest$generateCharacterVec`
+## Method `FactoryTest$generateCharacterVec()`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$generateCharacterVec()
+}
 
 ## -----------------------------------
-## Method `FactoryTest$generateNumericVec`
+## Method `FactoryTest$generateNumericVec()`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$generateNumericVec()
+}
 
 ## -----------------------------------
-## Method `FactoryTest$generateIntegerVec`
+## Method `FactoryTest$generateIntegerVec()`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$generateIntegerVec()
+}
 
 ## -----------------------------------
-## Method `FactoryTest$generateFactorVec`
+## Method `FactoryTest$generateFactorVec()`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$generateFactorVec()
+}
 
 ## -----------------------------------
-## Method `FactoryTest$generateLogicalVec`
+## Method `FactoryTest$generateLogicalVec()`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$generateLogicalVec()
+}
 
 ## -----------------------------------
-## Method `FactoryTest$generateDataframe`
+## Method `FactoryTest$generateDataframe()`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$generateDataframe()
+}
 
 ## -----------------------------------
-## Method `FactoryTest$generateStreamDataframe`
+## Method `FactoryTest$generateStreamDataframe()`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$generateStreamDataframe()
+}
 
 ## -----------------------------------
-## Method `FactoryTest$generateList`
+## Method `FactoryTest$generateList()`
 ## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$generateList()
+}
 
 ## -----------------------------------
-## Method `FactoryTest$generateNamedList`
+## Method `FactoryTest$generateNamedList()`
 ## -----------------------------------
-
-}}
+\dontrun{
+# appropriate parameter values must be provided
+instance$generateNamedList()
+}
+}
 
 \keyword{java api}
 
@@ -90,12 +151,7 @@ instance = J$FactoryTest$new()
 			\item \href{#method-new}{\code{J$FactoryTest$new()}}
 		}
 	}
-	\subsection{Static methods}{
-		\itemize{
-			\item{none}
-		}
-	}
-	\subsection{Instance methods}{
+	\subsection{Class methods}{
 		\itemize{
 			\item \href{#method-generateCharacter}{\code{instance$generateCharacter()}}
 			\item \href{#method-generateNumeric}{\code{instance$generateNumeric()}}
@@ -119,15 +175,14 @@ instance = J$FactoryTest$new()
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-new"></a>}}
 	
-	\subsection{Method \code{new()}}{
-		the default no-args constructor
-	
+	\subsection{Constructor \code{new()}}{
+the default no-args constructor
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-J$FactoryTest$new()
+instance = J$FactoryTest$new();
   			}
 			\if{html}{\out{</div>}}
 		}
@@ -141,29 +196,22 @@ J$FactoryTest$new()
 		}
 
 		\subsection{Returns}{
-			R6 FactoryTest object: 
+the new R6 FactoryTest object
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
+
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-generateCharacter"></a>}}
 	
 	\subsection{Method \code{generateCharacter()}}{
-		no title
-	
+no title
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$FactoryTest$new(...);
+instance = J$FactoryTest$new();
 instance$generateCharacter()
   			}
 			\if{html}{\out{</div>}}
@@ -178,29 +226,21 @@ instance$generateCharacter()
 		}
 
 		\subsection{Returns}{
-			RCharacter: 
+RCharacter: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-generateNumeric"></a>}}
 	
 	\subsection{Method \code{generateNumeric()}}{
-		no title
-	
+no title
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$FactoryTest$new(...);
+instance = J$FactoryTest$new();
 instance$generateNumeric()
   			}
 			\if{html}{\out{</div>}}
@@ -215,29 +255,21 @@ instance$generateNumeric()
 		}
 
 		\subsection{Returns}{
-			RNumeric: 
+RNumeric: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-generateInteger"></a>}}
 	
 	\subsection{Method \code{generateInteger()}}{
-		no title
-	
+no title
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$FactoryTest$new(...);
+instance = J$FactoryTest$new();
 instance$generateInteger()
   			}
 			\if{html}{\out{</div>}}
@@ -252,29 +284,21 @@ instance$generateInteger()
 		}
 
 		\subsection{Returns}{
-			RInteger: 
+RInteger: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-generateFactor"></a>}}
 	
 	\subsection{Method \code{generateFactor()}}{
-		no title
-	
+no title
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$FactoryTest$new(...);
+instance = J$FactoryTest$new();
 instance$generateFactor()
   			}
 			\if{html}{\out{</div>}}
@@ -289,29 +313,21 @@ instance$generateFactor()
 		}
 
 		\subsection{Returns}{
-			RFactor: 
+RFactor: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-generateLogical"></a>}}
 	
 	\subsection{Method \code{generateLogical()}}{
-		no title
-	
+no title
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$FactoryTest$new(...);
+instance = J$FactoryTest$new();
 instance$generateLogical()
   			}
 			\if{html}{\out{</div>}}
@@ -326,29 +342,21 @@ instance$generateLogical()
 		}
 
 		\subsection{Returns}{
-			RLogical: 
+RLogical: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-generateCharacterVec"></a>}}
 	
 	\subsection{Method \code{generateCharacterVec()}}{
-		no title
-	
+no title
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$FactoryTest$new(...);
+instance = J$FactoryTest$new();
 instance$generateCharacterVec()
   			}
 			\if{html}{\out{</div>}}
@@ -363,29 +371,21 @@ instance$generateCharacterVec()
 		}
 
 		\subsection{Returns}{
-			RCharacterVector: 
+RCharacterVector: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-generateNumericVec"></a>}}
 	
 	\subsection{Method \code{generateNumericVec()}}{
-		no title
-	
+no title
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$FactoryTest$new(...);
+instance = J$FactoryTest$new();
 instance$generateNumericVec()
   			}
 			\if{html}{\out{</div>}}
@@ -400,29 +400,21 @@ instance$generateNumericVec()
 		}
 
 		\subsection{Returns}{
-			RNumericVector: 
+RNumericVector: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-generateIntegerVec"></a>}}
 	
 	\subsection{Method \code{generateIntegerVec()}}{
-		no title
-	
+no title
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$FactoryTest$new(...);
+instance = J$FactoryTest$new();
 instance$generateIntegerVec()
   			}
 			\if{html}{\out{</div>}}
@@ -437,29 +429,21 @@ instance$generateIntegerVec()
 		}
 
 		\subsection{Returns}{
-			RIntegerVector: 
+RIntegerVector: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-generateFactorVec"></a>}}
 	
 	\subsection{Method \code{generateFactorVec()}}{
-		no title
-	
+no title
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$FactoryTest$new(...);
+instance = J$FactoryTest$new();
 instance$generateFactorVec()
   			}
 			\if{html}{\out{</div>}}
@@ -474,29 +458,21 @@ instance$generateFactorVec()
 		}
 
 		\subsection{Returns}{
-			RFactorVector: 
+RFactorVector: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-generateLogicalVec"></a>}}
 	
 	\subsection{Method \code{generateLogicalVec()}}{
-		no title
-	
+no title
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$FactoryTest$new(...);
+instance = J$FactoryTest$new();
 instance$generateLogicalVec()
   			}
 			\if{html}{\out{</div>}}
@@ -511,29 +487,21 @@ instance$generateLogicalVec()
 		}
 
 		\subsection{Returns}{
-			RLogicalVector: 
+RLogicalVector: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-generateDataframe"></a>}}
 	
 	\subsection{Method \code{generateDataframe()}}{
-		no title
-	
+no title
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$FactoryTest$new(...);
+instance = J$FactoryTest$new();
 instance$generateDataframe()
   			}
 			\if{html}{\out{</div>}}
@@ -548,29 +516,21 @@ instance$generateDataframe()
 		}
 
 		\subsection{Returns}{
-			RDataframe: 
+RDataframe: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-generateStreamDataframe"></a>}}
 	
 	\subsection{Method \code{generateStreamDataframe()}}{
-		no title
-	
+no title
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$FactoryTest$new(...);
+instance = J$FactoryTest$new();
 instance$generateStreamDataframe()
   			}
 			\if{html}{\out{</div>}}
@@ -585,29 +545,21 @@ instance$generateStreamDataframe()
 		}
 
 		\subsection{Returns}{
-			RDataframe: 
+RDataframe: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-generateList"></a>}}
 	
 	\subsection{Method \code{generateList()}}{
-		Lists are much harder to type check than vectors hence RList builder methods throw checked exceptions
-	
+Lists are much harder to type check than vectors hence RList builder methods throw checked exceptions
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$FactoryTest$new(...);
+instance = J$FactoryTest$new();
 instance$generateList()
   			}
 			\if{html}{\out{</div>}}
@@ -622,29 +574,21 @@ instance$generateList()
 		}
 
 		\subsection{Returns}{
-			RList: a RList containing the supplied Java objects converted into RObjects
+RList: a RList containing the supplied Java objects converted into RObjects
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-generateNamedList"></a>}}
 	
 	\subsection{Method \code{generateNamedList()}}{
-		no title
-	
+no title
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$FactoryTest$new(...);
+instance = J$FactoryTest$new();
 instance$generateNamedList()
   			}
 			\if{html}{\out{</div>}}
@@ -659,15 +603,8 @@ instance$generateNamedList()
 		}
 
 		\subsection{Returns}{
-			RNamedList: 
+RNamedList: 
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
 }

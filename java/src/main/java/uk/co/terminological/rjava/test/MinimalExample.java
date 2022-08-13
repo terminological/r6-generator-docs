@@ -11,7 +11,14 @@ import uk.co.terminological.rjava.types.RDataframe;
  * This class is a very basic example of the features of the rJava maven plugin. <br>
  * The class is annotated with an @RClass to identify it as part of the R API. <br>
  */
-@RClass
+@RClass(
+	exampleSetup = {
+		"J = JavaApi$get()"
+	},
+	testSetup = {
+		"J = JavaApi$get()",
+	}
+)
 public class MinimalExample {
 
 	static Logger log = LoggerFactory.getLogger(MinimalExample.class);

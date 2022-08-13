@@ -8,9 +8,9 @@
 #' 
 #' This is a class of the testRapi generated R library.
 #' 
-#' Version: 0.5.1
+#' Version: 0.0.0.9999
 #' 
-#' Generated: 2022-07-07T16:10:04.322
+#' Generated: 2022-08-13T01:21:11.995
 #'
 #' @details
 	#' The feature test should allow mathjax in javadoc
@@ -36,8 +36,11 @@ FeatureTest = R6::R6Class("FeatureTest", public=list(
 	#' @param api The R6 api library class.
 	#' @return A new FeatureTest object.
 	#' @examples
-	#' J = testRapi::JavaApi$get();
+	#' \dontrun{
+	#' J = testRapi::JavaApi$get()
+	#' # This constructor must be called via the JavaApi where an appropriate set of parameters must be provided.
 	#' instance = J$FeatureTest$new(logMessage)
+	#' }	
 	initialize = function(jobj,api){
 		self$.jobj = jobj;
 		self$.api = api;
@@ -51,10 +54,9 @@ FeatureTest = R6::R6Class("FeatureTest", public=list(
 	#' @return RCharacter: 
 	#' this java method returns a String
 	#' @examples
-	#' \dontrun{
+	#' J = JavaApi$get()
 	#' minExample = J$FeatureTest$new('Hello, R World!')
 	#' minExample$doHelloWorld()
-	#' }
 	doHelloWorld = function() {
 		# copy parameters
 		# execute method call

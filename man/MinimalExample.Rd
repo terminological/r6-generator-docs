@@ -11,9 +11,9 @@
 \description{
 This class is a very basic example of the features of the rJava maven plugin. <br>
 
-Version: 0.5.1
+Version: 0.0.0.9999
 
-Generated: 2022-07-07T16:10:04.510
+Generated: 2022-08-13T01:21:12.017
 }
 
 \details{
@@ -21,18 +21,24 @@ Generated: 2022-07-07T16:10:04.510
 The class is annotated with an @RClass to identify it as part of the R API. <br>
 }
 
-\examples{\dontrun{
-J = testRapi::JavaApi$get();
+\examples{
+## -----------------------------------
+## Construct new instance of MinimalExample
+## -----------------------------------
+\dontrun{
+J = testRapi::JavaApi$get()
+# appropriate parameter values must be provided
 instance = J$MinimalExample$new()
+}
 
 ## -----------------------------------
-## Method `MinimalExample$demo`
+## Method `MinimalExample$demo(dataframe, message)`
 ## -----------------------------------
+J = JavaApi$get()
   
 		minExample = J$MinimalExample$new()
 minExample$demo(dataframe=tibble::tibble(input=c(1,2,3)), message='Hello world')
-
-}}
+}
 
 \keyword{java api}
 
@@ -42,12 +48,7 @@ minExample$demo(dataframe=tibble::tibble(input=c(1,2,3)), message='Hello world')
 			\item \href{#method-new}{\code{J$MinimalExample$new()}}
 		}
 	}
-	\subsection{Static methods}{
-		\itemize{
-			\item{none}
-		}
-	}
-	\subsection{Instance methods}{
+	\subsection{Class methods}{
 		\itemize{
 			\item \href{#method-demo}{\code{instance$demo(dataframe, message)}}
 			\item \code{instance$clone()}
@@ -58,15 +59,14 @@ minExample$demo(dataframe=tibble::tibble(input=c(1,2,3)), message='Hello world')
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-new"></a>}}
 	
-	\subsection{Method \code{new()}}{
-		the default no-args constructor
-	
+	\subsection{Constructor \code{new()}}{
+the default no-args constructor
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-J$MinimalExample$new()
+instance = J$MinimalExample$new();
   			}
 			\if{html}{\out{</div>}}
 		}
@@ -80,29 +80,22 @@ J$MinimalExample$new()
 		}
 
 		\subsection{Returns}{
-			R6 MinimalExample object: 
+the new R6 MinimalExample object
 		}
 
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-not available
-			}
-			\if{html}{\out{</div>}}
-		}
 	}
+
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-demo"></a>}}
 	
 	\subsection{Method \code{demo()}}{
-		Documentation of the method can be done in JavaDoc and these will be present in the R documentation
-	
+Documentation of the method can be done in JavaDoc and these will be present in the R documentation
 
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-instance = J$MinimalExample$new(...);
+instance = J$MinimalExample$new();
 instance$demo(dataframe, message)
   			}
 			\if{html}{\out{</div>}}
@@ -118,12 +111,13 @@ instance$demo(dataframe, message)
 		}
 
 		\subsection{Returns}{
-			RDataframe: the dataframe unchanged
+RDataframe: the dataframe unchanged
 		}
 
 		\subsection{Examples}{
 			\if{html}{\out{<div class="r example copy">}}
 			\preformatted{
+J = JavaApi$get()
   
 		minExample = J$MinimalExample$new()
 minExample$demo(dataframe=tibble::tibble(input=c(1,2,3)), message='Hello world')

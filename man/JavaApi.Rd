@@ -25,9 +25,9 @@
 \description{
 Documents the features of the 'r6-generator-maven-plugin' by providing an example of an R package automatically generated from Java code by the plugin. It is not intended to be useful beyond testing, demonstrating and documenting the features of the plugin.
 
-Version: 0.5.1
+Version: 0.0.0.9999
 
-Generated: 2022-07-07T16:10:03.890
+Generated: 2022-08-13T01:21:11.804
 }
 
 \author{\email{rc538@exeter.ac.uk}}
@@ -37,9 +37,8 @@ Generated: 2022-07-07T16:10:03.890
 \section{Static methods and constructors}{
 	\itemize{
 		\item \code{JavaApi$get()}
-		\item \href{#method-MoreFeatureTest-new}{\code{J$MoreFeatureTest$new(message1, message2)}}
-		\item \href{#method-MoreFeatureTest-create}{\code{J$MoreFeatureTest$create(message1, message2)}}
-		\item \href{#method-MoreFeatureTest-concat}{\code{J$MoreFeatureTest$concat(message1, message2)}}
+		\item \href{#method-FactoryTest-new}{\code{J$FactoryTest$new()}}
+		\item \href{#method-BounceTest-new}{\code{J$BounceTest$new()}}
 		\item \href{#method-Serialiser-new}{\code{J$Serialiser$new()}}
 		\item \href{#method-Serialiser-serialiseDataframe}{\code{J$Serialiser$serialiseDataframe(dataframe, filename)}}
 		\item \href{#method-Serialiser-deserialiseDataframe}{\code{J$Serialiser$deserialiseDataframe(filename)}}
@@ -50,102 +49,66 @@ Generated: 2022-07-07T16:10:03.890
 		\item \href{#method-FeatureTest-new}{\code{J$FeatureTest$new(logMessage)}}
 		\item \href{#method-FeatureTest-demoStatic}{\code{J$FeatureTest$demoStatic(message)}}
 		\item \href{#method-FeatureTest-diamonds}{\code{J$FeatureTest$diamonds()}}
-		\item \href{#method-BounceTest-new}{\code{J$BounceTest$new()}}
-		\item \href{#method-FactoryTest-new}{\code{J$FactoryTest$new()}}
 		\item \href{#method-MinimalExample-new}{\code{J$MinimalExample$new()}}
+		\item \href{#method-MoreFeatureTest-new}{\code{J$MoreFeatureTest$new(message1, message2)}}
+		\item \href{#method-MoreFeatureTest-create}{\code{J$MoreFeatureTest$create(message1, message2)}}
+		\item \href{#method-MoreFeatureTest-concat}{\code{J$MoreFeatureTest$concat(message1, message2)}}
 	}
 	
 
 	\if{html}{\out{<hr>}}
-	\if{html}{\out{<a id="method-MoreFeatureTest-new"></a>}}
+	\if{html}{\out{<a id="method-FactoryTest-new"></a>}}
 	
-	\subsection{Method \code{MoreFeatureTest$new()}}{
-		the first constructor is used if there are none annotated
+	\subsection{Method \code{FactoryTest$new()}}{
+		the default no-args constructor
 	
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-J$MoreFeatureTest$new(message1, message2)
+J$FactoryTest$new()
 	  		}
 			\if{html}{\out{</div>}}
 		}
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\describe{
-				\itemize{
-					\item{message1 - the message to be printed}{ - (java expects a RCharacter)}
-					\item{message2 - will be used for toString}{ - (java expects a RCharacter)}
-				}
+			\itemize{
+				\item{none}
 			}
 			\if{html}{\out{</div>}}
 		}
 
 		\subsection{Returns}{
-			R6 MoreFeatureTest object: 
+			R6 FactoryTest object: 
 		}
 	}
 
 	\if{html}{\out{<hr>}}
-	\if{html}{\out{<a id="method-MoreFeatureTest-create"></a>}}
+	\if{html}{\out{<a id="method-BounceTest-new"></a>}}
 	
-	\subsection{Method \code{MoreFeatureTest$create()}}{
-		A static object constructor
+	\subsection{Method \code{BounceTest$new()}}{
+		the default no-args constructor
 	
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-J$MoreFeatureTest$create(message1, message2)
+J$BounceTest$new()
 	  		}
 			\if{html}{\out{</div>}}
 		}
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\describe{
-				\itemize{
-					\item{message1 - the message to be printed}{ - (java expects a RCharacter)}
-					\item{message2 - will be used for toString}{ - (java expects a RCharacter)}
-				}
+			\itemize{
+				\item{none}
 			}
 			\if{html}{\out{</div>}}
 		}
 
 		\subsection{Returns}{
-			R6 MoreFeatureTest object: A MoreFeatureTest R6 object
-		}
-	}
-
-	\if{html}{\out{<hr>}}
-	\if{html}{\out{<a id="method-MoreFeatureTest-concat"></a>}}
-	
-	\subsection{Method \code{MoreFeatureTest$concat()}}{
-		no title
-	
-		\subsection{Usage}{
-			\if{html}{\out{<div class="r">}}
-			\preformatted{
-J = testRapi::JavaApi$get()
-J$MoreFeatureTest$concat(message1, message2)
-	  		}
-			\if{html}{\out{</div>}}
-		}
-	
-		\subsection{Arguments}{
-			\if{html}{\out{<div class="arguments">}}
-			\describe{
-				\itemize{
-					\item{message1}{ - (java expects a RCharacter)}
-					\item{message2}{ - (java expects a RCharacter)}
-				}
-			}
-			\if{html}{\out{</div>}}
-		}
-
-		\subsection{Returns}{
-			RCharacter: 
+			R6 BounceTest object: 
 		}
 	}
 
@@ -166,10 +129,8 @@ J$Serialiser$new()
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\describe{
-				\itemize{
-					\item{none}
-				}
+			\itemize{
+				\item{none}
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -190,17 +151,17 @@ J$Serialiser$new()
 			\preformatted{
 J = testRapi::JavaApi$get()
 J$Serialiser$serialiseDataframe(dataframe, filename)
+# this method is also exposed as a package function:
+testRapi::serialise_dataframe(dataframe, filename)
 	  		}
 			\if{html}{\out{</div>}}
 		}
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\describe{
-				\itemize{
-					\item{dataframe}{ - (java expects a RDataframe)}
-					\item{filename}{ - (java expects a String)}
-				}
+			\itemize{
+				\item{dataframe}{ - (java expects a RDataframe)}
+				\item{filename}{ - (java expects a String)}
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -221,16 +182,16 @@ J$Serialiser$serialiseDataframe(dataframe, filename)
 			\preformatted{
 J = testRapi::JavaApi$get()
 J$Serialiser$deserialiseDataframe(filename)
+# this method is also exposed as a package function:
+testRapi::deserialise_dataframe(filename)
 	  		}
 			\if{html}{\out{</div>}}
 		}
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\describe{
-				\itemize{
-					\item{filename}{ - (java expects a String)}
-				}
+			\itemize{
+				\item{filename}{ - (java expects a String)}
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -251,17 +212,17 @@ J$Serialiser$deserialiseDataframe(filename)
 			\preformatted{
 J = testRapi::JavaApi$get()
 J$Serialiser$serialiseList(dataframe, filename)
+# this method is also exposed as a package function:
+testRapi::serialise_list(dataframe, filename)
 	  		}
 			\if{html}{\out{</div>}}
 		}
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\describe{
-				\itemize{
-					\item{dataframe}{ - (java expects a RList)}
-					\item{filename}{ - (java expects a String)}
-				}
+			\itemize{
+				\item{dataframe}{ - (java expects a RList)}
+				\item{filename}{ - (java expects a String)}
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -282,16 +243,16 @@ J$Serialiser$serialiseList(dataframe, filename)
 			\preformatted{
 J = testRapi::JavaApi$get()
 J$Serialiser$deserialiseList(filename)
+# this method is also exposed as a package function:
+testRapi::deserialise_list(filename)
 	  		}
 			\if{html}{\out{</div>}}
 		}
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\describe{
-				\itemize{
-					\item{filename}{ - (java expects a String)}
-				}
+			\itemize{
+				\item{filename}{ - (java expects a String)}
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -312,17 +273,17 @@ J$Serialiser$deserialiseList(filename)
 			\preformatted{
 J = testRapi::JavaApi$get()
 J$Serialiser$serialiseNamedList(dataframe, filename)
+# this method is also exposed as a package function:
+testRapi::serialise_named_list(dataframe, filename)
 	  		}
 			\if{html}{\out{</div>}}
 		}
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\describe{
-				\itemize{
-					\item{dataframe}{ - (java expects a RNamedList)}
-					\item{filename}{ - (java expects a String)}
-				}
+			\itemize{
+				\item{dataframe}{ - (java expects a RNamedList)}
+				\item{filename}{ - (java expects a String)}
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -343,16 +304,16 @@ J$Serialiser$serialiseNamedList(dataframe, filename)
 			\preformatted{
 J = testRapi::JavaApi$get()
 J$Serialiser$deserialiseNamedList(filename)
+# this method is also exposed as a package function:
+testRapi::deserialise_named_list(filename)
 	  		}
 			\if{html}{\out{</div>}}
 		}
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\describe{
-				\itemize{
-					\item{filename}{ - (java expects a String)}
-				}
+			\itemize{
+				\item{filename}{ - (java expects a String)}
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -384,10 +345,8 @@ J$FeatureTest$new(logMessage)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\describe{
-				\itemize{
-					\item{logMessage - a message which will be logged}{ - (java expects a String)}
-				}
+			\itemize{
+				\item{logMessage - a message which will be logged}{ - (java expects a String)}
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -411,16 +370,16 @@ root of the R api, and as a functional interface
 			\preformatted{
 J = testRapi::JavaApi$get()
 J$FeatureTest$demoStatic(message)
+# this method is also exposed as a package function:
+testRapi::demo_static(message)
 	  		}
 			\if{html}{\out{</div>}}
 		}
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\describe{
-				\itemize{
-					\item{message a message}{ - (java expects a String)}
-				}
+			\itemize{
+				\item{message a message}{ - (java expects a String)}
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -445,82 +404,22 @@ using RObject.readRDS.
 			\preformatted{
 J = testRapi::JavaApi$get()
 J$FeatureTest$diamonds()
+# this method is also exposed as a package function:
+testRapi::diamonds()
 	  		}
 			\if{html}{\out{</div>}}
 		}
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\describe{
-				\itemize{
-					\item{none}
-				}
+			\itemize{
+				\item{none}
 			}
 			\if{html}{\out{</div>}}
 		}
 
 		\subsection{Returns}{
 			RDataframe: the ggplot2::diamonds dataframe
-		}
-	}
-
-	\if{html}{\out{<hr>}}
-	\if{html}{\out{<a id="method-BounceTest-new"></a>}}
-	
-	\subsection{Method \code{BounceTest$new()}}{
-		the default no-args constructor
-	
-		\subsection{Usage}{
-			\if{html}{\out{<div class="r">}}
-			\preformatted{
-J = testRapi::JavaApi$get()
-J$BounceTest$new()
-	  		}
-			\if{html}{\out{</div>}}
-		}
-	
-		\subsection{Arguments}{
-			\if{html}{\out{<div class="arguments">}}
-			\describe{
-				\itemize{
-					\item{none}
-				}
-			}
-			\if{html}{\out{</div>}}
-		}
-
-		\subsection{Returns}{
-			R6 BounceTest object: 
-		}
-	}
-
-	\if{html}{\out{<hr>}}
-	\if{html}{\out{<a id="method-FactoryTest-new"></a>}}
-	
-	\subsection{Method \code{FactoryTest$new()}}{
-		the default no-args constructor
-	
-		\subsection{Usage}{
-			\if{html}{\out{<div class="r">}}
-			\preformatted{
-J = testRapi::JavaApi$get()
-J$FactoryTest$new()
-	  		}
-			\if{html}{\out{</div>}}
-		}
-	
-		\subsection{Arguments}{
-			\if{html}{\out{<div class="arguments">}}
-			\describe{
-				\itemize{
-					\item{none}
-				}
-			}
-			\if{html}{\out{</div>}}
-		}
-
-		\subsection{Returns}{
-			R6 FactoryTest object: 
 		}
 	}
 
@@ -541,16 +440,105 @@ J$MinimalExample$new()
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\describe{
-				\itemize{
-					\item{none}
-				}
+			\itemize{
+				\item{none}
 			}
 			\if{html}{\out{</div>}}
 		}
 
 		\subsection{Returns}{
 			R6 MinimalExample object: 
+		}
+	}
+
+	\if{html}{\out{<hr>}}
+	\if{html}{\out{<a id="method-MoreFeatureTest-new"></a>}}
+	
+	\subsection{Method \code{MoreFeatureTest$new()}}{
+		the first constructor is used if there are none annotated
+	
+		\subsection{Usage}{
+			\if{html}{\out{<div class="r">}}
+			\preformatted{
+J = testRapi::JavaApi$get()
+J$MoreFeatureTest$new(message1, message2)
+	  		}
+			\if{html}{\out{</div>}}
+		}
+	
+		\subsection{Arguments}{
+			\if{html}{\out{<div class="arguments">}}
+			\itemize{
+				\item{message1 - the message to be printed}{ - (java expects a RCharacter)}
+				\item{message2 - will be used for toString}{ - (java expects a RCharacter)}
+			}
+			\if{html}{\out{</div>}}
+		}
+
+		\subsection{Returns}{
+			R6 MoreFeatureTest object: 
+		}
+	}
+
+	\if{html}{\out{<hr>}}
+	\if{html}{\out{<a id="method-MoreFeatureTest-create"></a>}}
+	
+	\subsection{Method \code{MoreFeatureTest$create()}}{
+		A static object constructor
+	
+		\subsection{Usage}{
+			\if{html}{\out{<div class="r">}}
+			\preformatted{
+J = testRapi::JavaApi$get()
+J$MoreFeatureTest$create(message1, message2)
+# this method is also exposed as a package function:
+testRapi::create(message1, message2)
+	  		}
+			\if{html}{\out{</div>}}
+		}
+	
+		\subsection{Arguments}{
+			\if{html}{\out{<div class="arguments">}}
+			\itemize{
+				\item{message1 - the message to be printed}{ - (java expects a RCharacter)}
+				\item{message2 - will be used for toString}{ - (java expects a RCharacter)}
+			}
+			\if{html}{\out{</div>}}
+		}
+
+		\subsection{Returns}{
+			R6 MoreFeatureTest object: A MoreFeatureTest R6 object
+		}
+	}
+
+	\if{html}{\out{<hr>}}
+	\if{html}{\out{<a id="method-MoreFeatureTest-concat"></a>}}
+	
+	\subsection{Method \code{MoreFeatureTest$concat()}}{
+		no title
+	
+		\subsection{Usage}{
+			\if{html}{\out{<div class="r">}}
+			\preformatted{
+J = testRapi::JavaApi$get()
+J$MoreFeatureTest$concat(message1, message2)
+# this method is also exposed as a package function:
+testRapi::concat(message1, message2)
+	  		}
+			\if{html}{\out{</div>}}
+		}
+	
+		\subsection{Arguments}{
+			\if{html}{\out{<div class="arguments">}}
+			\itemize{
+				\item{message1}{ - (java expects a RCharacter)}
+				\item{message2}{ - (java expects a RCharacter)}
+			}
+			\if{html}{\out{</div>}}
+		}
+
+		\subsection{Returns}{
+			RCharacter: 
 		}
 	}
 
