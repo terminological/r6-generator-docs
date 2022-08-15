@@ -4,9 +4,9 @@
 #' @description
 #' A Test Library
 #'
-#' Version: 0.0.0.9999
+#' Version: 0.5.2
 #'
-#' Generated: 2022-08-13T01:21:11.841
+#' Generated: 2022-08-15T15:23:02.111
 #'
 #' Contact: rc538@exeter.ac.uk
 #' @import ggplot2
@@ -77,10 +77,6 @@ JavaApi = R6::R6Class("JavaApi", public=list(
  	initialize = function(logLevel = "INFO") {
  		if (is.null(JavaApi$singleton)) stop("Startup the java api with JavaApi$get() rather than using this constructor directly")
  	
- 		message("Initialising A Test Library")
- 		message("Version: 0.0.0.9999")
-		message("Generated: 2022-08-13T01:21:11.842")
- 	
  	
  		tryCatch({
 			if (!.jniInitialized) 
@@ -103,8 +99,8 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 		  .jcall(self$.log,returnSig = "V",method = "debug", jar)
 		}
 		.jcall(self$.log,returnSig = "V",method = "info","Initialised testRapi");
-		.jcall(self$.log,returnSig = "V",method = "debug","R package version: 0.0.0.9999");
-		.jcall(self$.log,returnSig = "V",method = "debug","R package generated: 2022-08-13T01:21:11.842");
+		.jcall(self$.log,returnSig = "V",method = "debug","R package version: 0.5.2");
+		.jcall(self$.log,returnSig = "V",method = "debug","R package generated: 2022-08-15T15:23:02.112");
 		.jcall(self$.log,returnSig = "V",method = "debug","Java library version: io.github.terminological:r6-generator-docs:main-SNAPSHOT");
 		.jcall(self$.log,returnSig = "V",method = "debug",paste0("Java library compiled: ",buildDate));
 		.jcall(self$.log,returnSig = "V",method = "debug","Contact: rc538@exeter.ac.uk");
@@ -639,6 +635,25 @@ JavaApi$rebuildDependencies = function( ... ) {
 }
 
 
+JavaApi$installDependencies = function() {
+	.checkDependencies(quiet=FALSE)
+}
+
+JavaApi$versionInformation = function() {
+	out = list(
+		package = "testRapi",
+		r_package_version = "0.5.2",
+		r_package_generated = "2022-08-15T15:23:02.139",
+		java_library_version = "io.github.terminological:r6-generator-docs:main-SNAPSHOT",
+		maintainer = "rc538@exeter.ac.uk"
+	)
+	# try and get complilation information if library is loaded
+	try({
+		out$java_library_compiled = .jcall("uk/co/terminological/rjava/LogController", returnSig = "S", method = "getClassBuildTime")
+	}, silent=TRUE)
+	return(out)
+}
+
 ## package private utility functions for managing maven dependencies ----
 # as this is generated code configuration is hard coded here
 # i.e. these functions are specific for the configuration of this package.
@@ -660,7 +675,7 @@ JavaApi$rebuildDependencies = function( ... ) {
 
 # package working directory
 .workingDir = function() {
-	tmp = path.expand(rappdirs::user_cache_dir("testRapi-0.0.0.9999"))
+	tmp = path.expand(rappdirs::user_cache_dir("testRapi-0.5.2"))
 	fs::dir_create(tmp)
 	return(tmp)
 }

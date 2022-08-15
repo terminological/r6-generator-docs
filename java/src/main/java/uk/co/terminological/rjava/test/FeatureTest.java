@@ -228,7 +228,7 @@ public class FeatureTest {
 	 */
 	@RMethod(
 		examples = {
-			"diamonds()"
+			"dplyr::glimpse( diamonds() )"
 		},
 		tests = {
 			"expect_equal(diamonds(), ggplot2::diamonds)"

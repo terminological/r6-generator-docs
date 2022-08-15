@@ -16,9 +16,9 @@
 \description{
 A test of the R6 generator templating
 
-Version: 0.0.0.9999
+Version: 0.5.2
 
-Generated: 2022-08-13T01:21:11.988
+Generated: 2022-08-15T15:23:02.254
 }
 
 \details{
@@ -37,23 +37,16 @@ this is a details comment
 ## Construct new instance of FeatureTest
 ## -----------------------------------
 J = JavaApi$get()
-  
-			minExample = J$FeatureTest$new('Hello from Java constructor!')
 
 ## -----------------------------------
 ## Method `FeatureTest$doHelloWorld()`
 ## -----------------------------------
 J = JavaApi$get()
-minExample = J$FeatureTest$new('Hello, R World!')
-minExample$doHelloWorld()
 
 ## -----------------------------------
 ## Method `FeatureTest$doSum(a, b)`
 ## -----------------------------------
-\dontrun{
-# appropriate parameter values must be provided
-instance$doSum(a, b)
-}
+J = JavaApi$get()
 
 ## -----------------------------------
 ## Method `FeatureTest$doSum2(a, b)`
@@ -149,10 +142,12 @@ instance$errorThrower()
 	\if{html}{\out{<a id="method-new"></a>}}
 	
 	\subsection{Constructor \code{new()}}{
-A maximum of one constructor of any signature can be used. <br>
+A maximum of one constructor of any signature can be used. 
+
 
 If different constructors are needed then they may be used but not 
-included in the R Api (i.e. not annotated with @RMethod.) <br>
+included in the R Api (i.e. not annotated with @RMethod.) 
+
 
 Static factory methods can be used instead.
 
@@ -181,8 +176,6 @@ the new R6 FeatureTest object
 			\if{html}{\out{<div class="r example copy">}}
 			\preformatted{
 J = JavaApi$get()
-  
-			minExample = J$FeatureTest$new('Hello from Java constructor!')
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -222,8 +215,6 @@ RCharacter: this java method returns a String
 			\if{html}{\out{<div class="r example copy">}}
 			\preformatted{
 J = JavaApi$get()
-minExample = J$FeatureTest$new('Hello, R World!')
-minExample$doHelloWorld()
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -260,6 +251,13 @@ RNumeric: A+B of course, NAs in inputs are converted to null in Java. This catch
 This only matters if you care about the difference between NA_real_ and NaN in R.
 		}
 
+		\subsection{Examples}{
+			\if{html}{\out{<div class="r example copy">}}
+			\preformatted{
+J = JavaApi$get()
+			}
+			\if{html}{\out{</div>}}
+		}
 	}
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-doSum2"></a>}}

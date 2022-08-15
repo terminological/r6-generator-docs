@@ -21,8 +21,6 @@ R6 MoreFeatureTest object: A MoreFeatureTest R6 object
 no description
 }
 \examples{
-J = JavaApi$get()
-J$MoreFeatureTest$create('Hello,',' World')
 }
 \keyword{java api}
 

@@ -10,14 +10,26 @@ vignette: >
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
+# disable this in windows as bash chunks are dodgy
+if (.Platform$OS.type == "windows") knitr::opts_chunk$set(eval = FALSE)
+```
+
+# Set up temporary location:
+
+```{r}
 dir = fs::path(tempdir(),"testProject")
 fs::dir_create(dir)
 Sys.setenv(TMP_DIR=dir)
+dir
+
+v = testRapi::JavaApi$versionInformation()
+version = stringr::str_split_fixed(v$java_library_version,":",n=Inf)[,3]
+Sys.setenv(TMP_VERSION=version)
+version
 ```
 
 ## Maven archetype
-
-
 
 ```{bash}
 cd $TMP_DIR
@@ -25,7 +37,7 @@ rm -r examplePackage ||:
 mvn archetype:generate -B \
   -DarchetypeGroupId=io.github.terminological \
   -DarchetypeArtifactId=r6-generator-maven-archetype \
-  -DarchetypeVersion=0.5.0 \
+  -DarchetypeVersion=$TMP_VERSION \
   -DgithubOrganisation=exampleOrganisation \
   -DgithubRepository=examplePackage
 ```
@@ -41,7 +53,15 @@ cd $TMP_DIR/examplePackage/java
 mvn install
 ```
 
+# Generated files:
+
 ```{r}
 fs::dir_tree(dir,regexp="((.*/target)|docs)/.*", invert=TRUE)
 ```
 
+# Package website:
+
+```{r}
+if (interactive()) 
+  browseURL(paste0("file:/",URLencode(fs::path(dir,"examplePackage","docs","index.html"))))
+```

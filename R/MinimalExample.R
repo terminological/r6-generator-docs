@@ -4,16 +4,17 @@
 #' R6 Bindings for Java MinimalExample
 #'
 #' @description
-#' This class is a very basic example of the features of the rJava maven plugin. <br>
+#' This class is a very basic example of the features of the rJava maven plugin. 
+
 #' 
 #' This is a class of the testRapi generated R library.
 #' 
-#' Version: 0.0.0.9999
+#' Version: 0.5.2
 #' 
-#' Generated: 2022-08-13T01:21:12.018
+#' Generated: 2022-08-15T15:23:02.281
 #'
 #' @details
-	#' The class is annotated with an @RClass to identify it as part of the R API. <br>
+	#' The class is annotated with an @RClass to identify it as part of the R API.
 #' @export
 MinimalExample = R6::R6Class("MinimalExample", public=list(
 
@@ -50,8 +51,6 @@ MinimalExample = R6::R6Class("MinimalExample", public=list(
 	#' the dataframe unchanged
 	#' @examples
 	#' J = JavaApi$get()
-	#' minExample = J$MinimalExample$new()
-	#' minExample$demo(dataframe=tibble::tibble(input=c(1,2,3)), message='Hello world')
 	demo = function(dataframe, message) {
 		# copy parameters
 		tmp_dataframe = self$.api$.toJava$RDataframe(dataframe);

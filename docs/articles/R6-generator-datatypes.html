@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">testRapi</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9999</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.2</span>
       </span>
     </div>
 
@@ -84,7 +84,7 @@
 
       
 
-      </header><script src="R6-generator-datatypes_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>R6 Generator Maven Plugin: Datatype conversion</h1>
@@ -105,14 +105,14 @@
 <ul>
 <li>In R everything is a vector. In Java vectors are closest in nature to collections, either Lists or insertion ordered Maps.</li>
 <li>In Java there is a fundamental difference between a single value and an array of values. In R they are interchangeable.</li>
-<li>In R everything can be named. In Java data is not “named” as such unless it is in a Map.</li>
+<li>In R everything can be named. In Java data is not "named" as such unless it is in a Map.</li>
 <li>Java distinguishes between primitive and boxed data types. R has no primitive type except raw bytes.</li>
 <li>JNI only really natively supports primitive data types, and arrays thereof.</li>
 <li>R expects data to be in vector structures containing the same data types, and thus operations on R vectors and dataframes are intrinsically column based operations. Java is generally written to operate on collections of objects which compose different data types into a single structure, and thus operations tend to be intrinsically row based.</li>
 <li>R lists are complex un-typed structures with more similarity to JSON trees than to Java Collections.</li>
 <li>R is 1 based, java is 0 based for indexes.</li>
 <li>R has typed NA values. Java null is un-typed.</li>
-<li>Java void and R NULL are not exactly the same conceptually, as an R variable can be NULL but a Java variable can never be void. Boxed Void types in Java are the programming equivalent of Schrodinger’s cat.</li>
+<li>Java void and R NULL are not exactly the same conceptually, as an R variable can be NULL but a Java variable can never be void. Boxed Void types in Java are the programming equivalent of Schrodinger's cat.</li>
 </ul>
 <p>By inspecting the Java code at compilation time, and by imposing constraints on the types of data transferred between R and Java, it is possible to use a combination of convention, data-type coercion, and type checking to ensure that inputs to Java code from R are type safe, and (almost) 100% faithful copies of their R equivalents and vice-versa. This differs in approach from <em>jsr223</em> which performs dynamic data conversion from R types to generic R data structures. This is harder to make consistent and requires a degree of introspection, during the marshaling and un-marshaling process. Enforcing rigid type systems on the interface between R and Java allows the simpler transformation to be made, based on the strongly typed Java code at compile time, which should result in faster but less flexible data transfer.</p>
 <div id="round-tripping-data-from-r-to-java-to-r" class="section level2">
@@ -124,213 +124,210 @@
 <h3 class="hasAnchor">
 <a href="#nulls-and-voids" class="anchor"></a>Nulls and voids</h3>
 <p>Ensuring an R NULL value is correctly returned requires a placeholder class in Java. This is <code>uk.co.terminological.rjava.types.RNull</code> and it enforces some of the identity constraints. Java void types can be best represented as <code><a href="https://rdrr.io/r/base/invisible.html">invisible(NULL)</a></code> which is almost the same as not returning anything from a method.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1"></a>    </span>
-<span id="cb1-2"><a href="#cb1-2"></a>    <span class="at">@RMethod</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a>    <span class="kw">public</span> RNull <span class="fu">bounceNull</span>(RNull x) {</span>
-<span id="cb1-4"><a href="#cb1-4"></a>        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);</span>
-<span id="cb1-5"><a href="#cb1-5"></a>        <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(x.<span class="fu">rCode</span>());</span>
-<span id="cb1-6"><a href="#cb1-6"></a>        <span class="kw">return</span> x;</span>
-<span id="cb1-7"><a href="#cb1-7"></a>    }</span>
-<span id="cb1-8"><a href="#cb1-8"></a>    </span>
-<span id="cb1-9"><a href="#cb1-9"></a>    <span class="at">@RMethod</span></span>
-<span id="cb1-10"><a href="#cb1-10"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">bounceVoid</span>() {</span>
-<span id="cb1-11"><a href="#cb1-11"></a>        log.<span class="fu">info</span>(<span class="st">"java void"</span>);</span>
-<span id="cb1-12"><a href="#cb1-12"></a>    }</span>
-<span id="cb1-13"><a href="#cb1-13"></a>    </span></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="downlit">
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">    
+    <span class="fu">@RMethod</span>
+    <span class="kw">public</span> RNull <span class="fu">bounceNull</span>(RNull x) {
+        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);
+        System.<span class="fu">out</span>.<span class="fu">println</span>(x.<span class="fu">rCode</span>());
+        <span class="kw">return</span> x;
+    }
+    
+    <span class="fu">@RMethod</span>
+    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">bounceVoid</span>() {
+        log.<span class="fu">info</span>(<span class="st">"java void"</span>);
+    }
+    </code></pre></div>
+<div class="sourceCode"><pre class="downlit">
 <span class="co"># devtools::install("~/Git/r6-generator-docs/")</span>
 <span class="va">J</span> <span class="op">=</span> <span class="fu">testRapi</span><span class="fu">::</span><span class="va"><a href="../reference/JavaApi.html">JavaApi</a></span><span class="op">$</span><span class="fu">get</span><span class="op">(</span><span class="op">)</span></pre></div>
-<pre><code>## Initialising A Test Library</code></pre>
-<pre><code>## Version: 0.0.0.9999</code></pre>
-<pre><code>## Generated: 2022-08-13T01:21:11.842</code></pre>
-<pre><code>## 2022-08-13 01:26:12,442 INFO testRapi [main] Initialised testRapi</code></pre>
-<div class="sourceCode" id="cb7"><pre class="downlit">
+<pre><code>## 2022-08-15 15:23:16,949 INFO testRapi [main] Initialised testRapi</code></pre>
+<div class="sourceCode"><pre class="downlit">
 <span class="va">b</span> <span class="op">=</span> <span class="va">J</span><span class="op">$</span><span class="va">BounceTest</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-08-13 01:26:12,451 INFO uk.co.terminological.rjava.test.BounceTest [main] Tests the round tripping of supported datatypes</code></pre>
-<div class="sourceCode" id="cb9"><pre class="downlit">
+<pre><code>## 2022-08-15 15:23:16,953 INFO uk.co.terminological.rjava.test.BounceTest [main] Tests the round tripping of supported datatypes</code></pre>
+<div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceNull</span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-08-13 01:26:12,456 INFO uk.co.terminological.rjava.test.BounceTest [main] java: NULL
+<pre><code>## 2022-08-15 15:23:16,957 INFO uk.co.terminological.rjava.test.BounceTest [main] java: NULL
 ## NULL</code></pre>
-<div class="sourceCode" id="cb11"><pre class="downlit">
+<div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceVoid</span><span class="op">(</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-08-13 01:26:12,457 INFO uk.co.terminological.rjava.test.BounceTest [main] java void</code></pre>
+<pre><code>## 2022-08-15 15:23:16,959 INFO uk.co.terminological.rjava.test.BounceTest [main] java void</code></pre>
 </div>
 <div id="character-data" class="section level3">
 <h3 class="hasAnchor">
 <a href="#character-data" class="anchor"></a>Character data</h3>
 <p>Strings are the least contentious format with high similarity between R and Java, so long as we are all using UTF-8. An R character vector can be transferred to Java seamlessly except for the fact that it is transferred as an array of characters over JNI. A java equivalent of <code>uk.co.terminological.rjava.types.RCharacter</code> is provided to mark the object as an R compatible datatype, in general though <code>java.lang.String</code> can used instead of singleton strings. For character vectors we have <code>uk.co.terminological.rjava.types.RCharacterVector</code> which is a specialised java collection of <code>uk.co.terminological.rjava.types.RCharacter</code>.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb13-1"><a href="#cb13-1"></a>    </span>
-<span id="cb13-2"><a href="#cb13-2"></a>    <span class="at">@RMethod</span></span>
-<span id="cb13-3"><a href="#cb13-3"></a>    <span class="kw">public</span> <span class="bu">String</span> <span class="fu">bounceString</span>(<span class="bu">String</span> x) {</span>
-<span id="cb13-4"><a href="#cb13-4"></a>        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);</span>
-<span id="cb13-5"><a href="#cb13-5"></a>        <span class="kw">return</span> x;</span>
-<span id="cb13-6"><a href="#cb13-6"></a>    }</span>
-<span id="cb13-7"><a href="#cb13-7"></a>    </span>
-<span id="cb13-8"><a href="#cb13-8"></a>    </span>
-<span id="cb13-9"><a href="#cb13-9"></a>    <span class="at">@RMethod</span></span>
-<span id="cb13-10"><a href="#cb13-10"></a>    <span class="kw">public</span> RCharacter <span class="fu">bounceCharacter</span>(RCharacter x) {</span>
-<span id="cb13-11"><a href="#cb13-11"></a>        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);</span>
-<span id="cb13-12"><a href="#cb13-12"></a>        <span class="co">//System.out.println(x.rCode());</span></span>
-<span id="cb13-13"><a href="#cb13-13"></a>        <span class="kw">return</span> x;</span>
-<span id="cb13-14"><a href="#cb13-14"></a>    }</span>
-<span id="cb13-15"><a href="#cb13-15"></a>    </span>
-<span id="cb13-16"><a href="#cb13-16"></a>    <span class="at">@RMethod</span></span>
-<span id="cb13-17"><a href="#cb13-17"></a>    <span class="kw">public</span> RCharacterVector <span class="fu">bounceCharacterVector</span>(RCharacterVector x) {</span>
-<span id="cb13-18"><a href="#cb13-18"></a>        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);</span>
-<span id="cb13-19"><a href="#cb13-19"></a>        <span class="co">//System.out.println(x.rCode());</span></span>
-<span id="cb13-20"><a href="#cb13-20"></a>        <span class="kw">return</span> x;</span>
-<span id="cb13-21"><a href="#cb13-21"></a>    }</span>
-<span id="cb13-22"><a href="#cb13-22"></a>    </span></code></pre></div>
-<div class="sourceCode" id="cb14"><pre class="downlit">
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">    
+    <span class="fu">@RMethod</span>
+    <span class="kw">public</span> String <span class="fu">bounceString</span>(String x) {
+        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);
+        <span class="kw">return</span> x;
+    }
+    
+    
+    <span class="fu">@RMethod</span>
+    <span class="kw">public</span> RCharacter <span class="fu">bounceCharacter</span>(RCharacter x) {
+        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);
+        <span class="co">//System.out.println(x.rCode());</span>
+        <span class="kw">return</span> x;
+    }
+    
+    <span class="fu">@RMethod</span>
+    <span class="kw">public</span> RCharacterVector <span class="fu">bounceCharacterVector</span>(RCharacterVector x) {
+        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);
+        <span class="co">//System.out.println(x.rCode());</span>
+        <span class="kw">return</span> x;
+    }
+    </code></pre></div>
+<div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceString</span><span class="op">(</span><span class="st">"Hello"</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-08-13 01:26:12,621 INFO uk.co.terminological.rjava.test.BounceTest [main] java: Hello</code></pre>
+<pre><code>## 2022-08-15 15:23:17,122 INFO uk.co.terminological.rjava.test.BounceTest [main] java: Hello</code></pre>
 <pre><code>## [1] "Hello"</code></pre>
-<div class="sourceCode" id="cb17"><pre class="downlit">
+<div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceCharacter</span><span class="op">(</span><span class="st">"Hello"</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-08-13 01:26:12,624 INFO uk.co.terminological.rjava.test.BounceTest [main] java: Hello</code></pre>
+<pre><code>## 2022-08-15 15:23:17,124 INFO uk.co.terminological.rjava.test.BounceTest [main] java: Hello</code></pre>
 <pre><code>## [1] "Hello"</code></pre>
-<div class="sourceCode" id="cb20"><pre class="downlit">
+<div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceCharacterVector</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Hello"</span>,<span class="st">"World"</span><span class="op">)</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-08-13 01:26:12,630 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rcharacter[2]&gt;{Hello, World, ...}</code></pre>
+<pre><code>## 2022-08-15 15:23:17,131 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rcharacter[2]&gt;{Hello, World, ...}</code></pre>
 <pre><code>## [1] "Hello" "World"</code></pre>
 </div>
 <div id="numeric-data" class="section level3">
 <h3 class="hasAnchor">
 <a href="#numeric-data" class="anchor"></a>Numeric data</h3>
 <p>Numerics in R can be represented a number of ways in Java with different degrees of precision. Various Java types, such as <code>java.lang.Double</code>, <code>java.lang.Float</code>, <code>java.math.BigDecimal</code>, <code>java.lang.Long</code>, and their primitive counterparts <code>double</code>,<code>float</code>,<code>long</code> are all best represented by R numeric values. The <code>uk.co.terminological.rjava.types.RNumeric</code> type allows Java programmers to dynamically convert input R Numeric values to a specific native Java type. The <code>uk.co.terminological.rjava.RConverter</code> class provides various methods to convert native Java types to <code>uk.co.terminological.rjava.types.RNumeric</code> for output. These functions also handles the special values of <code>Inf</code> and <code>-Inf</code>, <code>NaN</code>, and <code>NA_real_</code> and their equivalent values in Java. To support the use of native Java, singleton <code>RNumeric</code> values can be substituted with primitive Java <code>double</code> as long as the inputs can never be <code>NA_real_</code>. Vector numeric inputs from R are specified by the <code>uk.co.terminological.rjava.types.RNumericVector</code> class, which is a collection of <code>RNumeric</code> values.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb23-1"><a href="#cb23-1"></a>    </span>
-<span id="cb23-2"><a href="#cb23-2"></a>    <span class="at">@RMethod</span></span>
-<span id="cb23-3"><a href="#cb23-3"></a>    <span class="kw">public</span> <span class="dt">double</span> <span class="fu">bounceDouble</span>(<span class="dt">double</span> x) {</span>
-<span id="cb23-4"><a href="#cb23-4"></a>        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);</span>
-<span id="cb23-5"><a href="#cb23-5"></a>        <span class="kw">return</span> x;</span>
-<span id="cb23-6"><a href="#cb23-6"></a>    }</span>
-<span id="cb23-7"><a href="#cb23-7"></a>    </span>
-<span id="cb23-8"><a href="#cb23-8"></a>    <span class="at">@RMethod</span></span>
-<span id="cb23-9"><a href="#cb23-9"></a>    <span class="kw">public</span> RNumeric <span class="fu">bounceNumeric</span>(RNumeric x) {</span>
-<span id="cb23-10"><a href="#cb23-10"></a>        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);</span>
-<span id="cb23-11"><a href="#cb23-11"></a>        <span class="co">//System.out.println(x.rCode());</span></span>
-<span id="cb23-12"><a href="#cb23-12"></a>        <span class="kw">return</span> x;</span>
-<span id="cb23-13"><a href="#cb23-13"></a>    }</span>
-<span id="cb23-14"><a href="#cb23-14"></a>    </span>
-<span id="cb23-15"><a href="#cb23-15"></a>    <span class="at">@RMethod</span></span>
-<span id="cb23-16"><a href="#cb23-16"></a>    <span class="kw">public</span> RNumericVector <span class="fu">bounceNumericVector</span>(RNumericVector x) {</span>
-<span id="cb23-17"><a href="#cb23-17"></a>        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);</span>
-<span id="cb23-18"><a href="#cb23-18"></a>        <span class="co">//System.out.println(x.rCode());</span></span>
-<span id="cb23-19"><a href="#cb23-19"></a>        <span class="kw">return</span> x;</span>
-<span id="cb23-20"><a href="#cb23-20"></a>    }</span>
-<span id="cb23-21"><a href="#cb23-21"></a>    </span></code></pre></div>
-<div class="sourceCode" id="cb24"><pre class="downlit">
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">    
+    <span class="fu">@RMethod</span>
+    <span class="kw">public</span> <span class="dt">double</span> <span class="fu">bounceDouble</span>(<span class="dt">double</span> x) {
+        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);
+        <span class="kw">return</span> x;
+    }
+    
+    <span class="fu">@RMethod</span>
+    <span class="kw">public</span> RNumeric <span class="fu">bounceNumeric</span>(RNumeric x) {
+        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);
+        <span class="co">//System.out.println(x.rCode());</span>
+        <span class="kw">return</span> x;
+    }
+    
+    <span class="fu">@RMethod</span>
+    <span class="kw">public</span> RNumericVector <span class="fu">bounceNumericVector</span>(RNumericVector x) {
+        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);
+        <span class="co">//System.out.println(x.rCode());</span>
+        <span class="kw">return</span> x;
+    }
+    </code></pre></div>
+<div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceDouble</span><span class="op">(</span><span class="fl">1.23</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-08-13 01:26:12,771 INFO uk.co.terminological.rjava.test.BounceTest [main] java: 1.23</code></pre>
+<pre><code>## 2022-08-15 15:23:17,274 INFO uk.co.terminological.rjava.test.BounceTest [main] java: 1.23</code></pre>
 <pre><code>## [1] 1.23</code></pre>
-<div class="sourceCode" id="cb27"><pre class="downlit">
+<div class="sourceCode"><pre class="downlit">
 <span class="co"># throws an error as primitive double cannot be null</span>
 <span class="kw"><a href="https://rdrr.io/r/base/try.html">try</a></span><span class="op">(</span><span class="va">b</span><span class="op">$</span><span class="fu">bounceDouble</span><span class="op">(</span><span class="cn">NA_real_</span><span class="op">)</span><span class="op">)</span></pre></div>
 <pre><code>## Error in self$.api$.toJava$double(x) : 
 ##   cant use NA as input to java double</code></pre>
-<div class="sourceCode" id="cb29"><pre class="downlit">
+<div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceNumeric</span><span class="op">(</span><span class="fl">4.6</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-08-13 01:26:12,774 INFO uk.co.terminological.rjava.test.BounceTest [main] java: 4.6</code></pre>
+<pre><code>## 2022-08-15 15:23:17,277 INFO uk.co.terminological.rjava.test.BounceTest [main] java: 4.6</code></pre>
 <pre><code>## [1] 4.6</code></pre>
-<div class="sourceCode" id="cb32"><pre class="downlit">
+<div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceNumeric</span><span class="op">(</span><span class="cn">NA_real_</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-08-13 01:26:12,776 INFO uk.co.terminological.rjava.test.BounceTest [main] java: NA</code></pre>
+<pre><code>## 2022-08-15 15:23:17,279 INFO uk.co.terminological.rjava.test.BounceTest [main] java: NA</code></pre>
 <pre><code>## [1] NA</code></pre>
-<div class="sourceCode" id="cb35"><pre class="downlit">
+<div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceNumeric</span><span class="op">(</span><span class="cn">Inf</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-08-13 01:26:12,777 INFO uk.co.terminological.rjava.test.BounceTest [main] java: Infinity</code></pre>
+<pre><code>## 2022-08-15 15:23:17,280 INFO uk.co.terminological.rjava.test.BounceTest [main] java: Infinity</code></pre>
 <pre><code>## [1] Inf</code></pre>
-<div class="sourceCode" id="cb38"><pre class="downlit">
+<div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceNumeric</span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-08-13 01:26:12,779 INFO uk.co.terminological.rjava.test.BounceTest [main] java: -Infinity</code></pre>
+<pre><code>## 2022-08-15 15:23:17,281 INFO uk.co.terminological.rjava.test.BounceTest [main] java: -Infinity</code></pre>
 <pre><code>## [1] -Inf</code></pre>
-<div class="sourceCode" id="cb41"><pre class="downlit">
+<div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceNumeric</span><span class="op">(</span><span class="fl">0</span><span class="op">/</span><span class="fl">0</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-08-13 01:26:12,780 INFO uk.co.terminological.rjava.test.BounceTest [main] java: NaN</code></pre>
+<pre><code>## 2022-08-15 15:23:17,283 INFO uk.co.terminological.rjava.test.BounceTest [main] java: NaN</code></pre>
 <pre><code>## [1] NaN</code></pre>
-<div class="sourceCode" id="cb44"><pre class="downlit">
+<div class="sourceCode"><pre class="downlit">
 <span class="co"># Wrongly typed input is coerced to numerics</span>
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceNumericVector</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2L</span>,<span class="fl">5L</span>,<span class="fl">34L</span><span class="op">)</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-08-13 01:26:12,782 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rnumeric[3]&gt;{2.0, 5.0, 34.0, ...}</code></pre>
+<pre><code>## 2022-08-15 15:23:17,285 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rnumeric[3]&gt;{2.0, 5.0, 34.0, ...}</code></pre>
 <pre><code>## [1]  2  5 34</code></pre>
-<div class="sourceCode" id="cb47"><pre class="downlit">
+<div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceNumericVector</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2.3</span>,<span class="fl">4.6</span>,<span class="cn">NA_real_</span>,<span class="fl">34</span>,<span class="cn">NaN</span>,<span class="cn">Inf</span>,<span class="op">-</span><span class="cn">Inf</span><span class="op">)</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-08-13 01:26:12,787 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rnumeric[7]&gt;{2.3, 4.6, NA, 34.0, NaN, Infinity, -Infinity, ...}</code></pre>
+<pre><code>## 2022-08-15 15:23:17,289 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rnumeric[7]&gt;{2.3, 4.6, NA, 34.0, NaN, Infinity, -Infinity, ...}</code></pre>
 <pre><code>## [1]  2.3  4.6   NA 34.0  NaN  Inf -Inf</code></pre>
 </div>
 <div id="integer-data" class="section level3">
 <h3 class="hasAnchor">
 <a href="#integer-data" class="anchor"></a>Integer data</h3>
 <p>In an identical way to above <code>uk.co.terminological.rjava.types.RInteger</code> types hold integer values. R inputs to Java functions are coerced to integers and an error thrown if this is not possible. The primitive <code>int</code> Java type can be used for singletons if they are not <code>NA</code>, and vectors are handled in the same way as before with a specialist <code>uk.co.terminological.rjava.types.RIntegerVector</code>. Non integer numeric types are not coerced to integer, but rather a runtime error is thrown to the user if they try and use the wrong type.</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb50-1"><a href="#cb50-1"></a>    </span>
-<span id="cb50-2"><a href="#cb50-2"></a>    <span class="at">@RMethod</span></span>
-<span id="cb50-3"><a href="#cb50-3"></a>    <span class="kw">public</span> <span class="dt">int</span> <span class="fu">bounceInt</span>(<span class="dt">int</span> x) {</span>
-<span id="cb50-4"><a href="#cb50-4"></a>        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);</span>
-<span id="cb50-5"><a href="#cb50-5"></a>        <span class="kw">return</span> x;</span>
-<span id="cb50-6"><a href="#cb50-6"></a>    }</span>
-<span id="cb50-7"><a href="#cb50-7"></a>    </span>
-<span id="cb50-8"><a href="#cb50-8"></a>    <span class="at">@RMethod</span></span>
-<span id="cb50-9"><a href="#cb50-9"></a>    <span class="kw">public</span> RInteger <span class="fu">bounceInteger</span>(RInteger x) {</span>
-<span id="cb50-10"><a href="#cb50-10"></a>        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);</span>
-<span id="cb50-11"><a href="#cb50-11"></a>        <span class="co">//System.out.println(x.rCode());</span></span>
-<span id="cb50-12"><a href="#cb50-12"></a>        <span class="kw">return</span> x;</span>
-<span id="cb50-13"><a href="#cb50-13"></a>    }</span>
-<span id="cb50-14"><a href="#cb50-14"></a>    </span>
-<span id="cb50-15"><a href="#cb50-15"></a>    <span class="at">@RMethod</span></span>
-<span id="cb50-16"><a href="#cb50-16"></a>    <span class="kw">public</span> RIntegerVector <span class="fu">bounceIntegerVector</span>(RIntegerVector x) {</span>
-<span id="cb50-17"><a href="#cb50-17"></a>        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);</span>
-<span id="cb50-18"><a href="#cb50-18"></a>        <span class="co">//System.out.println(x.rCode());</span></span>
-<span id="cb50-19"><a href="#cb50-19"></a>        <span class="kw">return</span> x;</span>
-<span id="cb50-20"><a href="#cb50-20"></a>    }</span>
-<span id="cb50-21"><a href="#cb50-21"></a>    </span></code></pre></div>
-<div class="sourceCode" id="cb51"><pre class="downlit">
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">    
+    <span class="fu">@RMethod</span>
+    <span class="kw">public</span> <span class="dt">int</span> <span class="fu">bounceInt</span>(<span class="dt">int</span> x) {
+        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);
+        <span class="kw">return</span> x;
+    }
+    
+    <span class="fu">@RMethod</span>
+    <span class="kw">public</span> RInteger <span class="fu">bounceInteger</span>(RInteger x) {
+        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);
+        <span class="co">//System.out.println(x.rCode());</span>
+        <span class="kw">return</span> x;
+    }
+    
+    <span class="fu">@RMethod</span>
+    <span class="kw">public</span> RIntegerVector <span class="fu">bounceIntegerVector</span>(RIntegerVector x) {
+        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);
+        <span class="co">//System.out.println(x.rCode());</span>
+        <span class="kw">return</span> x;
+    }
+    </code></pre></div>
+<div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceInt</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-08-13 01:26:12,930 INFO uk.co.terminological.rjava.test.BounceTest [main] java: 1</code></pre>
+<pre><code>## 2022-08-15 15:23:17,429 INFO uk.co.terminological.rjava.test.BounceTest [main] java: 1</code></pre>
 <pre><code>## [1] 1</code></pre>
-<div class="sourceCode" id="cb54"><pre class="downlit">
+<div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceInteger</span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-08-13 01:26:12,932 INFO uk.co.terminological.rjava.test.BounceTest [main] java: 3</code></pre>
+<pre><code>## 2022-08-15 15:23:17,430 INFO uk.co.terminological.rjava.test.BounceTest [main] java: 3</code></pre>
 <pre><code>## [1] 3</code></pre>
-<div class="sourceCode" id="cb57"><pre class="downlit">
+<div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceIntegerVector</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2L</span>,<span class="fl">3L</span>,<span class="fl">4L</span><span class="op">)</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-08-13 01:26:12,934 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rinteger[3]&gt;{2, 3, 4, ...}</code></pre>
+<pre><code>## 2022-08-15 15:23:17,432 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rinteger[3]&gt;{2, 3, 4, ...}</code></pre>
 <pre><code>## [1] 2 3 4</code></pre>
-<div class="sourceCode" id="cb60"><pre class="downlit">
+<div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceIntegerVector</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span><span class="op">)</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-08-13 01:26:12,938 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rinteger[3]&gt;{2, 3, 4, ...}</code></pre>
+<pre><code>## 2022-08-15 15:23:17,436 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rinteger[3]&gt;{2, 3, 4, ...}</code></pre>
 <pre><code>## [1] 2 3 4</code></pre>
-<div class="sourceCode" id="cb63"><pre class="downlit">
+<div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceIntegerVector</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2L</span>,<span class="cn">NA</span>,<span class="fl">4L</span><span class="op">)</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-08-13 01:26:12,939 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rinteger[3]&gt;{2, NA, 4, ...}</code></pre>
+<pre><code>## 2022-08-15 15:23:17,437 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rinteger[3]&gt;{2, NA, 4, ...}</code></pre>
 <pre><code>## [1]  2 NA  4</code></pre>
 </div>
 <div id="factors" class="section level3">
 <h3 class="hasAnchor">
 <a href="#factors" class="anchor"></a>Factors</h3>
 <p>Factors are somewhat complicated as a individual factor only makes sense in the context of a vector of possible options. However the <code>uk.co.terminological.rjava.types.RFactor</code> type and <code>uk.co.terminological.rjava.types.RFactorVector</code> collection allow information to be retained about the values and labels for R Factors. There is support for mapping R factors to Java <code>Enum</code> classes which is provided by <code>uk.co.terminological.rjava.RConverter</code> and creating R ordered factors from <code>Enum</code>s.</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb66-1"><a href="#cb66-1"></a>    </span>
-<span id="cb66-2"><a href="#cb66-2"></a>    <span class="at">@RMethod</span></span>
-<span id="cb66-3"><a href="#cb66-3"></a>    <span class="kw">public</span> RFactor <span class="fu">bounceFactor</span>(RFactor x) {</span>
-<span id="cb66-4"><a href="#cb66-4"></a>        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);</span>
-<span id="cb66-5"><a href="#cb66-5"></a>        <span class="co">//System.out.println(x.rCode());</span></span>
-<span id="cb66-6"><a href="#cb66-6"></a>        <span class="kw">return</span> x;</span>
-<span id="cb66-7"><a href="#cb66-7"></a>    }</span>
-<span id="cb66-8"><a href="#cb66-8"></a>    </span>
-<span id="cb66-9"><a href="#cb66-9"></a>    <span class="at">@RMethod</span></span>
-<span id="cb66-10"><a href="#cb66-10"></a>    <span class="kw">public</span> RFactorVector <span class="fu">bounceFactorVector</span>(RFactorVector x) {</span>
-<span id="cb66-11"><a href="#cb66-11"></a>        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);</span>
-<span id="cb66-12"><a href="#cb66-12"></a>        <span class="co">//System.out.println(x.rCode());</span></span>
-<span id="cb66-13"><a href="#cb66-13"></a>        <span class="kw">return</span> x;</span>
-<span id="cb66-14"><a href="#cb66-14"></a>    }</span>
-<span id="cb66-15"><a href="#cb66-15"></a>    </span></code></pre></div>
-<div class="sourceCode" id="cb67"><pre class="downlit">
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">    
+    <span class="fu">@RMethod</span>
+    <span class="kw">public</span> RFactor <span class="fu">bounceFactor</span>(RFactor x) {
+        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);
+        <span class="co">//System.out.println(x.rCode());</span>
+        <span class="kw">return</span> x;
+    }
+    
+    <span class="fu">@RMethod</span>
+    <span class="kw">public</span> RFactorVector <span class="fu">bounceFactorVector</span>(RFactorVector x) {
+        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);
+        <span class="co">//System.out.println(x.rCode());</span>
+        <span class="kw">return</span> x;
+    }
+    </code></pre></div>
+<div class="sourceCode"><pre class="downlit">
 <span class="va">factorVec</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>,<span class="st">"b"</span>,<span class="st">"c"</span>,<span class="st">"b"</span>,<span class="st">"a"</span><span class="op">)</span><span class="op">)</span>
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceFactor</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">factorVec</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-08-13 01:26:13,077 INFO uk.co.terminological.rjava.test.BounceTest [main] java: a</code></pre>
+<pre><code>## 2022-08-15 15:23:17,577 INFO uk.co.terminological.rjava.test.BounceTest [main] java: a</code></pre>
 <pre><code>## [1] "a"</code></pre>
-<div class="sourceCode" id="cb70"><pre class="downlit">
+<div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceFactorVector</span><span class="op">(</span><span class="va">factorVec</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-08-13 01:26:13,079 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rfactor[5]&gt;{a, b, c, b, a, ...}</code></pre>
+<pre><code>## 2022-08-15 15:23:17,579 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rfactor[5]&gt;{a, b, c, b, a, ...}</code></pre>
 <pre><code>## [1] a b c b a
 ## Levels: a &lt; b &lt; c</code></pre>
 </div>
@@ -338,95 +335,95 @@
 <h3 class="hasAnchor">
 <a href="#dates" class="anchor"></a>Dates</h3>
 <p>Date support is provided by <code>uk.co.terminological.rjava.types.RDate</code> which allows R Date and POSIXt types to be represented in Java as <code>java.time.LocalDate</code>s. Vectors of dates are also supported as before. There is currently no support for datetime classes but this is a possible enhancement. There is a <code>uk.co.terminological.rjava.types.RDateVector</code> class for collections.</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb73-1"><a href="#cb73-1"></a>    </span>
-<span id="cb73-2"><a href="#cb73-2"></a>    <span class="at">@RMethod</span></span>
-<span id="cb73-3"><a href="#cb73-3"></a>    <span class="kw">public</span> RDate <span class="fu">bounceDate</span>(RDate x) {</span>
-<span id="cb73-4"><a href="#cb73-4"></a>        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);</span>
-<span id="cb73-5"><a href="#cb73-5"></a>        <span class="co">//System.out.println(x.rCode());</span></span>
-<span id="cb73-6"><a href="#cb73-6"></a>        <span class="kw">return</span> x;</span>
-<span id="cb73-7"><a href="#cb73-7"></a>    }</span>
-<span id="cb73-8"><a href="#cb73-8"></a>    </span>
-<span id="cb73-9"><a href="#cb73-9"></a>    <span class="at">@RMethod</span></span>
-<span id="cb73-10"><a href="#cb73-10"></a>    <span class="kw">public</span> RDateVector <span class="fu">bounceDateVector</span>(RDateVector x) {</span>
-<span id="cb73-11"><a href="#cb73-11"></a>        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);</span>
-<span id="cb73-12"><a href="#cb73-12"></a>        <span class="co">//System.out.println(x.rCode());</span></span>
-<span id="cb73-13"><a href="#cb73-13"></a>        <span class="kw">return</span> x;</span>
-<span id="cb73-14"><a href="#cb73-14"></a>    }</span>
-<span id="cb73-15"><a href="#cb73-15"></a>    </span></code></pre></div>
-<div class="sourceCode" id="cb74"><pre class="downlit">
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">    
+    <span class="fu">@RMethod</span>
+    <span class="kw">public</span> RDate <span class="fu">bounceDate</span>(RDate x) {
+        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);
+        <span class="co">//System.out.println(x.rCode());</span>
+        <span class="kw">return</span> x;
+    }
+    
+    <span class="fu">@RMethod</span>
+    <span class="kw">public</span> RDateVector <span class="fu">bounceDateVector</span>(RDateVector x) {
+        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);
+        <span class="co">//System.out.println(x.rCode());</span>
+        <span class="kw">return</span> x;
+    }
+    </code></pre></div>
+<div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceDate</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"2001-02-03"</span><span class="op">)</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-08-13 01:26:13,220 INFO uk.co.terminological.rjava.test.BounceTest [main] java: 2001-02-03</code></pre>
+<pre><code>## 2022-08-15 15:23:17,720 INFO uk.co.terminological.rjava.test.BounceTest [main] java: 2001-02-03</code></pre>
 <pre><code>## [1] "2001-02-03"</code></pre>
-<div class="sourceCode" id="cb77"><pre class="downlit">
+<div class="sourceCode"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">b</span><span class="op">$</span><span class="fu">bounceDate</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"2001-02-03"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-08-13 01:26:13,222 INFO uk.co.terminological.rjava.test.BounceTest [main] java: 2001-02-03</code></pre>
+<pre><code>## 2022-08-15 15:23:17,722 INFO uk.co.terminological.rjava.test.BounceTest [main] java: 2001-02-03</code></pre>
 <pre><code>## [1] "Date"</code></pre>
-<div class="sourceCode" id="cb80"><pre class="downlit">
+<div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceDateVector</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"2001-02-03"</span>,<span class="st">"2001-02-04"</span>,<span class="st">"2001-02-05"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-08-13 01:26:13,225 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rdate[3]&gt;{2001-02-03, 2001-02-04, 2001-02-05, ...}</code></pre>
+<pre><code>## 2022-08-15 15:23:17,724 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rdate[3]&gt;{2001-02-03, 2001-02-04, 2001-02-05, ...}</code></pre>
 <pre><code>## [1] "2001-02-03" "2001-02-04" "2001-02-05"</code></pre>
-<div class="sourceCode" id="cb83"><pre class="downlit">
+<div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceDateVector</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"2001-02-03"</span>,<span class="cn">NA</span>,<span class="st">"2001-02-05"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-08-13 01:26:13,227 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rdate[3]&gt;{2001-02-03, NA, 2001-02-05, ...}</code></pre>
+<pre><code>## 2022-08-15 15:23:17,727 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rdate[3]&gt;{2001-02-03, NA, 2001-02-05, ...}</code></pre>
 <pre><code>## [1] "2001-02-03" NA           "2001-02-05"</code></pre>
-<div class="sourceCode" id="cb86"><pre class="downlit">
+<div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceDate</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"0000-01-01"</span><span class="op">)</span><span class="op">-</span><span class="fl">5</span><span class="op">)</span></pre></div>
 <pre><code>## dates smaller than 0001-01-01 will be converted to NA</code></pre>
-<pre><code>## 2022-08-13 01:26:13,233 INFO uk.co.terminological.rjava.test.BounceTest [main] java: NA</code></pre>
+<pre><code>## 2022-08-15 15:23:17,729 INFO uk.co.terminological.rjava.test.BounceTest [main] java: NA</code></pre>
 <pre><code>## [1] NA</code></pre>
-<div class="sourceCode" id="cb90"><pre class="downlit">
+<div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceDateVector</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"0000-01-01"</span>,<span class="st">"1-01-01"</span>,<span class="st">"11-01-01"</span>,<span class="st">"101-01-01"</span>,<span class="st">"1001-01-01"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></pre></div>
 <pre><code>## dates smaller than 0001-01-01 will be converted to NA</code></pre>
-<pre><code>## 2022-08-13 01:26:13,235 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rdate[5]&gt;{NA, 0001-01-01, 0011-01-01, 0101-01-01, 1001-01-01, ...}</code></pre>
+<pre><code>## 2022-08-15 15:23:17,731 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rdate[5]&gt;{NA, 0001-01-01, 0011-01-01, 0101-01-01, 1001-01-01, ...}</code></pre>
 <pre><code>## [1] NA           "1-01-01"    "11-01-01"   "101-01-01"  "1001-01-01"</code></pre>
 </div>
 <div id="logicals" class="section level3">
 <h3 class="hasAnchor">
 <a href="#logicals" class="anchor"></a>Logicals</h3>
 <p>R logicals are mapped to <code>uk.co.terminological.rjava.types.RLogical</code> objects which can represent <code>NA_logical_</code> values faithfully. If <code>NA</code> values are not needed then primitive <code>boolean</code> types can be substituted as before, and vectors work as before.</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb94-1"><a href="#cb94-1"></a>    </span>
-<span id="cb94-2"><a href="#cb94-2"></a>    </span>
-<span id="cb94-3"><a href="#cb94-3"></a>    <span class="at">@RMethod</span></span>
-<span id="cb94-4"><a href="#cb94-4"></a>    <span class="kw">public</span> RLogical <span class="fu">bounceLogical</span>(RLogical x) {</span>
-<span id="cb94-5"><a href="#cb94-5"></a>        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);</span>
-<span id="cb94-6"><a href="#cb94-6"></a>        <span class="co">//System.out.println(x.rCode());</span></span>
-<span id="cb94-7"><a href="#cb94-7"></a>        <span class="kw">return</span> x;</span>
-<span id="cb94-8"><a href="#cb94-8"></a>    }</span>
-<span id="cb94-9"><a href="#cb94-9"></a>    </span>
-<span id="cb94-10"><a href="#cb94-10"></a>    <span class="at">@RMethod</span></span>
-<span id="cb94-11"><a href="#cb94-11"></a>    <span class="kw">public</span> RLogicalVector <span class="fu">bounceLogicalVector</span>(RLogicalVector x) {</span>
-<span id="cb94-12"><a href="#cb94-12"></a>        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);</span>
-<span id="cb94-13"><a href="#cb94-13"></a>        <span class="co">//System.out.println(x.rCode());</span></span>
-<span id="cb94-14"><a href="#cb94-14"></a>        <span class="kw">return</span> x;</span>
-<span id="cb94-15"><a href="#cb94-15"></a>    }</span>
-<span id="cb94-16"><a href="#cb94-16"></a>    </span></code></pre></div>
-<div class="sourceCode" id="cb95"><pre class="downlit">
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">    
+    
+    <span class="fu">@RMethod</span>
+    <span class="kw">public</span> RLogical <span class="fu">bounceLogical</span>(RLogical x) {
+        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);
+        <span class="co">//System.out.println(x.rCode());</span>
+        <span class="kw">return</span> x;
+    }
+    
+    <span class="fu">@RMethod</span>
+    <span class="kw">public</span> RLogicalVector <span class="fu">bounceLogicalVector</span>(RLogicalVector x) {
+        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);
+        <span class="co">//System.out.println(x.rCode());</span>
+        <span class="kw">return</span> x;
+    }
+    </code></pre></div>
+<div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceLogical</span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-08-13 01:26:13,373 INFO uk.co.terminological.rjava.test.BounceTest [main] java: true</code></pre>
+<pre><code>## 2022-08-15 15:23:17,871 INFO uk.co.terminological.rjava.test.BounceTest [main] java: true</code></pre>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb98"><pre class="downlit">
+<div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceLogicalVector</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>,<span class="cn">TRUE</span>,<span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-08-13 01:26:13,375 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rlogical[3]&gt;{true, true, false, ...}</code></pre>
+<pre><code>## 2022-08-15 15:23:17,876 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rlogical[3]&gt;{true, true, false, ...}</code></pre>
 <pre><code>## [1]  TRUE  TRUE FALSE</code></pre>
-<div class="sourceCode" id="cb101"><pre class="downlit">
+<div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceLogicalVector</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>,<span class="cn">NA</span>,<span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-08-13 01:26:13,378 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rlogical[3]&gt;{true, NA, false, ...}</code></pre>
+<pre><code>## 2022-08-15 15:23:17,878 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rlogical[3]&gt;{true, NA, false, ...}</code></pre>
 <pre><code>## [1]  TRUE    NA FALSE</code></pre>
 </div>
 <div id="dataframes" class="section level3">
 <h3 class="hasAnchor">
 <a href="#dataframes" class="anchor"></a>Dataframes</h3>
 <p>In Java R dataframes are modelled as a named list of <code>uk.co.terminological.rjava.types.RVector&lt;?&gt;</code> each holding columnar data of unspecified type. This is represented internally as a column wise Map, but the <code>uk.co.terminological.rjava.types.RDataframe</code> class contains a number of methods to make using dataframes intuitive in Java. This includes support for Iterable and Stream interfaces operating row-wise over the data. The <code>uk.co.terminological.rjava.types.RBoundDataframe</code> can map typed columns to a stream of proxy objects satisfying an interface specification. This can be used to convert a <code>RDataframe</code> into a stream of custom POJOs (more examples TBD). The dataframe can support any column with vector data types mentioned above. At present however it does not support named rows, as the focus is on tidy dataframes, nor does it support <code>purrr</code> style list columns.</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb104-1"><a href="#cb104-1"></a>    </span>
-<span id="cb104-2"><a href="#cb104-2"></a>    <span class="at">@RMethod</span></span>
-<span id="cb104-3"><a href="#cb104-3"></a>    <span class="kw">public</span> RDataframe <span class="fu">bounceDataframe</span>(RDataframe x) {</span>
-<span id="cb104-4"><a href="#cb104-4"></a>        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);</span>
-<span id="cb104-5"><a href="#cb104-5"></a>        <span class="co">//System.out.println(x.rCode());</span></span>
-<span id="cb104-6"><a href="#cb104-6"></a>        <span class="co">//System.out.println(x.rConversion());</span></span>
-<span id="cb104-7"><a href="#cb104-7"></a>        <span class="kw">return</span> x;</span>
-<span id="cb104-8"><a href="#cb104-8"></a>    }</span>
-<span id="cb104-9"><a href="#cb104-9"></a>    </span></code></pre></div>
-<div class="sourceCode" id="cb105"><pre class="downlit">
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">    
+    <span class="fu">@RMethod</span>
+    <span class="kw">public</span> RDataframe <span class="fu">bounceDataframe</span>(RDataframe x) {
+        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);
+        <span class="co">//System.out.println(x.rCode());</span>
+        <span class="co">//System.out.println(x.rConversion());</span>
+        <span class="kw">return</span> x;
+    }
+    </code></pre></div>
+<div class="sourceCode"><pre class="downlit">
 <span class="va">testDf</span> <span class="op">=</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>
   grp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>,<span class="st">"A"</span>,<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"B"</span>,<span class="st">"B"</span><span class="op">)</span>,
   x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">6</span><span class="op">)</span>,
@@ -435,7 +432,7 @@
 <span class="va">testDf</span> <span class="op">=</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">testDf</span>,<span class="va">grp</span>,<span class="va">x</span><span class="op">)</span>
 
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceDataframe</span><span class="op">(</span><span class="va">testDf</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-08-13 01:26:13,531 INFO uk.co.terminological.rjava.test.BounceTest [main] java: groups: [grp, x]
+<pre><code>## 2022-08-15 15:23:18,033 INFO uk.co.terminological.rjava.test.BounceTest [main] java: groups: [grp, x]
 ## grp: &lt;rcharacter[6]&gt;{A, A, A, B, B, B, ...}
 ## x: &lt;rnumeric[6]&gt;{0.0, 1.0, 2.0, 4.0, 5.0, 6.0, ...}
 ## y: &lt;rinteger[6]&gt;{3, 2, 1, -1, -2, -3, ...}</code></pre>
@@ -449,7 +446,7 @@
 ## 4 B         4    -1
 ## 5 B         5    -2
 ## 6 B         6    -3</code></pre>
-<div class="sourceCode" id="cb108"><pre class="downlit">
+<div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceDataframe</span><span class="op">(</span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>
   u<span class="op">=</span><span class="va">factorVec</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>,
   v<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>,<span class="cn">NA</span>,<span class="cn">FALSE</span><span class="op">)</span>,
@@ -458,7 +455,7 @@
   y<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3L</span>,<span class="fl">2L</span>,<span class="fl">1L</span><span class="op">)</span>,
   z<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"2001-02-03"</span>,<span class="cn">NA</span>,<span class="st">"2001-02-05"</span><span class="op">)</span><span class="op">)</span>
 <span class="op">)</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-08-13 01:26:13,595 INFO uk.co.terminological.rjava.test.BounceTest [main] java: groups: []
+<pre><code>## 2022-08-15 15:23:18,101 INFO uk.co.terminological.rjava.test.BounceTest [main] java: groups: []
 ## u: &lt;rfactor[3]&gt;{a, b, c, ...}
 ## v: &lt;rlogical[3]&gt;{true, NA, false, ...}
 ## w: &lt;rcharacter[3]&gt;{alpha, NA, gamma, ...}
@@ -475,10 +472,10 @@
 <div id="arrays" class="section level3">
 <h3 class="hasAnchor">
 <a href="#arrays" class="anchor"></a>Arrays</h3>
-<div class="sourceCode" id="cb111"><pre class="downlit">
+<div class="sourceCode"><pre class="downlit">
 <span class="va">test2DArr</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">9.9</span>,<span class="fl">0.1</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>,<span class="fl">10</span><span class="op">)</span><span class="op">)</span>
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceArray</span><span class="op">(</span><span class="va">test2DArr</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-08-13 01:26:13,685 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rnumeric[10]&gt;{
+<pre><code>## 2022-08-15 15:23:18,187 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rnumeric[10]&gt;{
 ## &lt;rnumeric[10]&gt;{0.0, 0.1, 0.2, 0.30000000000000004, 0.4, 0.5, 0.6000000000000001, 0.7000000000000001, 0.8, 0.9, ...},
 ## &lt;rnumeric[10]&gt;{1.0, 1.1, 1.2000000000000002, 1.3, 1.4000000000000001, 1.5, 1.6, 1.7000000000000002, 1.8, 1.9000000000000001, ...},
 ## &lt;rnumeric[10]&gt;{2.0, 2.1, 2.2, 2.3000000000000003, 2.4000000000000004, 2.5, 2.6, 2.7, 2.8000000000000003, 2.9000000000000004, ...},
@@ -501,10 +498,10 @@
 ##  [8,]  0.7  1.7  2.7  3.7  4.7  5.7  6.7  7.7  8.7   9.7
 ##  [9,]  0.8  1.8  2.8  3.8  4.8  5.8  6.8  7.8  8.8   9.8
 ## [10,]  0.9  1.9  2.9  3.9  4.9  5.9  6.9  7.9  8.9   9.9</code></pre>
-<div class="sourceCode" id="cb114"><pre class="downlit">
+<div class="sourceCode"><pre class="downlit">
 <span class="va">test3DArr</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/array.html">array</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">63</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">8</span>,<span class="fl">4</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span>
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceArray</span><span class="op">(</span><span class="va">test3DArr</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-08-13 01:26:13,689 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rnumeric[2]&gt;{
+<pre><code>## 2022-08-15 15:23:18,191 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rnumeric[2]&gt;{
 ## &lt;rnumeric[4]&gt;{
 ## &lt;rnumeric[8]&gt;{0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, ...},
 ## &lt;rnumeric[8]&gt;{8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, ...},
@@ -546,24 +543,24 @@
 <h3 class="hasAnchor">
 <a href="#lists" class="anchor"></a>Lists</h3>
 <p>in R lists and named are complex objects with optionally named sequences of arbitrary typed data. They are analgous to JSON objects and it is tempting to serialise all R lists to JSON and use a JSON library to interpret them in Java. This would be possible but lose some of the support built into the R classes mentioned above. As such we took a hybrid approach where R lists and named lists are dynamically and recursively mapped to collection types from R to Java, and exported back from Java to R serialised as a character string containing R code, which is evaluated by the R interpreter. Despite being somewhat hacky this does a surprisingly good job at transferring lists from R to Java and back to R faithfully. However it is probably not well suited to very large lists and definitely could not support lists that have cyclical structures in the object graph. To support fluent use of R Lists in Java all classes that derive from <code>RObject</code> support the visitor pattern, which can be used to relatively simply select out datatypes of interest. Support for a XPath like syntax to access specific elements of nested lists is planned.</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb117-1"><a href="#cb117-1"></a>    </span>
-<span id="cb117-2"><a href="#cb117-2"></a>    <span class="at">@RMethod</span></span>
-<span id="cb117-3"><a href="#cb117-3"></a>    <span class="kw">public</span> RList <span class="fu">bounceList</span>(RList x) {</span>
-<span id="cb117-4"><a href="#cb117-4"></a>        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);</span>
-<span id="cb117-5"><a href="#cb117-5"></a>        <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(x.<span class="fu">rCode</span>());</span>
-<span id="cb117-6"><a href="#cb117-6"></a>        <span class="kw">return</span> x;</span>
-<span id="cb117-7"><a href="#cb117-7"></a>    }</span>
-<span id="cb117-8"><a href="#cb117-8"></a>    </span>
-<span id="cb117-9"><a href="#cb117-9"></a>    <span class="at">@RMethod</span></span>
-<span id="cb117-10"><a href="#cb117-10"></a>    <span class="kw">public</span> RNamedList <span class="fu">bounceNamedList</span>(RNamedList x) {</span>
-<span id="cb117-11"><a href="#cb117-11"></a>        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);</span>
-<span id="cb117-12"><a href="#cb117-12"></a>        <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(x.<span class="fu">rCode</span>());</span>
-<span id="cb117-13"><a href="#cb117-13"></a>        <span class="kw">return</span> x;</span>
-<span id="cb117-14"><a href="#cb117-14"></a>    }</span>
-<span id="cb117-15"><a href="#cb117-15"></a>    </span></code></pre></div>
-<div class="sourceCode" id="cb118"><pre class="downlit">
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">    
+    <span class="fu">@RMethod</span>
+    <span class="kw">public</span> RList <span class="fu">bounceList</span>(RList x) {
+        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);
+        System.<span class="fu">out</span>.<span class="fu">println</span>(x.<span class="fu">rCode</span>());
+        <span class="kw">return</span> x;
+    }
+    
+    <span class="fu">@RMethod</span>
+    <span class="kw">public</span> RNamedList <span class="fu">bounceNamedList</span>(RNamedList x) {
+        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);
+        System.<span class="fu">out</span>.<span class="fu">println</span>(x.<span class="fu">rCode</span>());
+        <span class="kw">return</span> x;
+    }
+    </code></pre></div>
+<div class="sourceCode"><pre class="downlit">
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceList</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"a"</span>,<span class="st">"b"</span>,<span class="st">"c"</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-08-13 01:26:13,829 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rlist&gt;{
+<pre><code>## 2022-08-15 15:23:18,395 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rlist&gt;{
 ## a,
 ## b,
 ## c,
@@ -581,10 +578,10 @@
 ## 
 ## [[4]]
 ## [1] 1 2 3</code></pre>
-<div class="sourceCode" id="cb121"><pre class="downlit">
+<div class="sourceCode"><pre class="downlit">
 <span class="va">input</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"a"</span>,<span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"b"</span>,<span class="fl">1</span>,<span class="st">"z"</span><span class="op">)</span>,<span class="st">"c"</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span>
 <span class="va">output</span> <span class="op">=</span> <span class="va">b</span><span class="op">$</span><span class="fu">bounceList</span><span class="op">(</span><span class="va">input</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-08-13 01:26:13,835 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rlist&gt;{
+<pre><code>## 2022-08-15 15:23:18,401 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rlist&gt;{
 ## a,
 ## &lt;rlist&gt;{
 ## b,
@@ -595,11 +592,11 @@
 ## &lt;rnumeric[3]&gt;{1.0, 2.0, 3.0, ...}
 ## }
 ## list('a', list('b', 1.0, 'z'), 'c', c(1.0, 2.0, 3.0))</code></pre>
-<div class="sourceCode" id="cb123"><pre class="downlit">
+<div class="sourceCode"><pre class="downlit">
 <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="va">input</span>,<span class="va">output</span><span class="op">)</span><span class="op">)</span> <span class="kw"><a href="https://rdrr.io/r/base/stop.html">stop</a></span><span class="op">(</span><span class="st">"FAIL"</span><span class="op">)</span>
 
 <span class="va">b</span><span class="op">$</span><span class="fu">bounceNamedList</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>x<span class="op">=</span><span class="st">"a"</span>,b<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>,<span class="cn">NA</span>,<span class="st">"c"</span><span class="op">)</span>,c<span class="op">=</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-08-13 01:26:13,840 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rnamedlist&gt;{
+<pre><code>## 2022-08-15 15:23:18,406 INFO uk.co.terminological.rjava.test.BounceTest [main] java: &lt;rnamedlist&gt;{
 ## x: a,
 ## b: &lt;rcharacter[3]&gt;{a, NA, c, ...},
 ## c: 1.0
@@ -623,52 +620,52 @@
 <h3 class="hasAnchor">
 <a href="#primitive-equivalents" class="anchor"></a>Primitive equivalents</h3>
 <p>the <code>RPrimitive</code> interface possesses a range of factory methods to generate appropriately typed <code>RPrimitive</code>s from Java primitives, boxed types, and enums.</p>
-<div class="sourceCode" id="cb126"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb126-1"><a href="#cb126-1"></a>    </span>
-<span id="cb126-2"><a href="#cb126-2"></a>    <span class="at">@RMethod</span></span>
-<span id="cb126-3"><a href="#cb126-3"></a>    <span class="kw">public</span> RCharacter <span class="fu">generateCharacter</span>() {</span>
-<span id="cb126-4"><a href="#cb126-4"></a>        <span class="kw">return</span> RPrimitive.<span class="fu">of</span>(<span class="st">"Hello world"</span>);</span>
-<span id="cb126-5"><a href="#cb126-5"></a>    }</span>
-<span id="cb126-6"><a href="#cb126-6"></a>    </span>
-<span id="cb126-7"><a href="#cb126-7"></a>    <span class="at">@RMethod</span></span>
-<span id="cb126-8"><a href="#cb126-8"></a>    <span class="kw">public</span> RNumeric <span class="fu">generateNumeric</span>() {</span>
-<span id="cb126-9"><a href="#cb126-9"></a>        <span class="kw">return</span> RPrimitive.<span class="fu">of</span>(<span class="fl">123.</span><span class="dv">0</span>);</span>
-<span id="cb126-10"><a href="#cb126-10"></a>    }</span>
-<span id="cb126-11"><a href="#cb126-11"></a>    </span>
-<span id="cb126-12"><a href="#cb126-12"></a>    <span class="at">@RMethod</span></span>
-<span id="cb126-13"><a href="#cb126-13"></a>    <span class="kw">public</span> RInteger <span class="fu">generateInteger</span>() {</span>
-<span id="cb126-14"><a href="#cb126-14"></a>        <span class="kw">return</span> RPrimitive.<span class="fu">of</span>(<span class="dv">345</span>);</span>
-<span id="cb126-15"><a href="#cb126-15"></a>    }</span>
-<span id="cb126-16"><a href="#cb126-16"></a>    </span>
-<span id="cb126-17"><a href="#cb126-17"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="kw">enum</span> Test {</span>
-<span id="cb126-18"><a href="#cb126-18"></a>        ONE,TWO,THREE</span>
-<span id="cb126-19"><a href="#cb126-19"></a>    }</span>
-<span id="cb126-20"><a href="#cb126-20"></a>    </span>
-<span id="cb126-21"><a href="#cb126-21"></a>    <span class="at">@RMethod</span></span>
-<span id="cb126-22"><a href="#cb126-22"></a>    <span class="kw">public</span> RFactor <span class="fu">generateFactor</span>() {</span>
-<span id="cb126-23"><a href="#cb126-23"></a>        <span class="kw">return</span> RPrimitive.<span class="fu">of</span>(Test.<span class="fu">ONE</span>);</span>
-<span id="cb126-24"><a href="#cb126-24"></a>    }</span>
-<span id="cb126-25"><a href="#cb126-25"></a>    </span>
-<span id="cb126-26"><a href="#cb126-26"></a>    <span class="at">@RMethod</span></span>
-<span id="cb126-27"><a href="#cb126-27"></a>    <span class="kw">public</span> RLogical <span class="fu">generateLogical</span>() {</span>
-<span id="cb126-28"><a href="#cb126-28"></a>        <span class="kw">return</span> RPrimitive.<span class="fu">of</span>(<span class="kw">true</span>);</span>
-<span id="cb126-29"><a href="#cb126-29"></a>    }</span>
-<span id="cb126-30"><a href="#cb126-30"></a>    </span></code></pre></div>
-<div class="sourceCode" id="cb127"><pre class="downlit">
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">    
+    <span class="fu">@RMethod</span>
+    <span class="kw">public</span> RCharacter <span class="fu">generateCharacter</span>() {
+        <span class="kw">return</span> RPrimitive.<span class="fu">of</span>(<span class="st">"Hello world"</span>);
+    }
+    
+    <span class="fu">@RMethod</span>
+    <span class="kw">public</span> RNumeric <span class="fu">generateNumeric</span>() {
+        <span class="kw">return</span> RPrimitive.<span class="fu">of</span>(<span class="fl">123.0</span>);
+    }
+    
+    <span class="fu">@RMethod</span>
+    <span class="kw">public</span> RInteger <span class="fu">generateInteger</span>() {
+        <span class="kw">return</span> RPrimitive.<span class="fu">of</span>(<span class="dv">345</span>);
+    }
+    
+    <span class="kw">public</span> <span class="dt">static</span> <span class="kw">enum</span> Test {
+        ONE,TWO,THREE
+    }
+    
+    <span class="fu">@RMethod</span>
+    <span class="kw">public</span> RFactor <span class="fu">generateFactor</span>() {
+        <span class="kw">return</span> RPrimitive.<span class="fu">of</span>(Test.<span class="fu">ONE</span>);
+    }
+    
+    <span class="fu">@RMethod</span>
+    <span class="kw">public</span> RLogical <span class="fu">generateLogical</span>() {
+        <span class="kw">return</span> RPrimitive.<span class="fu">of</span>(<span class="kw">true</span>);
+    }
+    </code></pre></div>
+<div class="sourceCode"><pre class="downlit">
 <span class="va">g</span> <span class="op">=</span> <span class="va">J</span><span class="op">$</span><span class="va">FactoryTest</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-08-13 01:26:13,986 INFO uk.co.terminological.rjava.test.FactoryTest [main] Tests the java creation of supported datatypes</code></pre>
-<div class="sourceCode" id="cb129"><pre class="downlit">
+<pre><code>## 2022-08-15 15:23:18,545 INFO uk.co.terminological.rjava.test.FactoryTest [main] Tests the java creation of supported datatypes</code></pre>
+<div class="sourceCode"><pre class="downlit">
 <span class="va">g</span><span class="op">$</span><span class="fu">generateCharacter</span><span class="op">(</span><span class="op">)</span></pre></div>
 <pre><code>## [1] "Hello world"</code></pre>
-<div class="sourceCode" id="cb131"><pre class="downlit">
+<div class="sourceCode"><pre class="downlit">
 <span class="va">g</span><span class="op">$</span><span class="fu">generateNumeric</span><span class="op">(</span><span class="op">)</span></pre></div>
 <pre><code>## [1] 123</code></pre>
-<div class="sourceCode" id="cb133"><pre class="downlit">
+<div class="sourceCode"><pre class="downlit">
 <span class="va">g</span><span class="op">$</span><span class="fu">generateInteger</span><span class="op">(</span><span class="op">)</span></pre></div>
 <pre><code>## [1] 345</code></pre>
-<div class="sourceCode" id="cb135"><pre class="downlit">
+<div class="sourceCode"><pre class="downlit">
 <span class="va">g</span><span class="op">$</span><span class="fu">generateFactor</span><span class="op">(</span><span class="op">)</span></pre></div>
 <pre><code>## [1] "ONE"</code></pre>
-<div class="sourceCode" id="cb137"><pre class="downlit">
+<div class="sourceCode"><pre class="downlit">
 <span class="va">g</span><span class="op">$</span><span class="fu">generateLogical</span><span class="op">(</span><span class="op">)</span></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </div>
@@ -676,48 +673,48 @@
 <h3 class="hasAnchor">
 <a href="#vectors" class="anchor"></a>Vectors</h3>
 <p>Similarly the <code>RVector</code> class supports a range of fluent builder methods which allow de novo creation of correctly typed RVectors. The <code>RConverter</code> class also provides a range of collectors that facilitate mapping Java Streams to R Vectors.</p>
-<div class="sourceCode" id="cb139"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb139-1"><a href="#cb139-1"></a>    </span>
-<span id="cb139-2"><a href="#cb139-2"></a>    <span class="at">@RMethod</span></span>
-<span id="cb139-3"><a href="#cb139-3"></a>    <span class="kw">public</span> RCharacterVector <span class="fu">generateCharacterVec</span>() {</span>
-<span id="cb139-4"><a href="#cb139-4"></a>        <span class="kw">return</span> RVector.<span class="fu">with</span>(<span class="st">"Hello world"</span>,<span class="st">"Ola el mundo"</span>,<span class="st">"Bonjour le monde"</span>, <span class="kw">null</span>);</span>
-<span id="cb139-5"><a href="#cb139-5"></a>    }</span>
-<span id="cb139-6"><a href="#cb139-6"></a>    </span>
-<span id="cb139-7"><a href="#cb139-7"></a>    <span class="at">@RMethod</span></span>
-<span id="cb139-8"><a href="#cb139-8"></a>    <span class="kw">public</span> RNumericVector <span class="fu">generateNumericVec</span>() {</span>
-<span id="cb139-9"><a href="#cb139-9"></a>        <span class="kw">return</span> DoubleStream</span>
-<span id="cb139-10"><a href="#cb139-10"></a>                .<span class="fu">of</span>(<span class="fl">3.</span><span class="dv">0</span>, <span class="fl">4.</span><span class="dv">3</span>, <span class="fl">2.</span><span class="dv">1</span>, <span class="fl">2.</span><span class="dv">3</span>).<span class="fu">boxed</span>()</span>
-<span id="cb139-11"><a href="#cb139-11"></a>                .<span class="fu">collect</span>(RConverter.<span class="fu">doubleCollector</span>());</span>
-<span id="cb139-12"><a href="#cb139-12"></a>    }</span>
-<span id="cb139-13"><a href="#cb139-13"></a>    </span>
-<span id="cb139-14"><a href="#cb139-14"></a>    <span class="at">@RMethod</span></span>
-<span id="cb139-15"><a href="#cb139-15"></a>    <span class="kw">public</span> RIntegerVector <span class="fu">generateIntegerVec</span>() {</span>
-<span id="cb139-16"><a href="#cb139-16"></a>        <span class="kw">return</span> RVector.<span class="fu">with</span>(<span class="dv">345</span>, <span class="dv">678</span>, <span class="kw">null</span>, <span class="dv">89</span>);</span>
-<span id="cb139-17"><a href="#cb139-17"></a>    }</span>
-<span id="cb139-18"><a href="#cb139-18"></a>    </span>
-<span id="cb139-19"><a href="#cb139-19"></a>    <span class="at">@RMethod</span></span>
-<span id="cb139-20"><a href="#cb139-20"></a>    <span class="kw">public</span> RFactorVector <span class="fu">generateFactorVec</span>() {</span>
-<span id="cb139-21"><a href="#cb139-21"></a>        <span class="kw">return</span> RVector.<span class="fu">with</span>(Test.<span class="fu">ONE</span>,Test.<span class="fu">THREE</span>,<span class="kw">null</span>,Test.<span class="fu">TWO</span>);</span>
-<span id="cb139-22"><a href="#cb139-22"></a>    }</span>
-<span id="cb139-23"><a href="#cb139-23"></a>    </span>
-<span id="cb139-24"><a href="#cb139-24"></a>    <span class="at">@RMethod</span></span>
-<span id="cb139-25"><a href="#cb139-25"></a>    <span class="kw">public</span> RLogicalVector <span class="fu">generateLogicalVec</span>() {</span>
-<span id="cb139-26"><a href="#cb139-26"></a>        <span class="kw">return</span> RVector.<span class="fu">with</span>(<span class="kw">true</span>,<span class="kw">false</span>,<span class="kw">null</span>);</span>
-<span id="cb139-27"><a href="#cb139-27"></a>    }</span>
-<span id="cb139-28"><a href="#cb139-28"></a>    </span></code></pre></div>
-<div class="sourceCode" id="cb140"><pre class="downlit">
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">    
+    <span class="fu">@RMethod</span>
+    <span class="kw">public</span> RCharacterVector <span class="fu">generateCharacterVec</span>() {
+        <span class="kw">return</span> RVector.<span class="fu">with</span>(<span class="st">"Hello world"</span>,<span class="st">"Ola el mundo"</span>,<span class="st">"Bonjour le monde"</span>, <span class="kw">null</span>);
+    }
+    
+    <span class="fu">@RMethod</span>
+    <span class="kw">public</span> RNumericVector <span class="fu">generateNumericVec</span>() {
+        <span class="kw">return</span> DoubleStream
+                .<span class="fu">of</span>(<span class="fl">3.0</span>, <span class="fl">4.3</span>, <span class="fl">2.1</span>, <span class="fl">2.3</span>).<span class="fu">boxed</span>()
+                .<span class="fu">collect</span>(RConverter.<span class="fu">doubleCollector</span>());
+    }
+    
+    <span class="fu">@RMethod</span>
+    <span class="kw">public</span> RIntegerVector <span class="fu">generateIntegerVec</span>() {
+        <span class="kw">return</span> RVector.<span class="fu">with</span>(<span class="dv">345</span>, <span class="dv">678</span>, <span class="kw">null</span>, <span class="dv">89</span>);
+    }
+    
+    <span class="fu">@RMethod</span>
+    <span class="kw">public</span> RFactorVector <span class="fu">generateFactorVec</span>() {
+        <span class="kw">return</span> RVector.<span class="fu">with</span>(Test.<span class="fu">ONE</span>,Test.<span class="fu">THREE</span>,<span class="kw">null</span>,Test.<span class="fu">TWO</span>);
+    }
+    
+    <span class="fu">@RMethod</span>
+    <span class="kw">public</span> RLogicalVector <span class="fu">generateLogicalVec</span>() {
+        <span class="kw">return</span> RVector.<span class="fu">with</span>(<span class="kw">true</span>,<span class="kw">false</span>,<span class="kw">null</span>);
+    }
+    </code></pre></div>
+<div class="sourceCode"><pre class="downlit">
 <span class="va">g</span><span class="op">$</span><span class="fu">generateFactorVec</span><span class="op">(</span><span class="op">)</span></pre></div>
 <pre><code>## [1] ONE   THREE &lt;NA&gt;  TWO  
 ## Levels: ONE &lt; TWO &lt; THREE</code></pre>
-<div class="sourceCode" id="cb142"><pre class="downlit">
+<div class="sourceCode"><pre class="downlit">
 <span class="va">g</span><span class="op">$</span><span class="fu">generateIntegerVec</span><span class="op">(</span><span class="op">)</span> </pre></div>
 <pre><code>## [1] 345 678  NA  89</code></pre>
-<div class="sourceCode" id="cb144"><pre class="downlit">
+<div class="sourceCode"><pre class="downlit">
 <span class="va">g</span><span class="op">$</span><span class="fu">generateCharacterVec</span><span class="op">(</span><span class="op">)</span></pre></div>
 <pre><code>## [1] "Hello world"      "Ola el mundo"     "Bonjour le monde" NA</code></pre>
-<div class="sourceCode" id="cb146"><pre class="downlit">
+<div class="sourceCode"><pre class="downlit">
 <span class="va">g</span><span class="op">$</span><span class="fu">generateNumericVec</span><span class="op">(</span><span class="op">)</span></pre></div>
 <pre><code>## [1] 3.0 4.3 2.1 2.3</code></pre>
-<div class="sourceCode" id="cb148"><pre class="downlit">
+<div class="sourceCode"><pre class="downlit">
 <span class="va">g</span><span class="op">$</span><span class="fu">generateLogicalVec</span><span class="op">(</span><span class="op">)</span></pre></div>
 <pre><code>## [1]  TRUE FALSE    NA</code></pre>
 </div>
@@ -725,31 +722,31 @@
 <h3 class="hasAnchor">
 <a href="#dataframes-and-lists" class="anchor"></a>Dataframes and lists</h3>
 <p>Both <code>RDataframe</code> and <code>RList</code> classes implement fluent methods to allow the creation of complex data structures in a method familiar to java programmers. Again <code>RConverter</code> provides specialised collectors to map a stream of objects representing sequential rows of data to the columnar format of the <code>RDataframe</code> using <code>MapRule</code>s specified using functional lambda syntax to define the mapping from object to dataframe column.</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb150-1"><a href="#cb150-1"></a>    </span>
-<span id="cb150-2"><a href="#cb150-2"></a>    <span class="at">@RMethod</span></span>
-<span id="cb150-3"><a href="#cb150-3"></a>    <span class="kw">public</span> RDataframe <span class="fu">generateDataframe</span>() {</span>
-<span id="cb150-4"><a href="#cb150-4"></a>        <span class="kw">return</span> RDataframe.<span class="fu">create</span>()</span>
-<span id="cb150-5"><a href="#cb150-5"></a>            .<span class="fu">withCol</span>(<span class="st">"A"</span>, RVector.<span class="fu">with</span>(<span class="fl">3.</span><span class="dv">0</span>, <span class="fl">4.</span><span class="dv">3</span>, <span class="fl">2.</span><span class="dv">1</span>))</span>
-<span id="cb150-6"><a href="#cb150-6"></a>            .<span class="fu">withCol</span>(<span class="st">"B"</span>, RVector.<span class="fu">with</span>(Test.<span class="fu">ONE</span>,Test.<span class="fu">THREE</span>,Test.<span class="fu">TWO</span>))</span>
-<span id="cb150-7"><a href="#cb150-7"></a>            .<span class="fu">withCol</span>(<span class="st">"C"</span>, RVector.<span class="fu">with</span>(<span class="st">"Hello world"</span>,<span class="st">"Ola el mundo"</span>,<span class="st">"Bonjour le monde"</span>));</span>
-<span id="cb150-8"><a href="#cb150-8"></a>    }</span>
-<span id="cb150-9"><a href="#cb150-9"></a>    </span>
-<span id="cb150-10"><a href="#cb150-10"></a>    <span class="at">@RMethod</span></span>
-<span id="cb150-11"><a href="#cb150-11"></a>    <span class="kw">public</span> RDataframe <span class="fu">generateStreamDataframe</span>() {</span>
-<span id="cb150-12"><a href="#cb150-12"></a>        <span class="kw">return</span> </span>
-<span id="cb150-13"><a href="#cb150-13"></a>            <span class="bu">Arrays</span>.<span class="fu">asList</span>(<span class="st">"Hello"</span>,<span class="st">"World"</span>,<span class="st">"Stream"</span>,<span class="st">"Support"</span>,<span class="st">"in"</span>,<span class="st">"Java"</span>)</span>
-<span id="cb150-14"><a href="#cb150-14"></a>            .<span class="fu">stream</span>()</span>
-<span id="cb150-15"><a href="#cb150-15"></a>            .<span class="fu">collect</span>(RConverter.<span class="fu">dataframeCollector</span>(</span>
-<span id="cb150-16"><a href="#cb150-16"></a>                RConverter.<span class="fu">mapping</span>(<span class="st">"original"</span>, s-&gt; s),</span>
-<span id="cb150-17"><a href="#cb150-17"></a>                RConverter.<span class="fu">mapping</span>(<span class="st">"lowercase"</span>, s-&gt; s.<span class="fu">toLowerCase</span>()),</span>
-<span id="cb150-18"><a href="#cb150-18"></a>                RConverter.<span class="fu">mapping</span>(<span class="st">"uppercase"</span>, s-&gt; s.<span class="fu">toUpperCase</span>()),</span>
-<span id="cb150-19"><a href="#cb150-19"></a>                RConverter.<span class="fu">mapping</span>(<span class="st">"subst"</span>, s-&gt; s.<span class="fu">substring</span>(<span class="dv">0</span>,<span class="bu">Math</span>.<span class="fu">min</span>(<span class="dv">3</span>,s.<span class="fu">length</span>()))),</span>
-<span id="cb150-20"><a href="#cb150-20"></a>                RConverter.<span class="fu">mapping</span>(<span class="st">"length"</span>, s-&gt; s.<span class="fu">length</span>())</span>
-<span id="cb150-21"><a href="#cb150-21"></a>            ));</span>
-<span id="cb150-22"><a href="#cb150-22"></a>        </span>
-<span id="cb150-23"><a href="#cb150-23"></a>    }</span>
-<span id="cb150-24"><a href="#cb150-24"></a>    </span></code></pre></div>
-<div class="sourceCode" id="cb151"><pre class="downlit">
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">    
+    <span class="fu">@RMethod</span>
+    <span class="kw">public</span> RDataframe <span class="fu">generateDataframe</span>() {
+        <span class="kw">return</span> RDataframe.<span class="fu">create</span>()
+            .<span class="fu">withCol</span>(<span class="st">"A"</span>, RVector.<span class="fu">with</span>(<span class="fl">3.0</span>, <span class="fl">4.3</span>, <span class="fl">2.1</span>))
+            .<span class="fu">withCol</span>(<span class="st">"B"</span>, RVector.<span class="fu">with</span>(Test.<span class="fu">ONE</span>,Test.<span class="fu">THREE</span>,Test.<span class="fu">TWO</span>))
+            .<span class="fu">withCol</span>(<span class="st">"C"</span>, RVector.<span class="fu">with</span>(<span class="st">"Hello world"</span>,<span class="st">"Ola el mundo"</span>,<span class="st">"Bonjour le monde"</span>));
+    }
+    
+    <span class="fu">@RMethod</span>
+    <span class="kw">public</span> RDataframe <span class="fu">generateStreamDataframe</span>() {
+        <span class="kw">return</span> 
+            Arrays.<span class="fu">asList</span>(<span class="st">"Hello"</span>,<span class="st">"World"</span>,<span class="st">"Stream"</span>,<span class="st">"Support"</span>,<span class="st">"in"</span>,<span class="st">"Java"</span>)
+            .<span class="fu">stream</span>()
+            .<span class="fu">collect</span>(RConverter.<span class="fu">dataframeCollector</span>(
+                RConverter.<span class="fu">mapping</span>(<span class="st">"original"</span>, s-&gt; s),
+                RConverter.<span class="fu">mapping</span>(<span class="st">"lowercase"</span>, s-&gt; s.<span class="fu">toLowerCase</span>()),
+                RConverter.<span class="fu">mapping</span>(<span class="st">"uppercase"</span>, s-&gt; s.<span class="fu">toUpperCase</span>()),
+                RConverter.<span class="fu">mapping</span>(<span class="st">"subst"</span>, s-&gt; s.<span class="fu">substring</span>(<span class="dv">0</span>,Math.<span class="fu">min</span>(<span class="dv">3</span>,s.<span class="fu">length</span>()))),
+                RConverter.<span class="fu">mapping</span>(<span class="st">"length"</span>, s-&gt; s.<span class="fu">length</span>())
+            ));
+        
+    }
+    </code></pre></div>
+<div class="sourceCode"><pre class="downlit">
 <span class="va">g</span><span class="op">$</span><span class="fu">generateDataframe</span><span class="op">(</span><span class="op">)</span></pre></div>
 <pre><code>## # A tibble: 3 × 3
 ##       A B     C               
@@ -757,7 +754,7 @@
 ## 1   3   ONE   Hello world     
 ## 2   4.3 THREE Ola el mundo    
 ## 3   2.1 TWO   Bonjour le monde</code></pre>
-<div class="sourceCode" id="cb153"><pre class="downlit">
+<div class="sourceCode"><pre class="downlit">
 <span class="va">g</span><span class="op">$</span><span class="fu">generateStreamDataframe</span><span class="op">(</span><span class="op">)</span></pre></div>
 <pre><code>## # A tibble: 6 × 5
 ##   original lowercase uppercase subst length
@@ -769,26 +766,26 @@
 ## 5 in       in        IN        in         2
 ## 6 Java     java      JAVA      Jav        4</code></pre>
 <p>Finally a note on list generation that contains enum values in Java cannot always be converted to factors in R. If this is not possible then the conversion will fall back to a character string of the label of the factor value.</p>
-<div class="sourceCode" id="cb155"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb155-1"><a href="#cb155-1"></a>    </span>
-<span id="cb155-2"><a href="#cb155-2"></a>    <span class="co">/**</span></span>
-<span id="cb155-3"><a href="#cb155-3"></a>     <span class="co">*</span> Lists are much harder to type check than vectors hence RList builder methods throw checked exceptions </span>
-<span id="cb155-4"><a href="#cb155-4"></a>     <span class="co">* </span><span class="an">@return </span>a RList containing the supplied Java objects converted into RObjects</span>
-<span id="cb155-5"><a href="#cb155-5"></a>     <span class="co">*</span> <span class="an">@throws UnconvertableTypeException </span>if those objects are not themselves or cannot be converted into an RObject </span>
-<span id="cb155-6"><a href="#cb155-6"></a>     <span class="co">*/</span></span>
-<span id="cb155-7"><a href="#cb155-7"></a>    <span class="at">@RMethod</span></span>
-<span id="cb155-8"><a href="#cb155-8"></a>    <span class="kw">public</span> RList <span class="fu">generateList</span>() <span class="kw">throws</span> UnconvertableTypeException {</span>
-<span id="cb155-9"><a href="#cb155-9"></a>        <span class="kw">return</span> RList.<span class="fu">withRaw</span>(<span class="st">"one"</span>, Test.<span class="fu">TWO</span>, <span class="fl">3.</span><span class="dv">0</span>);</span>
-<span id="cb155-10"><a href="#cb155-10"></a>    }</span>
-<span id="cb155-11"><a href="#cb155-11"></a>    </span>
-<span id="cb155-12"><a href="#cb155-12"></a>    <span class="at">@RMethod</span></span>
-<span id="cb155-13"><a href="#cb155-13"></a>    <span class="kw">public</span> RNamedList <span class="fu">generateNamedList</span>() <span class="kw">throws</span> UnconvertableTypeException {</span>
-<span id="cb155-14"><a href="#cb155-14"></a>        <span class="kw">return</span> RNamedList</span>
-<span id="cb155-15"><a href="#cb155-15"></a>                .<span class="fu">withRaw</span>(<span class="st">"A"</span>,<span class="st">"one"</span>)</span>
-<span id="cb155-16"><a href="#cb155-16"></a>                .<span class="fu">andRaw</span>(<span class="st">"B"</span>, Test.<span class="fu">TWO</span>)</span>
-<span id="cb155-17"><a href="#cb155-17"></a>                .<span class="fu">andRaw</span>(<span class="st">"C"</span>, RVector.<span class="fu">with</span>(<span class="fl">3.</span><span class="dv">0</span>, <span class="fl">4.</span><span class="dv">3</span>, <span class="fl">2.</span><span class="dv">1</span>));</span>
-<span id="cb155-18"><a href="#cb155-18"></a>    }</span>
-<span id="cb155-19"><a href="#cb155-19"></a>    </span></code></pre></div>
-<div class="sourceCode" id="cb156"><pre class="downlit">
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">    
+    <span class="co">/**</span>
+<span class="co">     * Lists are much harder to type check than vectors hence RList builder methods throw checked exceptions </span>
+<span class="co">     * </span><span class="kw">@return </span><span class="co">a RList containing the supplied Java objects converted into RObjects</span>
+<span class="co">     * </span><span class="kw">@throws UnconvertableTypeException </span><span class="co">if those objects are not themselves or cannot be converted into an RObject </span>
+<span class="co">     */</span>
+    <span class="fu">@RMethod</span>
+    <span class="kw">public</span> RList <span class="fu">generateList</span>() <span class="kw">throws</span> UnconvertableTypeException {
+        <span class="kw">return</span> RList.<span class="fu">withRaw</span>(<span class="st">"one"</span>, Test.<span class="fu">TWO</span>, <span class="fl">3.0</span>);
+    }
+    
+    <span class="fu">@RMethod</span>
+    <span class="kw">public</span> RNamedList <span class="fu">generateNamedList</span>() <span class="kw">throws</span> UnconvertableTypeException {
+        <span class="kw">return</span> RNamedList
+                .<span class="fu">withRaw</span>(<span class="st">"A"</span>,<span class="st">"one"</span>)
+                .<span class="fu">andRaw</span>(<span class="st">"B"</span>, Test.<span class="fu">TWO</span>)
+                .<span class="fu">andRaw</span>(<span class="st">"C"</span>, RVector.<span class="fu">with</span>(<span class="fl">3.0</span>, <span class="fl">4.3</span>, <span class="fl">2.1</span>));
+    }
+    </code></pre></div>
+<div class="sourceCode"><pre class="downlit">
 <span class="va">g</span><span class="op">$</span><span class="fu">generateList</span><span class="op">(</span><span class="op">)</span></pre></div>
 <pre><code>## [[1]]
 ## [1] "one"
@@ -798,7 +795,7 @@
 ## 
 ## [[3]]
 ## [1] 3</code></pre>
-<div class="sourceCode" id="cb158"><pre class="downlit">
+<div class="sourceCode"><pre class="downlit">
 <span class="va">g</span><span class="op">$</span><span class="fu">generateNamedList</span><span class="op">(</span><span class="op">)</span></pre></div>
 <pre><code>## $A
 ## [1] "one"
@@ -824,7 +821,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Rob Challen, terminological, Rob Challen.</p>
+  <p>Developed by Rob Challen, Rob Challen, terminological.</p>
 </div>
 
 <div class="pkgdown">

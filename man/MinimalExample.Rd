@@ -9,16 +9,18 @@
 
 
 \description{
-This class is a very basic example of the features of the rJava maven plugin. <br>
+This class is a very basic example of the features of the rJava maven plugin. 
 
-Version: 0.0.0.9999
 
-Generated: 2022-08-13T01:21:12.017
+Version: 0.5.2
+
+Generated: 2022-08-15T15:23:02.281
 }
 
 \details{
 	
-The class is annotated with an @RClass to identify it as part of the R API. <br>
+The class is annotated with an @RClass to identify it as part of the R API. 
+
 }
 
 \examples{
@@ -35,9 +37,6 @@ instance = J$MinimalExample$new()
 ## Method `MinimalExample$demo(dataframe, message)`
 ## -----------------------------------
 J = JavaApi$get()
-  
-		minExample = J$MinimalExample$new()
-minExample$demo(dataframe=tibble::tibble(input=c(1,2,3)), message='Hello world')
 }
 
 \keyword{java api}
@@ -118,9 +117,6 @@ RDataframe: the dataframe unchanged
 			\if{html}{\out{<div class="r example copy">}}
 			\preformatted{
 J = JavaApi$get()
-  
-		minExample = J$MinimalExample$new()
-minExample$demo(dataframe=tibble::tibble(input=c(1,2,3)), message='Hello world')
 			}
 			\if{html}{\out{</div>}}
 		}

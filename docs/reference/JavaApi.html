@@ -41,8 +41,8 @@
 
 <meta property="og:title" content="A Test Library — JavaApi" />
 <meta property="og:description" content="Documents the features of the 'r6-generator-maven-plugin' by providing an example of an R package automatically generated from Java code by the plugin. It is not intended to be useful beyond testing, demonstrating and documenting the features of the plugin.
-Version: 0.0.0.9999
-Generated: 2022-08-13T01:21:11.804" />
+Version: 0.5.2
+Generated: 2022-08-15T15:23:02.006" />
 
 
 
@@ -74,7 +74,7 @@ Generated: 2022-08-13T01:21:11.804" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">testRapi</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9999</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.2</span>
       </span>
     </div>
 
@@ -139,8 +139,8 @@ Generated: 2022-08-13T01:21:11.804" />
 
     <div class="ref-description">
     <p>Documents the features of the 'r6-generator-maven-plugin' by providing an example of an R package automatically generated from Java code by the plugin. It is not intended to be useful beyond testing, demonstrating and documenting the features of the plugin.</p>
-<p>Version: 0.0.0.9999</p>
-<p>Generated: 2022-08-13T01:21:11.804</p>
+<p>Version: 0.5.2</p>
+<p>Generated: 2022-08-15T15:23:02.006</p>
     </div>
 
 
@@ -163,12 +163,25 @@ Generated: 2022-08-13T01:21:11.804" />
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p><a href='mailto:rc538@exeter.ac.uk'>rc538@exeter.ac.uk</a></p>
-    <h2 class="hasAnchor" id="static-methods-and-constructors"><a class="anchor" href="#static-methods-and-constructors"></a>Static methods and constructors</h2>
+    <h2 class="hasAnchor" id="package-initialisation-and-control"><a class="anchor" href="#package-initialisation-and-control"></a>Package initialisation and control</h2>
 
     <p></p><ul>
-<li><p><code>JavaApi$get()</code></p></li>
+<li><p><a href='#method-api-installDependencies'><code>JavaApi$installDependencies()</code></a></p></li>
+<li><p><a href='#method-api-rebuildDependencies'><code>JavaApi$rebuildDependencies()</code></a></p></li>
+<li><p><a href='#method-api-versionInformation'><code>JavaApi$versionInformation()</code></a></p></li>
+<li><p><a href='#method-api-get'><code>J = JavaApi$get(logLevel)</code></a></p></li>
+<li><p><a href='#method-api-changeLogLevel'><code>J$changeLogLevel(logLevel)</code></a></p></li>
+<li><p><a href='#method-api-reconfigureLog'><code>J$reconfigureLog(log4jproperties)</code></a></p></li>
+<li><p><a href='#method-api-printMessages'><code>J$printMessages()</code></a></p></li>
+</ul>
+
+    <h2 class="hasAnchor" id="package-classes-and-static-methods"><a class="anchor" href="#package-classes-and-static-methods"></a>Package classes and static methods</h2>
+
+    <p><hr></p><ul>
 <li><p><a href='#method-FactoryTest-new'><code>J$FactoryTest$new()</code></a></p></li>
+</ul><p><hr></p><ul>
 <li><p><a href='#method-BounceTest-new'><code>J$BounceTest$new()</code></a></p></li>
+</ul><p><hr></p><ul>
 <li><p><a href='#method-Serialiser-new'><code>J$Serialiser$new()</code></a></p></li>
 <li><p><a href='#method-Serialiser-serialiseDataframe'><code>J$Serialiser$serialiseDataframe(dataframe, filename)</code></a></p></li>
 <li><p><a href='#method-Serialiser-deserialiseDataframe'><code>J$Serialiser$deserialiseDataframe(filename)</code></a></p></li>
@@ -176,17 +189,140 @@ Generated: 2022-08-13T01:21:11.804" />
 <li><p><a href='#method-Serialiser-deserialiseList'><code>J$Serialiser$deserialiseList(filename)</code></a></p></li>
 <li><p><a href='#method-Serialiser-serialiseNamedList'><code>J$Serialiser$serialiseNamedList(dataframe, filename)</code></a></p></li>
 <li><p><a href='#method-Serialiser-deserialiseNamedList'><code>J$Serialiser$deserialiseNamedList(filename)</code></a></p></li>
+</ul><p><hr></p><ul>
 <li><p><a href='#method-FeatureTest-new'><code>J$FeatureTest$new(logMessage)</code></a></p></li>
 <li><p><a href='#method-FeatureTest-demoStatic'><code>J$FeatureTest$demoStatic(message)</code></a></p></li>
 <li><p><a href='#method-FeatureTest-diamonds'><code>J$FeatureTest$diamonds()</code></a></p></li>
+</ul><p><hr></p><ul>
 <li><p><a href='#method-MinimalExample-new'><code>J$MinimalExample$new()</code></a></p></li>
+</ul><p><hr></p><ul>
 <li><p><a href='#method-MoreFeatureTest-new'><code>J$MoreFeatureTest$new(message1, message2)</code></a></p></li>
 <li><p><a href='#method-MoreFeatureTest-create'><code>J$MoreFeatureTest$create(message1, message2)</code></a></p></li>
 <li><p><a href='#method-MoreFeatureTest-concat'><code>J$MoreFeatureTest$concat(message1, message2)</code></a></p></li>
 </ul>
-	
 
+    <h2 class="hasAnchor" id="package-initialisation-and-control"><a class="anchor" href="#package-initialisation-and-control"></a>Package initialisation and control</h2>
+
+    <p><a id="method-api-installDependencies"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Package method <code>JavaApi$installDependencies()</code></h3>
+<p>This package level method checks for, and installs any dependencies needed for the running of the package.
+		It is called automatically on first package load and so in general does not need to be used directly.</p>	
+<p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre>
+<span class='fu'>testRapi</span><span class='fu'>::</span><span class='va'>JavaApi</span><span class='op'>$</span><span class='fu'>installDependencies</span><span class='op'>(</span><span class='op'>)</span>
+      </pre><p></div></p>
+	
+<p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
+<p><div class="arguments"></p><ul>
+<li><p>none</p></li>
+</ul><p></div></p>
+
+<p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Returns</h4>
+<p>nothing. called for side effects.</p><p></p><p></div></p>	
 <p><hr>
+	<a id="method-api-rebuildDependencies"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Package method <code>JavaApi$rebuildDependencies()</code></h3>
+<p>This package level method removes existing dependencies and re-installs dependencies needed for the running of the package.
+		It is called automatically on first package load and so in general does not need to be called.</p>	
+<p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre>
+<span class='fu'>testRapi</span><span class='fu'>::</span><span class='va'>JavaApi</span><span class='op'>$</span><span class='fu'>rebuildDependencies</span><span class='op'>(</span><span class='op'>)</span>
+      </pre><p></div></p>
+	
+<p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
+<p><div class="arguments"></p><ul>
+<li><p>none</p></li>
+</ul><p></div></p>
+
+<p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Returns</h4>
+<p>nothing. called for side effects.</p><p></p><p></div></p>	
+<p><hr>
+	<a id="method-api-versionInformation"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Package method <code>JavaApi$versionInformation()</code></h3>
+<p>This package level method returns debugging version information for the package</p>	
+<p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre>
+<span class='fu'>testRapi</span><span class='fu'>::</span><span class='va'>JavaApi</span><span class='op'>$</span><span class='fu'>versionInformation</span><span class='op'>(</span><span class='op'>)</span>
+      </pre><p></div></p>
+	
+<p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
+<p><div class="arguments"></p><ul>
+<li><p>none</p></li>
+</ul><p></div></p>
+
+<p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Returns</h4>
+<p>A list containing a set of versioning information about this package.</p><p></p><p></div></p>	
+<p><hr>
+	<a id="method-api-get"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Package method <code>JavaApi$get()</code></h3>
+<p>This is the main entry point for the package and the root of the Java API in this package. All classes defined in the package
+		are made available as items under this root. The JavaApi object manages the communication between R and Java.</p>	
+<p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre>
+<span class='va'>J</span> <span class='op'>=</span> <span class='fu'>testRapi</span><span class='fu'>::</span><span class='va'>JavaApi</span><span class='op'>$</span><span class='fu'>get</span><span class='op'>(</span><span class='op'>)</span>
+<span class='co'># package classes and functions are nested under the `J` api object.</span>
+      </pre><p></div></p>
+	
+<p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
+<p><div class="arguments"></p><ul>
+<li><p>logLevelThe desired verbosity of the package. One of "OFF", "FATAL", "ERROR", "WARN", "INFO", "DEBUG", "TRACE", "ALL".</p></li>
+</ul><p></div></p>
+
+<p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Returns</h4>
+<p>A R6 testRapi::JavaApi object containing the access point to the objects and functions defined in this package</p><p></p><p></div></p>	
+<p><hr>
+	<a id="method-api-changeLogLevel"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Api method <code>J$changeLogLevel(logLevel)</code></h3>
+<p>Once the package is initialised the log level can be changed to increase the level of messages from the api.</p>	
+<p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre>
+<span class='va'>J</span> <span class='op'>=</span> <span class='fu'>testRapi</span><span class='fu'>::</span><span class='va'>JavaApi</span><span class='op'>$</span><span class='fu'>get</span><span class='op'>(</span><span class='op'>)</span>
+<span class='va'>J</span><span class='op'>$</span><span class='fu'>changeLogLevel</span><span class='op'>(</span><span class='st'>"DEBUG"</span><span class='op'>)</span>
+      </pre><p></div></p>
+	
+<p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
+<p><div class="arguments"></p><ul>
+<li><p>logLevelThe desired verbosity of the package. One of "OFF", "FATAL", "ERROR", "WARN", "INFO", "DEBUG", "TRACE", "ALL".</p></li>
+</ul><p></div></p>
+
+<p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Returns</h4>
+<p>nothing. used for side effects.</p><p></p><p></div></p>	
+<p><hr>
+	<a id="method-api-reconfigreLog"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Api method <code>J$reconfigureLog(log4jproperties)</code></h3>
+<p>Experimental / Advanced use: Once the package is initialised the log configureation can be changed to log to 
+		an external file for example.</p>	
+<p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre>
+<span class='va'>J</span> <span class='op'>=</span> <span class='fu'>testRapi</span><span class='fu'>::</span><span class='va'>JavaApi</span><span class='op'>$</span><span class='fu'>get</span><span class='op'>(</span><span class='op'>)</span>
+<span class='va'>prp</span> <span class='op'>=</span> <span class='fu'>fs</span><span class='fu'>::</span><span class='fu'><a href='https://fs.r-lib.org/reference/path.html'>path</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span><span class='op'>(</span><span class='op'>)</span>,<span class='st'>"log4j.properties"</span><span class='op'>)</span>
+<span class='kw'>if</span> <span class='op'>(</span><span class='fu'>fs</span><span class='fu'>::</span><span class='fu'><a href='https://fs.r-lib.org/reference/file_access.html'>file_exists</a></span><span class='op'>(</span><span class='va'>prp</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='va'>J</span><span class='op'>$</span><span class='fu'>changeLogLevel</span><span class='op'>(</span><span class='va'>prp</span><span class='op'>)</span>
+<span class='op'>}</span>
+      </pre><p></div></p>
+	
+<p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
+<p><div class="arguments"></p><ul>
+<li><p>log4jpropertiesa full path to a log4jproperies file</p></li>
+</ul><p></div></p>
+
+<p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Returns</h4>
+<p>nothing. used for side effects.</p><p></p><p></div></p>	
+<p><hr>
+	<a id="method-api-printMessages"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Api method <code>J$printMessages()</code></h3>
+<p>Experimental / Internal use: Messages from Java to R are queued and
+		printed after each function call. It is unlikely that any will be not printed
+		so in normal circumstances this function should do nothing.</p>	
+<p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre>
+<span class='va'>J</span> <span class='op'>=</span> <span class='fu'>testRapi</span><span class='fu'>::</span><span class='va'>JavaApi</span><span class='op'>$</span><span class='fu'>get</span><span class='op'>(</span><span class='op'>)</span>
+<span class='va'>J</span><span class='op'>$</span><span class='fu'>printMessages</span><span class='op'>(</span><span class='op'>)</span>
+      </pre><p></div></p>
+	
+<p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
+<p><div class="arguments"></p><ul>
+<li><p>none</p></li>
+</ul><p></div></p>
+
+<p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Returns</h4>
+<p>nothing. used for side effects.</p><p></p><p></div></p>
+    <h2 class="hasAnchor" id="static-methods-and-constructors"><a class="anchor" href="#static-methods-and-constructors"></a>Static methods and constructors</h2>
+
+    <p><hr>
 	<a id="method-FactoryTest-new"></a></p>	
 <p></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>FactoryTest$new()</code></h3>
 <p>the default no-args constructor</p>	
@@ -203,6 +339,7 @@ Generated: 2022-08-13T01:21:11.804" />
 
 <p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Returns</h4>
 <p>R6 FactoryTest object:</p><p></p>
+
 
 <p><hr>
 	<a id="method-BounceTest-new"></a></p>	
@@ -222,6 +359,7 @@ Generated: 2022-08-13T01:21:11.804" />
 <p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Returns</h4>
 <p>R6 BounceTest object:</p><p></p>
 
+
 <p><hr>
 	<a id="method-Serialiser-new"></a></p>	
 <p></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>Serialiser$new()</code></h3>
@@ -239,6 +377,7 @@ Generated: 2022-08-13T01:21:11.804" />
 
 <p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Returns</h4>
 <p>R6 Serialiser object:</p><p></p>
+
 
 <p><hr>
 	<a id="method-Serialiser-serialiseDataframe"></a></p>	
@@ -261,6 +400,7 @@ Generated: 2022-08-13T01:21:11.804" />
 <p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Returns</h4>
 <p>void:</p><p></p>
 
+
 <p><hr>
 	<a id="method-Serialiser-deserialiseDataframe"></a></p>	
 <p></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>Serialiser$deserialiseDataframe()</code></h3>
@@ -280,6 +420,7 @@ Generated: 2022-08-13T01:21:11.804" />
 
 <p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Returns</h4>
 <p>RDataframe:</p><p></p>
+
 
 <p><hr>
 	<a id="method-Serialiser-serialiseList"></a></p>	
@@ -302,6 +443,7 @@ Generated: 2022-08-13T01:21:11.804" />
 <p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Returns</h4>
 <p>void:</p><p></p>
 
+
 <p><hr>
 	<a id="method-Serialiser-deserialiseList"></a></p>	
 <p></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>Serialiser$deserialiseList()</code></h3>
@@ -321,6 +463,7 @@ Generated: 2022-08-13T01:21:11.804" />
 
 <p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Returns</h4>
 <p>RList:</p><p></p>
+
 
 <p><hr>
 	<a id="method-Serialiser-serialiseNamedList"></a></p>	
@@ -343,6 +486,7 @@ Generated: 2022-08-13T01:21:11.804" />
 <p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Returns</h4>
 <p>void:</p><p></p>
 
+
 <p><hr>
 	<a id="method-Serialiser-deserialiseNamedList"></a></p>	
 <p></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>Serialiser$deserialiseNamedList()</code></h3>
@@ -363,12 +507,15 @@ Generated: 2022-08-13T01:21:11.804" />
 <p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Returns</h4>
 <p>RNamedList:</p><p></p>
 
+
 <p><hr>
 	<a id="method-FeatureTest-new"></a></p>	
 <p></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>FeatureTest$new()</code></h3>
-<p>A maximum of one constructor of any signature can be used. &lt;br&gt;</p>
+<p>A maximum of one constructor of any signature can be used.</p>
+
 <p>If different constructors are needed then they may be used but not 
-included in the R Api (i.e. not annotated with @RMethod.) &lt;br&gt;</p>
+included in the R Api (i.e. not annotated with @RMethod.)</p>
+
 <p>Static factory methods can be used instead.</p>	
 <p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
 <p><div class="r"></p><pre>
@@ -383,6 +530,10 @@ included in the R Api (i.e. not annotated with @RMethod.) &lt;br&gt;</p>
 
 <p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Returns</h4>
 <p>R6 FeatureTest object:</p><p></p>
+
+<p></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Examples</h3>
+<p><div class="r example copy"></p><pre>
+      </pre><p></div></p>
 
 <p><hr>
 	<a id="method-FeatureTest-demoStatic"></a></p>	
@@ -405,6 +556,10 @@ root of the R api, and as a functional interface</p>
 
 <p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Returns</h4>
 <p>void:</p><p></p>
+
+<p></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Examples</h3>
+<p><div class="r example copy"></p><pre>
+      </pre><p></div></p>
 
 <p><hr>
 	<a id="method-FeatureTest-diamonds"></a></p>	
@@ -429,6 +584,11 @@ using RObject.readRDS.</p>
 <p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Returns</h4>
 <p>RDataframe: the ggplot2::diamonds dataframe</p><p></p>
 
+<p></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Examples</h3>
+<p><div class="r example copy"></p><pre>
+<span class='fu'>expect_equal</span><span class='op'>(</span><span class='fu'><a href='diamonds.html'>diamonds</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='va'><a href='https://ggplot2.tidyverse.org/reference/diamonds.html'>diamonds</a></span><span class='op'>)</span>
+      </pre><p></div></p>
+
 <p><hr>
 	<a id="method-MinimalExample-new"></a></p>	
 <p></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>MinimalExample$new()</code></h3>
@@ -446,6 +606,7 @@ using RObject.readRDS.</p>
 
 <p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Returns</h4>
 <p>R6 MinimalExample object:</p><p></p>
+
 
 <p><hr>
 	<a id="method-MoreFeatureTest-new"></a></p>	
@@ -465,6 +626,7 @@ using RObject.readRDS.</p>
 
 <p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Returns</h4>
 <p>R6 MoreFeatureTest object:</p><p></p>
+
 
 <p><hr>
 	<a id="method-MoreFeatureTest-create"></a></p>	
@@ -486,6 +648,10 @@ using RObject.readRDS.</p>
 
 <p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Returns</h4>
 <p>R6 MoreFeatureTest object: A MoreFeatureTest R6 object</p><p></p>
+
+<p></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Examples</h3>
+<p><div class="r example copy"></p><pre>
+      </pre><p></div></p>
 
 <p><hr>
 	<a id="method-MoreFeatureTest-concat"></a></p>	
@@ -510,6 +676,171 @@ using RObject.readRDS.</p>
 
 
 
+
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='co'>## -----------------------------------</span>
+<span class='co'>## Check library dependencies for testRapi</span>
+<span class='co'>## -----------------------------------</span>
+<span class='fu'>testRapi</span><span class='fu'>::</span><span class='va'>JavaApi</span><span class='op'>$</span><span class='fu'>installDependencies</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "/tmp/RtmpQZYSSn/temp_libpath30fa643953a6/testRapi/java/r6-generator-docs-main-SNAPSHOT-jar-with-dependencies.jar"</div><div class='input'>
+<span class='co'>## -----------------------------------</span>
+<span class='co'>## Construct a testRapi Java API instance</span>
+<span class='co'>## -----------------------------------</span>
+
+<span class='va'>J</span> <span class='op'>=</span> <span class='fu'>testRapi</span><span class='fu'>::</span><span class='va'>JavaApi</span><span class='op'>$</span><span class='fu'>get</span><span class='op'>(</span><span class='op'>)</span>
+<span class='co'># or a more verbose configuration</span>
+<span class='co'># J = testRapi::JavaApi$get("DEBUG")</span>
+
+
+<span class='co'>## -----------------------------------</span>
+<span class='co'>## Method `J$FactoryTest$new()`</span>
+<span class='co'>## -----------------------------------</span>
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='co'># no example given - appropriate parameter values must be provided:</span>
+<span class='va'>J</span><span class='op'>$</span><span class='va'>FactoryTest</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='op'>)</span>
+<span class='co'># or alternatively:</span>
+<span class='fu'>testRapi</span><span class='fu'>::</span><span class='fu'>new</span><span class='op'>(</span><span class='op'>)</span>
+<span class='op'>}</span>
+
+<span class='co'>## -----------------------------------</span>
+<span class='co'>## Method `J$BounceTest$new()`</span>
+<span class='co'>## -----------------------------------</span>
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='co'># no example given - appropriate parameter values must be provided:</span>
+<span class='va'>J</span><span class='op'>$</span><span class='va'>BounceTest</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='op'>)</span>
+<span class='co'># or alternatively:</span>
+<span class='fu'>testRapi</span><span class='fu'>::</span><span class='fu'>new</span><span class='op'>(</span><span class='op'>)</span>
+<span class='op'>}</span>
+
+<span class='co'>## -----------------------------------</span>
+<span class='co'>## Method `J$Serialiser$new()`</span>
+<span class='co'>## -----------------------------------</span>
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='co'># no example given - appropriate parameter values must be provided:</span>
+<span class='va'>J</span><span class='op'>$</span><span class='va'>Serialiser</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='op'>)</span>
+<span class='co'># or alternatively:</span>
+<span class='fu'>testRapi</span><span class='fu'>::</span><span class='fu'>new</span><span class='op'>(</span><span class='op'>)</span>
+<span class='op'>}</span>
+
+<span class='co'>## -----------------------------------</span>
+<span class='co'>## Method `J$Serialiser$serialiseDataframe(dataframe, filename)`</span>
+<span class='co'>## Aliased as `testRapi::serialise_dataframe(dataframe, filename)`</span>
+<span class='co'>## -----------------------------------</span>
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='co'># no example given - appropriate parameter values must be provided:</span>
+<span class='va'>J</span><span class='op'>$</span><span class='va'>Serialiser</span><span class='op'>$</span><span class='fu'>serialiseDataframe</span><span class='op'>(</span><span class='va'>dataframe</span>, <span class='va'>filename</span><span class='op'>)</span>
+<span class='co'># or alternatively:</span>
+<span class='fu'>testRapi</span><span class='fu'>::</span><span class='fu'><a href='serialise_dataframe.html'>serialise_dataframe</a></span><span class='op'>(</span><span class='va'>dataframe</span>, <span class='va'>filename</span><span class='op'>)</span>
+<span class='op'>}</span>
+
+<span class='co'>## -----------------------------------</span>
+<span class='co'>## Method `J$Serialiser$deserialiseDataframe(filename)`</span>
+<span class='co'>## Aliased as `testRapi::deserialise_dataframe(filename)`</span>
+<span class='co'>## -----------------------------------</span>
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='co'># no example given - appropriate parameter values must be provided:</span>
+<span class='va'>J</span><span class='op'>$</span><span class='va'>Serialiser</span><span class='op'>$</span><span class='fu'>deserialiseDataframe</span><span class='op'>(</span><span class='va'>filename</span><span class='op'>)</span>
+<span class='co'># or alternatively:</span>
+<span class='fu'>testRapi</span><span class='fu'>::</span><span class='fu'><a href='deserialise_dataframe.html'>deserialise_dataframe</a></span><span class='op'>(</span><span class='va'>filename</span><span class='op'>)</span>
+<span class='op'>}</span>
+
+<span class='co'>## -----------------------------------</span>
+<span class='co'>## Method `J$Serialiser$serialiseList(dataframe, filename)`</span>
+<span class='co'>## Aliased as `testRapi::serialise_list(dataframe, filename)`</span>
+<span class='co'>## -----------------------------------</span>
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='co'># no example given - appropriate parameter values must be provided:</span>
+<span class='va'>J</span><span class='op'>$</span><span class='va'>Serialiser</span><span class='op'>$</span><span class='fu'>serialiseList</span><span class='op'>(</span><span class='va'>dataframe</span>, <span class='va'>filename</span><span class='op'>)</span>
+<span class='co'># or alternatively:</span>
+<span class='fu'>testRapi</span><span class='fu'>::</span><span class='fu'><a href='serialise_list.html'>serialise_list</a></span><span class='op'>(</span><span class='va'>dataframe</span>, <span class='va'>filename</span><span class='op'>)</span>
+<span class='op'>}</span>
+
+<span class='co'>## -----------------------------------</span>
+<span class='co'>## Method `J$Serialiser$deserialiseList(filename)`</span>
+<span class='co'>## Aliased as `testRapi::deserialise_list(filename)`</span>
+<span class='co'>## -----------------------------------</span>
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='co'># no example given - appropriate parameter values must be provided:</span>
+<span class='va'>J</span><span class='op'>$</span><span class='va'>Serialiser</span><span class='op'>$</span><span class='fu'>deserialiseList</span><span class='op'>(</span><span class='va'>filename</span><span class='op'>)</span>
+<span class='co'># or alternatively:</span>
+<span class='fu'>testRapi</span><span class='fu'>::</span><span class='fu'><a href='deserialise_list.html'>deserialise_list</a></span><span class='op'>(</span><span class='va'>filename</span><span class='op'>)</span>
+<span class='op'>}</span>
+
+<span class='co'>## -----------------------------------</span>
+<span class='co'>## Method `J$Serialiser$serialiseNamedList(dataframe, filename)`</span>
+<span class='co'>## Aliased as `testRapi::serialise_named_list(dataframe, filename)`</span>
+<span class='co'>## -----------------------------------</span>
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='co'># no example given - appropriate parameter values must be provided:</span>
+<span class='va'>J</span><span class='op'>$</span><span class='va'>Serialiser</span><span class='op'>$</span><span class='fu'>serialiseNamedList</span><span class='op'>(</span><span class='va'>dataframe</span>, <span class='va'>filename</span><span class='op'>)</span>
+<span class='co'># or alternatively:</span>
+<span class='fu'>testRapi</span><span class='fu'>::</span><span class='fu'><a href='serialise_named_list.html'>serialise_named_list</a></span><span class='op'>(</span><span class='va'>dataframe</span>, <span class='va'>filename</span><span class='op'>)</span>
+<span class='op'>}</span>
+
+<span class='co'>## -----------------------------------</span>
+<span class='co'>## Method `J$Serialiser$deserialiseNamedList(filename)`</span>
+<span class='co'>## Aliased as `testRapi::deserialise_named_list(filename)`</span>
+<span class='co'>## -----------------------------------</span>
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='co'># no example given - appropriate parameter values must be provided:</span>
+<span class='va'>J</span><span class='op'>$</span><span class='va'>Serialiser</span><span class='op'>$</span><span class='fu'>deserialiseNamedList</span><span class='op'>(</span><span class='va'>filename</span><span class='op'>)</span>
+<span class='co'># or alternatively:</span>
+<span class='fu'>testRapi</span><span class='fu'>::</span><span class='fu'><a href='deserialise_named_list.html'>deserialise_named_list</a></span><span class='op'>(</span><span class='va'>filename</span><span class='op'>)</span>
+<span class='op'>}</span>
+
+<span class='co'>## -----------------------------------</span>
+<span class='co'>## Method `J$FeatureTest$new(logMessage)`</span>
+<span class='co'>## -----------------------------------</span>
+
+<span class='co'>## -----------------------------------</span>
+<span class='co'>## Method `J$FeatureTest$demoStatic(message)`</span>
+<span class='co'>## Aliased as `testRapi::demo_static(message)`</span>
+<span class='co'>## -----------------------------------</span>
+
+<span class='co'>## -----------------------------------</span>
+<span class='co'>## Method `J$FeatureTest$diamonds()`</span>
+<span class='co'>## Aliased as `testRapi::diamonds()`</span>
+<span class='co'>## -----------------------------------</span>
+<span class='fu'>expect_equal</span><span class='op'>(</span><span class='fu'><a href='diamonds.html'>diamonds</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='va'><a href='https://ggplot2.tidyverse.org/reference/diamonds.html'>diamonds</a></span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in expect_equal(diamonds(), ggplot2::diamonds): could not find function "expect_equal"</span></div><div class='input'>
+<span class='co'>## -----------------------------------</span>
+<span class='co'>## Method `J$MinimalExample$new()`</span>
+<span class='co'>## -----------------------------------</span>
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='co'># no example given - appropriate parameter values must be provided:</span>
+<span class='va'>J</span><span class='op'>$</span><span class='va'>MinimalExample</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='op'>)</span>
+<span class='co'># or alternatively:</span>
+<span class='fu'>testRapi</span><span class='fu'>::</span><span class='fu'>new</span><span class='op'>(</span><span class='op'>)</span>
+<span class='op'>}</span>
+
+<span class='co'>## -----------------------------------</span>
+<span class='co'>## Method `J$MoreFeatureTest$new(message1, message2)`</span>
+<span class='co'>## -----------------------------------</span>
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='co'># no example given - appropriate parameter values must be provided:</span>
+<span class='va'>J</span><span class='op'>$</span><span class='va'>MoreFeatureTest</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='va'>message1</span>, <span class='va'>message2</span><span class='op'>)</span>
+<span class='co'># or alternatively:</span>
+<span class='fu'>testRapi</span><span class='fu'>::</span><span class='fu'>new</span><span class='op'>(</span><span class='va'>message1</span>, <span class='va'>message2</span><span class='op'>)</span>
+<span class='op'>}</span>
+
+<span class='co'>## -----------------------------------</span>
+<span class='co'>## Method `J$MoreFeatureTest$create(message1, message2)`</span>
+<span class='co'>## Aliased as `testRapi::create(message1, message2)`</span>
+<span class='co'>## -----------------------------------</span>
+
+<span class='co'>## -----------------------------------</span>
+<span class='co'>## Method `J$MoreFeatureTest$concat(message1, message2)`</span>
+<span class='co'>## Aliased as `testRapi::concat(message1, message2)`</span>
+<span class='co'>## -----------------------------------</span>
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='co'># no example given - appropriate parameter values must be provided:</span>
+<span class='va'>J</span><span class='op'>$</span><span class='va'>MoreFeatureTest</span><span class='op'>$</span><span class='fu'>concat</span><span class='op'>(</span><span class='va'>message1</span>, <span class='va'>message2</span><span class='op'>)</span>
+<span class='co'># or alternatively:</span>
+<span class='fu'>testRapi</span><span class='fu'>::</span><span class='fu'><a href='concat.html'>concat</a></span><span class='op'>(</span><span class='va'>message1</span>, <span class='va'>message2</span><span class='op'>)</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -521,7 +852,7 @@ using RObject.readRDS.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Rob Challen, terminological, Rob Challen.</p>
+  <p>Developed by Rob Challen, Rob Challen, terminological.</p>
 </div>
 
 <div class="pkgdown">

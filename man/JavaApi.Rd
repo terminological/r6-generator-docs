@@ -25,20 +25,202 @@
 \description{
 Documents the features of the 'r6-generator-maven-plugin' by providing an example of an R package automatically generated from Java code by the plugin. It is not intended to be useful beyond testing, demonstrating and documenting the features of the plugin.
 
-Version: 0.0.0.9999
+Version: 0.5.2
 
-Generated: 2022-08-13T01:21:11.804
+Generated: 2022-08-15T15:23:02.006
 }
 
 \author{\email{rc538@exeter.ac.uk}}
 
+\examples{
+
+## -----------------------------------
+## Check library dependencies for testRapi
+## -----------------------------------
+testRapi::JavaApi$installDependencies()
+
+## -----------------------------------
+## Construct a testRapi Java API instance
+## -----------------------------------
+
+J = testRapi::JavaApi$get()
+# or a more verbose configuration
+# J = testRapi::JavaApi$get("DEBUG")
+
+
+## -----------------------------------
+## Method `J$FactoryTest$new()`
+## -----------------------------------
+\dontrun{
+# no example given - appropriate parameter values must be provided:
+J$FactoryTest$new()
+# or alternatively:
+testRapi::new()
+}
+
+## -----------------------------------
+## Method `J$BounceTest$new()`
+## -----------------------------------
+\dontrun{
+# no example given - appropriate parameter values must be provided:
+J$BounceTest$new()
+# or alternatively:
+testRapi::new()
+}
+
+## -----------------------------------
+## Method `J$Serialiser$new()`
+## -----------------------------------
+\dontrun{
+# no example given - appropriate parameter values must be provided:
+J$Serialiser$new()
+# or alternatively:
+testRapi::new()
+}
+
+## -----------------------------------
+## Method `J$Serialiser$serialiseDataframe(dataframe, filename)`
+## Aliased as `testRapi::serialise_dataframe(dataframe, filename)`
+## -----------------------------------
+\dontrun{
+# no example given - appropriate parameter values must be provided:
+J$Serialiser$serialiseDataframe(dataframe, filename)
+# or alternatively:
+testRapi::serialise_dataframe(dataframe, filename)
+}
+
+## -----------------------------------
+## Method `J$Serialiser$deserialiseDataframe(filename)`
+## Aliased as `testRapi::deserialise_dataframe(filename)`
+## -----------------------------------
+\dontrun{
+# no example given - appropriate parameter values must be provided:
+J$Serialiser$deserialiseDataframe(filename)
+# or alternatively:
+testRapi::deserialise_dataframe(filename)
+}
+
+## -----------------------------------
+## Method `J$Serialiser$serialiseList(dataframe, filename)`
+## Aliased as `testRapi::serialise_list(dataframe, filename)`
+## -----------------------------------
+\dontrun{
+# no example given - appropriate parameter values must be provided:
+J$Serialiser$serialiseList(dataframe, filename)
+# or alternatively:
+testRapi::serialise_list(dataframe, filename)
+}
+
+## -----------------------------------
+## Method `J$Serialiser$deserialiseList(filename)`
+## Aliased as `testRapi::deserialise_list(filename)`
+## -----------------------------------
+\dontrun{
+# no example given - appropriate parameter values must be provided:
+J$Serialiser$deserialiseList(filename)
+# or alternatively:
+testRapi::deserialise_list(filename)
+}
+
+## -----------------------------------
+## Method `J$Serialiser$serialiseNamedList(dataframe, filename)`
+## Aliased as `testRapi::serialise_named_list(dataframe, filename)`
+## -----------------------------------
+\dontrun{
+# no example given - appropriate parameter values must be provided:
+J$Serialiser$serialiseNamedList(dataframe, filename)
+# or alternatively:
+testRapi::serialise_named_list(dataframe, filename)
+}
+
+## -----------------------------------
+## Method `J$Serialiser$deserialiseNamedList(filename)`
+## Aliased as `testRapi::deserialise_named_list(filename)`
+## -----------------------------------
+\dontrun{
+# no example given - appropriate parameter values must be provided:
+J$Serialiser$deserialiseNamedList(filename)
+# or alternatively:
+testRapi::deserialise_named_list(filename)
+}
+
+## -----------------------------------
+## Method `J$FeatureTest$new(logMessage)`
+## -----------------------------------
+
+## -----------------------------------
+## Method `J$FeatureTest$demoStatic(message)`
+## Aliased as `testRapi::demo_static(message)`
+## -----------------------------------
+
+## -----------------------------------
+## Method `J$FeatureTest$diamonds()`
+## Aliased as `testRapi::diamonds()`
+## -----------------------------------
+expect_equal(diamonds(), ggplot2::diamonds)
+
+## -----------------------------------
+## Method `J$MinimalExample$new()`
+## -----------------------------------
+\dontrun{
+# no example given - appropriate parameter values must be provided:
+J$MinimalExample$new()
+# or alternatively:
+testRapi::new()
+}
+
+## -----------------------------------
+## Method `J$MoreFeatureTest$new(message1, message2)`
+## -----------------------------------
+\dontrun{
+# no example given - appropriate parameter values must be provided:
+J$MoreFeatureTest$new(message1, message2)
+# or alternatively:
+testRapi::new(message1, message2)
+}
+
+## -----------------------------------
+## Method `J$MoreFeatureTest$create(message1, message2)`
+## Aliased as `testRapi::create(message1, message2)`
+## -----------------------------------
+
+## -----------------------------------
+## Method `J$MoreFeatureTest$concat(message1, message2)`
+## Aliased as `testRapi::concat(message1, message2)`
+## -----------------------------------
+\dontrun{
+# no example given - appropriate parameter values must be provided:
+J$MoreFeatureTest$concat(message1, message2)
+# or alternatively:
+testRapi::concat(message1, message2)
+}
+}
+
 \keyword{java api}
 
-\section{Static methods and constructors}{
+\section{Package initialisation and control}{
 	\itemize{
-		\item \code{JavaApi$get()}
+		\item \href{#method-api-installDependencies}{\code{JavaApi$installDependencies()}}
+		\item \href{#method-api-rebuildDependencies}{\code{JavaApi$rebuildDependencies()}}
+		\item \href{#method-api-versionInformation}{\code{JavaApi$versionInformation()}}
+		\item \href{#method-api-get}{\code{J = JavaApi$get(logLevel)}}
+		\item \href{#method-api-changeLogLevel}{\code{J$changeLogLevel(logLevel)}}
+		\item \href{#method-api-reconfigureLog}{\code{J$reconfigureLog(log4jproperties)}}
+		\item \href{#method-api-printMessages}{\code{J$printMessages()}}
+	}
+}
+
+\section{Package classes and static methods}{
+	\if{html}{\out{<hr>}}
+	\itemize{
 		\item \href{#method-FactoryTest-new}{\code{J$FactoryTest$new()}}
+	}
+	\if{html}{\out{<hr>}}
+	\itemize{
 		\item \href{#method-BounceTest-new}{\code{J$BounceTest$new()}}
+	}
+	\if{html}{\out{<hr>}}
+	\itemize{
 		\item \href{#method-Serialiser-new}{\code{J$Serialiser$new()}}
 		\item \href{#method-Serialiser-serialiseDataframe}{\code{J$Serialiser$serialiseDataframe(dataframe, filename)}}
 		\item \href{#method-Serialiser-deserialiseDataframe}{\code{J$Serialiser$deserialiseDataframe(filename)}}
@@ -46,16 +228,231 @@ Generated: 2022-08-13T01:21:11.804
 		\item \href{#method-Serialiser-deserialiseList}{\code{J$Serialiser$deserialiseList(filename)}}
 		\item \href{#method-Serialiser-serialiseNamedList}{\code{J$Serialiser$serialiseNamedList(dataframe, filename)}}
 		\item \href{#method-Serialiser-deserialiseNamedList}{\code{J$Serialiser$deserialiseNamedList(filename)}}
+	}
+	\if{html}{\out{<hr>}}
+	\itemize{
 		\item \href{#method-FeatureTest-new}{\code{J$FeatureTest$new(logMessage)}}
 		\item \href{#method-FeatureTest-demoStatic}{\code{J$FeatureTest$demoStatic(message)}}
 		\item \href{#method-FeatureTest-diamonds}{\code{J$FeatureTest$diamonds()}}
+	}
+	\if{html}{\out{<hr>}}
+	\itemize{
 		\item \href{#method-MinimalExample-new}{\code{J$MinimalExample$new()}}
+	}
+	\if{html}{\out{<hr>}}
+	\itemize{
 		\item \href{#method-MoreFeatureTest-new}{\code{J$MoreFeatureTest$new(message1, message2)}}
 		\item \href{#method-MoreFeatureTest-create}{\code{J$MoreFeatureTest$create(message1, message2)}}
 		\item \href{#method-MoreFeatureTest-concat}{\code{J$MoreFeatureTest$concat(message1, message2)}}
 	}
-	
+}
 
+\section{Package initialisation and control}{
+	\if{html}{\out{<a id="method-api-installDependencies"></a>}}
+	\subsection{Package method \code{JavaApi$installDependencies()}}{
+		This package level method checks for, and installs any dependencies needed for the running of the package.
+		It is called automatically on first package load and so in general does not need to be used directly.
+	
+		\subsection{Usage}{
+			\if{html}{\out{<div class="r">}}
+			\preformatted{
+testRapi::JavaApi$installDependencies()
+			}
+			\if{html}{\out{</div>}}
+		}
+	
+		\subsection{Arguments}{
+			\if{html}{\out{<div class="arguments">}}
+			\itemize{
+				\item{none}
+			}
+			\if{html}{\out{</div>}}
+		}
+
+		\subsection{Returns}{
+nothing. called for side effects.
+		}
+	}
+	\if{html}{\out{</div>}}
+	
+	\if{html}{\out{<hr>}}
+	\if{html}{\out{<a id="method-api-rebuildDependencies"></a>}}
+	\subsection{Package method \code{JavaApi$rebuildDependencies()}}{
+		This package level method removes existing dependencies and re-installs dependencies needed for the running of the package.
+		It is called automatically on first package load and so in general does not need to be called.
+	
+		\subsection{Usage}{
+			\if{html}{\out{<div class="r">}}
+			\preformatted{
+testRapi::JavaApi$rebuildDependencies()
+			}
+			\if{html}{\out{</div>}}
+		}
+	
+		\subsection{Arguments}{
+			\if{html}{\out{<div class="arguments">}}
+			\itemize{
+				\item{none}
+			}
+			\if{html}{\out{</div>}}
+		}
+
+		\subsection{Returns}{
+nothing. called for side effects.
+		}
+	}
+	\if{html}{\out{</div>}}
+	
+	\if{html}{\out{<hr>}}
+	\if{html}{\out{<a id="method-api-versionInformation"></a>}}
+	\subsection{Package method \code{JavaApi$versionInformation()}}{
+		This package level method returns debugging version information for the package
+	
+		\subsection{Usage}{
+			\if{html}{\out{<div class="r">}}
+			\preformatted{
+testRapi::JavaApi$versionInformation()
+			}
+			\if{html}{\out{</div>}}
+		}
+	
+		\subsection{Arguments}{
+			\if{html}{\out{<div class="arguments">}}
+			\itemize{
+				\item{none}
+			}
+			\if{html}{\out{</div>}}
+		}
+
+		\subsection{Returns}{
+A list containing a set of versioning information about this package.
+		}
+	}
+	\if{html}{\out{</div>}}
+	
+	\if{html}{\out{<hr>}}
+	\if{html}{\out{<a id="method-api-get"></a>}}
+	\subsection{Package method \code{JavaApi$get()}}{
+		This is the main entry point for the package and the root of the Java API in this package. All classes defined in the package
+		are made available as items under this root. The JavaApi object manages the communication between R and Java.
+	
+		\subsection{Usage}{
+			\if{html}{\out{<div class="r">}}
+			\preformatted{
+J = testRapi::JavaApi$get()
+# package classes and functions are nested under the `J` api object.
+			}
+			\if{html}{\out{</div>}}
+		}
+	
+		\subsection{Arguments}{
+			\if{html}{\out{<div class="arguments">}}
+			\itemize{
+				\item{logLevel}{The desired verbosity of the package. One of "OFF", "FATAL", "ERROR", "WARN", "INFO", "DEBUG", "TRACE", "ALL".}
+			}
+			\if{html}{\out{</div>}}
+		}
+
+		\subsection{Returns}{
+A R6 testRapi::JavaApi object containing the access point to the objects and functions defined in this package 
+		}
+	}
+	\if{html}{\out{</div>}}
+	
+	\if{html}{\out{<hr>}}
+	\if{html}{\out{<a id="method-api-changeLogLevel"></a>}}
+	\subsection{Api method \code{J$changeLogLevel(logLevel)}}{
+		Once the package is initialised the log level can be changed to increase the level of messages from the api.
+	
+		\subsection{Usage}{
+			\if{html}{\out{<div class="r">}}
+			\preformatted{
+J = testRapi::JavaApi$get()
+J$changeLogLevel("DEBUG")
+			}
+			\if{html}{\out{</div>}}
+		}
+	
+		\subsection{Arguments}{
+			\if{html}{\out{<div class="arguments">}}
+			\itemize{
+				\item{logLevel}{The desired verbosity of the package. One of "OFF", "FATAL", "ERROR", "WARN", "INFO", "DEBUG", "TRACE", "ALL".}
+			}
+			\if{html}{\out{</div>}}
+		}
+
+		\subsection{Returns}{
+nothing. used for side effects.
+		}
+	}
+	\if{html}{\out{</div>}}
+	
+	\if{html}{\out{<hr>}}
+	\if{html}{\out{<a id="method-api-reconfigreLog"></a>}}
+	\subsection{Api method \code{J$reconfigureLog(log4jproperties)}}{
+		Experimental / Advanced use: Once the package is initialised the log configureation can be changed to log to 
+		an external file for example.
+	
+		\subsection{Usage}{
+			\if{html}{\out{<div class="r">}}
+			\preformatted{
+J = testRapi::JavaApi$get()
+prp = fs::path(getwd(),"log4j.properties")
+if (fs::file_exists(prp)) {
+	J$changeLogLevel(prp)
+}
+			}
+			\if{html}{\out{</div>}}
+		}
+	
+		\subsection{Arguments}{
+			\if{html}{\out{<div class="arguments">}}
+			\itemize{
+				\item{log4jproperties}{a full path to a log4jproperies file}
+			}
+			\if{html}{\out{</div>}}
+		}
+
+		\subsection{Returns}{
+nothing. used for side effects.
+		}
+	}
+	\if{html}{\out{</div>}}
+	
+	\if{html}{\out{<hr>}}
+	\if{html}{\out{<a id="method-api-printMessages"></a>}}
+	\subsection{Api method \code{J$printMessages()}}{
+		Experimental / Internal use: Messages from Java to R are queued and
+		printed after each function call. It is unlikely that any will be not printed
+		so in normal circumstances this function should do nothing.
+	
+		\subsection{Usage}{
+			\if{html}{\out{<div class="r">}}
+			\preformatted{
+J = testRapi::JavaApi$get()
+J$printMessages()
+			}
+			\if{html}{\out{</div>}}
+		}
+	
+		\subsection{Arguments}{
+			\if{html}{\out{<div class="arguments">}}
+			\itemize{
+				\item{none}
+			}
+			\if{html}{\out{</div>}}
+		}
+
+		\subsection{Returns}{
+nothing. used for side effects.
+		}
+	}
+	\if{html}{\out{</div>}}
+	
+}
+
+
+\section{Static methods and constructors}{
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-FactoryTest-new"></a>}}
 	
@@ -83,6 +480,7 @@ J$FactoryTest$new()
 			R6 FactoryTest object: 
 		}
 	}
+
 
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-BounceTest-new"></a>}}
@@ -112,6 +510,7 @@ J$BounceTest$new()
 		}
 	}
 
+
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-Serialiser-new"></a>}}
 	
@@ -139,6 +538,7 @@ J$Serialiser$new()
 			R6 Serialiser object: 
 		}
 	}
+
 
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-Serialiser-serialiseDataframe"></a>}}
@@ -171,6 +571,7 @@ testRapi::serialise_dataframe(dataframe, filename)
 		}
 	}
 
+
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-Serialiser-deserialiseDataframe"></a>}}
 	
@@ -200,6 +601,7 @@ testRapi::deserialise_dataframe(filename)
 			RDataframe: 
 		}
 	}
+
 
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-Serialiser-serialiseList"></a>}}
@@ -232,6 +634,7 @@ testRapi::serialise_list(dataframe, filename)
 		}
 	}
 
+
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-Serialiser-deserialiseList"></a>}}
 	
@@ -261,6 +664,7 @@ testRapi::deserialise_list(filename)
 			RList: 
 		}
 	}
+
 
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-Serialiser-serialiseNamedList"></a>}}
@@ -293,6 +697,7 @@ testRapi::serialise_named_list(dataframe, filename)
 		}
 	}
 
+
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-Serialiser-deserialiseNamedList"></a>}}
 	
@@ -323,14 +728,17 @@ testRapi::deserialise_named_list(filename)
 		}
 	}
 
+
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-FeatureTest-new"></a>}}
 	
 	\subsection{Method \code{FeatureTest$new()}}{
-		A maximum of one constructor of any signature can be used. <br>
+		A maximum of one constructor of any signature can be used. 
+
 
 If different constructors are needed then they may be used but not 
-included in the R Api (i.e. not annotated with @RMethod.) <br>
+included in the R Api (i.e. not annotated with @RMethod.) 
+
 
 Static factory methods can be used instead.
 	
@@ -355,6 +763,13 @@ J$FeatureTest$new(logMessage)
 			R6 FeatureTest object: 
 		}
 	}
+
+		\subsection{Examples}{
+			\if{html}{\out{<div class="r example copy">}}
+			\preformatted{
+			}
+			\if{html}{\out{</div>}}
+		}
 
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-FeatureTest-demoStatic"></a>}}
@@ -388,6 +803,13 @@ testRapi::demo_static(message)
 			void: 
 		}
 	}
+
+		\subsection{Examples}{
+			\if{html}{\out{<div class="r example copy">}}
+			\preformatted{
+			}
+			\if{html}{\out{</div>}}
+		}
 
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-FeatureTest-diamonds"></a>}}
@@ -423,6 +845,14 @@ testRapi::diamonds()
 		}
 	}
 
+		\subsection{Examples}{
+			\if{html}{\out{<div class="r example copy">}}
+			\preformatted{
+expect_equal(diamonds(), ggplot2::diamonds)
+			}
+			\if{html}{\out{</div>}}
+		}
+
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-MinimalExample-new"></a>}}
 	
@@ -450,6 +880,7 @@ J$MinimalExample$new()
 			R6 MinimalExample object: 
 		}
 	}
+
 
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-MoreFeatureTest-new"></a>}}
@@ -479,6 +910,7 @@ J$MoreFeatureTest$new(message1, message2)
 			R6 MoreFeatureTest object: 
 		}
 	}
+
 
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-MoreFeatureTest-create"></a>}}
@@ -511,6 +943,13 @@ testRapi::create(message1, message2)
 		}
 	}
 
+		\subsection{Examples}{
+			\if{html}{\out{<div class="r example copy">}}
+			\preformatted{
+			}
+			\if{html}{\out{</div>}}
+		}
+
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-MoreFeatureTest-concat"></a>}}
 	
@@ -541,5 +980,7 @@ testRapi::concat(message1, message2)
 			RCharacter: 
 		}
 	}
+
+
 
 }

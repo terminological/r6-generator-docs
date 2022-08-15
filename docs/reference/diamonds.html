@@ -74,7 +74,7 @@ using RObject.readRDS." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">testRapi</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9999</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.2</span>
       </span>
     </div>
 
@@ -151,21 +151,8 @@ using RObject.readRDS.</p>
     <p>RDataframe: the ggplot2::diamonds dataframe</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>diamonds</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 53,940 × 10</span><span>
-#&gt;    carat cut       color clarity depth table price     x     y     z
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;ord&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;ord&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;ord&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>  0.23 Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>  0.21 Premium   E     SI1      59.8    61   326  3.89  3.84  2.31
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>  0.23 Good      E     VS1      56.9    65   327  4.05  4.07  2.31
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>  0.29 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>  0.31 Good      J     SI2      63.3    58   335  4.34  4.35  2.75
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>  0.24 Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>  0.24 Very Good I     VVS1     62.3    57   336  3.95  3.98  2.47
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>  0.26 Very Good H     SI1      61.9    55   337  4.07  4.11  2.53
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>  0.22 Fair      E     VS2      65.1    61   337  3.87  3.78  2.49
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span>  0.23 Very Good H     VS1      59.4    61   338  4     4.05  2.39
-#&gt; </span><span style='color: #949494;'># … with 53,930 more rows</span><span></div></span></pre>
+    <pre class="examples"><div class='input'><span class='fu'>expect_equal</span><span class='op'>(</span><span class='fu'>diamonds</span><span class='op'>(</span><span class='op'>)</span>, <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='va'><a href='https://ggplot2.tidyverse.org/reference/diamonds.html'>diamonds</a></span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in expect_equal(diamonds(), ggplot2::diamonds): could not find function "expect_equal"</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -177,7 +164,7 @@ using RObject.readRDS.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Rob Challen, terminological, Rob Challen.</p>
+  <p>Developed by Rob Challen, Rob Challen, terminological.</p>
 </div>
 
 <div class="pkgdown">
