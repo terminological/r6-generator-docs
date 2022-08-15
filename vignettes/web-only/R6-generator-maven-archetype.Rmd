@@ -9,11 +9,17 @@ vignette: >
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(
+  echo = TRUE,
+  error = TRUE)
 
 # don't try evaluate this vignette
 # in windows as bash chunks don't always work
-if (.Platform$OS.type == "windows") knitr::opts_chunk$set(eval = FALSE)
+if (.Platform$OS.type == "windows") {
+  
+  knitr::opts_chunk$set(eval = FALSE)
+
+}
 ```
 
 # Set up temporary location:
@@ -25,12 +31,14 @@ Sys.setenv(TMP_DIR=dir)
 dir
 
 v = testRapi::JavaApi$versionInformation()
-version = stringr::str_split_fixed(v$java_library_version,":",n=Inf)[,3]
+version = v$r_package_version
+if (version=="0.0.0.9999") {
+  version="main-SNAPSHOT"
+  # as this is a web-only vignette we are assuming that this will work as it is being run on a development machine.
+  # with a locally installed snapshot maven snapshot - to make this work on another machine we need to adjust settings.xml
+  # to include sonatypes snapshot repository
+}
 Sys.setenv(TMP_VERSION=version)
-# don't try evaluate this vignette 
-# for snapshot versions except in interactive sessions (where locally installed snapshot is likely)
-# this is because snapshot repository is not available for archetype downloads 
-if (version == "main-SNAPSHOT") knitr::opts_chunk$set(eval = interactive())
 version
 ```
 

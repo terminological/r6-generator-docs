@@ -9,9 +9,9 @@
 #' 
 #' This is a class of the testRapi generated R library.
 #' 
-#' Version: 0.0.0.9999
+#' Version: 0.5.4
 #' 
-#' Generated: 2022-08-15T16:24:29.012
+#' Generated: 2022-08-15T17:33:45.189
 #'
 #' @details
 	#' The class is annotated with an @RClass to identify it as part of the R API.

@@ -12,9 +12,9 @@
 This class is a very basic example of the features of the rJava maven plugin. 
 
 
-Version: 0.0.0.9999
+Version: 0.5.4
 
-Generated: 2022-08-15T16:24:29.009
+Generated: 2022-08-15T17:33:45.186
 }
 
 \details{

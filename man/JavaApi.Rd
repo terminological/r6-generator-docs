@@ -25,9 +25,9 @@
 \description{
 Documents the features of the 'r6-generator-maven-plugin' by providing an example of an R package automatically generated from Java code by the plugin. It is not intended to be useful beyond testing, demonstrating and documenting the features of the plugin.
 
-Version: 0.0.0.9999
+Version: 0.5.4
 
-Generated: 2022-08-15T16:24:28.824
+Generated: 2022-08-15T17:33:44.923
 }
 
 \author{\email{rc538@exeter.ac.uk}}
