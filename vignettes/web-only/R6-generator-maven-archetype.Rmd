@@ -19,6 +19,12 @@ if (.Platform$OS.type == "windows") {
   
   knitr::opts_chunk$set(eval = FALSE)
 
+} else {
+  
+  # stop this from being run if being checked as cran
+  notCran = identical(Sys.getenv("NOT_CRAN", unset = "true"), "true")
+  knitr::opts_chunk$set(eval = notCran)
+  
 }
 ```
 
