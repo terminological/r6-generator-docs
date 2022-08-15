@@ -95,7 +95,7 @@ public class FeatureTest {
 	@RMethod(tests = {
 			"minExample = J$FeatureTest$new('Hello from Java constructor!')",
 			"result = minExample$doSum(2,7.5)",
-			"expect_equal(result,9.5)"
+			"testthat::expect_equal(result,9.5)"
 	})
 	public RNumeric doSum(RNumeric a, RNumeric b) {
 		try {
@@ -231,7 +231,7 @@ public class FeatureTest {
 			"dplyr::glimpse( diamonds() )"
 		},
 		tests = {
-			"expect_equal(diamonds(), ggplot2::diamonds)"
+			"testthat::expect_equal(diamonds(), ggplot2::diamonds)"
 		}
 	)
 	public static RDataframe diamonds() throws IOException {

@@ -74,7 +74,7 @@ using RObject.readRDS." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">testRapi</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9999</span>
       </span>
     </div>
 
@@ -151,8 +151,19 @@ using RObject.readRDS.</p>
     <p>RDataframe: the ggplot2::diamonds dataframe</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>expect_equal</span><span class='op'>(</span><span class='fu'>diamonds</span><span class='op'>(</span><span class='op'>)</span>, <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='va'><a href='https://ggplot2.tidyverse.org/reference/diamonds.html'>diamonds</a></span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in expect_equal(diamonds(), ggplot2::diamonds): could not find function "expect_equal"</span></div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span> <span class='fu'>diamonds</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>)</span>
+</div><div class='output co'>#&gt; Rows: 53,940
+#&gt; Columns: 10
+#&gt; $ carat   <span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> 0.23, 0.21, 0.23, 0.29, 0.31, 0.24, 0.24, 0.26, 0.22, 0.23, 0.…
+#&gt; $ cut     </span><span style='color: #949494;font-style: italic;'>&lt;ord&gt;</span><span> Ideal, Premium, Good, Premium, Good, Very Good, Very Good, Ver…
+#&gt; $ color   </span><span style='color: #949494;font-style: italic;'>&lt;ord&gt;</span><span> E, E, E, I, J, J, I, H, E, H, J, J, F, J, E, E, I, J, J, J, I,…
+#&gt; $ clarity </span><span style='color: #949494;font-style: italic;'>&lt;ord&gt;</span><span> SI2, SI1, VS1, VS2, SI2, VVS2, VVS1, SI1, VS2, VS1, SI1, VS1, …
+#&gt; $ depth   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> 61.5, 59.8, 56.9, 62.4, 63.3, 62.8, 62.3, 61.9, 65.1, 59.4, 64…
+#&gt; $ table   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> 55, 61, 65, 58, 58, 57, 57, 55, 61, 61, 55, 56, 61, 54, 62, 58…
+#&gt; $ price   </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> 326, 326, 327, 334, 335, 336, 336, 337, 337, 338, 339, 340, 34…
+#&gt; $ x       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> 3.95, 3.89, 4.05, 4.20, 4.34, 3.94, 3.95, 4.07, 3.87, 4.00, 4.…
+#&gt; $ y       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> 3.98, 3.84, 4.07, 4.23, 4.35, 3.96, 3.98, 4.11, 3.78, 4.05, 4.…
+#&gt; $ z       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39, 2.…</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -164,7 +175,7 @@ using RObject.readRDS.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Rob Challen, terminological, Rob Challen.</p>
+  <p>Developed by Rob Challen, Rob Challen, terminological.</p>
 </div>
 
 <div class="pkgdown">

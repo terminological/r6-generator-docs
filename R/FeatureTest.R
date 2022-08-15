@@ -8,9 +8,9 @@
 #' 
 #' This is a class of the testRapi generated R library.
 #' 
-#' Version: 0.5.3
+#' Version: 0.0.0.9999
 #' 
-#' Generated: 2022-08-15T15:45:17.641
+#' Generated: 2022-08-15T16:24:28.993
 #'
 #' @details
 	#' The feature test should allow mathjax in javadoc
@@ -55,6 +55,8 @@ FeatureTest = R6::R6Class("FeatureTest", public=list(
 	#' this java method returns a String
 	#' @examples
 	#' J = JavaApi$get()
+	#' minExample = J$FeatureTest$new('Hello, R World!')
+	#' minExample$doHelloWorld()
 	doHelloWorld = function() {
 		# copy parameters
 		# execute method call
@@ -79,6 +81,10 @@ FeatureTest = R6::R6Class("FeatureTest", public=list(
 	#' This only matters if you care about the difference between NA_real_ and NaN in R.
 	#' @examples
 	#' J = JavaApi$get()
+	#' library(testthat)
+	#' minExample = J$FeatureTest$new('Hello from Java constructor!')
+	#' result = minExample$doSum(2,7.5)
+	#' testthat::expect_equal(result,9.5)
 	doSum = function(a, b) {
 		# copy parameters
 		tmp_a = self$.api$.toJava$RNumeric(a);

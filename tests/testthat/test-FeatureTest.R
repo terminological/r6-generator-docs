@@ -10,7 +10,7 @@ test_that("FeatureTest$doSum() R6 method",	{
 	J = JavaApi$get()
 	minExample = J$FeatureTest$new('Hello from Java constructor!')
 	result = minExample$doSum(2,7.5)
-	expect_equal(result,9.5)
+	testthat::expect_equal(result,9.5)
 })
 # ├ doSum2() R6 method ----
 # ├ getMessage() R6 method ----
@@ -26,5 +26,5 @@ test_that("FeatureTest$doSum() R6 method",	{
 # ├ demo_static() package method ----
 # ├ diamonds() package method ----
 test_that("testRapi::diamonds() static method", {
-	expect_equal(diamonds(), ggplot2::diamonds)
+	testthat::expect_equal(diamonds(), ggplot2::diamonds)
 })

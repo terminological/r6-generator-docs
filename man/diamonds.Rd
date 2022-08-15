@@ -14,7 +14,7 @@ RObject.writeRDS, saved within the jar file of the package, and exposed here
 using RObject.readRDS.
 }
 \examples{
-expect_equal(diamonds(), ggplot2::diamonds)
+dplyr::glimpse( diamonds() )
 }
 \keyword{java api}
 

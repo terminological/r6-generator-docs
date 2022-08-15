@@ -25,15 +25,14 @@
 \description{
 Documents the features of the 'r6-generator-maven-plugin' by providing an example of an R package automatically generated from Java code by the plugin. It is not intended to be useful beyond testing, demonstrating and documenting the features of the plugin.
 
-Version: 0.5.3
+Version: 0.0.0.9999
 
-Generated: 2022-08-15T15:45:17.376
+Generated: 2022-08-15T16:24:28.824
 }
 
 \author{\email{rc538@exeter.ac.uk}}
 
 \examples{
-
 ## -----------------------------------
 ## Check library dependencies for testRapi
 ## -----------------------------------
@@ -147,17 +146,21 @@ testRapi::deserialise_named_list(filename)
 ## -----------------------------------
 ## Method `J$FeatureTest$new(logMessage)`
 ## -----------------------------------
+minExample = J$FeatureTest$new('Hello from Java constructor!')
 
 ## -----------------------------------
 ## Method `J$FeatureTest$demoStatic(message)`
 ## Aliased as `testRapi::demo_static(message)`
 ## -----------------------------------
+J = JavaApi$get()
+J$FeatureTest$demoStatic('Ola, el mundo')
+demo_static('Bonjour, le monde')
 
 ## -----------------------------------
 ## Method `J$FeatureTest$diamonds()`
 ## Aliased as `testRapi::diamonds()`
 ## -----------------------------------
-expect_equal(diamonds(), ggplot2::diamonds)
+dplyr::glimpse( diamonds() )
 
 ## -----------------------------------
 ## Method `J$MinimalExample$new()`
@@ -183,6 +186,8 @@ testRapi::new(message1, message2)
 ## Method `J$MoreFeatureTest$create(message1, message2)`
 ## Aliased as `testRapi::create(message1, message2)`
 ## -----------------------------------
+J = JavaApi$get()
+J$MoreFeatureTest$create('Hello,',' World')
 
 ## -----------------------------------
 ## Method `J$MoreFeatureTest$concat(message1, message2)`
@@ -767,6 +772,7 @@ J$FeatureTest$new(logMessage)
 		\subsection{Examples}{
 			\if{html}{\out{<div class="r example copy">}}
 			\preformatted{
+minExample = J$FeatureTest$new('Hello from Java constructor!')
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -807,6 +813,9 @@ testRapi::demo_static(message)
 		\subsection{Examples}{
 			\if{html}{\out{<div class="r example copy">}}
 			\preformatted{
+J = JavaApi$get()
+J$FeatureTest$demoStatic('Ola, el mundo')
+demo_static('Bonjour, le monde')
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -848,7 +857,7 @@ testRapi::diamonds()
 		\subsection{Examples}{
 			\if{html}{\out{<div class="r example copy">}}
 			\preformatted{
-expect_equal(diamonds(), ggplot2::diamonds)
+dplyr::glimpse( diamonds() )
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -946,6 +955,8 @@ testRapi::create(message1, message2)
 		\subsection{Examples}{
 			\if{html}{\out{<div class="r example copy">}}
 			\preformatted{
+J = JavaApi$get()
+J$MoreFeatureTest$create('Hello,',' World')
 			}
 			\if{html}{\out{</div>}}
 		}

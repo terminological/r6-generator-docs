@@ -16,9 +16,9 @@
 \description{
 A test of the R6 generator templating
 
-Version: 0.5.3
+Version: 0.0.0.9999
 
-Generated: 2022-08-15T15:45:17.639
+Generated: 2022-08-15T16:24:28.987
 }
 
 \details{
@@ -37,16 +37,23 @@ this is a details comment
 ## Construct new instance of FeatureTest
 ## -----------------------------------
 J = JavaApi$get()
+minExample = J$FeatureTest$new('Hello from Java constructor!')
 
 ## -----------------------------------
 ## Method `FeatureTest$doHelloWorld()`
 ## -----------------------------------
 J = JavaApi$get()
+minExample = J$FeatureTest$new('Hello, R World!')
+minExample$doHelloWorld()
 
 ## -----------------------------------
 ## Method `FeatureTest$doSum(a, b)`
 ## -----------------------------------
 J = JavaApi$get()
+library(testthat)
+minExample = J$FeatureTest$new('Hello from Java constructor!')
+result = minExample$doSum(2,7.5)
+testthat::expect_equal(result,9.5)
 
 ## -----------------------------------
 ## Method `FeatureTest$doSum2(a, b)`
@@ -176,6 +183,7 @@ the new R6 FeatureTest object
 			\if{html}{\out{<div class="r example copy">}}
 			\preformatted{
 J = JavaApi$get()
+minExample = J$FeatureTest$new('Hello from Java constructor!')
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -215,6 +223,8 @@ RCharacter: this java method returns a String
 			\if{html}{\out{<div class="r example copy">}}
 			\preformatted{
 J = JavaApi$get()
+minExample = J$FeatureTest$new('Hello, R World!')
+minExample$doHelloWorld()
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -255,6 +265,10 @@ This only matters if you care about the difference between NA_real_ and NaN in R
 			\if{html}{\out{<div class="r example copy">}}
 			\preformatted{
 J = JavaApi$get()
+library(testthat)
+minExample = J$FeatureTest$new('Hello from Java constructor!')
+result = minExample$doSum(2,7.5)
+testthat::expect_equal(result,9.5)
 			}
 			\if{html}{\out{</div>}}
 		}

@@ -9,9 +9,9 @@
 #' 
 #' This is a class of the testRapi generated R library.
 #' 
-#' Version: 0.5.3
+#' Version: 0.0.0.9999
 #' 
-#' Generated: 2022-08-15T15:45:17.658
+#' Generated: 2022-08-15T16:24:29.012
 #'
 #' @details
 	#' The class is annotated with an @RClass to identify it as part of the R API.
@@ -51,6 +51,8 @@ MinimalExample = R6::R6Class("MinimalExample", public=list(
 	#' the dataframe unchanged
 	#' @examples
 	#' J = JavaApi$get()
+	#' minExample = J$MinimalExample$new()
+	#' minExample$demo(dataframe=tibble::tibble(input=c(1,2,3)), message='Hello world')
 	demo = function(dataframe, message) {
 		# copy parameters
 		tmp_dataframe = self$.api$.toJava$RDataframe(dataframe);

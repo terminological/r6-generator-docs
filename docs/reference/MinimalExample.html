@@ -42,8 +42,8 @@
 <meta property="og:title" content="MinimalExample — MinimalExample" />
 <meta property="og:description" content="This class is a very basic example of the features of the rJava maven plugin.
 
-Version: 0.5.3
-Generated: 2022-08-15T15:45:17.657" />
+Version: 0.0.0.9999
+Generated: 2022-08-15T16:24:29.009" />
 
 
 
@@ -75,7 +75,7 @@ Generated: 2022-08-15T15:45:17.657" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">testRapi</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9999</span>
       </span>
     </div>
 
@@ -141,8 +141,8 @@ Generated: 2022-08-15T15:45:17.657" />
     <div class="ref-description">
     <p>This class is a very basic example of the features of the rJava maven plugin.</p>
 
-<p>Version: 0.5.3</p>
-<p>Generated: 2022-08-15T15:45:17.657</p>
+<p>Version: 0.0.0.9999</p>
+<p>Generated: 2022-08-15T16:24:29.009</p>
     </div>
 
 
@@ -207,6 +207,8 @@ Generated: 2022-08-15T15:45:17.657" />
 <p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Examples</h4>
 <p><div class="r example copy"></p><pre>
 <span class='va'>J</span> <span class='op'>=</span> <span class='va'>JavaApi</span><span class='op'>$</span><span class='fu'>get</span><span class='op'>(</span><span class='op'>)</span>
+<span class='va'>minExample</span> <span class='op'>=</span> <span class='va'>J</span><span class='op'>$</span><span class='va'>MinimalExample</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='op'>)</span>
+<span class='va'>minExample</span><span class='op'>$</span><span class='fu'>demo</span><span class='op'>(</span>dataframe<span class='op'>=</span><span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>input<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>2</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>, message<span class='op'>=</span><span class='st'>'Hello world'</span><span class='op'>)</span>
       </pre><p></div></p><p></p>
 
 
@@ -224,7 +226,15 @@ Generated: 2022-08-15T15:45:17.657" />
 <span class='co'>## Method `MinimalExample$demo(dataframe, message)`</span>
 <span class='co'>## -----------------------------------</span>
 <span class='va'>J</span> <span class='op'>=</span> <span class='va'>JavaApi</span><span class='op'>$</span><span class='fu'>get</span><span class='op'>(</span><span class='op'>)</span>
-</div></pre>
+<span class='va'>minExample</span> <span class='op'>=</span> <span class='va'>J</span><span class='op'>$</span><span class='va'>MinimalExample</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='op'>)</span>
+<span class='va'>minExample</span><span class='op'>$</span><span class='fu'>demo</span><span class='op'>(</span>dataframe<span class='op'>=</span><span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>input<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>2</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>, message<span class='op'>=</span><span class='st'>'Hello world'</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>2022-08-15 16:24:42,087 INFO uk.co.terminological.rjava.test.MinimalExample [main] this dataframe has nrow=3</span>
+#&gt; <span class='message'>2022-08-15 16:24:42,088 INFO uk.co.terminological.rjava.test.MinimalExample [main] Hello world</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 3 × 1</span><span>
+#&gt;   input
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>     1
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span>     2
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span>     3</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -236,7 +246,7 @@ Generated: 2022-08-15T15:45:17.657" />
 
       <footer>
       <div class="copyright">
-  <p>Developed by Rob Challen, terminological, Rob Challen.</p>
+  <p>Developed by Rob Challen, Rob Challen, terminological.</p>
 </div>
 
 <div class="pkgdown">

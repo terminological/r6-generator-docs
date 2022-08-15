@@ -2,8 +2,8 @@
 # This is a collection of the static methods described in the Java API
 # and serves as an alternative R centric entry point of the testRapi generated R library.
 
-# Version: 0.5.3
-# Generated: 2022-08-15T15:45:17.509
+# Version: 0.0.0.9999
+# Generated: 2022-08-15T16:24:28.915
 # Contact: rc538@exeter.ac.uk
 
 # FactoryTest class static methods ----
@@ -133,6 +133,9 @@ deserialise_named_list = function(filename) {
 #' @return void: 
 #' 
 #' @examples
+#' J = JavaApi$get()
+#' J$FeatureTest$demoStatic('Ola, el mundo')
+#' demo_static('Bonjour, le monde')
 #' @export
 demo_static = function(message) {
 	# get the API singleton
@@ -154,7 +157,7 @@ demo_static = function(message) {
 #' @return RDataframe: 
 #' the ggplot2::diamonds dataframe
 #' @examples
-#' expect_equal(diamonds(), ggplot2::diamonds)
+#' dplyr::glimpse( diamonds() )
 #' @export
 diamonds = function() {
 	# get the API singleton
@@ -180,6 +183,8 @@ diamonds = function() {
 #' @return R6 MoreFeatureTest object: 
 #' A MoreFeatureTest R6 object
 #' @examples
+#' J = JavaApi$get()
+#' J$MoreFeatureTest$create('Hello,',' World')
 #' @export
 create = function(message1, message2) {
 	# get the API singleton

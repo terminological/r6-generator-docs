@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">testRapi</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9999</span>
       </span>
     </div>
 
@@ -173,7 +173,8 @@
         <span class="kw">&lt;project.build.sourceEncoding&gt;</span>UTF-8<span class="kw">&lt;/project.build.sourceEncoding&gt;</span>
         <span class="kw">&lt;maven.compiler.source&gt;</span>1.8<span class="kw">&lt;/maven.compiler.source&gt;</span>
         <span class="kw">&lt;maven.compiler.target&gt;</span>1.8<span class="kw">&lt;/maven.compiler.target&gt;</span>
-        <span class="kw">&lt;r6.version&gt;</span>0.5.3<span class="kw">&lt;/r6.version&gt;</span>
+<span class="co">&lt;!--        &lt;r6.version&gt;0.5.3&lt;/r6.version&gt; --&gt;</span>
+        <span class="kw">&lt;r6.version&gt;</span>main-SNAPSHOT<span class="kw">&lt;/r6.version&gt;</span>
     <span class="kw">&lt;/properties&gt;</span>
 
     <span class="kw">&lt;groupId&gt;</span>io.github.terminological<span class="kw">&lt;/groupId&gt;</span>
@@ -318,13 +319,13 @@
 
 <span class="co"># the JavaApi class is the entry point for R to your Java code.</span>
 <span class="va">J</span> <span class="op">&lt;-</span> <span class="fu">testRapi</span><span class="fu">::</span><span class="va"><a href="../reference/JavaApi.html">JavaApi</a></span><span class="op">$</span><span class="fu">get</span><span class="op">(</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-08-15 15:46:20,073 INFO testRapi [main] Initialised testRapi</code></pre>
+<pre><code>## 2022-08-15 16:25:31,086 INFO testRapi [main] Initialised testRapi</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="co"># all the API classes and methods are classes attached to the J java api object</span>
 <span class="va">eg</span> <span class="op">=</span> <span class="va">J</span><span class="op">$</span><span class="va">MinimalExample</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span>
 <span class="va">df</span> <span class="op">=</span> <span class="va">eg</span><span class="op">$</span><span class="fu">demo</span><span class="op">(</span>dataframe <span class="op">=</span> <span class="va">diamonds</span>, message <span class="op">=</span> <span class="st">"The diamonds dataframe"</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-08-15 15:46:20,143 INFO uk.co.terminological.rjava.test.MinimalExample [main] this dataframe has nrow=53940
-## 2022-08-15 15:46:20,143 INFO uk.co.terminological.rjava.test.MinimalExample [main] The diamonds dataframe</code></pre>
+<pre><code>## 2022-08-15 16:25:31,156 INFO uk.co.terminological.rjava.test.MinimalExample [main] this dataframe has nrow=53940
+## 2022-08-15 16:25:31,156 INFO uk.co.terminological.rjava.test.MinimalExample [main] The diamonds dataframe</code></pre>
 <div class="sourceCode"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></pre></div>
 <pre><code>## [1] 53940</code></pre>
@@ -345,7 +346,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Rob Challen, terminological, Rob Challen.</p>
+  <p>Developed by Rob Challen, Rob Challen, terminological.</p>
 </div>
 
 <div class="pkgdown">
