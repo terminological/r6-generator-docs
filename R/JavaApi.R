@@ -4,9 +4,9 @@
 #' @description
 #' A Test Library
 #'
-#' Version: 0.5.2
+#' Version: 0.5.3
 #'
-#' Generated: 2022-08-15T15:23:02.111
+#' Generated: 2022-08-15T15:45:17.455
 #'
 #' Contact: rc538@exeter.ac.uk
 #' @import ggplot2
@@ -99,8 +99,8 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 		  .jcall(self$.log,returnSig = "V",method = "debug", jar)
 		}
 		.jcall(self$.log,returnSig = "V",method = "info","Initialised testRapi");
-		.jcall(self$.log,returnSig = "V",method = "debug","R package version: 0.5.2");
-		.jcall(self$.log,returnSig = "V",method = "debug","R package generated: 2022-08-15T15:23:02.112");
+		.jcall(self$.log,returnSig = "V",method = "debug","R package version: 0.5.3");
+		.jcall(self$.log,returnSig = "V",method = "debug","R package generated: 2022-08-15T15:45:17.455");
 		.jcall(self$.log,returnSig = "V",method = "debug","Java library version: io.github.terminological:r6-generator-docs:main-SNAPSHOT");
 		.jcall(self$.log,returnSig = "V",method = "debug",paste0("Java library compiled: ",buildDate));
 		.jcall(self$.log,returnSig = "V",method = "debug","Contact: rc538@exeter.ac.uk");
@@ -642,8 +642,8 @@ JavaApi$installDependencies = function() {
 JavaApi$versionInformation = function() {
 	out = list(
 		package = "testRapi",
-		r_package_version = "0.5.2",
-		r_package_generated = "2022-08-15T15:23:02.139",
+		r_package_version = "0.5.3",
+		r_package_generated = "2022-08-15T15:45:17.498",
 		java_library_version = "io.github.terminological:r6-generator-docs:main-SNAPSHOT",
 		maintainer = "rc538@exeter.ac.uk"
 	)
@@ -675,7 +675,7 @@ JavaApi$versionInformation = function() {
 
 # package working directory
 .workingDir = function() {
-	tmp = path.expand(rappdirs::user_cache_dir("testRapi-0.5.2"))
+	tmp = path.expand(rappdirs::user_cache_dir("testRapi-0.5.3"))
 	fs::dir_create(tmp)
 	return(tmp)
 }

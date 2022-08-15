@@ -2,8 +2,8 @@
 # This is a collection of the static methods described in the Java API
 # and serves as an alternative R centric entry point of the testRapi generated R library.
 
-# Version: 0.5.2
-# Generated: 2022-08-15T15:23:02.145
+# Version: 0.5.3
+# Generated: 2022-08-15T15:45:17.509
 # Contact: rc538@exeter.ac.uk
 
 # FactoryTest class static methods ----
