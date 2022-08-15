@@ -11,7 +11,8 @@ vignette: >
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
-# disable this in windows as bash chunks are dodgy
+# don't try evaluate this vignette
+# in windows as bash chunks don't always work
 if (.Platform$OS.type == "windows") knitr::opts_chunk$set(eval = FALSE)
 ```
 
@@ -26,6 +27,10 @@ dir
 v = testRapi::JavaApi$versionInformation()
 version = stringr::str_split_fixed(v$java_library_version,":",n=Inf)[,3]
 Sys.setenv(TMP_VERSION=version)
+# don't try evaluate this vignette 
+# for snapshot versions except in interactive sessions (where locally installed snapshot is likely)
+# this is because snapshot repository is not available for archetype downloads 
+if (version == "main-SNAPSHOT") knitr::opts_chunk$set(eval = interactive())
 version
 ```
 
