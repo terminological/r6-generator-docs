@@ -8,9 +8,9 @@
 #' 
 #' This is a class of the testRapi generated R library.
 #' 
-#' Version: 0.5.4
+#' Version: 0.0.0.9999
 #' 
-#' Generated: 2022-08-15T17:33:45.124
+#' Generated: 2022-09-24T00:30:36.259516
 #'
 #' @details
 	#' string and serialises the dataframe so it can be used natively in java

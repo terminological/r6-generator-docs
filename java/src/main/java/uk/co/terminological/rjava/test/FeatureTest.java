@@ -262,5 +262,10 @@ public class FeatureTest {
 		log.info("The FeatureTest finalizer is called when the R6 object goes out of scope");
 		throw new RuntimeException("Errors from the finalizer are ignored");
 	}
+	
+	@RMethod
+	public static RCharacter collider(RCharacter message1, RCharacter message2) {
+		return RConverter.convert("feature test: "+message1.toString()+message2.toString());
+	}
 }
 //END_SNIP_1

@@ -41,8 +41,8 @@
 
 <meta property="og:title" content="FeatureTest — FeatureTest" />
 <meta property="og:description" content="A test of the R6 generator templating
-Version: 0.5.4
-Generated: 2022-08-15T17:33:45.157" />
+Version: 0.0.0.9999
+Generated: 2022-09-24T00:30:36.268924" />
 
 
 
@@ -74,7 +74,7 @@ Generated: 2022-08-15T17:33:45.157" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">testRapi</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9999</span>
       </span>
     </div>
 
@@ -139,8 +139,8 @@ Generated: 2022-08-15T17:33:45.157" />
 
     <div class="ref-description">
     <p>A test of the R6 generator templating</p>
-<p>Version: 0.5.4</p>
-<p>Generated: 2022-08-15T17:33:45.157</p>
+<p>Version: 0.0.0.9999</p>
+<p>Generated: 2022-09-24T00:30:36.268924</p>
     </div>
 
 
@@ -436,14 +436,28 @@ to the calling Java object.</p>
 <span class='co'>## Construct new instance of FeatureTest</span>
 <span class='co'>## -----------------------------------</span>
 <span class='va'>J</span> <span class='op'>=</span> <span class='va'>JavaApi</span><span class='op'>$</span><span class='fu'>get</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>2022-08-15 17:33:56,998 INFO testRapi [main] Initialised testRapi</span></div><div class='input'><span class='va'>minExample</span> <span class='op'>=</span> <span class='va'>J</span><span class='op'>$</span><span class='va'>FeatureTest</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='st'>'Hello from Java constructor!'</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>2022-08-15 17:33:57,002 INFO uk.co.terminological.rjava.test.FeatureTest [main] Hello from Java constructor!</span></div><div class='input'>
+</div><div class='output co'>#&gt; [INFO] Scanning for projects...
+#&gt; [INFO]                                                                         
+#&gt; [INFO] ------------------------------------------------------------------------
+#&gt; [INFO] Building R6 Generator Maven Plugin Test main-SNAPSHOT
+#&gt; [INFO] ------------------------------------------------------------------------
+#&gt; [INFO] 
+#&gt; [INFO] --- maven-dependency-plugin:2.8:build-classpath (default-cli) @ r6-generator-docs ---
+#&gt; [INFO] Skipped writing classpath file '/home/terminological/.cache/rmaven/io.github.terminological_r6-generator-docs_main-SNAPSHOT/classpath.txt'.  No changes found.
+#&gt; [INFO] ------------------------------------------------------------------------
+#&gt; [INFO] BUILD SUCCESS
+#&gt; [INFO] ------------------------------------------------------------------------
+#&gt; [INFO] Total time: 0.686 s
+#&gt; [INFO] Finished at: 2022-09-24T00:30:48+01:00
+#&gt; [INFO] Final Memory: 13M/44M
+#&gt; [INFO] ------------------------------------------------------------------------</div><div class='output co'>#&gt; <span class='message'>2022-09-24 00:30:48,860 INFO testRapi [main] Initialised testRapi</span></div><div class='input'><span class='va'>minExample</span> <span class='op'>=</span> <span class='va'>J</span><span class='op'>$</span><span class='va'>FeatureTest</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='st'>'Hello from Java constructor!'</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>2022-09-24 00:30:48,865 INFO uk.co.terminological.rjava.test.FeatureTest [main] Hello from Java constructor!</span></div><div class='input'>
 <span class='co'>## -----------------------------------</span>
 <span class='co'>## Method `FeatureTest$doHelloWorld()`</span>
 <span class='co'>## -----------------------------------</span>
 <span class='va'>J</span> <span class='op'>=</span> <span class='va'>JavaApi</span><span class='op'>$</span><span class='fu'>get</span><span class='op'>(</span><span class='op'>)</span>
 <span class='va'>minExample</span> <span class='op'>=</span> <span class='va'>J</span><span class='op'>$</span><span class='va'>FeatureTest</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='st'>'Hello, R World!'</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>2022-08-15 17:33:57,006 INFO uk.co.terminological.rjava.test.FeatureTest [main] Hello, R World!</span></div><div class='input'><span class='va'>minExample</span><span class='op'>$</span><span class='fu'>doHelloWorld</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>2022-09-24 00:30:48,869 INFO uk.co.terminological.rjava.test.FeatureTest [main] Hello, R World!</span></div><div class='input'><span class='va'>minExample</span><span class='op'>$</span><span class='fu'>doHelloWorld</span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "Hello world from Java!"</div><div class='input'>
 <span class='co'>## -----------------------------------</span>
 <span class='co'>## Method `FeatureTest$doSum(a, b)`</span>
@@ -451,7 +465,7 @@ to the calling Java object.</p>
 <span class='va'>J</span> <span class='op'>=</span> <span class='va'>JavaApi</span><span class='op'>$</span><span class='fu'>get</span><span class='op'>(</span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://testthat.r-lib.org'>testthat</a></span><span class='op'>)</span>
 <span class='va'>minExample</span> <span class='op'>=</span> <span class='va'>J</span><span class='op'>$</span><span class='va'>FeatureTest</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='st'>'Hello from Java constructor!'</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>2022-08-15 17:33:57,057 INFO uk.co.terminological.rjava.test.FeatureTest [main] Hello from Java constructor!</span></div><div class='input'><span class='va'>result</span> <span class='op'>=</span> <span class='va'>minExample</span><span class='op'>$</span><span class='fu'>doSum</span><span class='op'>(</span><span class='fl'>2</span>,<span class='fl'>7.5</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>2022-09-24 00:30:48,928 INFO uk.co.terminological.rjava.test.FeatureTest [main] Hello from Java constructor!</span></div><div class='input'><span class='va'>result</span> <span class='op'>=</span> <span class='va'>minExample</span><span class='op'>$</span><span class='fu'>doSum</span><span class='op'>(</span><span class='fl'>2</span>,<span class='fl'>7.5</span><span class='op'>)</span>
 <span class='fu'>testthat</span><span class='fu'>::</span><span class='fu'><a href='https://testthat.r-lib.org/reference/equality-expectations.html'>expect_equal</a></span><span class='op'>(</span><span class='va'>result</span>,<span class='fl'>9.5</span><span class='op'>)</span>
 
 <span class='co'>## -----------------------------------</span>

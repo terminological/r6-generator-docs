@@ -12,9 +12,9 @@
 This class is a very basic example of the features of the rJava maven plugin. 
 
 
-Version: 0.5.4
+Version: 0.0.0.9999
 
-Generated: 2022-08-15T17:33:45.186
+Generated: 2022-09-24T00:30:36.294651
 }
 
 \details{
@@ -38,7 +38,8 @@ instance = J$MinimalExample$new()
 ## -----------------------------------
 J = JavaApi$get()
 minExample = J$MinimalExample$new()
-minExample$demo(dataframe=tibble::tibble(input=c(1,2,3)), message='Hello world')
+minExample$demo(dataframe=tibble::tibble(input=c(1,
+2,3)), message='Hello world')
 }
 
 \keyword{java api}
@@ -120,7 +121,8 @@ RDataframe: the dataframe unchanged
 			\preformatted{
 J = JavaApi$get()
 minExample = J$MinimalExample$new()
-minExample$demo(dataframe=tibble::tibble(input=c(1,2,3)), message='Hello world')
+minExample$demo(dataframe=tibble::tibble(input=c(1,
+2,3)), message='Hello world')
 			}
 			\if{html}{\out{</div>}}
 		}

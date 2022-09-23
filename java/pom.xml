@@ -8,7 +8,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<r6.version>0.5.4</r6.version>
+		<r6.version>main-SNAPSHOT</r6.version>
 	</properties>
 
 	<groupId>io.github.terminological</groupId>
@@ -159,7 +159,8 @@
 						
 						 <!-- packaging all dependencies is the most robust but results in a large package size that may not be accepted on CRAN -->
 						 <!-- the alternative is to fetch all dependencies on first library use. -->
-						<packageAllDependencies>true</packageAllDependencies>
+						 <!-- this option only applies if the binary is precompiled in the previous option. -->
+						<packageAllDependencies>false</packageAllDependencies>
 						
 						<!-- any rJava VM start up options can be added here -->
 						<rjavaOpts>

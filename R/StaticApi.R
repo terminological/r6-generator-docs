@@ -2,8 +2,8 @@
 # This is a collection of the static methods described in the Java API
 # and serves as an alternative R centric entry point of the testRapi generated R library.
 
-# Version: 0.5.4
-# Generated: 2022-08-15T17:33:45.047
+# Version: 0.0.0.9999
+# Generated: 2022-09-24T00:30:36.160063
 # Contact: rc538@exeter.ac.uk
 
 # FactoryTest class static methods ----
@@ -15,9 +15,9 @@
 # Serialiser class static methods ----
 
 
-#' serialiseDataframe:
+#' serialiseDataframe: no title
 #' 
-#' no title
+#' no description
 #' @param dataframe - (java expects a RDataframe)
 #' @param filename - (java expects a String)
 #' @return void: 
@@ -33,9 +33,9 @@ serialise_dataframe = function(dataframe, filename) {
 }
 
 
-#' deserialiseDataframe:
+#' deserialiseDataframe: no title
 #' 
-#' no title
+#' no description
 #' @param filename - (java expects a String)
 #' @return RDataframe: 
 #' 
@@ -50,9 +50,9 @@ deserialise_dataframe = function(filename) {
 }
 
 
-#' serialiseList:
+#' serialiseList: no title
 #' 
-#' no title
+#' no description
 #' @param dataframe - (java expects a RList)
 #' @param filename - (java expects a String)
 #' @return void: 
@@ -68,9 +68,9 @@ serialise_list = function(dataframe, filename) {
 }
 
 
-#' deserialiseList:
+#' deserialiseList: no title
 #' 
-#' no title
+#' no description
 #' @param filename - (java expects a String)
 #' @return RList: 
 #' 
@@ -85,9 +85,9 @@ deserialise_list = function(filename) {
 }
 
 
-#' serialiseNamedList:
+#' serialiseNamedList: no title
 #' 
-#' no title
+#' no description
 #' @param dataframe - (java expects a RNamedList)
 #' @param filename - (java expects a String)
 #' @return void: 
@@ -103,9 +103,9 @@ serialise_named_list = function(dataframe, filename) {
 }
 
 
-#' deserialiseNamedList:
+#' deserialiseNamedList: no title
 #' 
-#' no title
+#' no description
 #' @param filename - (java expects a String)
 #' @return RNamedList: 
 #' 
@@ -123,9 +123,7 @@ deserialise_named_list = function(filename) {
 # FeatureTest class static methods ----
 
 
-#' demoStatic:
-#' 
-#' Static methods are also supported. 
+#' demoStatic: Static methods are also supported. 
 #' 
 #' These are accessed through the
 #' root of the R api, and as a functional interface
@@ -147,9 +145,7 @@ demo_static = function(message) {
 }
 
 
-#' diamonds:
-#' 
-#' The ggplot2::diamonds dataframe 
+#' diamonds: The ggplot2::diamonds dataframe 
 #' 
 #' A copy serialised into java, using
 #' RObject.writeRDS, saved within the jar file of the package, and exposed here
@@ -169,15 +165,33 @@ diamonds = function() {
 }
 
 
+#' collider: no title
+#' 
+#' no description
+#' @param message1 - (java expects a RCharacter)
+#' @param message2 - (java expects a RCharacter)
+#' @return RCharacter: 
+#' 
+#' @export
+feature_test_collider = function(message1, message2) {
+	# get the API singleton
+	J = JavaApi$get()
+	# execute the R6 function call with the same parameters
+	out = J$FeatureTest$collider(message1, message2)
+	if(is.null(out)) return(invisible(out))
+	return(out)
+}
+
+
 # MinimalExample class static methods ----
 
 
 # MoreFeatureTest class static methods ----
 
 
-#' create:
+#' create: A static object constructor
 #' 
-#' A static object constructor
+#' no description
 #' @param message1 - the message to be printed - (java expects a RCharacter)
 #' @param message2 - will be used for toString - (java expects a RCharacter)
 #' @return R6 MoreFeatureTest object: 
@@ -196,9 +210,9 @@ create = function(message1, message2) {
 }
 
 
-#' concat:
+#' concat: no title
 #' 
-#' no title
+#' no description
 #' @param message1 - (java expects a RCharacter)
 #' @param message2 - (java expects a RCharacter)
 #' @return RCharacter: 
@@ -209,6 +223,28 @@ concat = function(message1, message2) {
 	J = JavaApi$get()
 	# execute the R6 function call with the same parameters
 	out = J$MoreFeatureTest$concat(message1, message2)
+	if(is.null(out)) return(invisible(out))
+	return(out)
+}
+
+
+#' collider: no title
+#' 
+#' no description
+#' @param message1 - (java expects a RCharacter)
+#' @param message2 - (java expects a RCharacter)
+#' @return RCharacter: 
+#' 
+#' @examples
+#' library(testthat)
+#' tmp = more_feature_test_collider('should ','work')
+#' expect_equal(tmp,'more feature test: should work')
+#' @export
+more_feature_test_collider = function(message1, message2) {
+	# get the API singleton
+	J = JavaApi$get()
+	# execute the R6 function call with the same parameters
+	out = J$MoreFeatureTest$collider(message1, message2)
 	if(is.null(out)) return(invisible(out))
 	return(out)
 }

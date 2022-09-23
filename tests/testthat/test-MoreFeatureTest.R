@@ -13,3 +13,9 @@
 
 # ├ create() package method ----
 # ├ concat() package method ----
+# ├ more_feature_test_collider() package method ----
+test_that("testRapi::more_feature_test_collider() static method", {
+	tmp = more_feature_test_collider('should ','work')
+	expect_equal(tmp,'more feature test: should work')
+	expect_message(message("test case complete"))
+})

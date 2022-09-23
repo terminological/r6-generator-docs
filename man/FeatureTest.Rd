@@ -16,9 +16,9 @@
 \description{
 A test of the R6 generator templating
 
-Version: 0.5.4
+Version: 0.0.0.9999
 
-Generated: 2022-08-15T17:33:45.157
+Generated: 2022-09-24T00:30:36.268924
 }
 
 \details{

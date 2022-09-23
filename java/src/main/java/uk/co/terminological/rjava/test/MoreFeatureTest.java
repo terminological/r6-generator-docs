@@ -80,6 +80,16 @@ public class MoreFeatureTest {
 	public static RCharacter concat(RCharacter message1, RCharacter message2) {
 		return RConverter.convert(message1.toString()+message2.toString());
 	}
+	
+	@RMethod(
+		tests = {
+			"tmp = more_feature_test_collider('should ','work')",
+			"expect_equal(tmp,'more feature test: should work')"
+		}
+	)
+	public static RCharacter collider(RCharacter message1, RCharacter message2) {
+		return RConverter.convert("more feature test: "+message1.toString()+message2.toString());
+	}
 		
 	//START_SNIP_1
 }

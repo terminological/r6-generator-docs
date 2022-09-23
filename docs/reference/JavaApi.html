@@ -41,8 +41,8 @@
 
 <meta property="og:title" content="A Test Library — JavaApi" />
 <meta property="og:description" content="Documents the features of the 'r6-generator-maven-plugin' by providing an example of an R package automatically generated from Java code by the plugin. It is not intended to be useful beyond testing, demonstrating and documenting the features of the plugin.
-Version: 0.5.4
-Generated: 2022-08-15T17:33:44.923" />
+Version: 0.0.0.9999
+Generated: 2022-09-24T00:30:36.075056" />
 
 
 
@@ -74,7 +74,7 @@ Generated: 2022-08-15T17:33:44.923" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">testRapi</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9999</span>
       </span>
     </div>
 
@@ -139,8 +139,8 @@ Generated: 2022-08-15T17:33:44.923" />
 
     <div class="ref-description">
     <p>Documents the features of the 'r6-generator-maven-plugin' by providing an example of an R package automatically generated from Java code by the plugin. It is not intended to be useful beyond testing, demonstrating and documenting the features of the plugin.</p>
-<p>Version: 0.5.4</p>
-<p>Generated: 2022-08-15T17:33:44.923</p>
+<p>Version: 0.0.0.9999</p>
+<p>Generated: 2022-09-24T00:30:36.075056</p>
     </div>
 
 
@@ -193,12 +193,14 @@ Generated: 2022-08-15T17:33:44.923" />
 <li><p><a href='#method-FeatureTest-new'><code>J$FeatureTest$new(logMessage)</code></a></p></li>
 <li><p><a href='#method-FeatureTest-demoStatic'><code>J$FeatureTest$demoStatic(message)</code></a></p></li>
 <li><p><a href='#method-FeatureTest-diamonds'><code>J$FeatureTest$diamonds()</code></a></p></li>
+<li><p><a href='#method-FeatureTest-collider'><code>J$FeatureTest$collider(message1, message2)</code></a></p></li>
 </ul><p><hr></p><ul>
 <li><p><a href='#method-MinimalExample-new'><code>J$MinimalExample$new()</code></a></p></li>
 </ul><p><hr></p><ul>
 <li><p><a href='#method-MoreFeatureTest-new'><code>J$MoreFeatureTest$new(message1, message2)</code></a></p></li>
 <li><p><a href='#method-MoreFeatureTest-create'><code>J$MoreFeatureTest$create(message1, message2)</code></a></p></li>
 <li><p><a href='#method-MoreFeatureTest-concat'><code>J$MoreFeatureTest$concat(message1, message2)</code></a></p></li>
+<li><p><a href='#method-MoreFeatureTest-collider'><code>J$MoreFeatureTest$collider(message1, message2)</code></a></p></li>
 </ul>
 
     <h2 class="hasAnchor" id="package-initialisation-and-control"><a class="anchor" href="#package-initialisation-and-control"></a>Package initialisation and control</h2>
@@ -217,7 +219,8 @@ Generated: 2022-08-15T17:33:44.923" />
 </ul><p></div></p>
 
 <p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Returns</h4>
-<p>nothing. called for side effects.</p><p></p><p></div></p>	
+<p>nothing. called for side effects.</p><p></p>
+	
 <p><hr>
 	<a id="method-api-rebuildDependencies"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Package method <code>JavaApi$rebuildDependencies()</code></h3>
 <p>This package level method removes existing dependencies and re-installs dependencies needed for the running of the package.
@@ -233,7 +236,8 @@ Generated: 2022-08-15T17:33:44.923" />
 </ul><p></div></p>
 
 <p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Returns</h4>
-<p>nothing. called for side effects.</p><p></p><p></div></p>	
+<p>nothing. called for side effects.</p><p></p>
+	
 <p><hr>
 	<a id="method-api-versionInformation"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Package method <code>JavaApi$versionInformation()</code></h3>
 <p>This package level method returns debugging version information for the package</p>	
@@ -248,7 +252,8 @@ Generated: 2022-08-15T17:33:44.923" />
 </ul><p></div></p>
 
 <p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Returns</h4>
-<p>A list containing a set of versioning information about this package.</p><p></p><p></div></p>	
+<p>A list containing a set of versioning information about this package.</p><p></p>
+	
 <p><hr>
 	<a id="method-api-get"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Package method <code>JavaApi$get()</code></h3>
 <p>This is the main entry point for the package and the root of the Java API in this package. All classes defined in the package
@@ -265,7 +270,8 @@ Generated: 2022-08-15T17:33:44.923" />
 </ul><p></div></p>
 
 <p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Returns</h4>
-<p>A R6 testRapi::JavaApi object containing the access point to the objects and functions defined in this package</p><p></p><p></div></p>	
+<p>A R6 testRapi::JavaApi object containing the access point to the objects and functions defined in this package</p><p></p>
+	
 <p><hr>
 	<a id="method-api-changeLogLevel"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Api method <code>J$changeLogLevel(logLevel)</code></h3>
 <p>Once the package is initialised the log level can be changed to increase the level of messages from the api.</p>	
@@ -281,7 +287,8 @@ Generated: 2022-08-15T17:33:44.923" />
 </ul><p></div></p>
 
 <p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Returns</h4>
-<p>nothing. used for side effects.</p><p></p><p></div></p>	
+<p>nothing. used for side effects.</p><p></p>
+	
 <p><hr>
 	<a id="method-api-reconfigreLog"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Api method <code>J$reconfigureLog(log4jproperties)</code></h3>
 <p>Experimental / Advanced use: Once the package is initialised the log configureation can be changed to log to 
@@ -301,7 +308,8 @@ Generated: 2022-08-15T17:33:44.923" />
 </ul><p></div></p>
 
 <p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Returns</h4>
-<p>nothing. used for side effects.</p><p></p><p></div></p>	
+<p>nothing. used for side effects.</p><p></p>
+	
 <p><hr>
 	<a id="method-api-printMessages"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Api method <code>J$printMessages()</code></h3>
 <p>Experimental / Internal use: Messages from Java to R are queued and
@@ -319,7 +327,9 @@ Generated: 2022-08-15T17:33:44.923" />
 </ul><p></div></p>
 
 <p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Returns</h4>
-<p>nothing. used for side effects.</p><p></p><p></div></p>
+<p>nothing. used for side effects.</p><p></p>
+	
+
     <h2 class="hasAnchor" id="static-methods-and-constructors"><a class="anchor" href="#static-methods-and-constructors"></a>Static methods and constructors</h2>
 
     <p><hr>
@@ -594,6 +604,28 @@ using RObject.readRDS.</p>
       </pre><p></div></p>
 
 <p><hr>
+	<a id="method-FeatureTest-collider"></a></p>	
+<p></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>FeatureTest$collider()</code></h3>
+<p>no title</p>	
+<p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre>
+<span class='va'>J</span> <span class='op'>=</span> <span class='fu'>testRapi</span><span class='fu'>::</span><span class='va'>JavaApi</span><span class='op'>$</span><span class='fu'>get</span><span class='op'>(</span><span class='op'>)</span>
+<span class='va'>J</span><span class='op'>$</span><span class='va'>FeatureTest</span><span class='op'>$</span><span class='fu'>collider</span><span class='op'>(</span><span class='va'>message1</span>, <span class='va'>message2</span><span class='op'>)</span>
+<span class='co'># this method is also exposed as a package function:</span>
+<span class='fu'>testRapi</span><span class='fu'>::</span><span class='fu'><a href='feature_test_collider.html'>feature_test_collider</a></span><span class='op'>(</span><span class='va'>message1</span>, <span class='va'>message2</span><span class='op'>)</span>
+        </pre><p></div></p>
+	
+<p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
+<p><div class="arguments"></p><ul>
+<li><p>message1 - (java expects a RCharacter)</p></li>
+<li><p>message2 - (java expects a RCharacter)</p></li>
+</ul><p></div></p>
+
+<p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Returns</h4>
+<p>RCharacter:</p><p></p>
+
+
+<p><hr>
 	<a id="method-MinimalExample-new"></a></p>	
 <p></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>MinimalExample$new()</code></h3>
 <p>the default no-args constructor</p>	
@@ -681,6 +713,34 @@ using RObject.readRDS.</p>
 <p>RCharacter:</p><p></p>
 
 
+<p><hr>
+	<a id="method-MoreFeatureTest-collider"></a></p>	
+<p></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>MoreFeatureTest$collider()</code></h3>
+<p>no title</p>	
+<p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre>
+<span class='va'>J</span> <span class='op'>=</span> <span class='fu'>testRapi</span><span class='fu'>::</span><span class='va'>JavaApi</span><span class='op'>$</span><span class='fu'>get</span><span class='op'>(</span><span class='op'>)</span>
+<span class='va'>J</span><span class='op'>$</span><span class='va'>MoreFeatureTest</span><span class='op'>$</span><span class='fu'>collider</span><span class='op'>(</span><span class='va'>message1</span>, <span class='va'>message2</span><span class='op'>)</span>
+<span class='co'># this method is also exposed as a package function:</span>
+<span class='fu'>testRapi</span><span class='fu'>::</span><span class='fu'><a href='more_feature_test_collider.html'>more_feature_test_collider</a></span><span class='op'>(</span><span class='va'>message1</span>, <span class='va'>message2</span><span class='op'>)</span>
+        </pre><p></div></p>
+	
+<p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
+<p><div class="arguments"></p><ul>
+<li><p>message1 - (java expects a RCharacter)</p></li>
+<li><p>message2 - (java expects a RCharacter)</p></li>
+</ul><p></div></p>
+
+<p></p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Returns</h4>
+<p>RCharacter:</p><p></p>
+
+<p></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Examples</h3>
+<p><div class="r example copy"></p><pre>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://testthat.r-lib.org'>testthat</a></span><span class='op'>)</span>
+<span class='va'>tmp</span> <span class='op'>=</span> <span class='fu'><a href='more_feature_test_collider.html'>more_feature_test_collider</a></span><span class='op'>(</span><span class='st'>'should '</span>,<span class='st'>'work'</span><span class='op'>)</span>
+<span class='fu'><a href='https://testthat.r-lib.org/reference/equality-expectations.html'>expect_equal</a></span><span class='op'>(</span><span class='va'>tmp</span>,<span class='st'>'more feature test: should work'</span><span class='op'>)</span>
+      </pre><p></div></p>
+
 
 
 
@@ -689,7 +749,21 @@ using RObject.readRDS.</p>
 <span class='co'>## Check library dependencies for testRapi</span>
 <span class='co'>## -----------------------------------</span>
 <span class='fu'>testRapi</span><span class='fu'>::</span><span class='va'>JavaApi</span><span class='op'>$</span><span class='fu'>installDependencies</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "/tmp/Rtmpz8EVR8/temp_libpath26003d4c250b/testRapi/java/r6-generator-docs-main-SNAPSHOT-jar-with-dependencies.jar"</div><div class='input'>
+</div><div class='output co'>#&gt; [INFO] Scanning for projects...
+#&gt; [INFO]                                                                         
+#&gt; [INFO] ------------------------------------------------------------------------
+#&gt; [INFO] Building R6 Generator Maven Plugin Test main-SNAPSHOT
+#&gt; [INFO] ------------------------------------------------------------------------
+#&gt; [INFO] 
+#&gt; [INFO] --- maven-dependency-plugin:2.8:build-classpath (default-cli) @ r6-generator-docs ---
+#&gt; [INFO] Skipped writing classpath file '/home/terminological/.cache/rmaven/io.github.terminological_r6-generator-docs_main-SNAPSHOT/classpath.txt'.  No changes found.
+#&gt; [INFO] ------------------------------------------------------------------------
+#&gt; [INFO] BUILD SUCCESS
+#&gt; [INFO] ------------------------------------------------------------------------
+#&gt; [INFO] Total time: 0.645 s
+#&gt; [INFO] Finished at: 2022-09-24T00:30:51+01:00
+#&gt; [INFO] Final Memory: 13M/44M
+#&gt; [INFO] ------------------------------------------------------------------------</div><div class='input'>
 <span class='co'>## -----------------------------------</span>
 <span class='co'>## Construct a testRapi Java API instance</span>
 <span class='co'>## -----------------------------------</span>
@@ -700,7 +774,7 @@ using RObject.readRDS.</p>
 
 
 <span class='co'>## -----------------------------------</span>
-<span class='co'>## Method `J$FactoryTest$new()`</span>
+<span class='co'>## Method `J$FactoryTest$new(...)`</span>
 <span class='co'>## -----------------------------------</span>
 <span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='co'># no example given - appropriate parameter values must be provided:</span>
@@ -710,7 +784,7 @@ using RObject.readRDS.</p>
 <span class='op'>}</span>
 
 <span class='co'>## -----------------------------------</span>
-<span class='co'>## Method `J$BounceTest$new()`</span>
+<span class='co'>## Method `J$BounceTest$new(...)`</span>
 <span class='co'>## -----------------------------------</span>
 <span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='co'># no example given - appropriate parameter values must be provided:</span>
@@ -720,7 +794,7 @@ using RObject.readRDS.</p>
 <span class='op'>}</span>
 
 <span class='co'>## -----------------------------------</span>
-<span class='co'>## Method `J$Serialiser$new()`</span>
+<span class='co'>## Method `J$Serialiser$new(...)`</span>
 <span class='co'>## -----------------------------------</span>
 <span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='co'># no example given - appropriate parameter values must be provided:</span>
@@ -730,8 +804,8 @@ using RObject.readRDS.</p>
 <span class='op'>}</span>
 
 <span class='co'>## -----------------------------------</span>
-<span class='co'>## Method `J$Serialiser$serialiseDataframe(dataframe, filename)`</span>
-<span class='co'>## Aliased as `testRapi::serialise_dataframe(dataframe, filename)`</span>
+<span class='co'>## Method `J$Serialiser$serialiseDataframe(...)`</span>
+<span class='co'>## Aliased as `testRapi::serialise_dataframe(...)`</span>
 <span class='co'>## -----------------------------------</span>
 <span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='co'># no example given - appropriate parameter values must be provided:</span>
@@ -741,8 +815,8 @@ using RObject.readRDS.</p>
 <span class='op'>}</span>
 
 <span class='co'>## -----------------------------------</span>
-<span class='co'>## Method `J$Serialiser$deserialiseDataframe(filename)`</span>
-<span class='co'>## Aliased as `testRapi::deserialise_dataframe(filename)`</span>
+<span class='co'>## Method `J$Serialiser$deserialiseDataframe(...)`</span>
+<span class='co'>## Aliased as `testRapi::deserialise_dataframe(...)`</span>
 <span class='co'>## -----------------------------------</span>
 <span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='co'># no example given - appropriate parameter values must be provided:</span>
@@ -752,8 +826,8 @@ using RObject.readRDS.</p>
 <span class='op'>}</span>
 
 <span class='co'>## -----------------------------------</span>
-<span class='co'>## Method `J$Serialiser$serialiseList(dataframe, filename)`</span>
-<span class='co'>## Aliased as `testRapi::serialise_list(dataframe, filename)`</span>
+<span class='co'>## Method `J$Serialiser$serialiseList(...)`</span>
+<span class='co'>## Aliased as `testRapi::serialise_list(...)`</span>
 <span class='co'>## -----------------------------------</span>
 <span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='co'># no example given - appropriate parameter values must be provided:</span>
@@ -763,8 +837,8 @@ using RObject.readRDS.</p>
 <span class='op'>}</span>
 
 <span class='co'>## -----------------------------------</span>
-<span class='co'>## Method `J$Serialiser$deserialiseList(filename)`</span>
-<span class='co'>## Aliased as `testRapi::deserialise_list(filename)`</span>
+<span class='co'>## Method `J$Serialiser$deserialiseList(...)`</span>
+<span class='co'>## Aliased as `testRapi::deserialise_list(...)`</span>
 <span class='co'>## -----------------------------------</span>
 <span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='co'># no example given - appropriate parameter values must be provided:</span>
@@ -774,8 +848,8 @@ using RObject.readRDS.</p>
 <span class='op'>}</span>
 
 <span class='co'>## -----------------------------------</span>
-<span class='co'>## Method `J$Serialiser$serialiseNamedList(dataframe, filename)`</span>
-<span class='co'>## Aliased as `testRapi::serialise_named_list(dataframe, filename)`</span>
+<span class='co'>## Method `J$Serialiser$serialiseNamedList(...)`</span>
+<span class='co'>## Aliased as `testRapi::serialise_named_list(...)`</span>
 <span class='co'>## -----------------------------------</span>
 <span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='co'># no example given - appropriate parameter values must be provided:</span>
@@ -785,8 +859,8 @@ using RObject.readRDS.</p>
 <span class='op'>}</span>
 
 <span class='co'>## -----------------------------------</span>
-<span class='co'>## Method `J$Serialiser$deserialiseNamedList(filename)`</span>
-<span class='co'>## Aliased as `testRapi::deserialise_named_list(filename)`</span>
+<span class='co'>## Method `J$Serialiser$deserialiseNamedList(...)`</span>
+<span class='co'>## Aliased as `testRapi::deserialise_named_list(...)`</span>
 <span class='co'>## -----------------------------------</span>
 <span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='co'># no example given - appropriate parameter values must be provided:</span>
@@ -796,21 +870,21 @@ using RObject.readRDS.</p>
 <span class='op'>}</span>
 
 <span class='co'>## -----------------------------------</span>
-<span class='co'>## Method `J$FeatureTest$new(logMessage)`</span>
+<span class='co'>## Method `J$FeatureTest$new(...)`</span>
 <span class='co'>## -----------------------------------</span>
 <span class='va'>minExample</span> <span class='op'>=</span> <span class='va'>J</span><span class='op'>$</span><span class='va'>FeatureTest</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='st'>'Hello from Java constructor!'</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>2022-08-15 17:33:57,893 INFO uk.co.terminological.rjava.test.FeatureTest [main] Hello from Java constructor!</span></div><div class='input'>
+</div><div class='output co'>#&gt; <span class='message'>2022-09-24 00:30:51,236 INFO uk.co.terminological.rjava.test.FeatureTest [main] Hello from Java constructor!</span></div><div class='input'>
 <span class='co'>## -----------------------------------</span>
-<span class='co'>## Method `J$FeatureTest$demoStatic(message)`</span>
-<span class='co'>## Aliased as `testRapi::demo_static(message)`</span>
+<span class='co'>## Method `J$FeatureTest$demoStatic(...)`</span>
+<span class='co'>## Aliased as `testRapi::demo_static(...)`</span>
 <span class='co'>## -----------------------------------</span>
 <span class='va'>J</span> <span class='op'>=</span> <span class='va'>JavaApi</span><span class='op'>$</span><span class='fu'>get</span><span class='op'>(</span><span class='op'>)</span>
 <span class='va'>J</span><span class='op'>$</span><span class='va'>FeatureTest</span><span class='op'>$</span><span class='fu'>demoStatic</span><span class='op'>(</span><span class='st'>'Ola, el mundo'</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>2022-08-15 17:33:57,895 INFO uk.co.terminological.rjava.test.FeatureTest [main] Ola, el mundo</span></div><div class='input'><span class='fu'><a href='demo_static.html'>demo_static</a></span><span class='op'>(</span><span class='st'>'Bonjour, le monde'</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>2022-08-15 17:33:57,896 INFO uk.co.terminological.rjava.test.FeatureTest [main] Bonjour, le monde</span></div><div class='input'>
+</div><div class='output co'>#&gt; <span class='message'>2022-09-24 00:30:51,246 INFO uk.co.terminological.rjava.test.FeatureTest [main] Ola, el mundo</span></div><div class='input'><span class='fu'><a href='demo_static.html'>demo_static</a></span><span class='op'>(</span><span class='st'>'Bonjour, le monde'</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>2022-09-24 00:30:51,251 INFO uk.co.terminological.rjava.test.FeatureTest [main] Bonjour, le monde</span></div><div class='input'>
 <span class='co'>## -----------------------------------</span>
-<span class='co'>## Method `J$FeatureTest$diamonds()`</span>
-<span class='co'>## Aliased as `testRapi::diamonds()`</span>
+<span class='co'>## Method `J$FeatureTest$diamonds(...)`</span>
+<span class='co'>## Aliased as `testRapi::diamonds(...)`</span>
 <span class='co'>## -----------------------------------</span>
 <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span> <span class='fu'><a href='diamonds.html'>diamonds</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>)</span>
 </div><div class='output co'>#&gt; Rows: 53,940
@@ -826,7 +900,18 @@ using RObject.readRDS.</p>
 #&gt; $ y       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> 3.98, 3.84, 4.07, 4.23, 4.35, 3.96, 3.98, 4.11, 3.78, 4.05, 4.…
 #&gt; $ z       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39, 2.…</div><div class='input'>
 <span class='co'>## -----------------------------------</span>
-<span class='co'>## Method `J$MinimalExample$new()`</span>
+<span class='co'>## Method `J$FeatureTest$collider(...)`</span>
+<span class='co'>## Aliased as `testRapi::feature_test_collider(...)`</span>
+<span class='co'>## -----------------------------------</span>
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='co'># no example given - appropriate parameter values must be provided:</span>
+<span class='va'>J</span><span class='op'>$</span><span class='va'>FeatureTest</span><span class='op'>$</span><span class='fu'>collider</span><span class='op'>(</span><span class='va'>message1</span>, <span class='va'>message2</span><span class='op'>)</span>
+<span class='co'># or alternatively:</span>
+<span class='fu'>testRapi</span><span class='fu'>::</span><span class='fu'><a href='feature_test_collider.html'>feature_test_collider</a></span><span class='op'>(</span><span class='va'>message1</span>, <span class='va'>message2</span><span class='op'>)</span>
+<span class='op'>}</span>
+
+<span class='co'>## -----------------------------------</span>
+<span class='co'>## Method `J$MinimalExample$new(...)`</span>
 <span class='co'>## -----------------------------------</span>
 <span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='co'># no example given - appropriate parameter values must be provided:</span>
@@ -836,7 +921,7 @@ using RObject.readRDS.</p>
 <span class='op'>}</span>
 
 <span class='co'>## -----------------------------------</span>
-<span class='co'>## Method `J$MoreFeatureTest$new(message1, message2)`</span>
+<span class='co'>## Method `J$MoreFeatureTest$new(...)`</span>
 <span class='co'>## -----------------------------------</span>
 <span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='co'># no example given - appropriate parameter values must be provided:</span>
@@ -846,15 +931,15 @@ using RObject.readRDS.</p>
 <span class='op'>}</span>
 
 <span class='co'>## -----------------------------------</span>
-<span class='co'>## Method `J$MoreFeatureTest$create(message1, message2)`</span>
-<span class='co'>## Aliased as `testRapi::create(message1, message2)`</span>
+<span class='co'>## Method `J$MoreFeatureTest$create(...)`</span>
+<span class='co'>## Aliased as `testRapi::create(...)`</span>
 <span class='co'>## -----------------------------------</span>
 <span class='va'>J</span> <span class='op'>=</span> <span class='va'>JavaApi</span><span class='op'>$</span><span class='fu'>get</span><span class='op'>(</span><span class='op'>)</span>
 <span class='va'>J</span><span class='op'>$</span><span class='va'>MoreFeatureTest</span><span class='op'>$</span><span class='fu'>create</span><span class='op'>(</span><span class='st'>'Hello,'</span>,<span class='st'>' World'</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>2022-08-15 17:33:58,816 INFO uk.co.terminological.rjava.test.MoreFeatureTest [main] constuctor: Hello,,  World</span></div><div class='output co'>#&gt; [1] "toString:  World"</div><div class='input'>
+</div><div class='output co'>#&gt; <span class='message'>2022-09-24 00:30:52,145 INFO uk.co.terminological.rjava.test.MoreFeatureTest [main] constuctor: Hello,,  World</span></div><div class='output co'>#&gt; [1] "toString:  World"</div><div class='input'>
 <span class='co'>## -----------------------------------</span>
-<span class='co'>## Method `J$MoreFeatureTest$concat(message1, message2)`</span>
-<span class='co'>## Aliased as `testRapi::concat(message1, message2)`</span>
+<span class='co'>## Method `J$MoreFeatureTest$concat(...)`</span>
+<span class='co'>## Aliased as `testRapi::concat(...)`</span>
 <span class='co'>## -----------------------------------</span>
 <span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='co'># no example given - appropriate parameter values must be provided:</span>
@@ -862,6 +947,14 @@ using RObject.readRDS.</p>
 <span class='co'># or alternatively:</span>
 <span class='fu'>testRapi</span><span class='fu'>::</span><span class='fu'><a href='concat.html'>concat</a></span><span class='op'>(</span><span class='va'>message1</span>, <span class='va'>message2</span><span class='op'>)</span>
 <span class='op'>}</span>
+
+<span class='co'>## -----------------------------------</span>
+<span class='co'>## Method `J$MoreFeatureTest$collider(...)`</span>
+<span class='co'>## Aliased as `testRapi::more_feature_test_collider(...)`</span>
+<span class='co'>## -----------------------------------</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://testthat.r-lib.org'>testthat</a></span><span class='op'>)</span>
+<span class='va'>tmp</span> <span class='op'>=</span> <span class='fu'><a href='more_feature_test_collider.html'>more_feature_test_collider</a></span><span class='op'>(</span><span class='st'>'should '</span>,<span class='st'>'work'</span><span class='op'>)</span>
+<span class='fu'><a href='https://testthat.r-lib.org/reference/equality-expectations.html'>expect_equal</a></span><span class='op'>(</span><span class='va'>tmp</span>,<span class='st'>'more feature test: should work'</span><span class='op'>)</span>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

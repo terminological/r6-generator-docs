@@ -4,9 +4,9 @@
 #' @description
 #' A Test Library
 #'
-#' Version: 0.5.4
+#' Version: 0.0.0.9999
 #'
-#' Generated: 2022-08-15T17:33:45.005
+#' Generated: 2022-09-24T00:30:36.138098
 #'
 #' Contact: rc538@exeter.ac.uk
 #' @import ggplot2
@@ -78,11 +78,7 @@ JavaApi = R6::R6Class("JavaApi", public=list(
  		if (is.null(JavaApi$singleton)) stop("Startup the java api with JavaApi$get() rather than using this constructor directly")
  	
  	
- 		tryCatch({
-			if (!.jniInitialized) 
-				.jinit(parameters=getOption("java.parameters"),silent = TRUE, force.init = FALSE)
-		}, error = function(e) stop("Java cannot be initialised: ",e$message)
-		)
+ 		.startJvm()
 		
 		# Java dependencies
 		jars = .checkDependencies(quiet = TRUE)
@@ -99,8 +95,8 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 		  .jcall(self$.log,returnSig = "V",method = "debug", jar)
 		}
 		.jcall(self$.log,returnSig = "V",method = "info","Initialised testRapi");
-		.jcall(self$.log,returnSig = "V",method = "debug","R package version: 0.5.4");
-		.jcall(self$.log,returnSig = "V",method = "debug","R package generated: 2022-08-15T17:33:45.005");
+		.jcall(self$.log,returnSig = "V",method = "debug","R package version: 0.0.0.9999");
+		.jcall(self$.log,returnSig = "V",method = "debug","R package generated: 2022-09-24T00:30:36.139574");
 		.jcall(self$.log,returnSig = "V",method = "debug","Java library version: io.github.terminological:r6-generator-docs:main-SNAPSHOT");
 		.jcall(self$.log,returnSig = "V",method = "debug",paste0("Java library compiled: ",buildDate));
 		.jcall(self$.log,returnSig = "V",method = "debug","Contact: rc538@exeter.ac.uk");
@@ -533,6 +529,19 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 				out = self$.fromJava$RDataframe(tmp_out);
 				if(is.null(out)) return(invisible(out))
 				return(out)
+			},
+			collider = function(message1, message2) {
+				# copy parameters
+				tmp_message1 = self$.toJava$RCharacter(message1);
+				tmp_message2 = self$.toJava$RCharacter(message2);
+				#execute static call
+				tmp_out = .jcall("uk/co/terminological/rjava/test/FeatureTest", returnSig = "Luk/co/terminological/rjava/types/RCharacter;", method="collider" , tmp_message1, tmp_message2, check=FALSE);
+				self$printMessages()
+				.jcheck() 
+				# convert java object back to R
+				out = self$.fromJava$RCharacter(tmp_out);
+				if(is.null(out)) return(invisible(out))
+				return(out)
 			}	)
 		self$MinimalExample = list(
 			new = function() {
@@ -594,6 +603,19 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 				out = self$.fromJava$RCharacter(tmp_out);
 				if(is.null(out)) return(invisible(out))
 				return(out)
+			},
+			collider = function(message1, message2) {
+				# copy parameters
+				tmp_message1 = self$.toJava$RCharacter(message1);
+				tmp_message2 = self$.toJava$RCharacter(message2);
+				#execute static call
+				tmp_out = .jcall("uk/co/terminological/rjava/test/MoreFeatureTest", returnSig = "Luk/co/terminological/rjava/types/RCharacter;", method="collider" , tmp_message1, tmp_message2, check=FALSE);
+				self$printMessages()
+				.jcheck() 
+				# convert java object back to R
+				out = self$.fromJava$RCharacter(tmp_out);
+				if(is.null(out)) return(invisible(out))
+				return(out)
 			}	)
 	}
 ))
@@ -610,18 +632,8 @@ JavaApi$get = function(logLevel = "INFO") {
 }
 
 JavaApi$rebuildDependencies = function( ... ) {
-	# remove working directory
-	unlink(.workingDir(), recursive = TRUE)
-	# rebuild everything
-	classpath = .checkDependencies(quiet = FALSE, ...)
-	
-	# find the jars that come bundled with the library:
-	jars = list.files(.here("java"), pattern=".*\\.jar", full.names = TRUE)
-	jars = jars[!endsWith(jars,"sources.jar") & !endsWith(jars,"javadoc.jar") & !endsWith(jars,"src.jar")]
-	
-	# and add any that have been resolved and downloaded by maven:
-	jars = unique(c(jars,classpath))
-	
+	.startJvm()
+	jars = .checkDependencies(nocache=TRUE, quiet=FALSE)
 	if (!all(file.exists(jars))) {
 		warning("The library has been rebuilt but there is still some missing dependencies: Out of the following")
 		warning(paste0(jars,collapse="\n"))
@@ -634,16 +646,17 @@ JavaApi$rebuildDependencies = function( ... ) {
 	return(jars)
 }
 
-
 JavaApi$installDependencies = function() {
-	.checkDependencies(quiet=FALSE)
+	.startJvm()
+	jars = .checkDependencies(nocache=FALSE, quiet=FALSE)
+	.jaddClassPath(jars)
 }
 
 JavaApi$versionInformation = function() {
 	out = list(
 		package = "testRapi",
-		r_package_version = "0.5.4",
-		r_package_generated = "2022-08-15T17:33:45.042",
+		r_package_version = "0.0.0.9999",
+		r_package_generated = "2022-09-24T00:30:36.152936",
 		java_library_version = "io.github.terminological:r6-generator-docs:main-SNAPSHOT",
 		maintainer = "rc538@exeter.ac.uk"
 	)
@@ -658,166 +671,27 @@ JavaApi$versionInformation = function() {
 # as this is generated code configuration is hard coded here
 # i.e. these functions are specific for the configuration of this package.
 
-.checkDependencies = function(...) {
+
+.checkDependencies = function(nocache = FALSE, ...) {
+	package_jar = .package_jars(package="testRapi",types="thin-jar")
+	package_jar = package_jar[startsWith(fs::path_file(package_jar),"r6-generator-docs-main-SNAPSHOT")]
+	
 	# Java dependencies
-	# all java library code and dependencies have already been bundled into a single fat jar
-	# compilation was done on the library developers machine and has no external dependencies
-	classpath = NULL
+	# the main java library has been compiled but external dependencies must be resolved by maven
+	# successful resolution of the classpath libraries depends on the runtime machine and requires
+	# access to the internet at a minimum.
+	maven_dependencies = .resolve_dependencies(artifact="io.github.terminological:r6-generator-docs:main-SNAPSHOT", nocache=nocache, path=package_jar, ...)
+	jars = .package_jars(package="testRapi",types="thin-jar")
+	# all jars in R package and maven dependencies
+	jars = unique(c(jars,maven_dependencies))
 	
 	# find the jars that come bundled with the library:
-	jars = list.files(.here("java"), pattern=".*\\.jar", full.names = TRUE)
-	jars = jars[!endsWith(jars,"sources.jar") & !endsWith(jars,"javadoc.jar") & !endsWith(jars,"src.jar")]
-	
 	# and add any that have been resolved and downloaded by maven:
-	jars = unique(c(jars,classpath))
 	return(jars)
 }
 
-# package working directory
-.workingDir = function() {
-	tmp = path.expand(rappdirs::user_cache_dir("testRapi-0.5.4"))
-	fs::dir_create(tmp)
-	return(tmp)
-}
 
-# package installation directory
-.here = function(paths) {
-	path.expand(system.file(paths, package="testRapi"))
-}
-
-# loads a maven wrapper distribution from the internet and unzips it into the package working directory
-.loadMavenWrapper = function() {
-	dir = .workingDir()
-	if (!file.exists(paste0(dir,"/mvnw"))) {
-		destfile = paste0(dir,"/wrapper.zip")
-		message("Bootstrapping maven wrapper.")
-		utils::download.file(
-			"https://repo1.maven.org/maven2/org/apache/maven/wrapper/maven-wrapper-distribution/3.1.1/maven-wrapper-distribution-3.1.1-bin.zip",
-			destfile = destfile,
-			quiet = TRUE
-		)
-		utils::unzip(destfile,exdir=dir)
-		unlink(destfile)
-		if(!file.exists(paste0(dir,"/mvnw"))) stop("downloading maven wrapper has not been successful")
-	}
-	if(.Platform$OS.type == "windows") {
-		mvnPath = paste0(dir,"/mvnw.cmd")
-	} else {
-		mvnPath = paste0(dir,"/mvnw")
-	}
-	write(c(
-		"distributionUrl=https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.3.9/apache-maven-3.3.9-bin.zip",
-		"wrapperUrl=https://repo.maven.apache.org/maven2/org/apache/maven/wrapper/maven-wrapper/3.1.1/maven-wrapper-3.1.1.jar"
-	), paste0(dir,"/.mvn/wrapper/maven-wrapper.properties"))
-	Sys.chmod(mvnPath)
-	return(mvnPath)
-}
-
-# detect if `test` file exists and is newer that `original`
-.fileNewer = function(original, test) {
-	if (!file.exists(original)) stop("source file doesn't exist")
-	if (!file.exists(test)) return(FALSE)
-	as.POSIXct(file.info(original)$mtime) < as.POSIXct(file.info(test)$mtime)
-}
-
-# gets the pom.xml file for io.github.terminological:r6-generator-docs:main-SNAPSHOT from a thin jar
-.extractPom = function() {
-	dir = .workingDir()
-	jarLoc = list.files(.here(c("inst/java","java")), pattern = "r6-generator-docs-main-SNAPSHOT\\.jar", full.names = TRUE)
-	if (length(jarLoc)==0) stop("couldn't find jar for artifact: r6-generator-docs-main-SNAPSHOT")
-	jarLoc = jarLoc[[1]]
-	pomPath = paste0(dir,"/pom.xml")
-	if (!.fileNewer(jarLoc, pomPath)) {
-		utils::unzip(jarLoc, files = "META-INF/maven/io.github.terminological/r6-generator-docs/pom.xml", junkpaths = TRUE, exdir = dir)
-		if (!file.exists(pomPath)) stop("couldn't extract META-INF/maven/io.github.terminological/r6-generator-docs/pom.xml from ",jarLoc)
-	}
-	return(pomPath)
-}
-
-# gets the pom.xml file for io.github.terminological:r6-generator-docs:main-SNAPSHOT which is the library version we exepct to be bundled in the 
-.extractSources = function() {
-	dir = .workingDir()
-	jarLoc = list.files(.here(c("inst/java","java")), pattern = "r6-generator-docs-main-SNAPSHOT-src\\.jar", full.names = TRUE)
-	if (length(jarLoc)==0) stop("couldn't find jar for artifact: r6-generator-docs-main-SNAPSHOT-src.jar")
-	jarLoc = jarLoc[[1]]
-	pomPath = paste0(dir,"/r6-generator-docs-main-SNAPSHOT/pom.xml")
-	if (!.fileNewer(jarLoc, pomPath)) {
-		utils::unzip(jarLoc, exdir = dir)
-		if (!file.exists(pomPath)) stop("couldn't extract source files from ",jarLoc)
-	}
-	return(pomPath)
-}
-
-# executes maven assembly plugin and relocates resulting fat jar into java library directory
-.compileFatJar = function(pomPath, ...) {
-	fatJarFinal = fs::path(.here("java"),"r6-generator-docs-main-SNAPSHOT-jar-with-dependencies.jar")
-	if (!.fileNewer(pomPath, fatJarFinal)) {
-		message("Compiling java library and downloading dependencies, please be patient.")
-		.executeMaven(
-			pomPath, 
-			goal = c("compile","assembly:assembly"),
-			opts = c(
-				"-DdescriptorId=jar-with-dependencies",
-				"-Dmaven.test.skip=true"
-			),
-			...
-		)
-		message("Compilation complete")
-		fatJar = fs::path_norm(fs::path(pomPath, "../target/r6-generator-docs-main-SNAPSHOT-jar-with-dependencies.jar"))
-		fs::file_move(fatJar, fatJarFinal)
-	}
-	return(fatJarFinal)
-}
-
-# execute a `dependency:build-classpath` maven goal on the `pom.xml`
-.resolveDependencies = function(pomPath, ...) {
-	classpathLoc = paste0(.workingDir(), "/classpath.txt" )
-	# If the classpath file is already there we need to check that the entries on the class path are indeed available on this machine
-	# as they may have been moved or deleted
-	if(file.exists(classpathLoc)) {
-		classpathString = unique(readLines(classpathLoc,warn = FALSE))
-		if (!all(file.exists(classpathString))) {
-			# we need to rebuild the classpath file as some dependencies are not available
-			unlink(classpathLoc)
-		}
-	} 
-	if(!.fileNewer(pomPath,classpathLoc)) {
-		message("Calculating classpath and updating dependencies, please be patient.")
-		.executeMaven(
-			pomPath, 
-			goal = "dependency:build-classpath",		
-			opts = c(
-				paste0("-Dmdep.outputFile=classpath.txt"),
-				paste0("-DincludeScope=runtime")
-			),
-			...
-		)
-		message("Dependencies updated")
-	}
-	
-	if(.Platform$OS.type == "windows") {
-	  classpathString = unique(scan(classpathLoc, what = "character", sep=";", quiet=TRUE))
-	} else {
-	  classpathString = unique(scan(classpathLoc, what = "character", sep=":", quiet=TRUE))
-	}
-	
-	if (!all(file.exists(classpathString))) 
-		stop("For some inexplicable reason, Maven cannot determine the classpaths of the dependencies of this library on this machine. You can try testRapi::JavaApi$rebuildDependencies()")
-	return(classpathString)
-}
-
-# executes a maven goal plus or minus info or debugging
-.executeMaven = function(pomPath, goal, opts = c(), quiet=TRUE, debug=FALSE, ...) {
-	mvnPath = .loadMavenWrapper()
-	args = c(goal, opts) #, paste0("-f '",pomPath,"'"))
-	if (quiet) args = c(args, "-q")
-	if (debug) args = c(args, "-X")
-	java_home = rJava::.jcall( 'java/lang/System', 'S', 'getProperty', 'java.home' )
-	Sys.setenv(JAVA_HOME=java_home)
-	# required due to an issue in Mvnw.cmd on windows.
-	wd = getwd()
-	setwd(fs::path_dir(pomPath))
-	system2(mvnPath, args)
-	setwd(wd)
+.startJvm = function() {
+	.start_jvm(debug=FALSE)
 }
 

@@ -13,17 +13,19 @@ knitr::opts_chunk$set(
   echo = TRUE,
   error = TRUE)
 
-# don't try evaluate this vignette
-# in windows as bash chunks don't always work
+
 if (.Platform$OS.type == "windows") {
   
+  # don't try evaluate this vignette
+  # in windows as bash chunks don't always work
   knitr::opts_chunk$set(eval = FALSE)
 
 } else {
   
-  # stop this from being run if being checked as cran
-  notCran = identical(Sys.getenv("NOT_CRAN", unset = "true"), "true")
-  knitr::opts_chunk$set(eval = notCran)
+  # stop this from being run if not being run as part of build_site()
+  # this should stop it from running on CRAN and in github worflows
+  inPkgdown = identical(Sys.getenv("IN_PKGDOWN"), "true")
+  knitr::opts_chunk$set(eval = inPkgdown)
   
 }
 ```

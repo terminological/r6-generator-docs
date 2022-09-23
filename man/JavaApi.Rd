@@ -25,9 +25,9 @@
 \description{
 Documents the features of the 'r6-generator-maven-plugin' by providing an example of an R package automatically generated from Java code by the plugin. It is not intended to be useful beyond testing, demonstrating and documenting the features of the plugin.
 
-Version: 0.5.4
+Version: 0.0.0.9999
 
-Generated: 2022-08-15T17:33:44.923
+Generated: 2022-09-24T00:30:36.075056
 }
 
 \author{\email{rc538@exeter.ac.uk}}
@@ -48,7 +48,7 @@ J = testRapi::JavaApi$get()
 
 
 ## -----------------------------------
-## Method `J$FactoryTest$new()`
+## Method `J$FactoryTest$new(...)`
 ## -----------------------------------
 \dontrun{
 # no example given - appropriate parameter values must be provided:
@@ -58,7 +58,7 @@ testRapi::new()
 }
 
 ## -----------------------------------
-## Method `J$BounceTest$new()`
+## Method `J$BounceTest$new(...)`
 ## -----------------------------------
 \dontrun{
 # no example given - appropriate parameter values must be provided:
@@ -68,7 +68,7 @@ testRapi::new()
 }
 
 ## -----------------------------------
-## Method `J$Serialiser$new()`
+## Method `J$Serialiser$new(...)`
 ## -----------------------------------
 \dontrun{
 # no example given - appropriate parameter values must be provided:
@@ -78,8 +78,8 @@ testRapi::new()
 }
 
 ## -----------------------------------
-## Method `J$Serialiser$serialiseDataframe(dataframe, filename)`
-## Aliased as `testRapi::serialise_dataframe(dataframe, filename)`
+## Method `J$Serialiser$serialiseDataframe(...)`
+## Aliased as `testRapi::serialise_dataframe(...)`
 ## -----------------------------------
 \dontrun{
 # no example given - appropriate parameter values must be provided:
@@ -89,8 +89,8 @@ testRapi::serialise_dataframe(dataframe, filename)
 }
 
 ## -----------------------------------
-## Method `J$Serialiser$deserialiseDataframe(filename)`
-## Aliased as `testRapi::deserialise_dataframe(filename)`
+## Method `J$Serialiser$deserialiseDataframe(...)`
+## Aliased as `testRapi::deserialise_dataframe(...)`
 ## -----------------------------------
 \dontrun{
 # no example given - appropriate parameter values must be provided:
@@ -100,8 +100,8 @@ testRapi::deserialise_dataframe(filename)
 }
 
 ## -----------------------------------
-## Method `J$Serialiser$serialiseList(dataframe, filename)`
-## Aliased as `testRapi::serialise_list(dataframe, filename)`
+## Method `J$Serialiser$serialiseList(...)`
+## Aliased as `testRapi::serialise_list(...)`
 ## -----------------------------------
 \dontrun{
 # no example given - appropriate parameter values must be provided:
@@ -111,8 +111,8 @@ testRapi::serialise_list(dataframe, filename)
 }
 
 ## -----------------------------------
-## Method `J$Serialiser$deserialiseList(filename)`
-## Aliased as `testRapi::deserialise_list(filename)`
+## Method `J$Serialiser$deserialiseList(...)`
+## Aliased as `testRapi::deserialise_list(...)`
 ## -----------------------------------
 \dontrun{
 # no example given - appropriate parameter values must be provided:
@@ -122,8 +122,8 @@ testRapi::deserialise_list(filename)
 }
 
 ## -----------------------------------
-## Method `J$Serialiser$serialiseNamedList(dataframe, filename)`
-## Aliased as `testRapi::serialise_named_list(dataframe, filename)`
+## Method `J$Serialiser$serialiseNamedList(...)`
+## Aliased as `testRapi::serialise_named_list(...)`
 ## -----------------------------------
 \dontrun{
 # no example given - appropriate parameter values must be provided:
@@ -133,8 +133,8 @@ testRapi::serialise_named_list(dataframe, filename)
 }
 
 ## -----------------------------------
-## Method `J$Serialiser$deserialiseNamedList(filename)`
-## Aliased as `testRapi::deserialise_named_list(filename)`
+## Method `J$Serialiser$deserialiseNamedList(...)`
+## Aliased as `testRapi::deserialise_named_list(...)`
 ## -----------------------------------
 \dontrun{
 # no example given - appropriate parameter values must be provided:
@@ -144,26 +144,37 @@ testRapi::deserialise_named_list(filename)
 }
 
 ## -----------------------------------
-## Method `J$FeatureTest$new(logMessage)`
+## Method `J$FeatureTest$new(...)`
 ## -----------------------------------
 minExample = J$FeatureTest$new('Hello from Java constructor!')
 
 ## -----------------------------------
-## Method `J$FeatureTest$demoStatic(message)`
-## Aliased as `testRapi::demo_static(message)`
+## Method `J$FeatureTest$demoStatic(...)`
+## Aliased as `testRapi::demo_static(...)`
 ## -----------------------------------
 J = JavaApi$get()
 J$FeatureTest$demoStatic('Ola, el mundo')
 demo_static('Bonjour, le monde')
 
 ## -----------------------------------
-## Method `J$FeatureTest$diamonds()`
-## Aliased as `testRapi::diamonds()`
+## Method `J$FeatureTest$diamonds(...)`
+## Aliased as `testRapi::diamonds(...)`
 ## -----------------------------------
 dplyr::glimpse( diamonds() )
 
 ## -----------------------------------
-## Method `J$MinimalExample$new()`
+## Method `J$FeatureTest$collider(...)`
+## Aliased as `testRapi::feature_test_collider(...)`
+## -----------------------------------
+\dontrun{
+# no example given - appropriate parameter values must be provided:
+J$FeatureTest$collider(message1, message2)
+# or alternatively:
+testRapi::feature_test_collider(message1, message2)
+}
+
+## -----------------------------------
+## Method `J$MinimalExample$new(...)`
 ## -----------------------------------
 \dontrun{
 # no example given - appropriate parameter values must be provided:
@@ -173,7 +184,7 @@ testRapi::new()
 }
 
 ## -----------------------------------
-## Method `J$MoreFeatureTest$new(message1, message2)`
+## Method `J$MoreFeatureTest$new(...)`
 ## -----------------------------------
 \dontrun{
 # no example given - appropriate parameter values must be provided:
@@ -183,15 +194,15 @@ testRapi::new(message1, message2)
 }
 
 ## -----------------------------------
-## Method `J$MoreFeatureTest$create(message1, message2)`
-## Aliased as `testRapi::create(message1, message2)`
+## Method `J$MoreFeatureTest$create(...)`
+## Aliased as `testRapi::create(...)`
 ## -----------------------------------
 J = JavaApi$get()
 J$MoreFeatureTest$create('Hello,',' World')
 
 ## -----------------------------------
-## Method `J$MoreFeatureTest$concat(message1, message2)`
-## Aliased as `testRapi::concat(message1, message2)`
+## Method `J$MoreFeatureTest$concat(...)`
+## Aliased as `testRapi::concat(...)`
 ## -----------------------------------
 \dontrun{
 # no example given - appropriate parameter values must be provided:
@@ -199,6 +210,14 @@ J$MoreFeatureTest$concat(message1, message2)
 # or alternatively:
 testRapi::concat(message1, message2)
 }
+
+## -----------------------------------
+## Method `J$MoreFeatureTest$collider(...)`
+## Aliased as `testRapi::more_feature_test_collider(...)`
+## -----------------------------------
+library(testthat)
+tmp = more_feature_test_collider('should ','work')
+expect_equal(tmp,'more feature test: should work')
 }
 
 \keyword{java api}
@@ -239,6 +258,7 @@ testRapi::concat(message1, message2)
 		\item \href{#method-FeatureTest-new}{\code{J$FeatureTest$new(logMessage)}}
 		\item \href{#method-FeatureTest-demoStatic}{\code{J$FeatureTest$demoStatic(message)}}
 		\item \href{#method-FeatureTest-diamonds}{\code{J$FeatureTest$diamonds()}}
+		\item \href{#method-FeatureTest-collider}{\code{J$FeatureTest$collider(message1, message2)}}
 	}
 	\if{html}{\out{<hr>}}
 	\itemize{
@@ -249,6 +269,7 @@ testRapi::concat(message1, message2)
 		\item \href{#method-MoreFeatureTest-new}{\code{J$MoreFeatureTest$new(message1, message2)}}
 		\item \href{#method-MoreFeatureTest-create}{\code{J$MoreFeatureTest$create(message1, message2)}}
 		\item \href{#method-MoreFeatureTest-concat}{\code{J$MoreFeatureTest$concat(message1, message2)}}
+		\item \href{#method-MoreFeatureTest-collider}{\code{J$MoreFeatureTest$collider(message1, message2)}}
 	}
 }
 
@@ -278,7 +299,6 @@ testRapi::JavaApi$installDependencies()
 nothing. called for side effects.
 		}
 	}
-	\if{html}{\out{</div>}}
 	
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-api-rebuildDependencies"></a>}}
@@ -306,7 +326,6 @@ testRapi::JavaApi$rebuildDependencies()
 nothing. called for side effects.
 		}
 	}
-	\if{html}{\out{</div>}}
 	
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-api-versionInformation"></a>}}
@@ -333,7 +352,6 @@ testRapi::JavaApi$versionInformation()
 A list containing a set of versioning information about this package.
 		}
 	}
-	\if{html}{\out{</div>}}
 	
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-api-get"></a>}}
@@ -362,7 +380,6 @@ J = testRapi::JavaApi$get()
 A R6 testRapi::JavaApi object containing the access point to the objects and functions defined in this package 
 		}
 	}
-	\if{html}{\out{</div>}}
 	
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-api-changeLogLevel"></a>}}
@@ -390,7 +407,6 @@ J$changeLogLevel("DEBUG")
 nothing. used for side effects.
 		}
 	}
-	\if{html}{\out{</div>}}
 	
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-api-reconfigreLog"></a>}}
@@ -422,7 +438,6 @@ if (fs::file_exists(prp)) {
 nothing. used for side effects.
 		}
 	}
-	\if{html}{\out{</div>}}
 	
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-api-printMessages"></a>}}
@@ -452,7 +467,6 @@ J$printMessages()
 nothing. used for side effects.
 		}
 	}
-	\if{html}{\out{</div>}}
 	
 }
 
@@ -863,6 +877,38 @@ dplyr::glimpse( diamonds() )
 		}
 
 	\if{html}{\out{<hr>}}
+	\if{html}{\out{<a id="method-FeatureTest-collider"></a>}}
+	
+	\subsection{Method \code{FeatureTest$collider()}}{
+		no title
+	
+		\subsection{Usage}{
+			\if{html}{\out{<div class="r">}}
+			\preformatted{
+J = testRapi::JavaApi$get()
+J$FeatureTest$collider(message1, message2)
+# this method is also exposed as a package function:
+testRapi::feature_test_collider(message1, message2)
+	  		}
+			\if{html}{\out{</div>}}
+		}
+	
+		\subsection{Arguments}{
+			\if{html}{\out{<div class="arguments">}}
+			\itemize{
+				\item{message1}{ - (java expects a RCharacter)}
+				\item{message2}{ - (java expects a RCharacter)}
+			}
+			\if{html}{\out{</div>}}
+		}
+
+		\subsection{Returns}{
+			RCharacter: 
+		}
+	}
+
+
+	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-MinimalExample-new"></a>}}
 	
 	\subsection{Method \code{MinimalExample$new()}}{
@@ -992,6 +1038,47 @@ testRapi::concat(message1, message2)
 		}
 	}
 
+
+	\if{html}{\out{<hr>}}
+	\if{html}{\out{<a id="method-MoreFeatureTest-collider"></a>}}
+	
+	\subsection{Method \code{MoreFeatureTest$collider()}}{
+		no title
+	
+		\subsection{Usage}{
+			\if{html}{\out{<div class="r">}}
+			\preformatted{
+J = testRapi::JavaApi$get()
+J$MoreFeatureTest$collider(message1, message2)
+# this method is also exposed as a package function:
+testRapi::more_feature_test_collider(message1, message2)
+	  		}
+			\if{html}{\out{</div>}}
+		}
+	
+		\subsection{Arguments}{
+			\if{html}{\out{<div class="arguments">}}
+			\itemize{
+				\item{message1}{ - (java expects a RCharacter)}
+				\item{message2}{ - (java expects a RCharacter)}
+			}
+			\if{html}{\out{</div>}}
+		}
+
+		\subsection{Returns}{
+			RCharacter: 
+		}
+	}
+
+		\subsection{Examples}{
+			\if{html}{\out{<div class="r example copy">}}
+			\preformatted{
+library(testthat)
+tmp = more_feature_test_collider('should ','work')
+expect_equal(tmp,'more feature test: should work')
+			}
+			\if{html}{\out{</div>}}
+		}
 
 
 }
