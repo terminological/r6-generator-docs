@@ -1,0 +1,12 @@
+pandoc: 2.7.3
+pkgdown: 1.6.1
+pkgdown_sha: ~
+articles:
+  R6-generator-datatypes: R6-generator-datatypes.html
+  R6-generator-features: R6-generator-features.html
+  R6-generator-maven-config: R6-generator-maven-config.html
+  R6-generator-runtime: R6-generator-runtime.html
+  testRapi: testRapi.html
+  web-only/R6-generator-maven-archetype: R6-generator-maven-archetype.html
+last_built: 2022-09-24T00:20Z
+
