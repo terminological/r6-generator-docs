@@ -14,7 +14,7 @@ This class is a very basic example of the features of the rJava maven plugin.
 
 Version: 0.0.0.9999
 
-Generated: 2022-09-24T00:30:36.294651
+Generated: 2022-09-24T01:15:12.930952
 }
 
 \details{

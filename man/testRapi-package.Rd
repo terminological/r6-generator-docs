@@ -25,8 +25,8 @@ Classes:
 \author{
 \itemize{ 
    \item Rob Challen rc538@exeter.ac.uk 
-   \item terminological   
    \item Rob Challen rob@terminological.co.uk 0000-0002-5504-7768
+   \item terminological   
 }
 }
 

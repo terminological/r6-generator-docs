@@ -8,8 +8,8 @@ c(
 		doi = "10.5281/zenodo.6645134",
 		author = c(
 			person(given = "Rob",family = "Challen",email = "rc538@exeter.ac.uk",role = c("aut", "cre")),
-			person(given = "Rob",family = "Challen",email = "rob@terminological.co.uk",comment = structure("0000-0002-5504-7768", .Names = "ORCID"),role = "aut"),
-			person(given = "terminological",role = "aut")		)
+			person(given = "terminological",role = "aut"),
+			person(given = "Rob",family = "Challen",email = "rob@terminological.co.uk",comment = structure("0000-0002-5504-7768", .Names = "ORCID"),role = "aut")		)
 	),
 	bibentry(bibtype = "Manual",
 		title = "R6 generator maven plugin",

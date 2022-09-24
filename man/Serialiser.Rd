@@ -13,7 +13,7 @@ Actually useful class which takes an R dataframe and a filename
 
 Version: 0.0.0.9999
 
-Generated: 2022-09-24T00:30:36.259080
+Generated: 2022-09-24T01:15:12.879586
 }
 
 \details{

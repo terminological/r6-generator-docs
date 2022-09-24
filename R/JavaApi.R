@@ -6,7 +6,7 @@
 #'
 #' Version: 0.0.0.9999
 #'
-#' Generated: 2022-09-24T00:30:36.138098
+#' Generated: 2022-09-24T01:15:12.802691
 #'
 #' Contact: rc538@exeter.ac.uk
 #' @import ggplot2
@@ -96,7 +96,7 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 		}
 		.jcall(self$.log,returnSig = "V",method = "info","Initialised testRapi");
 		.jcall(self$.log,returnSig = "V",method = "debug","R package version: 0.0.0.9999");
-		.jcall(self$.log,returnSig = "V",method = "debug","R package generated: 2022-09-24T00:30:36.139574");
+		.jcall(self$.log,returnSig = "V",method = "debug","R package generated: 2022-09-24T01:15:12.802936");
 		.jcall(self$.log,returnSig = "V",method = "debug","Java library version: io.github.terminological:r6-generator-docs:main-SNAPSHOT");
 		.jcall(self$.log,returnSig = "V",method = "debug",paste0("Java library compiled: ",buildDate));
 		.jcall(self$.log,returnSig = "V",method = "debug","Contact: rc538@exeter.ac.uk");
@@ -656,7 +656,7 @@ JavaApi$versionInformation = function() {
 	out = list(
 		package = "testRapi",
 		r_package_version = "0.0.0.9999",
-		r_package_generated = "2022-09-24T00:30:36.152936",
+		r_package_generated = "2022-09-24T01:15:12.811613",
 		java_library_version = "io.github.terminological:r6-generator-docs:main-SNAPSHOT",
 		maintainer = "rc538@exeter.ac.uk"
 	)
@@ -673,7 +673,7 @@ JavaApi$versionInformation = function() {
 
 
 .checkDependencies = function(nocache = FALSE, ...) {
-	package_jar = .package_jars(package="testRapi",types="thin-jar")
+	package_jar = .package_jars(package_name="testRapi",types="thin-jar")
 	package_jar = package_jar[startsWith(fs::path_file(package_jar),"r6-generator-docs-main-SNAPSHOT")]
 	
 	# Java dependencies
@@ -681,7 +681,7 @@ JavaApi$versionInformation = function() {
 	# successful resolution of the classpath libraries depends on the runtime machine and requires
 	# access to the internet at a minimum.
 	maven_dependencies = .resolve_dependencies(artifact="io.github.terminological:r6-generator-docs:main-SNAPSHOT", nocache=nocache, path=package_jar, ...)
-	jars = .package_jars(package="testRapi",types="thin-jar")
+	jars = .package_jars(package_name="testRapi",types="thin-jar")
 	# all jars in R package and maven dependencies
 	jars = unique(c(jars,maven_dependencies))
 	
