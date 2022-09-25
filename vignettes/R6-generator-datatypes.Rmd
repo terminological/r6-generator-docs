@@ -3,6 +3,8 @@ title: "R6 Generator Maven Plugin: Datatype conversion"
 author: "Rob Challen"
 output: 
   html_vignette
+resource_files:
+  - RTypes.svg
 header-includes:
   \usepackage{amsmath}
   \usepackage{minted}

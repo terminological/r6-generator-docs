@@ -34,7 +34,7 @@ import uk.co.terminological.rjava.types.RObject;
  * 
  */
 @RClass(
-		imports = {"ggplot2","dplyr","tibble","readr","stringr"},
+		imports = {"ggplot2","readr","dplyr","tibble"},
 		suggests = {"roxygen2","devtools","here","tidyverse"},
 		exampleSetup = {
 				"J = JavaApi$get()"

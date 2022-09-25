@@ -74,7 +74,14 @@
   </ul>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+  <a href="https://github.com/terminological/r6-generator-docs/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -91,7 +98,7 @@
                         <h4 class="author">Rob Challen</h4>
             
       
-      
+      <small class="dont-index">Source: <a href="https://github.com/terminological/r6-generator-docs/blob/master/vignettes/testRapi.Rmd"><code>vignettes/testRapi.Rmd</code></a></small>
       <div class="hidden name"><code>testRapi.Rmd</code></div>
 
     </div>
@@ -232,79 +239,87 @@
 <span id="cb4-20"><a href="#cb4-20"></a>                        <span class="co">&lt;!-- Although semantic versioning of the format 0.1.0.9000 is expected --&gt;</span></span>
 <span id="cb4-21"><a href="#cb4-21"></a>                        <span class="co">&lt;!-- &lt;version&gt;0.1.0.9000&lt;/version&gt; --&gt;</span></span>
 <span id="cb4-22"><a href="#cb4-22"></a>                        </span>
-<span id="cb4-23"><a href="#cb4-23"></a>                        <span class="kw">&lt;url&gt;</span>https://terminological.github.io/r6-generator-docs/docs/<span class="kw">&lt;/url&gt;</span></span>
+<span id="cb4-23"><a href="#cb4-23"></a>                        </span>
 <span id="cb4-24"><a href="#cb4-24"></a>                        <span class="kw">&lt;doi&gt;</span>10.5281/zenodo.6645134<span class="kw">&lt;/doi&gt;</span></span>
 <span id="cb4-25"><a href="#cb4-25"></a>                        <span class="kw">&lt;packageName&gt;</span>testRapi<span class="kw">&lt;/packageName&gt;</span></span>
-<span id="cb4-26"><a href="#cb4-26"></a>                        <span class="kw">&lt;license&gt;</span>MIT<span class="kw">&lt;/license&gt;</span></span>
-<span id="cb4-27"><a href="#cb4-27"></a>                        </span>
-<span id="cb4-28"><a href="#cb4-28"></a>                        <span class="co">&lt;!-- this is the Description field in the R DESCRIPTION file --&gt;</span></span>
-<span id="cb4-29"><a href="#cb4-29"></a>                        <span class="co">&lt;!-- CRAN specifies some standards for this, such as it shoudl not start with the package name and must pass spellchecks --&gt;</span></span>
-<span id="cb4-30"><a href="#cb4-30"></a>                        <span class="co">&lt;!-- any references to other packages mut be in single quotes --&gt;</span></span>
-<span id="cb4-31"><a href="#cb4-31"></a>                        <span class="kw">&lt;description&gt;</span></span>
-<span id="cb4-32"><a href="#cb4-32"></a>                            Documents the features of the 'r6-generator-maven-plugin' by providing an example</span>
-<span id="cb4-33"><a href="#cb4-33"></a>                            of an R package automatically generated from Java code by the plugin. </span>
-<span id="cb4-34"><a href="#cb4-34"></a>                            It is not intended to be useful beyond testing, demonstrating and documenting the features of the plugin.</span>
-<span id="cb4-35"><a href="#cb4-35"></a>                        <span class="kw">&lt;/description&gt;</span></span>
-<span id="cb4-36"><a href="#cb4-36"></a>                        <span class="kw">&lt;maintainerName&gt;</span>Rob<span class="kw">&lt;/maintainerName&gt;</span></span>
-<span id="cb4-37"><a href="#cb4-37"></a>                        <span class="kw">&lt;maintainerFamilyName&gt;</span>Challen<span class="kw">&lt;/maintainerFamilyName&gt;</span></span>
-<span id="cb4-38"><a href="#cb4-38"></a>                        <span class="kw">&lt;maintainerEmail&gt;</span>rc538@exeter.ac.uk<span class="kw">&lt;/maintainerEmail&gt;</span></span>
-<span id="cb4-39"><a href="#cb4-39"></a>                        <span class="kw">&lt;maintainerOrganisation&gt;</span>University of Exeter<span class="kw">&lt;/maintainerOrganisation&gt;</span></span>
-<span id="cb4-40"><a href="#cb4-40"></a>                        </span>
-<span id="cb4-41"><a href="#cb4-41"></a>                        <span class="co">&lt;!-- Build configuration options: --&gt;</span></span>
-<span id="cb4-42"><a href="#cb4-42"></a>                        <span class="kw">&lt;debug&gt;</span>false<span class="kw">&lt;/debug&gt;</span> <span class="co">&lt;!-- starts the R library with java code in debugging mode --&gt;</span></span>
-<span id="cb4-43"><a href="#cb4-43"></a>                        <span class="kw">&lt;useRoxygen2&gt;</span>true<span class="kw">&lt;/useRoxygen2&gt;</span> <span class="co">&lt;!-- Roxygen can integrate user supplied and generated R code, but requires </span></span>
-<span id="cb4-44"><a href="#cb4-44"></a><span class="co">                            a working R version on the system that generates the R package. </span></span>
-<span id="cb4-45"><a href="#cb4-45"></a><span class="co">                            This must be set if, like this package, you define some additional manual functions in your own</span></span>
-<span id="cb4-46"><a href="#cb4-46"></a><span class="co">                            `.R` files in the R directory beyond those generated by the package. This kind of hybrid java and R </span></span>
-<span id="cb4-47"><a href="#cb4-47"></a><span class="co">                            package must use devtools::document through this option to generate the documentation.</span></span>
-<span id="cb4-48"><a href="#cb4-48"></a><span class="co">                            --&gt;</span></span>
-<span id="cb4-49"><a href="#cb4-49"></a>                        <span class="kw">&lt;usePkgdown&gt;</span>false<span class="kw">&lt;/usePkgdown&gt;</span> <span class="co">&lt;!-- Pkgdown will generate a nice looking site --&gt;</span></span>
-<span id="cb4-50"><a href="#cb4-50"></a>                        <span class="kw">&lt;useJavadoc&gt;</span>false<span class="kw">&lt;/useJavadoc&gt;</span> <span class="co">&lt;!-- building the javadocs into the documentation is nice but can add </span></span>
-<span id="cb4-51"><a href="#cb4-51"></a><span class="co">                            to the size of the package which is not helpful if submitting to CRAN --&gt;</span></span>
-<span id="cb4-52"><a href="#cb4-52"></a>                            </span>
-<span id="cb4-53"><a href="#cb4-53"></a>                        <span class="co">&lt;!-- pre-compiling the binary if probably a safer option --&gt;</span></span>
-<span id="cb4-54"><a href="#cb4-54"></a>                        <span class="co">&lt;!-- the alternative is to fetch all dependencies and compile the java from source on first use of the library --&gt;</span></span>
-<span id="cb4-55"><a href="#cb4-55"></a>                        <span class="kw">&lt;preCompileBinary&gt;</span>true<span class="kw">&lt;/preCompileBinary&gt;</span> </span>
-<span id="cb4-56"><a href="#cb4-56"></a>                        </span>
-<span id="cb4-57"><a href="#cb4-57"></a>                         <span class="co">&lt;!-- packaging all dependencies is the most robust but results in a large package size that may not be accepted on CRAN --&gt;</span></span>
-<span id="cb4-58"><a href="#cb4-58"></a>                         <span class="co">&lt;!-- the alternative is to fetch all dependencies on first library use. --&gt;</span></span>
-<span id="cb4-59"><a href="#cb4-59"></a>                         <span class="co">&lt;!-- this option only applies if the binary is precompiled in the previous option. --&gt;</span></span>
-<span id="cb4-60"><a href="#cb4-60"></a>                        <span class="kw">&lt;packageAllDependencies&gt;</span>false<span class="kw">&lt;/packageAllDependencies&gt;</span></span>
-<span id="cb4-61"><a href="#cb4-61"></a>                        </span>
-<span id="cb4-62"><a href="#cb4-62"></a>                        <span class="co">&lt;!-- any rJava VM start up options can be added here --&gt;</span></span>
-<span id="cb4-63"><a href="#cb4-63"></a>                        <span class="kw">&lt;rjavaOpts&gt;</span></span>
-<span id="cb4-64"><a href="#cb4-64"></a>                            <span class="kw">&lt;rjavaOpt&gt;</span>-Xmx256M<span class="kw">&lt;/rjavaOpt&gt;</span> <span class="co">&lt;!-- this example sets the maximum heap size --&gt;</span></span>
-<span id="cb4-65"><a href="#cb4-65"></a>                        <span class="kw">&lt;/rjavaOpts&gt;</span></span>
-<span id="cb4-66"><a href="#cb4-66"></a>                        </span>
-<span id="cb4-67"><a href="#cb4-67"></a>                    <span class="kw">&lt;/packageData&gt;</span></span>
-<span id="cb4-68"><a href="#cb4-68"></a>                    <span class="co">&lt;!-- the best place to put the R package is in the directory above the java code --&gt;</span></span>
-<span id="cb4-69"><a href="#cb4-69"></a>                    <span class="co">&lt;!-- and to have the java code in a `java` subdirectory of a github repo. --&gt;</span></span>
-<span id="cb4-70"><a href="#cb4-70"></a>                    <span class="co">&lt;!-- i.e. this file would be `java/pom.xml`. This makes R optimally happy and is the best layout for new projects. --&gt;</span></span>
-<span id="cb4-71"><a href="#cb4-71"></a>                    <span class="kw">&lt;outputDirectory&gt;</span>${project.basedir}/..<span class="kw">&lt;/outputDirectory&gt;</span></span>
-<span id="cb4-72"><a href="#cb4-72"></a>                <span class="kw">&lt;/configuration&gt;</span></span>
-<span id="cb4-73"><a href="#cb4-73"></a>                <span class="kw">&lt;executions&gt;</span></span>
-<span id="cb4-74"><a href="#cb4-74"></a>                    <span class="kw">&lt;execution&gt;</span></span>
-<span id="cb4-75"><a href="#cb4-75"></a>                        <span class="kw">&lt;id&gt;</span>clean-r-library<span class="kw">&lt;/id&gt;</span></span>
-<span id="cb4-76"><a href="#cb4-76"></a>                        <span class="kw">&lt;goals&gt;</span></span>
-<span id="cb4-77"><a href="#cb4-77"></a>                            <span class="kw">&lt;goal&gt;</span>clean-r-library<span class="kw">&lt;/goal&gt;</span></span>
-<span id="cb4-78"><a href="#cb4-78"></a>                        <span class="kw">&lt;/goals&gt;</span></span>
-<span id="cb4-79"><a href="#cb4-79"></a>                    <span class="kw">&lt;/execution&gt;</span></span>
-<span id="cb4-80"><a href="#cb4-80"></a>                    <span class="kw">&lt;execution&gt;</span></span>
-<span id="cb4-81"><a href="#cb4-81"></a>                        <span class="kw">&lt;id&gt;</span>flatten-pom<span class="kw">&lt;/id&gt;</span></span>
-<span id="cb4-82"><a href="#cb4-82"></a>                        <span class="kw">&lt;goals&gt;</span></span>
-<span id="cb4-83"><a href="#cb4-83"></a>                            <span class="kw">&lt;goal&gt;</span>flatten-pom<span class="kw">&lt;/goal&gt;</span></span>
-<span id="cb4-84"><a href="#cb4-84"></a>                        <span class="kw">&lt;/goals&gt;</span></span>
-<span id="cb4-85"><a href="#cb4-85"></a>                    <span class="kw">&lt;/execution&gt;</span></span>
-<span id="cb4-86"><a href="#cb4-86"></a>                    <span class="kw">&lt;execution&gt;</span></span>
-<span id="cb4-87"><a href="#cb4-87"></a>                        <span class="kw">&lt;id&gt;</span>generate-r-library<span class="kw">&lt;/id&gt;</span></span>
-<span id="cb4-88"><a href="#cb4-88"></a>                        <span class="kw">&lt;goals&gt;</span></span>
-<span id="cb4-89"><a href="#cb4-89"></a>                            <span class="kw">&lt;goal&gt;</span>generate-r-library<span class="kw">&lt;/goal&gt;</span></span>
-<span id="cb4-90"><a href="#cb4-90"></a>                        <span class="kw">&lt;/goals&gt;</span></span>
-<span id="cb4-91"><a href="#cb4-91"></a>                    <span class="kw">&lt;/execution&gt;</span></span>
-<span id="cb4-92"><a href="#cb4-92"></a>                <span class="kw">&lt;/executions&gt;</span></span>
-<span id="cb4-93"><a href="#cb4-93"></a>            <span class="kw">&lt;/plugin&gt;</span></span>
-<span id="cb4-94"><a href="#cb4-94"></a>        <span class="kw">&lt;/plugins&gt;</span></span>
-<span id="cb4-95"><a href="#cb4-95"></a>    <span class="kw">&lt;/build&gt;</span></span></code></pre></div>
+<span id="cb4-26"><a href="#cb4-26"></a>                        <span class="kw">&lt;githubOrganisation&gt;</span>terminological<span class="kw">&lt;/githubOrganisation&gt;</span></span>
+<span id="cb4-27"><a href="#cb4-27"></a>                        <span class="kw">&lt;githubRepository&gt;</span>r6-generator-docs<span class="kw">&lt;/githubRepository&gt;</span></span>
+<span id="cb4-28"><a href="#cb4-28"></a>                        <span class="co">&lt;!-- often (but not in this case) the repository will be the same as the package i.e. --&gt;</span> </span>
+<span id="cb4-29"><a href="#cb4-29"></a>                        <span class="co">&lt;!-- &lt;githubRepository&gt;${packageName}&lt;/githubRepository&gt; --&gt;</span></span>
+<span id="cb4-30"><a href="#cb4-30"></a>                        </span>
+<span id="cb4-31"><a href="#cb4-31"></a>                        <span class="kw">&lt;license&gt;</span>MIT<span class="kw">&lt;/license&gt;</span></span>
+<span id="cb4-32"><a href="#cb4-32"></a>                        </span>
+<span id="cb4-33"><a href="#cb4-33"></a>                        <span class="co">&lt;!-- this is the Description field in the R DESCRIPTION file --&gt;</span></span>
+<span id="cb4-34"><a href="#cb4-34"></a>                        <span class="co">&lt;!-- CRAN specifies some standards for this, such as it should not start with the package name and must pass spellchecks --&gt;</span></span>
+<span id="cb4-35"><a href="#cb4-35"></a>                        <span class="co">&lt;!-- any references to other packages mut be in single quotes --&gt;</span></span>
+<span id="cb4-36"><a href="#cb4-36"></a>                        <span class="kw">&lt;description&gt;</span></span>
+<span id="cb4-37"><a href="#cb4-37"></a>                            Documents the features of the 'r6-generator-maven-plugin' by providing an example</span>
+<span id="cb4-38"><a href="#cb4-38"></a>                            of an R package automatically generated from Java code by the plugin. </span>
+<span id="cb4-39"><a href="#cb4-39"></a>                            It is not intended to be useful beyond testing, demonstrating and documenting the features of the plugin.</span>
+<span id="cb4-40"><a href="#cb4-40"></a>                        <span class="kw">&lt;/description&gt;</span></span>
+<span id="cb4-41"><a href="#cb4-41"></a>                        <span class="kw">&lt;maintainerName&gt;</span>Rob<span class="kw">&lt;/maintainerName&gt;</span></span>
+<span id="cb4-42"><a href="#cb4-42"></a>                        <span class="kw">&lt;maintainerFamilyName&gt;</span>Challen<span class="kw">&lt;/maintainerFamilyName&gt;</span></span>
+<span id="cb4-43"><a href="#cb4-43"></a>                        <span class="kw">&lt;maintainerEmail&gt;</span>rc538@exeter.ac.uk<span class="kw">&lt;/maintainerEmail&gt;</span></span>
+<span id="cb4-44"><a href="#cb4-44"></a>                        <span class="kw">&lt;maintainerOrganisation&gt;</span>University of Exeter<span class="kw">&lt;/maintainerOrganisation&gt;</span></span>
+<span id="cb4-45"><a href="#cb4-45"></a>                        </span>
+<span id="cb4-46"><a href="#cb4-46"></a>                        <span class="co">&lt;!-- Build configuration options: --&gt;</span></span>
+<span id="cb4-47"><a href="#cb4-47"></a>                        <span class="kw">&lt;debug&gt;</span>false<span class="kw">&lt;/debug&gt;</span> <span class="co">&lt;!-- starts the R library with java code in debugging mode --&gt;</span></span>
+<span id="cb4-48"><a href="#cb4-48"></a>                        <span class="kw">&lt;useRoxygen2&gt;</span>true<span class="kw">&lt;/useRoxygen2&gt;</span> <span class="co">&lt;!-- Roxygen can integrate user supplied and generated R code, but requires </span></span>
+<span id="cb4-49"><a href="#cb4-49"></a><span class="co">                            a working R version on the system that generates the R package. </span></span>
+<span id="cb4-50"><a href="#cb4-50"></a><span class="co">                            This must be set if, like this package, you define some additional manual functions in your own</span></span>
+<span id="cb4-51"><a href="#cb4-51"></a><span class="co">                            `.R` files in the R directory beyond those generated by the package. This kind of hybrid java and R </span></span>
+<span id="cb4-52"><a href="#cb4-52"></a><span class="co">                            package must use devtools::document through this option to generate the documentation.</span></span>
+<span id="cb4-53"><a href="#cb4-53"></a><span class="co">                            --&gt;</span></span>
+<span id="cb4-54"><a href="#cb4-54"></a>                        <span class="kw">&lt;useCmdCheck&gt;</span>true<span class="kw">&lt;/useCmdCheck&gt;</span> <span class="co">&lt;!-- Runs a R CMD Check as part of the maven build and abort on failure . --&gt;</span></span>
+<span id="cb4-55"><a href="#cb4-55"></a>                        <span class="kw">&lt;usePkgdown&gt;</span>true<span class="kw">&lt;/usePkgdown&gt;</span> <span class="co">&lt;!-- Pkgdown will generate a nice looking site. if it fails the build will abort --&gt;</span></span>
+<span id="cb4-56"><a href="#cb4-56"></a>                        <span class="kw">&lt;useJavadoc&gt;</span>false<span class="kw">&lt;/useJavadoc&gt;</span> <span class="co">&lt;!-- building the javadocs into the documentation is nice but can add </span></span>
+<span id="cb4-57"><a href="#cb4-57"></a><span class="co">                            to the size of the package which is not helpful if submitting to CRAN --&gt;</span></span>
+<span id="cb4-58"><a href="#cb4-58"></a>                            </span>
+<span id="cb4-59"><a href="#cb4-59"></a>                        <span class="co">&lt;!-- pre-compiling the binary if probably a safest option, where the compilation is done during maven build --&gt;</span></span>
+<span id="cb4-60"><a href="#cb4-60"></a>                        <span class="co">&lt;!-- the alternative is to compile the java from source code on first use of the library from within R --&gt;</span></span>
+<span id="cb4-61"><a href="#cb4-61"></a>                        <span class="co">&lt;!-- this requires the user to have a JDK installed, and uses a maven wrapper script --&gt;</span></span>
+<span id="cb4-62"><a href="#cb4-62"></a>                        <span class="kw">&lt;preCompileBinary&gt;</span>true<span class="kw">&lt;/preCompileBinary&gt;</span> </span>
+<span id="cb4-63"><a href="#cb4-63"></a>                        </span>
+<span id="cb4-64"><a href="#cb4-64"></a>                         <span class="co">&lt;!-- packaging all dependencies is the most robust but results in a large package size that may not be accepted on CRAN --&gt;</span></span>
+<span id="cb4-65"><a href="#cb4-65"></a>                         <span class="co">&lt;!-- however this is the simplest if the main target is r-universe or deployment via github --&gt;</span></span>
+<span id="cb4-66"><a href="#cb4-66"></a>                         <span class="co">&lt;!-- the alternative is to deploy a minimal jar and fetch all dependencies on first library use. --&gt;</span></span>
+<span id="cb4-67"><a href="#cb4-67"></a>                         <span class="co">&lt;!-- this option only applies if the binary is precompiled in the previous option. --&gt;</span></span>
+<span id="cb4-68"><a href="#cb4-68"></a>                        <span class="kw">&lt;packageAllDependencies&gt;</span>false<span class="kw">&lt;/packageAllDependencies&gt;</span></span>
+<span id="cb4-69"><a href="#cb4-69"></a>                        </span>
+<span id="cb4-70"><a href="#cb4-70"></a>                        <span class="co">&lt;!-- any rJava VM start up options can be added here --&gt;</span></span>
+<span id="cb4-71"><a href="#cb4-71"></a>                        <span class="kw">&lt;rjavaOpts&gt;</span></span>
+<span id="cb4-72"><a href="#cb4-72"></a>                            <span class="kw">&lt;rjavaOpt&gt;</span>-Xmx256M<span class="kw">&lt;/rjavaOpt&gt;</span> <span class="co">&lt;!-- this example sets the maximum heap size --&gt;</span></span>
+<span id="cb4-73"><a href="#cb4-73"></a>                        <span class="kw">&lt;/rjavaOpts&gt;</span></span>
+<span id="cb4-74"><a href="#cb4-74"></a>                        </span>
+<span id="cb4-75"><a href="#cb4-75"></a>                    <span class="kw">&lt;/packageData&gt;</span></span>
+<span id="cb4-76"><a href="#cb4-76"></a>                    <span class="co">&lt;!-- the best place to put the R package is in the directory above the java code --&gt;</span></span>
+<span id="cb4-77"><a href="#cb4-77"></a>                    <span class="co">&lt;!-- and to have the java code in a `java` subdirectory of a github repo. --&gt;</span></span>
+<span id="cb4-78"><a href="#cb4-78"></a>                    <span class="co">&lt;!-- i.e. this file would be `java/pom.xml`. This makes R optimally happy and is the best layout for new projects. --&gt;</span></span>
+<span id="cb4-79"><a href="#cb4-79"></a>                    <span class="kw">&lt;outputDirectory&gt;</span>${project.basedir}/..<span class="kw">&lt;/outputDirectory&gt;</span></span>
+<span id="cb4-80"><a href="#cb4-80"></a>                <span class="kw">&lt;/configuration&gt;</span></span>
+<span id="cb4-81"><a href="#cb4-81"></a>                <span class="kw">&lt;executions&gt;</span></span>
+<span id="cb4-82"><a href="#cb4-82"></a>                    <span class="kw">&lt;execution&gt;</span></span>
+<span id="cb4-83"><a href="#cb4-83"></a>                        <span class="kw">&lt;id&gt;</span>clean-r-library<span class="kw">&lt;/id&gt;</span></span>
+<span id="cb4-84"><a href="#cb4-84"></a>                        <span class="kw">&lt;goals&gt;</span></span>
+<span id="cb4-85"><a href="#cb4-85"></a>                            <span class="kw">&lt;goal&gt;</span>clean-r-library<span class="kw">&lt;/goal&gt;</span></span>
+<span id="cb4-86"><a href="#cb4-86"></a>                        <span class="kw">&lt;/goals&gt;</span></span>
+<span id="cb4-87"><a href="#cb4-87"></a>                    <span class="kw">&lt;/execution&gt;</span></span>
+<span id="cb4-88"><a href="#cb4-88"></a>                    <span class="kw">&lt;execution&gt;</span></span>
+<span id="cb4-89"><a href="#cb4-89"></a>                        <span class="kw">&lt;id&gt;</span>flatten-pom<span class="kw">&lt;/id&gt;</span></span>
+<span id="cb4-90"><a href="#cb4-90"></a>                        <span class="kw">&lt;goals&gt;</span></span>
+<span id="cb4-91"><a href="#cb4-91"></a>                            <span class="kw">&lt;goal&gt;</span>flatten-pom<span class="kw">&lt;/goal&gt;</span></span>
+<span id="cb4-92"><a href="#cb4-92"></a>                        <span class="kw">&lt;/goals&gt;</span></span>
+<span id="cb4-93"><a href="#cb4-93"></a>                    <span class="kw">&lt;/execution&gt;</span></span>
+<span id="cb4-94"><a href="#cb4-94"></a>                    <span class="kw">&lt;execution&gt;</span></span>
+<span id="cb4-95"><a href="#cb4-95"></a>                        <span class="kw">&lt;id&gt;</span>generate-r-library<span class="kw">&lt;/id&gt;</span></span>
+<span id="cb4-96"><a href="#cb4-96"></a>                        <span class="kw">&lt;goals&gt;</span></span>
+<span id="cb4-97"><a href="#cb4-97"></a>                            <span class="kw">&lt;goal&gt;</span>generate-r-library<span class="kw">&lt;/goal&gt;</span></span>
+<span id="cb4-98"><a href="#cb4-98"></a>                        <span class="kw">&lt;/goals&gt;</span></span>
+<span id="cb4-99"><a href="#cb4-99"></a>                    <span class="kw">&lt;/execution&gt;</span></span>
+<span id="cb4-100"><a href="#cb4-100"></a>                <span class="kw">&lt;/executions&gt;</span></span>
+<span id="cb4-101"><a href="#cb4-101"></a>            <span class="kw">&lt;/plugin&gt;</span></span>
+<span id="cb4-102"><a href="#cb4-102"></a>        <span class="kw">&lt;/plugins&gt;</span></span>
+<span id="cb4-103"><a href="#cb4-103"></a>    <span class="kw">&lt;/build&gt;</span></span></code></pre></div>
 <p>And with this in place, a call to mvn package or mvn install will create your R library by adding files to your java source tree in the directory. Push your java source tree to github (Optional).</p>
 </div>
 <div id="run-it-from-r" class="section level3">
@@ -334,17 +349,17 @@
 ## [INFO] ------------------------------------------------------------------------
 ## [INFO] BUILD SUCCESS
 ## [INFO] ------------------------------------------------------------------------
-## [INFO] Total time: 0.729 s
-## [INFO] Finished at: 2022-09-24T01:21:01+01:00
-## [INFO] Final Memory: 13M/44M
+## [INFO] Total time: 0.697 s
+## [INFO] Finished at: 2022-09-25T23:56:08+01:00
+## [INFO] Final Memory: 13M/46M
 ## [INFO] ------------------------------------------------------------------------</code></pre>
-<pre><code>## 2022-09-24 01:21:01,820 INFO testRapi [main] Initialised testRapi</code></pre>
+<pre><code>## 2022-09-25 23:56:09,788 INFO testRapi [main] Initialised testRapi</code></pre>
 <div class="sourceCode" id="cb8"><pre class="downlit">
 <span class="co"># all the API classes and methods are classes attached to the J java api object</span>
 <span class="va">eg</span> <span class="op">=</span> <span class="va">J</span><span class="op">$</span><span class="va">MinimalExample</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span>
 <span class="va">df</span> <span class="op">=</span> <span class="va">eg</span><span class="op">$</span><span class="fu">demo</span><span class="op">(</span>dataframe <span class="op">=</span> <span class="va">diamonds</span>, message <span class="op">=</span> <span class="st">"The diamonds dataframe"</span><span class="op">)</span></pre></div>
-<pre><code>## 2022-09-24 01:21:01,885 INFO uk.co.terminological.rjava.test.MinimalExample [main] this dataframe has nrow=53940
-## 2022-09-24 01:21:01,885 INFO uk.co.terminological.rjava.test.MinimalExample [main] The diamonds dataframe</code></pre>
+<pre><code>## 2022-09-25 23:56:09,862 INFO uk.co.terminological.rjava.test.MinimalExample [main] this dataframe has nrow=53940
+## 2022-09-25 23:56:09,863 INFO uk.co.terminological.rjava.test.MinimalExample [main] The diamonds dataframe</code></pre>
 <div class="sourceCode" id="cb10"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></pre></div>
 <pre><code>## [1] 53940</code></pre>
@@ -365,7 +380,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Rob Challen, Rob Challen, terminological.</p>
+  <p>Developed by Rob Challen, terminological, Rob Challen.</p>
 </div>
 
 <div class="pkgdown">

@@ -74,7 +74,14 @@
   </ul>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+  <a href="https://github.com/terminological/r6-generator-docs/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -91,7 +98,7 @@
                         <h4 class="author">Rob Challen</h4>
             
       
-      
+      <small class="dont-index">Source: <a href="https://github.com/terminological/r6-generator-docs/blob/master/vignettes/web-only/R6-generator-maven-archetype.Rmd"><code>vignettes/web-only/R6-generator-maven-archetype.Rmd</code></a></small>
       <div class="hidden name"><code>R6-generator-maven-archetype.Rmd</code></div>
 
     </div>
@@ -106,7 +113,7 @@
 <span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/create.html">dir_create</a></span><span class="op">(</span><span class="va">dir</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html">Sys.setenv</a></span><span class="op">(</span>TMP_DIR<span class="op">=</span><span class="va">dir</span><span class="op">)</span>
 <span class="va">dir</span></pre></div>
-<pre><code>## /tmp/Rtmpkt879Y/testProject</code></pre>
+<pre><code>## /tmp/RtmpGoT1Zf/testProject</code></pre>
 <div class="sourceCode" id="cb3"><pre class="downlit">
 <span class="va">v</span> <span class="op">=</span> <span class="fu">testRapi</span><span class="fu">::</span><span class="va"><a href="../../reference/JavaApi.html">JavaApi</a></span><span class="op">$</span><span class="fu">versionInformation</span><span class="op">(</span><span class="op">)</span>
 <span class="va">version</span> <span class="op">=</span> <span class="va">v</span><span class="op">$</span><span class="va">r_package_version</span>
@@ -173,17 +180,17 @@
 ## [INFO] Parameter: maintainerSurname, Value: Example
 ## [INFO] Parameter: artifactId, Value: examplePackage
 ## [INFO] Parameter: maintainerName, Value: Anne
-## [INFO] Project created from Archetype in dir: /tmp/Rtmpkt879Y/testProject/examplePackage
+## [INFO] Project created from Archetype in dir: /tmp/RtmpGoT1Zf/testProject/examplePackage
 ## [INFO] ------------------------------------------------------------------------
 ## [INFO] BUILD SUCCESS
 ## [INFO] ------------------------------------------------------------------------
-## [INFO] Total time: 2.509 s
-## [INFO] Finished at: 2022-09-24T01:21:07+01:00
+## [INFO] Total time: 2.757 s
+## [INFO] Finished at: 2022-09-25T23:56:16+01:00
 ## [INFO] Final Memory: 25M/82M
 ## [INFO] ------------------------------------------------------------------------</code></pre>
 <div class="sourceCode" id="cb7"><pre class="downlit">
 <span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/dir_tree.html">dir_tree</a></span><span class="op">(</span><span class="va">dir</span>,regexp<span class="op">=</span><span class="st">"((.*/target)|docs)/.*"</span>, invert<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></pre></div>
-<pre><code>## /tmp/Rtmpkt879Y/testProject
+<pre><code>## /tmp/RtmpGoT1Zf/testProject
 ## └── examplePackage
 ##     ├── README.md
 ##     ├── data-raw
@@ -228,7 +235,7 @@
 ## [INFO] 
 ## [INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ examplePackage ---
 ## [INFO] Using 'UTF-8' encoding to copy filtered resources.
-## [INFO] skip non existing resourceDirectory /tmp/Rtmpkt879Y/testProject/examplePackage/java/src/main/resources
+## [INFO] skip non existing resourceDirectory /tmp/RtmpGoT1Zf/testProject/examplePackage/java/src/main/resources
 ## [INFO] 
 ## [INFO] --- r6-generator-maven-plugin:main-SNAPSHOT:flatten-pom (flatten-pom) @ examplePackage ---
 ## [INFO] Executing R6 generator
@@ -236,7 +243,7 @@
 ## [INFO] 
 ## [INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ examplePackage ---
 ## [INFO] Changes detected - recompiling the module!
-## [INFO] Compiling 2 source files to /tmp/Rtmpkt879Y/testProject/examplePackage/java/target/classes
+## [INFO] Compiling 2 source files to /tmp/RtmpGoT1Zf/testProject/examplePackage/java/target/classes
 ## [INFO] 
 ## [INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ examplePackage ---
 ## [INFO] Using 'UTF-8' encoding to copy filtered resources.
@@ -244,10 +251,10 @@
 ## [INFO] 
 ## [INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ examplePackage ---
 ## [INFO] Changes detected - recompiling the module!
-## [INFO] Compiling 1 source file to /tmp/Rtmpkt879Y/testProject/examplePackage/java/target/test-classes
+## [INFO] Compiling 1 source file to /tmp/RtmpGoT1Zf/testProject/examplePackage/java/target/test-classes
 ## [INFO] 
 ## [INFO] --- maven-surefire-plugin:2.17:test (default-test) @ examplePackage ---
-## [INFO] Surefire report directory: /tmp/Rtmpkt879Y/testProject/examplePackage/java/target/surefire-reports
+## [INFO] Surefire report directory: /tmp/RtmpGoT1Zf/testProject/examplePackage/java/target/surefire-reports
 ## 
 ## -------------------------------------------------------
 ##  T E S T S
@@ -259,44 +266,44 @@
 ## 
 ## [INFO] 
 ## [INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ examplePackage ---
-## [INFO] Building jar: /tmp/Rtmpkt879Y/testProject/examplePackage/java/target/examplePackage-main-SNAPSHOT.jar
+## [INFO] Building jar: /tmp/RtmpGoT1Zf/testProject/examplePackage/java/target/examplePackage-main-SNAPSHOT.jar
 ## [INFO] 
 ## [INFO] --- maven-install-plugin:2.5.2:install (default-install) @ examplePackage ---
-## [INFO] Installing /tmp/Rtmpkt879Y/testProject/examplePackage/java/target/examplePackage-main-SNAPSHOT.jar to /home/terminological/.m2/repository/org/github/exampleOrganisation/examplePackage/main-SNAPSHOT/examplePackage-main-SNAPSHOT.jar
-## [INFO] Installing /tmp/Rtmpkt879Y/testProject/examplePackage/java/.flattened-pom.xml to /home/terminological/.m2/repository/org/github/exampleOrganisation/examplePackage/main-SNAPSHOT/examplePackage-main-SNAPSHOT.pom
+## [INFO] Installing /tmp/RtmpGoT1Zf/testProject/examplePackage/java/target/examplePackage-main-SNAPSHOT.jar to /home/terminological/.m2/repository/org/github/exampleOrganisation/examplePackage/main-SNAPSHOT/examplePackage-main-SNAPSHOT.jar
+## [INFO] Installing /tmp/RtmpGoT1Zf/testProject/examplePackage/java/.flattened-pom.xml to /home/terminological/.m2/repository/org/github/exampleOrganisation/examplePackage/main-SNAPSHOT/examplePackage-main-SNAPSHOT.pom
 ## [INFO] 
 ## [INFO] --- r6-generator-maven-plugin:main-SNAPSHOT:generate-r-library (generate-r-library) @ examplePackage ---
 ## [INFO] Executing R6 generator
-## [INFO] Building jar: /tmp/Rtmpkt879Y/testProject/examplePackage/java/target/examplePackage-main-SNAPSHOT-jar-with-dependencies.jar
+## [INFO] Building jar: /tmp/RtmpGoT1Zf/testProject/examplePackage/java/target/examplePackage-main-SNAPSHOT-jar-with-dependencies.jar
 ## [INFO] Copying fat jar into inst/java.
-## [INFO] Reflections took 59 ms to scan 2 urls, producing 38 keys and 124 values
+## [INFO] Reflections took 60 ms to scan 2 urls, producing 38 keys and 124 values
 ## [INFO] io.github.exampleOrganisation.BasicExample
 ## [INFO] io.github.exampleOrganisation.TestDataGenerator
-## [INFO] Writing file: /tmp/Rtmpkt879Y/testProject/examplePackage/DESCRIPTION
-## [INFO] Writing file: /tmp/Rtmpkt879Y/testProject/examplePackage/NAMESPACE
-## [INFO] Writing file: /tmp/Rtmpkt879Y/testProject/examplePackage/inst/CITATION
-## [INFO] Writing file: /tmp/Rtmpkt879Y/testProject/examplePackage/tests/testthat.R
-## [INFO] Writing file: /tmp/Rtmpkt879Y/testProject/examplePackage/LICENSE
-## [INFO] Writing file: /tmp/Rtmpkt879Y/testProject/examplePackage/LICENSE.md
-## [INFO] Writing file: /tmp/Rtmpkt879Y/testProject/examplePackage/man/JavaApi.Rd
-## [INFO] Writing file: /tmp/Rtmpkt879Y/testProject/examplePackage/man/pipe.Rd
-## [INFO] Writing file: /tmp/Rtmpkt879Y/testProject/examplePackage/man/examplePackage-package.Rd
-## [INFO] Writing file: /tmp/Rtmpkt879Y/testProject/examplePackage/R/JavaApi.R
-## [INFO] Writing file: /tmp/Rtmpkt879Y/testProject/examplePackage/R/StaticApi.R
-## [INFO] Writing file: /tmp/Rtmpkt879Y/testProject/examplePackage/R/zzz.R
-## [INFO] Writing file: /tmp/Rtmpkt879Y/testProject/examplePackage/cran-comments.md
-## [INFO] Writing file: /tmp/Rtmpkt879Y/testProject/examplePackage/.Rbuildignore
-## [INFO] Writing file: /tmp/Rtmpkt879Y/testProject/examplePackage/.github/workflows/R-CMD-check.yaml
-## [INFO] Writing file: /tmp/Rtmpkt879Y/testProject/examplePackage/man/BasicExample.Rd
-## [INFO] Writing file: /tmp/Rtmpkt879Y/testProject/examplePackage/R/BasicExample.R
-## [INFO] Writing file: /tmp/Rtmpkt879Y/testProject/examplePackage/tests/testthat/test-BasicExample.R
-## [INFO] Writing file: /tmp/Rtmpkt879Y/testProject/examplePackage/man/greet.Rd
-## [INFO] Writing file: /tmp/Rtmpkt879Y/testProject/examplePackage/man/TestDataGenerator.Rd
-## [INFO] Writing file: /tmp/Rtmpkt879Y/testProject/examplePackage/R/TestDataGenerator.R
-## [INFO] Writing file: /tmp/Rtmpkt879Y/testProject/examplePackage/tests/testthat/test-TestDataGenerator.R
-## [INFO] Writing file: /tmp/Rtmpkt879Y/testProject/examplePackage/man/serialise_dataframe.Rd
-## [INFO] Writing file: /tmp/Rtmpkt879Y/testProject/examplePackage/man/serialise_list.Rd
-## [INFO] Writing file: /tmp/Rtmpkt879Y/testProject/examplePackage/man/serialise_named_list.Rd
+## [INFO] Writing file: /tmp/RtmpGoT1Zf/testProject/examplePackage/DESCRIPTION
+## [INFO] Writing file: /tmp/RtmpGoT1Zf/testProject/examplePackage/NAMESPACE
+## [INFO] Writing file: /tmp/RtmpGoT1Zf/testProject/examplePackage/inst/CITATION
+## [INFO] Writing file: /tmp/RtmpGoT1Zf/testProject/examplePackage/tests/testthat.R
+## [INFO] Writing file: /tmp/RtmpGoT1Zf/testProject/examplePackage/LICENSE
+## [INFO] Writing file: /tmp/RtmpGoT1Zf/testProject/examplePackage/LICENSE.md
+## [INFO] Writing file: /tmp/RtmpGoT1Zf/testProject/examplePackage/man/JavaApi.Rd
+## [INFO] Writing file: /tmp/RtmpGoT1Zf/testProject/examplePackage/man/pipe.Rd
+## [INFO] Writing file: /tmp/RtmpGoT1Zf/testProject/examplePackage/man/examplePackage-package.Rd
+## [INFO] Writing file: /tmp/RtmpGoT1Zf/testProject/examplePackage/R/JavaApi.R
+## [INFO] Writing file: /tmp/RtmpGoT1Zf/testProject/examplePackage/R/StaticApi.R
+## [INFO] Writing file: /tmp/RtmpGoT1Zf/testProject/examplePackage/R/zzz.R
+## [INFO] Writing file: /tmp/RtmpGoT1Zf/testProject/examplePackage/cran-comments.md
+## [INFO] Writing file: /tmp/RtmpGoT1Zf/testProject/examplePackage/.Rbuildignore
+## [INFO] Writing file: /tmp/RtmpGoT1Zf/testProject/examplePackage/.github/workflows/R-CMD-check.yaml
+## [INFO] Writing file: /tmp/RtmpGoT1Zf/testProject/examplePackage/man/BasicExample.Rd
+## [INFO] Writing file: /tmp/RtmpGoT1Zf/testProject/examplePackage/R/BasicExample.R
+## [INFO] Writing file: /tmp/RtmpGoT1Zf/testProject/examplePackage/tests/testthat/test-BasicExample.R
+## [INFO] Writing file: /tmp/RtmpGoT1Zf/testProject/examplePackage/man/greet.Rd
+## [INFO] Writing file: /tmp/RtmpGoT1Zf/testProject/examplePackage/man/TestDataGenerator.Rd
+## [INFO] Writing file: /tmp/RtmpGoT1Zf/testProject/examplePackage/R/TestDataGenerator.R
+## [INFO] Writing file: /tmp/RtmpGoT1Zf/testProject/examplePackage/tests/testthat/test-TestDataGenerator.R
+## [INFO] Writing file: /tmp/RtmpGoT1Zf/testProject/examplePackage/man/serialise_dataframe.Rd
+## [INFO] Writing file: /tmp/RtmpGoT1Zf/testProject/examplePackage/man/serialise_list.Rd
+## [INFO] Writing file: /tmp/RtmpGoT1Zf/testProject/examplePackage/man/serialise_named_list.Rd
 ## [INFO] Generating pkgdown site - please be patient
 ## [INFO] 
 ## [INFO] R version 3.6.3 (2020-02-29) -- "Holding the Windsock"
@@ -317,11 +324,11 @@
 ## [INFO] 'help.start()' for an HTML browser interface to help.
 ## [INFO] Type 'q()' to quit R.
 ## [INFO] 
-## [INFO] &gt; pkgdown::build_site(pkg = '/tmp/Rtmpkt879Y/testProject/examplePackage')
+## [INFO] &gt; pkgdown::build_site(pkg = '/tmp/RtmpGoT1Zf/testProject/examplePackage')
 ## [INFO] -- Installing package into temporary library -----------------------------------
 ## [INFO] == Building pkgdown site =======================================================
-## [INFO] Reading from: '/tmp/Rtmpkt879Y/testProject/examplePackage'
-## [INFO] Writing to:   '/tmp/Rtmpkt879Y/testProject/examplePackage/docs'
+## [INFO] Reading from: '/tmp/RtmpGoT1Zf/testProject/examplePackage'
+## [INFO] Writing to:   '/tmp/RtmpGoT1Zf/testProject/examplePackage/docs'
 ## [INFO] -- Initialising site -----------------------------------------------------------
 ## [INFO] Copying '../../../../home/terminological/R/x86_64-pc-linux-gnu-library/3.6/pkgdown/assets/bootstrap-toc.css' to 'bootstrap-toc.css'
 ## [INFO] Copying '../../../../home/terminological/R/x86_64-pc-linux-gnu-library/3.6/pkgdown/assets/bootstrap-toc.js' to 'bootstrap-toc.js'
@@ -366,9 +373,9 @@
 ## [INFO] ------------------------------------------------------------------------
 ## [INFO] BUILD SUCCESS
 ## [INFO] ------------------------------------------------------------------------
-## [INFO] Total time: 15.985 s
-## [INFO] Finished at: 2022-09-24T01:21:24+01:00
-## [INFO] Final Memory: 36M/118M
+## [INFO] Total time: 16.021 s
+## [INFO] Finished at: 2022-09-25T23:56:33+01:00
+## [INFO] Final Memory: 42M/140M
 ## [INFO] ------------------------------------------------------------------------</code></pre>
 </div>
 </div>
@@ -377,7 +384,7 @@
 <a href="#generated-files" class="anchor"></a>Generated files:</h1>
 <div class="sourceCode" id="cb11"><pre class="downlit">
 <span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/dir_tree.html">dir_tree</a></span><span class="op">(</span><span class="va">dir</span>,regexp<span class="op">=</span><span class="st">"((.*/target)|docs)/.*"</span>, invert<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></pre></div>
-<pre><code>## /tmp/Rtmpkt879Y/testProject
+<pre><code>## /tmp/RtmpGoT1Zf/testProject
 ## └── examplePackage
 ##     ├── DESCRIPTION
 ##     ├── LICENSE
@@ -460,7 +467,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Rob Challen, Rob Challen, terminological.</p>
+  <p>Developed by Rob Challen, terminological, Rob Challen.</p>
 </div>
 
 <div class="pkgdown">

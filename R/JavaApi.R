@@ -6,13 +6,12 @@
 #'
 #' Version: 0.0.0.9999
 #'
-#' Generated: 2022-09-24T01:15:12.802691
+#' Generated: 2022-09-25T23:45:05.951982
 #'
 #' Contact: rc538@exeter.ac.uk
 #' @import ggplot2
-#' @import stringr
-#' @import tibble
 #' @import readr
+#' @import tibble
 #' @import dplyr
 #' @import rJava
 #' @export
@@ -96,7 +95,7 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 		}
 		.jcall(self$.log,returnSig = "V",method = "info","Initialised testRapi");
 		.jcall(self$.log,returnSig = "V",method = "debug","R package version: 0.0.0.9999");
-		.jcall(self$.log,returnSig = "V",method = "debug","R package generated: 2022-09-24T01:15:12.802936");
+		.jcall(self$.log,returnSig = "V",method = "debug","R package generated: 2022-09-25T23:45:05.952539");
 		.jcall(self$.log,returnSig = "V",method = "debug","Java library version: io.github.terminological:r6-generator-docs:main-SNAPSHOT");
 		.jcall(self$.log,returnSig = "V",method = "debug",paste0("Java library compiled: ",buildDate));
 		.jcall(self$.log,returnSig = "V",method = "debug","Contact: rc538@exeter.ac.uk");
@@ -656,7 +655,7 @@ JavaApi$versionInformation = function() {
 	out = list(
 		package = "testRapi",
 		r_package_version = "0.0.0.9999",
-		r_package_generated = "2022-09-24T01:15:12.811613",
+		r_package_generated = "2022-09-25T23:45:05.964433",
 		java_library_version = "io.github.terminological:r6-generator-docs:main-SNAPSHOT",
 		maintainer = "rc538@exeter.ac.uk"
 	)
