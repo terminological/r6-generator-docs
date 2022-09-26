@@ -8,25 +8,25 @@
 % \if{html}{\figure{logo.png}{options: align='right'}}
 Documents the features of the 'r6-generator-maven-plugin' by providing an example of an R package automatically generated from Java code by the plugin. It is not intended to be useful beyond testing, demonstrating and documenting the features of the plugin.
 
-Version: 0.0.0.9999
+Version: 0.5.6
 
 Classes:
 \itemize{ 
 	\item \code{JavaApi}
-	\item \code{FactoryTest}
-	\item \code{BounceTest}
+	\item \code{MoreFeatureTest}
 	\item \code{Serialiser}
 	\item \code{FeatureTest}
+	\item \code{BounceTest}
+	\item \code{FactoryTest}
 	\item \code{MinimalExample}
-	\item \code{MoreFeatureTest}
 }
 }
 
 \author{
 \itemize{ 
    \item Rob Challen rc538@exeter.ac.uk 
-   \item Rob Challen rob@terminological.co.uk 0000-0002-5504-7768
    \item terminological   
+   \item Rob Challen rob@terminological.co.uk 0000-0002-5504-7768
 }
 }
 

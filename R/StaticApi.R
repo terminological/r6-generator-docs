@@ -2,14 +2,72 @@
 # This is a collection of the static methods described in the Java API
 # and serves as an alternative R centric entry point of the testRapi generated R library.
 
-# Version: 0.0.0.9999
-# Generated: 2022-09-25T23:45:05.973955
+# Version: 0.5.6
+# Generated: 2022-09-26T13:40:30.234
 # Contact: rc538@exeter.ac.uk
 
-# FactoryTest class static methods ----
+# MoreFeatureTest class static methods ----
 
 
-# BounceTest class static methods ----
+#' create: A static object constructor
+#' 
+#' no description
+#' @param message1 - the message to be printed - (java expects a RCharacter)
+#' @param message2 - will be used for toString - (java expects a RCharacter)
+#' @return R6 MoreFeatureTest object: 
+#' A MoreFeatureTest R6 object
+#' @examples
+#' J = JavaApi$get()
+#' J$MoreFeatureTest$create('Hello,',' World')
+#' @export
+create = function(message1, message2) {
+	# get the API singleton
+	J = JavaApi$get()
+	# execute the R6 function call with the same parameters
+	out = J$MoreFeatureTest$create(message1, message2)
+	if(is.null(out)) return(invisible(out))
+	return(out)
+}
+
+
+#' concat: no title
+#' 
+#' no description
+#' @param message1 - (java expects a RCharacter)
+#' @param message2 - (java expects a RCharacter)
+#' @return RCharacter: 
+#' 
+#' @export
+concat = function(message1, message2) {
+	# get the API singleton
+	J = JavaApi$get()
+	# execute the R6 function call with the same parameters
+	out = J$MoreFeatureTest$concat(message1, message2)
+	if(is.null(out)) return(invisible(out))
+	return(out)
+}
+
+
+#' collider: no title
+#' 
+#' no description
+#' @param message1 - (java expects a RCharacter)
+#' @param message2 - (java expects a RCharacter)
+#' @return RCharacter: 
+#' 
+#' @examples
+#' library(testthat)
+#' tmp = more_feature_test_collider('should ','work')
+#' expect_equal(tmp,'more feature test: should work')
+#' @export
+more_feature_test_collider = function(message1, message2) {
+	# get the API singleton
+	J = JavaApi$get()
+	# execute the R6 function call with the same parameters
+	out = J$MoreFeatureTest$collider(message1, message2)
+	if(is.null(out)) return(invisible(out))
+	return(out)
+}
 
 
 # Serialiser class static methods ----
@@ -183,71 +241,13 @@ feature_test_collider = function(message1, message2) {
 }
 
 
+# BounceTest class static methods ----
+
+
+# FactoryTest class static methods ----
+
+
 # MinimalExample class static methods ----
-
-
-# MoreFeatureTest class static methods ----
-
-
-#' create: A static object constructor
-#' 
-#' no description
-#' @param message1 - the message to be printed - (java expects a RCharacter)
-#' @param message2 - will be used for toString - (java expects a RCharacter)
-#' @return R6 MoreFeatureTest object: 
-#' A MoreFeatureTest R6 object
-#' @examples
-#' J = JavaApi$get()
-#' J$MoreFeatureTest$create('Hello,',' World')
-#' @export
-create = function(message1, message2) {
-	# get the API singleton
-	J = JavaApi$get()
-	# execute the R6 function call with the same parameters
-	out = J$MoreFeatureTest$create(message1, message2)
-	if(is.null(out)) return(invisible(out))
-	return(out)
-}
-
-
-#' concat: no title
-#' 
-#' no description
-#' @param message1 - (java expects a RCharacter)
-#' @param message2 - (java expects a RCharacter)
-#' @return RCharacter: 
-#' 
-#' @export
-concat = function(message1, message2) {
-	# get the API singleton
-	J = JavaApi$get()
-	# execute the R6 function call with the same parameters
-	out = J$MoreFeatureTest$concat(message1, message2)
-	if(is.null(out)) return(invisible(out))
-	return(out)
-}
-
-
-#' collider: no title
-#' 
-#' no description
-#' @param message1 - (java expects a RCharacter)
-#' @param message2 - (java expects a RCharacter)
-#' @return RCharacter: 
-#' 
-#' @examples
-#' library(testthat)
-#' tmp = more_feature_test_collider('should ','work')
-#' expect_equal(tmp,'more feature test: should work')
-#' @export
-more_feature_test_collider = function(message1, message2) {
-	# get the API singleton
-	J = JavaApi$get()
-	# execute the R6 function call with the same parameters
-	out = J$MoreFeatureTest$collider(message1, message2)
-	if(is.null(out)) return(invisible(out))
-	return(out)
-}
 
 
 

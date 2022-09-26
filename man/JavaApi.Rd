@@ -25,9 +25,9 @@
 \description{
 Documents the features of the 'r6-generator-maven-plugin' by providing an example of an R package automatically generated from Java code by the plugin. It is not intended to be useful beyond testing, demonstrating and documenting the features of the plugin.
 
-Version: 0.0.0.9999
+Version: 0.5.6
 
-Generated: 2022-09-25T23:45:05.881050
+Generated: 2022-09-26T13:40:29.847
 }
 
 \author{\email{rc538@exeter.ac.uk}}
@@ -48,24 +48,40 @@ J = testRapi::JavaApi$get()
 
 
 ## -----------------------------------
-## Method `J$FactoryTest$new(...)`
+## Method `J$MoreFeatureTest$new(...)`
 ## -----------------------------------
 \dontrun{
 # no example given - appropriate parameter values must be provided:
-J$FactoryTest$new()
+J$MoreFeatureTest$new(message1, message2)
 # or alternatively:
-testRapi::new()
+testRapi::new(message1, message2)
 }
 
 ## -----------------------------------
-## Method `J$BounceTest$new(...)`
+## Method `J$MoreFeatureTest$create(...)`
+## Aliased as `testRapi::create(...)`
+## -----------------------------------
+J = JavaApi$get()
+J$MoreFeatureTest$create('Hello,',' World')
+
+## -----------------------------------
+## Method `J$MoreFeatureTest$concat(...)`
+## Aliased as `testRapi::concat(...)`
 ## -----------------------------------
 \dontrun{
 # no example given - appropriate parameter values must be provided:
-J$BounceTest$new()
+J$MoreFeatureTest$concat(message1, message2)
 # or alternatively:
-testRapi::new()
+testRapi::concat(message1, message2)
 }
+
+## -----------------------------------
+## Method `J$MoreFeatureTest$collider(...)`
+## Aliased as `testRapi::more_feature_test_collider(...)`
+## -----------------------------------
+library(testthat)
+tmp = more_feature_test_collider('should ','work')
+expect_equal(tmp,'more feature test: should work')
 
 ## -----------------------------------
 ## Method `J$Serialiser$new(...)`
@@ -174,6 +190,26 @@ testRapi::feature_test_collider(message1, message2)
 }
 
 ## -----------------------------------
+## Method `J$BounceTest$new(...)`
+## -----------------------------------
+\dontrun{
+# no example given - appropriate parameter values must be provided:
+J$BounceTest$new()
+# or alternatively:
+testRapi::new()
+}
+
+## -----------------------------------
+## Method `J$FactoryTest$new(...)`
+## -----------------------------------
+\dontrun{
+# no example given - appropriate parameter values must be provided:
+J$FactoryTest$new()
+# or alternatively:
+testRapi::new()
+}
+
+## -----------------------------------
 ## Method `J$MinimalExample$new(...)`
 ## -----------------------------------
 \dontrun{
@@ -182,42 +218,6 @@ J$MinimalExample$new()
 # or alternatively:
 testRapi::new()
 }
-
-## -----------------------------------
-## Method `J$MoreFeatureTest$new(...)`
-## -----------------------------------
-\dontrun{
-# no example given - appropriate parameter values must be provided:
-J$MoreFeatureTest$new(message1, message2)
-# or alternatively:
-testRapi::new(message1, message2)
-}
-
-## -----------------------------------
-## Method `J$MoreFeatureTest$create(...)`
-## Aliased as `testRapi::create(...)`
-## -----------------------------------
-J = JavaApi$get()
-J$MoreFeatureTest$create('Hello,',' World')
-
-## -----------------------------------
-## Method `J$MoreFeatureTest$concat(...)`
-## Aliased as `testRapi::concat(...)`
-## -----------------------------------
-\dontrun{
-# no example given - appropriate parameter values must be provided:
-J$MoreFeatureTest$concat(message1, message2)
-# or alternatively:
-testRapi::concat(message1, message2)
-}
-
-## -----------------------------------
-## Method `J$MoreFeatureTest$collider(...)`
-## Aliased as `testRapi::more_feature_test_collider(...)`
-## -----------------------------------
-library(testthat)
-tmp = more_feature_test_collider('should ','work')
-expect_equal(tmp,'more feature test: should work')
 }
 
 \keyword{java api}
@@ -237,11 +237,10 @@ expect_equal(tmp,'more feature test: should work')
 \section{Package classes and static methods}{
 	\if{html}{\out{<hr>}}
 	\itemize{
-		\item \href{#method-FactoryTest-new}{\code{J$FactoryTest$new()}}
-	}
-	\if{html}{\out{<hr>}}
-	\itemize{
-		\item \href{#method-BounceTest-new}{\code{J$BounceTest$new()}}
+		\item \href{#method-MoreFeatureTest-new}{\code{J$MoreFeatureTest$new(message1, message2)}}
+		\item \href{#method-MoreFeatureTest-create}{\code{J$MoreFeatureTest$create(message1, message2)}}
+		\item \href{#method-MoreFeatureTest-concat}{\code{J$MoreFeatureTest$concat(message1, message2)}}
+		\item \href{#method-MoreFeatureTest-collider}{\code{J$MoreFeatureTest$collider(message1, message2)}}
 	}
 	\if{html}{\out{<hr>}}
 	\itemize{
@@ -262,14 +261,15 @@ expect_equal(tmp,'more feature test: should work')
 	}
 	\if{html}{\out{<hr>}}
 	\itemize{
-		\item \href{#method-MinimalExample-new}{\code{J$MinimalExample$new()}}
+		\item \href{#method-BounceTest-new}{\code{J$BounceTest$new()}}
 	}
 	\if{html}{\out{<hr>}}
 	\itemize{
-		\item \href{#method-MoreFeatureTest-new}{\code{J$MoreFeatureTest$new(message1, message2)}}
-		\item \href{#method-MoreFeatureTest-create}{\code{J$MoreFeatureTest$create(message1, message2)}}
-		\item \href{#method-MoreFeatureTest-concat}{\code{J$MoreFeatureTest$concat(message1, message2)}}
-		\item \href{#method-MoreFeatureTest-collider}{\code{J$MoreFeatureTest$collider(message1, message2)}}
+		\item \href{#method-FactoryTest-new}{\code{J$FactoryTest$new()}}
+	}
+	\if{html}{\out{<hr>}}
+	\itemize{
+		\item \href{#method-MinimalExample-new}{\code{J$MinimalExample$new()}}
 	}
 }
 
@@ -473,16 +473,16 @@ nothing. used for side effects.
 
 \section{Static methods and constructors}{
 	\if{html}{\out{<hr>}}
-	\if{html}{\out{<a id="method-FactoryTest-new"></a>}}
+	\if{html}{\out{<a id="method-MoreFeatureTest-new"></a>}}
 	
-	\subsection{Method \code{FactoryTest$new()}}{
-		the default no-args constructor
+	\subsection{Method \code{MoreFeatureTest$new()}}{
+		the first constructor is used if there are none annotated
 	
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-J$FactoryTest$new()
+J$MoreFeatureTest$new(message1, message2)
 	  		}
 			\if{html}{\out{</div>}}
 		}
@@ -490,28 +490,31 @@ J$FactoryTest$new()
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item{message1 - the message to be printed}{ - (java expects a RCharacter)}
+				\item{message2 - will be used for toString}{ - (java expects a RCharacter)}
 			}
 			\if{html}{\out{</div>}}
 		}
 
 		\subsection{Returns}{
-			R6 FactoryTest object: 
+			R6 MoreFeatureTest object: 
 		}
 	}
 
 
 	\if{html}{\out{<hr>}}
-	\if{html}{\out{<a id="method-BounceTest-new"></a>}}
+	\if{html}{\out{<a id="method-MoreFeatureTest-create"></a>}}
 	
-	\subsection{Method \code{BounceTest$new()}}{
-		the default no-args constructor
+	\subsection{Method \code{MoreFeatureTest$create()}}{
+		A static object constructor
 	
 		\subsection{Usage}{
 			\if{html}{\out{<div class="r">}}
 			\preformatted{
 J = testRapi::JavaApi$get()
-J$BounceTest$new()
+J$MoreFeatureTest$create(message1, message2)
+# this method is also exposed as a package function:
+testRapi::create(message1, message2)
 	  		}
 			\if{html}{\out{</div>}}
 		}
@@ -519,16 +522,98 @@ J$BounceTest$new()
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item{message1 - the message to be printed}{ - (java expects a RCharacter)}
+				\item{message2 - will be used for toString}{ - (java expects a RCharacter)}
 			}
 			\if{html}{\out{</div>}}
 		}
 
 		\subsection{Returns}{
-			R6 BounceTest object: 
+			R6 MoreFeatureTest object: A MoreFeatureTest R6 object
 		}
 	}
 
+		\subsection{Examples}{
+			\if{html}{\out{<div class="r example copy">}}
+			\preformatted{
+J = JavaApi$get()
+J$MoreFeatureTest$create('Hello,',' World')
+			}
+			\if{html}{\out{</div>}}
+		}
+
+	\if{html}{\out{<hr>}}
+	\if{html}{\out{<a id="method-MoreFeatureTest-concat"></a>}}
+	
+	\subsection{Method \code{MoreFeatureTest$concat()}}{
+		no title
+	
+		\subsection{Usage}{
+			\if{html}{\out{<div class="r">}}
+			\preformatted{
+J = testRapi::JavaApi$get()
+J$MoreFeatureTest$concat(message1, message2)
+# this method is also exposed as a package function:
+testRapi::concat(message1, message2)
+	  		}
+			\if{html}{\out{</div>}}
+		}
+	
+		\subsection{Arguments}{
+			\if{html}{\out{<div class="arguments">}}
+			\itemize{
+				\item{message1}{ - (java expects a RCharacter)}
+				\item{message2}{ - (java expects a RCharacter)}
+			}
+			\if{html}{\out{</div>}}
+		}
+
+		\subsection{Returns}{
+			RCharacter: 
+		}
+	}
+
+
+	\if{html}{\out{<hr>}}
+	\if{html}{\out{<a id="method-MoreFeatureTest-collider"></a>}}
+	
+	\subsection{Method \code{MoreFeatureTest$collider()}}{
+		no title
+	
+		\subsection{Usage}{
+			\if{html}{\out{<div class="r">}}
+			\preformatted{
+J = testRapi::JavaApi$get()
+J$MoreFeatureTest$collider(message1, message2)
+# this method is also exposed as a package function:
+testRapi::more_feature_test_collider(message1, message2)
+	  		}
+			\if{html}{\out{</div>}}
+		}
+	
+		\subsection{Arguments}{
+			\if{html}{\out{<div class="arguments">}}
+			\itemize{
+				\item{message1}{ - (java expects a RCharacter)}
+				\item{message2}{ - (java expects a RCharacter)}
+			}
+			\if{html}{\out{</div>}}
+		}
+
+		\subsection{Returns}{
+			RCharacter: 
+		}
+	}
+
+		\subsection{Examples}{
+			\if{html}{\out{<div class="r example copy">}}
+			\preformatted{
+library(testthat)
+tmp = more_feature_test_collider('should ','work')
+expect_equal(tmp,'more feature test: should work')
+			}
+			\if{html}{\out{</div>}}
+		}
 
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-Serialiser-new"></a>}}
@@ -909,6 +994,64 @@ testRapi::feature_test_collider(message1, message2)
 
 
 	\if{html}{\out{<hr>}}
+	\if{html}{\out{<a id="method-BounceTest-new"></a>}}
+	
+	\subsection{Method \code{BounceTest$new()}}{
+		the default no-args constructor
+	
+		\subsection{Usage}{
+			\if{html}{\out{<div class="r">}}
+			\preformatted{
+J = testRapi::JavaApi$get()
+J$BounceTest$new()
+	  		}
+			\if{html}{\out{</div>}}
+		}
+	
+		\subsection{Arguments}{
+			\if{html}{\out{<div class="arguments">}}
+			\itemize{
+				\item{none}
+			}
+			\if{html}{\out{</div>}}
+		}
+
+		\subsection{Returns}{
+			R6 BounceTest object: 
+		}
+	}
+
+
+	\if{html}{\out{<hr>}}
+	\if{html}{\out{<a id="method-FactoryTest-new"></a>}}
+	
+	\subsection{Method \code{FactoryTest$new()}}{
+		the default no-args constructor
+	
+		\subsection{Usage}{
+			\if{html}{\out{<div class="r">}}
+			\preformatted{
+J = testRapi::JavaApi$get()
+J$FactoryTest$new()
+	  		}
+			\if{html}{\out{</div>}}
+		}
+	
+		\subsection{Arguments}{
+			\if{html}{\out{<div class="arguments">}}
+			\itemize{
+				\item{none}
+			}
+			\if{html}{\out{</div>}}
+		}
+
+		\subsection{Returns}{
+			R6 FactoryTest object: 
+		}
+	}
+
+
+	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-MinimalExample-new"></a>}}
 	
 	\subsection{Method \code{MinimalExample$new()}}{
@@ -936,149 +1079,6 @@ J$MinimalExample$new()
 		}
 	}
 
-
-	\if{html}{\out{<hr>}}
-	\if{html}{\out{<a id="method-MoreFeatureTest-new"></a>}}
-	
-	\subsection{Method \code{MoreFeatureTest$new()}}{
-		the first constructor is used if there are none annotated
-	
-		\subsection{Usage}{
-			\if{html}{\out{<div class="r">}}
-			\preformatted{
-J = testRapi::JavaApi$get()
-J$MoreFeatureTest$new(message1, message2)
-	  		}
-			\if{html}{\out{</div>}}
-		}
-	
-		\subsection{Arguments}{
-			\if{html}{\out{<div class="arguments">}}
-			\itemize{
-				\item{message1 - the message to be printed}{ - (java expects a RCharacter)}
-				\item{message2 - will be used for toString}{ - (java expects a RCharacter)}
-			}
-			\if{html}{\out{</div>}}
-		}
-
-		\subsection{Returns}{
-			R6 MoreFeatureTest object: 
-		}
-	}
-
-
-	\if{html}{\out{<hr>}}
-	\if{html}{\out{<a id="method-MoreFeatureTest-create"></a>}}
-	
-	\subsection{Method \code{MoreFeatureTest$create()}}{
-		A static object constructor
-	
-		\subsection{Usage}{
-			\if{html}{\out{<div class="r">}}
-			\preformatted{
-J = testRapi::JavaApi$get()
-J$MoreFeatureTest$create(message1, message2)
-# this method is also exposed as a package function:
-testRapi::create(message1, message2)
-	  		}
-			\if{html}{\out{</div>}}
-		}
-	
-		\subsection{Arguments}{
-			\if{html}{\out{<div class="arguments">}}
-			\itemize{
-				\item{message1 - the message to be printed}{ - (java expects a RCharacter)}
-				\item{message2 - will be used for toString}{ - (java expects a RCharacter)}
-			}
-			\if{html}{\out{</div>}}
-		}
-
-		\subsection{Returns}{
-			R6 MoreFeatureTest object: A MoreFeatureTest R6 object
-		}
-	}
-
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-J = JavaApi$get()
-J$MoreFeatureTest$create('Hello,',' World')
-			}
-			\if{html}{\out{</div>}}
-		}
-
-	\if{html}{\out{<hr>}}
-	\if{html}{\out{<a id="method-MoreFeatureTest-concat"></a>}}
-	
-	\subsection{Method \code{MoreFeatureTest$concat()}}{
-		no title
-	
-		\subsection{Usage}{
-			\if{html}{\out{<div class="r">}}
-			\preformatted{
-J = testRapi::JavaApi$get()
-J$MoreFeatureTest$concat(message1, message2)
-# this method is also exposed as a package function:
-testRapi::concat(message1, message2)
-	  		}
-			\if{html}{\out{</div>}}
-		}
-	
-		\subsection{Arguments}{
-			\if{html}{\out{<div class="arguments">}}
-			\itemize{
-				\item{message1}{ - (java expects a RCharacter)}
-				\item{message2}{ - (java expects a RCharacter)}
-			}
-			\if{html}{\out{</div>}}
-		}
-
-		\subsection{Returns}{
-			RCharacter: 
-		}
-	}
-
-
-	\if{html}{\out{<hr>}}
-	\if{html}{\out{<a id="method-MoreFeatureTest-collider"></a>}}
-	
-	\subsection{Method \code{MoreFeatureTest$collider()}}{
-		no title
-	
-		\subsection{Usage}{
-			\if{html}{\out{<div class="r">}}
-			\preformatted{
-J = testRapi::JavaApi$get()
-J$MoreFeatureTest$collider(message1, message2)
-# this method is also exposed as a package function:
-testRapi::more_feature_test_collider(message1, message2)
-	  		}
-			\if{html}{\out{</div>}}
-		}
-	
-		\subsection{Arguments}{
-			\if{html}{\out{<div class="arguments">}}
-			\itemize{
-				\item{message1}{ - (java expects a RCharacter)}
-				\item{message2}{ - (java expects a RCharacter)}
-			}
-			\if{html}{\out{</div>}}
-		}
-
-		\subsection{Returns}{
-			RCharacter: 
-		}
-	}
-
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-library(testthat)
-tmp = more_feature_test_collider('should ','work')
-expect_equal(tmp,'more feature test: should work')
-			}
-			\if{html}{\out{</div>}}
-		}
 
 
 }
