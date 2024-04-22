@@ -7,6 +7,7 @@
 }
 \value{
 RDataframe: the ggplot2::diamonds dataframe
+
 }
 \description{
 A copy serialised into java, using

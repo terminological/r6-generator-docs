@@ -1,19 +1,21 @@
+<!--- HEAD_START -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	<!--- HEAD_END -->
 
 	<!--- DEPS_START -->
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<r6.version>main-SNAPSHOT</r6.version>
+		<r6.version>0.6.2-SNAPSHOT</r6.version>
 	</properties>
 
 	<groupId>io.github.terminological</groupId>
 	<artifactId>r6-generator-docs</artifactId>
-	<version>main-SNAPSHOT</version>
+	<version>${r6.version}</version>
 	<packaging>jar</packaging>
 
 	<name>R6 Generator Maven Plugin Test</name>
@@ -43,29 +45,29 @@
 
 
 	<!-- REPOSITORIES_START -->
-	<!-- Resolve runtime library on sonatype OSSRH -->
-	<!-- not needed if you plan to use a stable r6.version of the r6-generator-runtime 
-		and r6-generator-maven-plugin rather than main-SNAPSHOT -->
+	<!-- Resolve SNAPSHOTS of the runtime library on Github packages -->
+	<!-- not needed if you pare using a stable r6.version of the r6-generator-runtime 
+		and r6-generator-maven-plugin from Maven central rather than xx.xx.xx-SNAPSHOT -->
 	<repositories>
 		<repository>
-			<id>Sonatype OSSRH</id>
-			<url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
+			<id>terminological snapshots</id>
+        	<url>https://maven.pkg.github.com/terminological/m2repo</url>
 		</repository>
 	</repositories>
 
-	<!-- Resolve maven plugin on sonatype OSSRH -->
+	<!-- Resolve SNAPSHOTS of the maven plugin on Github packages -->
 	<pluginRepositories>
 		<pluginRepository>
-			<id>Sonatype OSSRH</id>
-			<url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
+			<id>terminological snapshots</id>
+        	<url>https://maven.pkg.github.com/terminological/m2repo</url>
 		</pluginRepository>
 	</pluginRepositories>
 	<!-- REPOSITORIES_END -->
 
-	<!--- BUILD_START -->
+	<!-- BUILD_START -->
 	<build>
 		<plugins>
-			<!--- BUILD_END -->
+			<!-- BUILD_END -->
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.1</version>
@@ -103,7 +105,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!--- BUILD_START -->
+			<!-- BUILD_START -->
 			<plugin>
 				<groupId>io.github.terminological</groupId>
 				<artifactId>r6-generator-maven-plugin</artifactId>
@@ -113,72 +115,107 @@
 						<!-- R package metadata: -->
 						<title>A test library</title>
 						
-						<!-- As this project is documenting the r6-generator-maven-plugin I am syncing R package version with the -->
-						<!-- r6-generator version. this is unlikely to be what you want to do. -->
+						<!-- As this project is documenting the r6-generator-maven-plugin 
+						I am syncing R package version with the r6-generator version. 
+						This is unlikely to be what you want to do. -->
 						<version>${r6.version}</version>
 						 
-						<!-- Instead you most likely want to sync the R package version to your Java artifact version in a "normal" project -->
-						<!-- <version>${version}</version> -->
-						<!-- Alternatively you can manage the R package version manually by putting whatever you like in here -->
-						<!-- Although semantic versioning of the format 0.1.0.9000 is expected -->
-						<!-- <version>0.1.0.9000</version> -->
+						<!-- Instead you most likely want to sync the R package 
+						version to your Java artifact version in a "normal" project 
+						e.g.: -->
+						<!-- <version>${project.version}</version> -->
+						<!-- Note that -SNAPSHOT java versions will be rolled 
+						back to previous patch version for the R package 
+						so 0.1.1-SNAPSHOT (Java) becomes 0.1.0.9000 (R)
+						this is due to the difference between R and Java versioning 
+						strategies. R tools typically use non-standard semantic 
+						versioning. -->
 						
+						<!-- Alternatively you can manage the R package version 
+						manually by putting a R style version
+						of the format 0.1.0.9000.  e.g. -->
+						<!-- <version>0.1.0.9000</version> -->
 						
 						<doi>10.5281/zenodo.6645134</doi>
 						<packageName>testRapi</packageName>
 						<githubOrganisation>terminological</githubOrganisation>
 						<githubRepository>r6-generator-docs</githubRepository>
-						<!-- often (but not in this case) the repository will be the same as the package i.e. --> 
+						<!-- often (but not in this case) the repository will be 
+						the same as the package, e.g.: --> 
 						<!-- <githubRepository>${packageName}</githubRepository> -->
 						
 						<license>MIT</license>
 						
-						<!-- this is the Description field in the R DESCRIPTION file -->
-						<!-- CRAN specifies some standards for this, such as it should not start with the package name and must pass spellchecks -->
-						<!-- any references to other packages mut be in single quotes -->
+						<!-- this is the Description field in the R DESCRIPTION file
+						CRAN specifies some standards for this, such as it 
+						should not start with the package name and must pass 
+						spellchecks any references to other packages mut be in 
+						single quotes.-->
 						<description>
-							Documents the features of the 'r6-generator-maven-plugin' by providing an example
-							of an R package automatically generated from Java code by the plugin. 
-							It is not intended to be useful beyond testing,	demonstrating and documenting the features of the plugin.
+							Documents the features of the 'r6-generator-maven-plugin' 
+							by providing an example of an R package automatically 
+							generated from Java code by the plugin. It is not 
+							intended to be useful beyond testing, demonstrating 
+							and documenting the features of the r6 generator plugin.
 						</description>
 						<maintainerName>Rob</maintainerName>
 						<maintainerFamilyName>Challen</maintainerFamilyName>
-						<maintainerEmail>rc538@exeter.ac.uk</maintainerEmail>
-						<maintainerOrganisation>University of Exeter</maintainerOrganisation>
+						<maintainerEmail>rob@terminological.co.uk</maintainerEmail>
+						<maintainerOrganisation>terminological ltd.</maintainerOrganisation>
 						
 						<!-- Build configuration options: -->
-						<debug>false</debug> <!-- starts the R library with java code in debugging mode -->
-						<useRoxygen2>true</useRoxygen2> <!-- Roxygen can integrate user supplied and generated R code, but requires 
-							a working R version on the system that generates the R package. 
-							This must be set if, like this package, you define some additional manual functions in your own
-							`.R` files in the R directory beyond those generated by the package. This kind of hybrid java and R 
-							package must use devtools::document through this option to generate the documentation.
-							-->
-						<useCmdCheck>true</useCmdCheck> <!-- Runs a R CMD Check as part of the maven build and abort on failure . -->
-						<usePkgdown>true</usePkgdown> <!-- Pkgdown will generate a nice looking site. if it fails the build will abort -->
-						<useJavadoc>false</useJavadoc> <!-- building the javadocs into the documentation is nice but can add 
-							to the size of the package which is not helpful if submitting to CRAN -->
-							
-						<!-- pre-compiling the binary if probably a safest option, where the compilation is done during maven build -->
-						<!-- the alternative is to compile the java from source code on first use of the library from within R -->
-						<!-- this requires the user to have a JDK installed, and uses a maven wrapper script -->
+						
+						<!-- starts the R library with Java code in remote 
+						debugging mode: -->
+						<debug>false</debug>
+						
+						<!-- Roxygen can integrate user supplied and generated R 
+						code, but requires a working R version on the system 
+						that generates the R package. This must be set if, like 
+						this package, you define some additional manual 
+						functions in your own `.R` files in the R directory 
+						beyond those generated by the package. This kind of 
+						hybrid java and R package must use devtools::document 
+						through this option to generate the correct NAMESPACE 
+						file and documentation. -->
+						<useRoxygen2>true</useRoxygen2> 
+						
+						<!-- Runs a R CMD Check as part of the maven build and abort on failure . -->
+						<useCmdCheck>true</useCmdCheck>
+						
+						 <!-- Pkgdown will generate a nice looking site. if it fails the build will abort --> 
+						<usePkgdown>true</usePkgdown>
+						
+						<!-- building the javadocs into the documentation is nice but can add 
+						to the size of the package which is not helpful if submitting to CRAN -->
+						<useJavadoc>false</useJavadoc> 
+						
+						<!-- pre-compiling the binary if probably a safest option, where the compilation is done during maven build
+						the alternative is to compile the java from source code on first use of the library from within R
+						this requires the user to have a JDK installed, and uses a maven wrapper script -->
 						<preCompileBinary>true</preCompileBinary> 
 						
-						 <!-- packaging all dependencies is the most robust but results in a large package size that may not be accepted on CRAN -->
-						 <!-- however this is the simplest if the main target is r-universe or deployment via github -->
-						 <!-- the alternative is to deploy a minimal jar and fetch all dependencies on first library use. -->
-						 <!-- this option only applies if the binary is precompiled in the previous option. -->
-						<packageAllDependencies>false</packageAllDependencies>
+						<!-- packaging all dependencies is the most robust but 
+						results in a large package size that may not be accepted on CRAN
+						however this is the simplest if the main target is r-universe or deployment via github
+						the alternative is to deploy a minimal jar and fetch all dependencies on first library use.
+						this option only applies if the binary is precompiled in the previous option. -->
+						<packageAllDependencies>true</packageAllDependencies>
+						
+						<!-- Maven shade can minimise the size of JAR files by trimming bits that you don't actually use -->
+						<useShadePlugin>true</useShadePlugin>
 						
 						<!-- any rJava VM start up options can be added here -->
 						<rjavaOpts>
-							<rjavaOpt>-Xmx256M</rjavaOpt> <!-- this example sets the maximum heap size -->
+							<!-- this example sets the maximum heap size -->
+							<rjavaOpt>-Xmx256M</rjavaOpt>
 						</rjavaOpts>
 						
 					</packageData>
-					<!-- the best place to put the R package is in the directory above the java code -->
-					<!-- and to have the java code in a `java` subdirectory of a github repo. -->
-					<!-- i.e. this file would be `java/pom.xml`. This makes R optimally happy and is the best layout for new projects. -->
+					<!-- the best place to put the R package is in the directory above the java code
+					and to have the java code in a `java` subdirectory of a github repo.
+					i.e. this file would be `java/pom.xml`. This makes R optimally 
+					happy and is the best layout for new projects. -->
 					<outputDirectory>${project.basedir}/..</outputDirectory>
 				</configuration>
 				<executions>
@@ -204,5 +241,7 @@
 			</plugin>
 		</plugins>
 	</build>
-	<!--- BUILD_END -->
+	<!-- BUILD_END -->
+<!-- HEAD_START -->
 </project>
+<!-- HEAD_END -->

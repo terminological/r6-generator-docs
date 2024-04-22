@@ -9,6 +9,8 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import uk.co.terminological.rjava.RAsync;
+import uk.co.terminological.rjava.RBlocking;
 import uk.co.terminological.rjava.RClass;
 import uk.co.terminological.rjava.RConverter;
 import uk.co.terminological.rjava.RDefault;
@@ -16,6 +18,7 @@ import uk.co.terminological.rjava.RFinalize;
 import uk.co.terminological.rjava.RMethod;
 import uk.co.terminological.rjava.types.RCharacter;
 import uk.co.terminological.rjava.types.RDataframe;
+import uk.co.terminological.rjava.types.RInteger;
 import uk.co.terminological.rjava.types.RNumeric;
 import uk.co.terminological.rjava.types.RObject; 
 
@@ -254,6 +257,84 @@ public class FeatureTest {
 	}
 	
 	//END_SNIP_6
+	
+	//START_SNIP_7
+	
+	int invocation = 0;
+	int timer = 10;
+	
+	@RAsync(synchronise = true)
+	public RCharacter asyncCountdown() throws InterruptedException {
+		invocation = invocation + 1;
+		timer = 10;
+		String label = "Async and run thread safe "+invocation;
+		// This example deliberately uses a not thread
+		// safe design
+		while (timer > 0) {
+			System.out.println(label+" ... "+timer);
+			Thread.sleep(1000);
+			timer--;
+		}
+		return RCharacter.from(label+" completed.");
+	}
+	
+	@RAsync
+	public RCharacter asyncRaceCountdown() throws InterruptedException {
+		invocation = invocation + 1;
+		timer = 10;
+		String label = "Async and not thread safe "+invocation;
+		// This example deliberately uses a not thread
+		// safe design
+		while (timer > 0) {
+			System.out.println(label+" ... "+timer);
+			Thread.sleep(1000);
+			timer--;
+		}
+		return RCharacter.from(label+" completed.");
+	}
+	
+	//END_SNIP_7
+	
+	//START_SNIP_8
+	
+	@RBlocking
+	public RCharacter blockingCountdown() throws InterruptedException {
+		invocation = invocation + 1;
+		timer = 10;
+		String label = "Blocking "+invocation;
+		while (timer > 0) {
+			System.out.println(label+" ... "+timer);
+			Thread.sleep(1000);
+			timer--;
+		}
+		return RCharacter.from(label+" completed.");
+	}
+	
+	//END_SNIP_8
+	
+	//START_SNIP_9
+	
+	 
+	@RAsync
+	public static RCharacter asyncStaticCountdown(RCharacter label, @RDefault(rCode = "10") RInteger rtimer) throws InterruptedException {
+		// N.B. inputs in Async classes cannot be Java primitives
+		int timer = rtimer.javaPrimitive();
+		while (timer > 0) {
+			System.out.println(label.get()+" ... "+timer);
+			Thread.sleep(1000);
+			timer--;
+		}
+		return RCharacter.from(label+" completed.");
+	}
+	
+	@RAsync
+	public static FactoryTest asyncFactory() throws InterruptedException {
+		Thread.sleep(5000);
+		return new FactoryTest();
+	}
+	
+	
+	//END_SNIP_9
 	
 	//START_SNIP_1
 	

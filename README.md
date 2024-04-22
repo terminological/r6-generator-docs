@@ -1,8 +1,8 @@
 # r6-generator-docs
 
 [![R-CMD-check](https://github.com/terminological/r6-generator-docs/workflows/R-CMD-check/badge.svg)](https://github.com/terminological/r6-generator-docs/actions)
-
 [![DOI](https://zenodo.org/badge/503699096.svg)](https://zenodo.org/badge/latestdoi/503699096)
+[![testRapi status badge](https://terminological.r-universe.dev/badges/testRapi)](https://terminological.r-universe.dev)
 
 This test project demonstrates some of the major features of the maven plugin by creating a minimal R plugin from a set of annotated java classes.
 

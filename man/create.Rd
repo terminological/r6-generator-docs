@@ -16,6 +16,7 @@
 }
 \value{
 R6 MoreFeatureTest object: A MoreFeatureTest R6 object
+
 }
 \description{
 no description

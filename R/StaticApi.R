@@ -2,9 +2,114 @@
 # This is a collection of the static methods described in the Java API
 # and serves as an alternative R centric entry point of the testRapi generated R library.
 
-# Version: 0.5.6
-# Generated: 2022-09-26T13:40:30.234
-# Contact: rc538@exeter.ac.uk
+# Version: 0.6.1.9000
+# Generated: 2024-04-22T20:47:47.350770646
+# Contact: rob@terminological.co.uk
+
+# MinimalExample class static methods ----
+
+
+# BounceTest class static methods ----
+
+
+# FeatureTest class static methods ----
+
+
+#' demoStatic: Static methods are also supported. 
+#' 
+#' These are accessed through the
+#'   root of the R api, and as a functional
+#'   interface
+#' @param message a message - (java expects a String)
+#' @return void: 
+#' 
+#' @examples
+#' J = JavaApi$get()
+#' J$FeatureTest$demoStatic('Ola, el mundo')
+#' demo_static('Bonjour, le monde')
+#' @export
+demo_static = function(message) {
+	# get the API singleton
+	J = JavaApi$get()
+	# execute the R6 function call with the same parameters
+	out = J$FeatureTest$demoStatic(message)
+	if(is.null(out)) return(invisible(out))
+	return(out)
+}
+
+
+#' diamonds: The ggplot2::diamonds dataframe 
+#' 
+#' A copy serialised into java, using
+#'   RObject.writeRDS, saved within the
+#'   jar file of the package, and exposed here
+#'   using RObject.readRDS.
+#' @return RDataframe: 
+#' the ggplot2::diamonds dataframe
+#' @examples
+#' dplyr::glimpse( diamonds() )
+#' @export
+diamonds = function() {
+	# get the API singleton
+	J = JavaApi$get()
+	# execute the R6 function call with the same parameters
+	out = J$FeatureTest$diamonds()
+	if(is.null(out)) return(invisible(out))
+	return(out)
+}
+
+
+#' collider: no title
+#' 
+#' no description
+#' @param message1 - (java expects a RCharacter)
+#' @param message2 - (java expects a RCharacter)
+#' @return RCharacter: 
+#' 
+#' @export
+feature_test_collider = function(message1, message2) {
+	# get the API singleton
+	J = JavaApi$get()
+	# execute the R6 function call with the same parameters
+	out = J$FeatureTest$collider(message1, message2)
+	if(is.null(out)) return(invisible(out))
+	return(out)
+}
+
+
+#' asyncStaticCountdown: no title
+#' 
+#' no description
+#' @param label - (java expects a RCharacter)
+#' @param rtimer - (java expects a RInteger)
+#' @return RCharacter: 
+#' 
+#' @export
+async_static_countdown = function(label, rtimer=10) {
+	# get the API singleton
+	J = JavaApi$get()
+	# execute the R6 function call with the same parameters
+	out = J$FeatureTest$asyncStaticCountdown(label, rtimer)
+	if(is.null(out)) return(invisible(out))
+	return(out)
+}
+
+
+#' asyncFactory: no title
+#' 
+#' no description
+#' @return R6 FactoryTest object: 
+#' 
+#' @export
+async_factory = function() {
+	# get the API singleton
+	J = JavaApi$get()
+	# execute the R6 function call with the same parameters
+	out = J$FeatureTest$asyncFactory()
+	if(is.null(out)) return(invisible(out))
+	return(out)
+}
+
 
 # MoreFeatureTest class static methods ----
 
@@ -68,6 +173,9 @@ more_feature_test_collider = function(message1, message2) {
 	if(is.null(out)) return(invisible(out))
 	return(out)
 }
+
+
+# FactoryTest class static methods ----
 
 
 # Serialiser class static methods ----
@@ -176,78 +284,6 @@ deserialise_named_list = function(filename) {
 	if(is.null(out)) return(invisible(out))
 	return(out)
 }
-
-
-# FeatureTest class static methods ----
-
-
-#' demoStatic: Static methods are also supported. 
-#' 
-#' These are accessed through the
-#' root of the R api, and as a functional interface
-#' @param message a message - (java expects a String)
-#' @return void: 
-#' 
-#' @examples
-#' J = JavaApi$get()
-#' J$FeatureTest$demoStatic('Ola, el mundo')
-#' demo_static('Bonjour, le monde')
-#' @export
-demo_static = function(message) {
-	# get the API singleton
-	J = JavaApi$get()
-	# execute the R6 function call with the same parameters
-	out = J$FeatureTest$demoStatic(message)
-	if(is.null(out)) return(invisible(out))
-	return(out)
-}
-
-
-#' diamonds: The ggplot2::diamonds dataframe 
-#' 
-#' A copy serialised into java, using
-#' RObject.writeRDS, saved within the jar file of the package, and exposed here
-#' using RObject.readRDS.
-#' @return RDataframe: 
-#' the ggplot2::diamonds dataframe
-#' @examples
-#' dplyr::glimpse( diamonds() )
-#' @export
-diamonds = function() {
-	# get the API singleton
-	J = JavaApi$get()
-	# execute the R6 function call with the same parameters
-	out = J$FeatureTest$diamonds()
-	if(is.null(out)) return(invisible(out))
-	return(out)
-}
-
-
-#' collider: no title
-#' 
-#' no description
-#' @param message1 - (java expects a RCharacter)
-#' @param message2 - (java expects a RCharacter)
-#' @return RCharacter: 
-#' 
-#' @export
-feature_test_collider = function(message1, message2) {
-	# get the API singleton
-	J = JavaApi$get()
-	# execute the R6 function call with the same parameters
-	out = J$FeatureTest$collider(message1, message2)
-	if(is.null(out)) return(invisible(out))
-	return(out)
-}
-
-
-# BounceTest class static methods ----
-
-
-# FactoryTest class static methods ----
-
-
-# MinimalExample class static methods ----
 
 
 

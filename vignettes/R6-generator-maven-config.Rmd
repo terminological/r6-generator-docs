@@ -27,10 +27,11 @@ source(here::here("vignettes/codeSnip.R"))
 
 ## Maven `pom.xml` options
 
-An example of the Maven configuration from this test project is shown below. The key parts of this configuration are described below:
+An example of the Maven configuration from this test project is shown below. The
+key parts of this configuration are described below:
 
 * Dependency on the `r6-generator-runtime` Java library.
-* Jitpack Maven repository declarations for both code and plugins.
+* Github Maven repository declarations for both code and plugins.
 * Plugin configuration for the `r6-generator-maven-plugin`.
 
 ### Sample `pom.xml`
@@ -41,19 +42,50 @@ codeSnip(type="xml",filename=here::here("java/pom.xml"))
 
 ## The r6-generator-runtime Java library
 
-The `runtime` java library contains code needed in the development of R compatible libraries in Java. These are the annotations that identify a Java Class as part of the R Api, (`uk.co.terminological.rjava.RClass` and `uk.co.terminological.rjava.RMethod`), specialised data types that can be round tripped between R and Java (in package `uk.co.terminological.rjava.types.*`), and various data conversion helpers (e.g. `uk.co.terminological.rjava.RConverter`) which can be used to accelerate development of an R centric API in Java.
+The `runtime` Java library contains code needed in the development of R
+compatible libraries in Java. These are the annotations that identify a Java
+Class as part of the R Api, (`uk.co.terminological.rjava.RClass` and
+`uk.co.terminological.rjava.RMethod`), specialised data types that can be round
+tripped between R and Java (in package `uk.co.terminological.rjava.types.*`),
+and various data conversion helpers (e.g.
+`uk.co.terminological.rjava.RConverter`) which can be used to accelerate
+development of an R centric API in Java.
 
-## Jitpack maven repository declarations for both code and plugins
+## Github maven repository declarations for both code and plugins
 
-Both the core maven plugin and the `runtime` library are available through the Jitpack repository. The `${r6.version}` property is here set to `master-SNAPSHOT` which retrieves the development version of the plugin. or could be `1.0` for stable versions. The most recent stable release version numbers will be available [on the github releases page](https://github.com/terminological/r6-generator-maven-plugin/tags)
+Both the core maven plugin and the `runtime` library are available through the
+the maven central repository. The `${r6.version}` property is here set to
+`xx.xx.xx-SNAPSHOT` which retrieves the development version of the plugin. or
+could be `1.0` for stable versions. The most recent stable release version
+numbers will be available [on the github releases
+page](https://github.com/terminological/r6-generator-maven-plugin/tags)
 
 ## Plugin configuration for the r6-generator-maven-plugin
 
 ### outputDirectory
 
-The plugin needs to know where to output the R library. In the example above this is `<outputDirectory>${project.basedir}/..</outputDirectory>` which specifies the generated code will reside in the directory above the java `pom.xml`. Keeping the Java source code within the R project is the best option as the resulting R package can be committed to GitHub with the Java source in the `src` directory (which is where R expects sources to be). Thi smay however be impossible if the Java library requires that is in the root of the github project. In this case the R and Java code can co-exist, and the `pom.xml` can be in the project root. This will be OK however if you plan on submitting your library to CRAN it will generate a few NOTES that will need to be explained.
+The plugin needs to know where to output the R library. In the example above
+this is `<outputDirectory>${project.basedir}/..</outputDirectory>` which
+specifies the generated R package will reside in the directory above the java
+`pom.xml`. This infers that your Java code should be in a subdirectory of the R
+project (and hence the root of the Git repository). We recommend using the
+`java` directory for this. Keeping the Java source code within the R project is
+the best option as the resulting R package can be committed to GitHub with the
+Java source in the `java` directory (which is where R CMD Check expects sources
+to be). This may however be impossible if the Java library requires that is in
+the root of the github project. In this case the R and Java code can co-exist,
+and the `pom.xml` can be in the project root. This will be OK however if you
+plan on submitting your library to CRAN it will generate a few NOTES that will
+need to be explained.
 
-If the R package is generated in a sub-directory of the java code this has implications for the ability to compile that code from source from within R, and is generally a bad idea. In this case the fat JAR must be distributed with the R package and the fact that the R package is in a sub-directory will need to be be specified if the library is intended to be installed via GitHub (e.g. using `devtools::install_github("my-org/my-project")`. It is also equally possible to place the generated code into the root directory of the project (`${project.basedir}`) or indeed into a completely separate directory. 
+If the R package is generated in a sub-directory of the Java code this has
+implications for the ability to compile that code from source from within R, and
+is generally a bad idea. In this case the fat JAR must be distributed with the R
+package and the fact that the R package is in a sub-directory will need to be be
+specified if the library is intended to be installed via GitHub (e.g. using
+`devtools::install_github("my-org/my-project")`. It is also equally possible to
+place the generated code into the root directory of the project
+(`${project.basedir}`) or indeed into a completely separate directory.
 
 ### packageData
 
@@ -61,26 +93,89 @@ The package data section includes metadata that describes the R library and a fe
 
 * `title`
   + the title is used in description files and man pages
-* `version`
+* `version` (optional - defaults to `${package.version}`)
+  + the version of the R package that will be generated. This can be either
+  specified as a Java/Maven style semantic version (e.g. `xx.xx.xx-SNAPSHOT` by
+  reusing the Maven `${package.version}`) or an R style version
+  (`yy.yy.yy.9000`). If given as a Java/Maven style `-SNAPSHOT` version the
+  generated R package will be one patch version less - so `1.0.0-SNAPSHOT` will
+  generate an R package with version `0.99.99.9000`. This is to maintain
+  consistent ordering between the two versioning styles when you are syncing the
+  R package to Maven versions.
 * `debug` (optional - defaults to `false`)
-  + a `true` or `false` value that determines whether remote java debugging should be compiled into the R package. Remote debugging affects performance and can prevent the loading of the R package if previous versions have not been unload correctly. This is useful only for debugging R to Java integration problems.
+  + a `true` or `false` value that determines whether remote java debugging
+  should be compiled into the R package. Remote debugging affects performance
+  and can prevent the loading of the R package if previous versions have not
+  been unload correctly. This is useful only for debugging R to Java integration
+  problems.
 * `usePkgdown` (optional - defaults to `false`)
-  + If the generated R package is working and loads correctly we can use `r cran("pkgdown")` to generate online documentation. This will be generated in a `docs` sub-folder of the project `outputDirectory`. This can be pushed to GitHub and used as online documentation of the generated R library. Regardless of online documentation, the standard R `man` pages are generated for interactive help on the package. Pkgdown documentation will not be generated if the project is in debug mode.
+  + If the generated R package is working and loads correctly we can use `r
+  cran("pkgdown")` to generate online documentation. This will be generated in a
+  `docs` sub-folder of the project `outputDirectory`. This can be pushed to
+  GitHub and used as online documentation of the generated R library. Regardless
+  of online documentation, the standard R `man` pages are generated for
+  interactive help on the package. Pkgdown documentation will not be generated
+  if the project is in debug mode.
 * `useRoxygen2` (optional - defaults to `false`)
-  + If the generated R package is working and loads correctly we can use `r cran("devtools")` to generate configuration files and man pages for the package using Roxygen2 annotations. This also allows co-existence of manually written and generated functions, within the same package. This is a fairly experimental feature and I can't promise that generated code will not accidentally over-write manually written code. Use it at your own risk. 
+  + If the generated R package is working and loads correctly we can use 
+  `r cran("devtools")` to generate configuration files and man pages for the
+  package using Roxygen2 annotations. This also allows co-existence of manually
+  written and generated functions, within the same package. This is a fairly
+  experimental feature and I can't promise that generated code will not
+  accidentally over-write manually written code. Use it at your own risk.
 * `useJavadoc` (optional - defaults to `false`)
-  + Along side the R documentation it may be helpful to provide Javadocs of the Java back end of the library. These are generated into the `docs\javadoc` sub-folder.
+  + Along side the R documentation it may be helpful to provide Javadocs of the
+  Java back end of the library. These are generated into the `docs\javadoc`
+  sub-folder.
+* `precompileBinary` (defaults to `true`)
+  + Usually we wish to distribute a package with a compiled jar file of the Java
+  code. In exceptional circumstances this can be replaced with a sources only
+  distribution. In this case the Java code will be compiled on first use on the
+  users machine, which should be done automatically. To make this possible the
+  user must have a Java development kit installed.
+* `packageAllDependencies` (defaults to `true`, only relevant if `precompileBinary` is true)
+  + A single jar file is created including all dependencies in one "uber-jar".
+  This is the most reliable option but transitive dependencies result in large
+  Java libraries which will almost always exceed CRAN's stringent 4Mb limits.
+  This limit is not an issue if you plan on deploying to `r-universe`,
+  which is how I package my projects. If this option is set to false then the
+  resulting jar file will need to fetch dependencies from the internet on first
+  use. This can be time consuming and a potential point of failure.
+* `useShadePlugin` (defaults to `false`, only relevant if `packageAllDependencies` is true)
+  + The Maven shade plugin can be used to minimise the size of a "uber-jar" but
+  sometimes removes essential pieces. This could work to reduce the size of a
+  packaged jar file but thorough testing of the result is recommended.
 * `rjavaOpts\rjavaOpt`
-  + A list of JVM flags can be provided that will be provided during the initialization of the Java Virtual Machine (JVM). In the example here the JVM is given 256Mb of heap space (`-Xmx256M`). Only one JVM is initialised regardless of how many different Java based R packages are used, and only the first one gets to decide the initial parameters. As such these options may be ignored by R if a JVM has already been created. Javadoc documentation will not be generated if the project is in debug mode.
+  + A list of JVM flags can be provided that will be provided during the
+  initialization of the Java Virtual Machine (JVM). In the example here the JVM
+  is given 256Mb of heap space (`-Xmx256M`). Only one JVM is initialised
+  regardless of how many different Java based R packages are used, and only the
+  first one gets to decide the initial parameters. As such these options may be
+  ignored by R if a JVM has already been created. Javadoc documentation will not
+  be generated if the project is in debug mode.
 * `packageName`
-  + the most important entry - the desired name of the package forms the name space for the package so it is best that it is short and has not already been used for a R package - e.g. don't call it "stats".
+  + the most important entry - the desired name of the package forms the name
+  space for the package so it is best that it is short and has not already been
+  used for a R package - e.g. don't call it "stats".
 * `license`
-  + a license specification - it is best to use a [CRAN friendly license](https://cran.r-project.org/web/licenses/). N.B. This should be `MIT` rather than `MIT + file LICENSE`, the additional license file is added if needed.
+  + a license specification - it is best to use a [CRAN friendly
+  license](https://cran.r-project.org/web/licenses/). N.B. This should be `MIT`
+  rather than `MIT + file LICENSE`, the additional license file is added if
+  needed.
 * `maintainerName`, `maintainerFamilyName`, `maintainerEmail`, `maintainerOrganisation`
-  + the author details used here are supplemented by any author details found in `@Author` Java doclet tags in the code.
+  + the author details used here are supplemented by any author details found in
+  `@Author` Java doclet tags in the code. 
 
 ## Goals
 
-The plugin only two goals - "clean-r-library", "flatten-pom" and "generate-r-library"
+The plugin has three goals - `clean-r-library`, `flatten-pom` and `generate-r-library`
 
-*TODO: explain what they are
+* `clean-r-library` (binds to Maven clean phase)
+  + clear out old generated files leaving user modified files in place.
+* `flatten-pom` (binds to Maven process resources phase)
+  + create a simplified pom, collapsing any details inherited from parent pom and
+  removing dependencies on parent poms
+* `generate-r-library` (binds to Maven install phase)
+  + run the code generator and install compiled jar into the R package.
+
+In general all 3 goals should be run.

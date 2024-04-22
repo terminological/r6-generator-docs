@@ -23,14 +23,14 @@
 }
 
 \description{
-Documents the features of the 'r6-generator-maven-plugin' by providing an example of an R package automatically generated from Java code by the plugin. It is not intended to be useful beyond testing, demonstrating and documenting the features of the plugin.
+Documents the features of the 'r6-generator-maven-plugin' by providing an example of an R package automatically generated from Java code by the plugin. It is not intended to be useful beyond testing, demonstrating and documenting the features of the r6 generator plugin.
 
-Version: 0.5.6
+Version: 0.6.1.9000
 
-Generated: 2022-09-26T13:40:29.847
+Generated: 2024-04-22T20:47:47.268201664
 }
 
-\author{\email{rc538@exeter.ac.uk}}
+\author{\email{rob@terminological.co.uk}}
 
 \examples{
 ## -----------------------------------
@@ -46,6 +46,78 @@ J = testRapi::JavaApi$get()
 # or a more verbose configuration
 # J = testRapi::JavaApi$get("DEBUG")
 
+
+## -----------------------------------
+## Method `J$MinimalExample$new(...)`
+## -----------------------------------
+\dontrun{
+# no example given - appropriate parameter values must be provided:
+J$MinimalExample$new()
+# or alternatively:
+testRapi::new()
+}
+
+## -----------------------------------
+## Method `J$BounceTest$new(...)`
+## -----------------------------------
+\dontrun{
+# no example given - appropriate parameter values must be provided:
+J$BounceTest$new()
+# or alternatively:
+testRapi::new()
+}
+
+## -----------------------------------
+## Method `J$FeatureTest$new(...)`
+## -----------------------------------
+minExample = J$FeatureTest$new('Hello from Java constructor!')
+
+## -----------------------------------
+## Method `J$FeatureTest$demoStatic(...)`
+## Aliased as `testRapi::demo_static(...)`
+## -----------------------------------
+J = JavaApi$get()
+J$FeatureTest$demoStatic('Ola, el mundo')
+demo_static('Bonjour, le monde')
+
+## -----------------------------------
+## Method `J$FeatureTest$diamonds(...)`
+## Aliased as `testRapi::diamonds(...)`
+## -----------------------------------
+dplyr::glimpse( diamonds() )
+
+## -----------------------------------
+## Method `J$FeatureTest$collider(...)`
+## Aliased as `testRapi::feature_test_collider(...)`
+## -----------------------------------
+\dontrun{
+# no example given - appropriate parameter values must be provided:
+J$FeatureTest$collider(message1, message2)
+# or alternatively:
+testRapi::feature_test_collider(message1, message2)
+}
+
+## -----------------------------------
+## Method `J$FeatureTest$asyncStaticCountdown(...)`
+## Aliased as `testRapi::async_static_countdown(...)`
+## -----------------------------------
+\dontrun{
+# no example given - appropriate parameter values must be provided:
+J$FeatureTest$asyncStaticCountdown(label, rtimer)
+# or alternatively:
+testRapi::async_static_countdown(label, rtimer)
+}
+
+## -----------------------------------
+## Method `J$FeatureTest$asyncFactory(...)`
+## Aliased as `testRapi::async_factory(...)`
+## -----------------------------------
+\dontrun{
+# no example given - appropriate parameter values must be provided:
+J$FeatureTest$asyncFactory()
+# or alternatively:
+testRapi::async_factory()
+}
 
 ## -----------------------------------
 ## Method `J$MoreFeatureTest$new(...)`
@@ -82,6 +154,16 @@ testRapi::concat(message1, message2)
 library(testthat)
 tmp = more_feature_test_collider('should ','work')
 expect_equal(tmp,'more feature test: should work')
+
+## -----------------------------------
+## Method `J$FactoryTest$new(...)`
+## -----------------------------------
+\dontrun{
+# no example given - appropriate parameter values must be provided:
+J$FactoryTest$new()
+# or alternatively:
+testRapi::new()
+}
 
 ## -----------------------------------
 ## Method `J$Serialiser$new(...)`
@@ -158,66 +240,6 @@ J$Serialiser$deserialiseNamedList(filename)
 # or alternatively:
 testRapi::deserialise_named_list(filename)
 }
-
-## -----------------------------------
-## Method `J$FeatureTest$new(...)`
-## -----------------------------------
-minExample = J$FeatureTest$new('Hello from Java constructor!')
-
-## -----------------------------------
-## Method `J$FeatureTest$demoStatic(...)`
-## Aliased as `testRapi::demo_static(...)`
-## -----------------------------------
-J = JavaApi$get()
-J$FeatureTest$demoStatic('Ola, el mundo')
-demo_static('Bonjour, le monde')
-
-## -----------------------------------
-## Method `J$FeatureTest$diamonds(...)`
-## Aliased as `testRapi::diamonds(...)`
-## -----------------------------------
-dplyr::glimpse( diamonds() )
-
-## -----------------------------------
-## Method `J$FeatureTest$collider(...)`
-## Aliased as `testRapi::feature_test_collider(...)`
-## -----------------------------------
-\dontrun{
-# no example given - appropriate parameter values must be provided:
-J$FeatureTest$collider(message1, message2)
-# or alternatively:
-testRapi::feature_test_collider(message1, message2)
-}
-
-## -----------------------------------
-## Method `J$BounceTest$new(...)`
-## -----------------------------------
-\dontrun{
-# no example given - appropriate parameter values must be provided:
-J$BounceTest$new()
-# or alternatively:
-testRapi::new()
-}
-
-## -----------------------------------
-## Method `J$FactoryTest$new(...)`
-## -----------------------------------
-\dontrun{
-# no example given - appropriate parameter values must be provided:
-J$FactoryTest$new()
-# or alternatively:
-testRapi::new()
-}
-
-## -----------------------------------
-## Method `J$MinimalExample$new(...)`
-## -----------------------------------
-\dontrun{
-# no example given - appropriate parameter values must be provided:
-J$MinimalExample$new()
-# or alternatively:
-testRapi::new()
-}
 }
 
 \keyword{java api}
@@ -237,10 +259,31 @@ testRapi::new()
 \section{Package classes and static methods}{
 	\if{html}{\out{<hr>}}
 	\itemize{
+		\item \href{#method-MinimalExample-new}{\code{J$MinimalExample$new()}}
+	}
+	\if{html}{\out{<hr>}}
+	\itemize{
+		\item \href{#method-BounceTest-new}{\code{J$BounceTest$new()}}
+	}
+	\if{html}{\out{<hr>}}
+	\itemize{
+		\item \href{#method-FeatureTest-new}{\code{J$FeatureTest$new(logMessage)}}
+		\item \href{#method-FeatureTest-demoStatic}{\code{J$FeatureTest$demoStatic(message)}}
+		\item \href{#method-FeatureTest-diamonds}{\code{J$FeatureTest$diamonds()}}
+		\item \href{#method-FeatureTest-collider}{\code{J$FeatureTest$collider(message1, message2)}}
+		\item \href{#method-FeatureTest-asyncStaticCountdown}{\code{J$FeatureTest$asyncStaticCountdown(label, rtimer)}}
+		\item \href{#method-FeatureTest-asyncFactory}{\code{J$FeatureTest$asyncFactory()}}
+	}
+	\if{html}{\out{<hr>}}
+	\itemize{
 		\item \href{#method-MoreFeatureTest-new}{\code{J$MoreFeatureTest$new(message1, message2)}}
 		\item \href{#method-MoreFeatureTest-create}{\code{J$MoreFeatureTest$create(message1, message2)}}
 		\item \href{#method-MoreFeatureTest-concat}{\code{J$MoreFeatureTest$concat(message1, message2)}}
 		\item \href{#method-MoreFeatureTest-collider}{\code{J$MoreFeatureTest$collider(message1, message2)}}
+	}
+	\if{html}{\out{<hr>}}
+	\itemize{
+		\item \href{#method-FactoryTest-new}{\code{J$FactoryTest$new()}}
 	}
 	\if{html}{\out{<hr>}}
 	\itemize{
@@ -251,25 +294,6 @@ testRapi::new()
 		\item \href{#method-Serialiser-deserialiseList}{\code{J$Serialiser$deserialiseList(filename)}}
 		\item \href{#method-Serialiser-serialiseNamedList}{\code{J$Serialiser$serialiseNamedList(dataframe, filename)}}
 		\item \href{#method-Serialiser-deserialiseNamedList}{\code{J$Serialiser$deserialiseNamedList(filename)}}
-	}
-	\if{html}{\out{<hr>}}
-	\itemize{
-		\item \href{#method-FeatureTest-new}{\code{J$FeatureTest$new(logMessage)}}
-		\item \href{#method-FeatureTest-demoStatic}{\code{J$FeatureTest$demoStatic(message)}}
-		\item \href{#method-FeatureTest-diamonds}{\code{J$FeatureTest$diamonds()}}
-		\item \href{#method-FeatureTest-collider}{\code{J$FeatureTest$collider(message1, message2)}}
-	}
-	\if{html}{\out{<hr>}}
-	\itemize{
-		\item \href{#method-BounceTest-new}{\code{J$BounceTest$new()}}
-	}
-	\if{html}{\out{<hr>}}
-	\itemize{
-		\item \href{#method-FactoryTest-new}{\code{J$FactoryTest$new()}}
-	}
-	\if{html}{\out{<hr>}}
-	\itemize{
-		\item \href{#method-MinimalExample-new}{\code{J$MinimalExample$new()}}
 	}
 }
 
@@ -473,6 +497,291 @@ nothing. used for side effects.
 
 \section{Static methods and constructors}{
 	\if{html}{\out{<hr>}}
+	\if{html}{\out{<a id="method-MinimalExample-new"></a>}}
+	
+	\subsection{Method \code{MinimalExample$new()}}{
+		the default no-args constructor
+	
+		\subsection{Usage}{
+			\if{html}{\out{<div class="r">}}
+			\preformatted{
+J = testRapi::JavaApi$get()
+J$MinimalExample$new()
+	  		}
+			\if{html}{\out{</div>}}
+		}
+	
+		\subsection{Arguments}{
+			\if{html}{\out{<div class="arguments">}}
+			\itemize{
+				\item{none}
+			}
+			\if{html}{\out{</div>}}
+		}
+
+		\subsection{Returns}{
+			R6 MinimalExample object: 
+		}
+	}
+
+
+	\if{html}{\out{<hr>}}
+	\if{html}{\out{<a id="method-BounceTest-new"></a>}}
+	
+	\subsection{Method \code{BounceTest$new()}}{
+		the default no-args constructor
+	
+		\subsection{Usage}{
+			\if{html}{\out{<div class="r">}}
+			\preformatted{
+J = testRapi::JavaApi$get()
+J$BounceTest$new()
+	  		}
+			\if{html}{\out{</div>}}
+		}
+	
+		\subsection{Arguments}{
+			\if{html}{\out{<div class="arguments">}}
+			\itemize{
+				\item{none}
+			}
+			\if{html}{\out{</div>}}
+		}
+
+		\subsection{Returns}{
+			R6 BounceTest object: 
+		}
+	}
+
+
+	\if{html}{\out{<hr>}}
+	\if{html}{\out{<a id="method-FeatureTest-new"></a>}}
+	
+	\subsection{Method \code{FeatureTest$new()}}{
+		A maximum of one constructor of any signature can be used. 
+
+
+If different constructors are needed then they may be used but not 
+included in the R Api (i.e. not annotated with @RMethod.) 
+
+
+Static factory methods can be used instead.
+	
+		\subsection{Usage}{
+			\if{html}{\out{<div class="r">}}
+			\preformatted{
+J = testRapi::JavaApi$get()
+J$FeatureTest$new(logMessage)
+	  		}
+			\if{html}{\out{</div>}}
+		}
+	
+		\subsection{Arguments}{
+			\if{html}{\out{<div class="arguments">}}
+			\itemize{
+				\item{logMessage - a message which will be logged}{ - (java expects a String)}
+			}
+			\if{html}{\out{</div>}}
+		}
+
+		\subsection{Returns}{
+			R6 FeatureTest object: 
+		}
+	}
+
+		\subsection{Examples}{
+			\if{html}{\out{<div class="r example copy">}}
+			\preformatted{
+minExample = J$FeatureTest$new('Hello from Java constructor!')
+			}
+			\if{html}{\out{</div>}}
+		}
+
+	\if{html}{\out{<hr>}}
+	\if{html}{\out{<a id="method-FeatureTest-demoStatic"></a>}}
+	
+	\subsection{Method \code{FeatureTest$demoStatic()}}{
+		Static methods are also supported. 
+
+These are accessed through the
+root of the R api, and as a functional interface
+	
+		\subsection{Usage}{
+			\if{html}{\out{<div class="r">}}
+			\preformatted{
+J = testRapi::JavaApi$get()
+J$FeatureTest$demoStatic(message)
+# this method is also exposed as a package function:
+testRapi::demo_static(message)
+	  		}
+			\if{html}{\out{</div>}}
+		}
+	
+		\subsection{Arguments}{
+			\if{html}{\out{<div class="arguments">}}
+			\itemize{
+				\item{message a message}{ - (java expects a String)}
+			}
+			\if{html}{\out{</div>}}
+		}
+
+		\subsection{Returns}{
+			void: 
+		}
+	}
+
+		\subsection{Examples}{
+			\if{html}{\out{<div class="r example copy">}}
+			\preformatted{
+J = JavaApi$get()
+J$FeatureTest$demoStatic('Ola, el mundo')
+demo_static('Bonjour, le monde')
+			}
+			\if{html}{\out{</div>}}
+		}
+
+	\if{html}{\out{<hr>}}
+	\if{html}{\out{<a id="method-FeatureTest-diamonds"></a>}}
+	
+	\subsection{Method \code{FeatureTest$diamonds()}}{
+		The ggplot2::diamonds dataframe 
+
+A copy serialised into java, using
+RObject.writeRDS, saved within the jar file of the package, and exposed here
+using RObject.readRDS.
+	
+		\subsection{Usage}{
+			\if{html}{\out{<div class="r">}}
+			\preformatted{
+J = testRapi::JavaApi$get()
+J$FeatureTest$diamonds()
+# this method is also exposed as a package function:
+testRapi::diamonds()
+	  		}
+			\if{html}{\out{</div>}}
+		}
+	
+		\subsection{Arguments}{
+			\if{html}{\out{<div class="arguments">}}
+			\itemize{
+				\item{none}
+			}
+			\if{html}{\out{</div>}}
+		}
+
+		\subsection{Returns}{
+			RDataframe: the ggplot2::diamonds dataframe
+		}
+	}
+
+		\subsection{Examples}{
+			\if{html}{\out{<div class="r example copy">}}
+			\preformatted{
+dplyr::glimpse( diamonds() )
+			}
+			\if{html}{\out{</div>}}
+		}
+
+	\if{html}{\out{<hr>}}
+	\if{html}{\out{<a id="method-FeatureTest-collider"></a>}}
+	
+	\subsection{Method \code{FeatureTest$collider()}}{
+		no title
+	
+		\subsection{Usage}{
+			\if{html}{\out{<div class="r">}}
+			\preformatted{
+J = testRapi::JavaApi$get()
+J$FeatureTest$collider(message1, message2)
+# this method is also exposed as a package function:
+testRapi::feature_test_collider(message1, message2)
+	  		}
+			\if{html}{\out{</div>}}
+		}
+	
+		\subsection{Arguments}{
+			\if{html}{\out{<div class="arguments">}}
+			\itemize{
+				\item{message1}{ - (java expects a RCharacter)}
+				\item{message2}{ - (java expects a RCharacter)}
+			}
+			\if{html}{\out{</div>}}
+		}
+
+		\subsection{Returns}{
+			RCharacter: 
+		}
+	}
+
+
+	\if{html}{\out{<hr>}}
+	\if{html}{\out{<a id="method-FeatureTest-asyncStaticCountdown"></a>}}
+	
+	\subsection{Method \code{FeatureTest$asyncStaticCountdown()}}{
+		no title
+	
+		\subsection{Usage}{
+			\if{html}{\out{<div class="r">}}
+			\preformatted{
+J = testRapi::JavaApi$get()
+J$FeatureTest$asyncStaticCountdown(label, rtimer)
+# this method is also exposed as a package function:
+testRapi::async_static_countdown(label, rtimer)
+	  		}
+			\if{html}{\out{</div>}}
+		}
+	
+		\subsection{Arguments}{
+			\if{html}{\out{<div class="arguments">}}
+			\itemize{
+				\item{label}{ - (java expects a RCharacter)}
+				\item{rtimer}{ - (java expects a RInteger)}
+			}
+			\if{html}{\out{</div>}}
+		}
+
+		\subsection{Returns}{
+			An `RFuture` with methods `cancel()`, `isCancelled()`, `isDone()` and `get()`. 
+			The result of a `get()` call will be an 
+			RCharacter: 
+		}
+	}
+
+
+	\if{html}{\out{<hr>}}
+	\if{html}{\out{<a id="method-FeatureTest-asyncFactory"></a>}}
+	
+	\subsection{Method \code{FeatureTest$asyncFactory()}}{
+		no title
+	
+		\subsection{Usage}{
+			\if{html}{\out{<div class="r">}}
+			\preformatted{
+J = testRapi::JavaApi$get()
+J$FeatureTest$asyncFactory()
+# this method is also exposed as a package function:
+testRapi::async_factory()
+	  		}
+			\if{html}{\out{</div>}}
+		}
+	
+		\subsection{Arguments}{
+			\if{html}{\out{<div class="arguments">}}
+			\itemize{
+				\item{none}
+			}
+			\if{html}{\out{</div>}}
+		}
+
+		\subsection{Returns}{
+			An `RFuture` with methods `cancel()`, `isCancelled()`, `isDone()` and `get()`. 
+			The result of a `get()` call will be an 
+			R6 FactoryTest object: 
+		}
+	}
+
+
+	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-MoreFeatureTest-new"></a>}}
 	
 	\subsection{Method \code{MoreFeatureTest$new()}}{
@@ -614,6 +923,35 @@ expect_equal(tmp,'more feature test: should work')
 			}
 			\if{html}{\out{</div>}}
 		}
+
+	\if{html}{\out{<hr>}}
+	\if{html}{\out{<a id="method-FactoryTest-new"></a>}}
+	
+	\subsection{Method \code{FactoryTest$new()}}{
+		the default no-args constructor
+	
+		\subsection{Usage}{
+			\if{html}{\out{<div class="r">}}
+			\preformatted{
+J = testRapi::JavaApi$get()
+J$FactoryTest$new()
+	  		}
+			\if{html}{\out{</div>}}
+		}
+	
+		\subsection{Arguments}{
+			\if{html}{\out{<div class="arguments">}}
+			\itemize{
+				\item{none}
+			}
+			\if{html}{\out{</div>}}
+		}
+
+		\subsection{Returns}{
+			R6 FactoryTest object: 
+		}
+	}
+
 
 	\if{html}{\out{<hr>}}
 	\if{html}{\out{<a id="method-Serialiser-new"></a>}}
@@ -829,253 +1167,6 @@ testRapi::deserialise_named_list(filename)
 
 		\subsection{Returns}{
 			RNamedList: 
-		}
-	}
-
-
-	\if{html}{\out{<hr>}}
-	\if{html}{\out{<a id="method-FeatureTest-new"></a>}}
-	
-	\subsection{Method \code{FeatureTest$new()}}{
-		A maximum of one constructor of any signature can be used. 
-
-
-If different constructors are needed then they may be used but not 
-included in the R Api (i.e. not annotated with @RMethod.) 
-
-
-Static factory methods can be used instead.
-	
-		\subsection{Usage}{
-			\if{html}{\out{<div class="r">}}
-			\preformatted{
-J = testRapi::JavaApi$get()
-J$FeatureTest$new(logMessage)
-	  		}
-			\if{html}{\out{</div>}}
-		}
-	
-		\subsection{Arguments}{
-			\if{html}{\out{<div class="arguments">}}
-			\itemize{
-				\item{logMessage - a message which will be logged}{ - (java expects a String)}
-			}
-			\if{html}{\out{</div>}}
-		}
-
-		\subsection{Returns}{
-			R6 FeatureTest object: 
-		}
-	}
-
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-minExample = J$FeatureTest$new('Hello from Java constructor!')
-			}
-			\if{html}{\out{</div>}}
-		}
-
-	\if{html}{\out{<hr>}}
-	\if{html}{\out{<a id="method-FeatureTest-demoStatic"></a>}}
-	
-	\subsection{Method \code{FeatureTest$demoStatic()}}{
-		Static methods are also supported. 
-
-These are accessed through the
-root of the R api, and as a functional interface
-	
-		\subsection{Usage}{
-			\if{html}{\out{<div class="r">}}
-			\preformatted{
-J = testRapi::JavaApi$get()
-J$FeatureTest$demoStatic(message)
-# this method is also exposed as a package function:
-testRapi::demo_static(message)
-	  		}
-			\if{html}{\out{</div>}}
-		}
-	
-		\subsection{Arguments}{
-			\if{html}{\out{<div class="arguments">}}
-			\itemize{
-				\item{message a message}{ - (java expects a String)}
-			}
-			\if{html}{\out{</div>}}
-		}
-
-		\subsection{Returns}{
-			void: 
-		}
-	}
-
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-J = JavaApi$get()
-J$FeatureTest$demoStatic('Ola, el mundo')
-demo_static('Bonjour, le monde')
-			}
-			\if{html}{\out{</div>}}
-		}
-
-	\if{html}{\out{<hr>}}
-	\if{html}{\out{<a id="method-FeatureTest-diamonds"></a>}}
-	
-	\subsection{Method \code{FeatureTest$diamonds()}}{
-		The ggplot2::diamonds dataframe 
-
-A copy serialised into java, using
-RObject.writeRDS, saved within the jar file of the package, and exposed here
-using RObject.readRDS.
-	
-		\subsection{Usage}{
-			\if{html}{\out{<div class="r">}}
-			\preformatted{
-J = testRapi::JavaApi$get()
-J$FeatureTest$diamonds()
-# this method is also exposed as a package function:
-testRapi::diamonds()
-	  		}
-			\if{html}{\out{</div>}}
-		}
-	
-		\subsection{Arguments}{
-			\if{html}{\out{<div class="arguments">}}
-			\itemize{
-				\item{none}
-			}
-			\if{html}{\out{</div>}}
-		}
-
-		\subsection{Returns}{
-			RDataframe: the ggplot2::diamonds dataframe
-		}
-	}
-
-		\subsection{Examples}{
-			\if{html}{\out{<div class="r example copy">}}
-			\preformatted{
-dplyr::glimpse( diamonds() )
-			}
-			\if{html}{\out{</div>}}
-		}
-
-	\if{html}{\out{<hr>}}
-	\if{html}{\out{<a id="method-FeatureTest-collider"></a>}}
-	
-	\subsection{Method \code{FeatureTest$collider()}}{
-		no title
-	
-		\subsection{Usage}{
-			\if{html}{\out{<div class="r">}}
-			\preformatted{
-J = testRapi::JavaApi$get()
-J$FeatureTest$collider(message1, message2)
-# this method is also exposed as a package function:
-testRapi::feature_test_collider(message1, message2)
-	  		}
-			\if{html}{\out{</div>}}
-		}
-	
-		\subsection{Arguments}{
-			\if{html}{\out{<div class="arguments">}}
-			\itemize{
-				\item{message1}{ - (java expects a RCharacter)}
-				\item{message2}{ - (java expects a RCharacter)}
-			}
-			\if{html}{\out{</div>}}
-		}
-
-		\subsection{Returns}{
-			RCharacter: 
-		}
-	}
-
-
-	\if{html}{\out{<hr>}}
-	\if{html}{\out{<a id="method-BounceTest-new"></a>}}
-	
-	\subsection{Method \code{BounceTest$new()}}{
-		the default no-args constructor
-	
-		\subsection{Usage}{
-			\if{html}{\out{<div class="r">}}
-			\preformatted{
-J = testRapi::JavaApi$get()
-J$BounceTest$new()
-	  		}
-			\if{html}{\out{</div>}}
-		}
-	
-		\subsection{Arguments}{
-			\if{html}{\out{<div class="arguments">}}
-			\itemize{
-				\item{none}
-			}
-			\if{html}{\out{</div>}}
-		}
-
-		\subsection{Returns}{
-			R6 BounceTest object: 
-		}
-	}
-
-
-	\if{html}{\out{<hr>}}
-	\if{html}{\out{<a id="method-FactoryTest-new"></a>}}
-	
-	\subsection{Method \code{FactoryTest$new()}}{
-		the default no-args constructor
-	
-		\subsection{Usage}{
-			\if{html}{\out{<div class="r">}}
-			\preformatted{
-J = testRapi::JavaApi$get()
-J$FactoryTest$new()
-	  		}
-			\if{html}{\out{</div>}}
-		}
-	
-		\subsection{Arguments}{
-			\if{html}{\out{<div class="arguments">}}
-			\itemize{
-				\item{none}
-			}
-			\if{html}{\out{</div>}}
-		}
-
-		\subsection{Returns}{
-			R6 FactoryTest object: 
-		}
-	}
-
-
-	\if{html}{\out{<hr>}}
-	\if{html}{\out{<a id="method-MinimalExample-new"></a>}}
-	
-	\subsection{Method \code{MinimalExample$new()}}{
-		the default no-args constructor
-	
-		\subsection{Usage}{
-			\if{html}{\out{<div class="r">}}
-			\preformatted{
-J = testRapi::JavaApi$get()
-J$MinimalExample$new()
-	  		}
-			\if{html}{\out{</div>}}
-		}
-	
-		\subsection{Arguments}{
-			\if{html}{\out{<div class="arguments">}}
-			\itemize{
-				\item{none}
-			}
-			\if{html}{\out{</div>}}
-		}
-
-		\subsection{Returns}{
-			R6 MinimalExample object: 
 		}
 	}
 

@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">testRapi</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.5.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.1.9000</span>
       </span>
     </div>
 
@@ -87,7 +87,7 @@
 
       
 
-      </header><div class="row">
+      </header><script src="R6-generator-maven-archetype_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>R6 Generator Maven Archetype: Recommended project setup</h1>
@@ -104,13 +104,13 @@
 <div class="section level2">
 <h2 id="set-up-temporary-location">Set up temporary location:<a class="anchor" aria-label="anchor" href="#set-up-temporary-location"></a>
 </h2>
-<div class="sourceCode"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dir</span> <span class="op">=</span> <span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/path.html" class="external-link">path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>,<span class="st">"testProject"</span><span class="op">)</span></span>
 <span><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/create.html" class="external-link">dir_create</a></span><span class="op">(</span><span class="va">dir</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>TMP_DIR<span class="op">=</span><span class="va">dir</span><span class="op">)</span></span>
 <span><span class="va">dir</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #0000BB; font-weight: bold;">/tmp/RtmpYiE1of/testProject</span></span></span></code></pre>
-<div class="sourceCode"><pre class="downlit sourceCode r">
+<pre><code><span><span class="co">## <span style="color: #0000BB; font-weight: bold;">/tmp/Rtmp9DYdE1/testProject</span></span></span></code></pre>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">v</span> <span class="op">=</span> <span class="fu">testRapi</span><span class="fu">::</span><span class="va"><a href="../../reference/JavaApi.html">JavaApi</a></span><span class="op">$</span><span class="fu">versionInformation</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">version</span> <span class="op">=</span> <span class="va">v</span><span class="op">$</span><span class="va">r_package_version</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="va">version</span><span class="op">==</span><span class="st">"0.0.0.9999"</span><span class="op">)</span> <span class="op">{</span></span>
@@ -121,323 +121,86 @@
 <span><span class="op">}</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>TMP_VERSION<span class="op">=</span><span class="va">version</span><span class="op">)</span></span>
 <span><span class="va">version</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] "0.5.6"</span></span></code></pre>
+<pre><code><span><span class="co">## [1] "0.6.1.9000"</span></span></code></pre>
 <div class="section level3">
 <h3 id="maven-archetype">Maven archetype<a class="anchor" aria-label="anchor" href="#maven-archetype"></a>
 </h3>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="bu">cd</span> <span class="va">$TMP_DIR</span>
-<span class="fu">rm</span> -r examplePackage <span class="kw">||</span><span class="bu">:</span> 
-<span class="ex">mvn</span> archetype:generate -B \
-  -DarchetypeGroupId=io.github.terminological \
-  -DarchetypeArtifactId=r6-generator-maven-archetype \
-  -DarchetypeVersion=<span class="va">$TMP_VERSION</span> \
-  -DgithubOrganisation=exampleOrganisation \
-  -DgithubRepository=examplePackage</code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="bu">cd</span> <span class="va">$TMP_DIR</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="fu">rm</span> -r examplePackage <span class="kw">||</span><span class="bu">:</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a><span class="ex">mvn</span> archetype:generate -B <span class="kw">\</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a>  <span class="ex">-DarchetypeGroupId</span>=io.github.terminological <span class="kw">\</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a>  <span class="ex">-DarchetypeArtifactId</span>=r6-generator-maven-archetype <span class="kw">\</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a>  <span class="ex">-DarchetypeVersion</span>=<span class="va">$TMP_VERSION</span> <span class="kw">\</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a>  <span class="ex">-DgithubOrganisation</span>=exampleOrganisation <span class="kw">\</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true"></a>  <span class="ex">-DgithubRepository</span>=examplePackage</span></code></pre></div>
 <pre><code><span><span class="co">## rm: cannot remove 'examplePackage': No such file or directory</span></span>
 <span><span class="co">## [INFO] Scanning for projects...</span></span>
-<span><span class="co">## [INFO]                                                                         </span></span>
-<span><span class="co">## [INFO] ------------------------------------------------------------------------</span></span>
+<span><span class="co">## [INFO] </span></span>
+<span><span class="co">## [INFO] ------------------&lt; org.apache.maven:standalone-pom &gt;-------------------</span></span>
 <span><span class="co">## [INFO] Building Maven Stub Project (No POM) 1</span></span>
-<span><span class="co">## [INFO] ------------------------------------------------------------------------</span></span>
+<span><span class="co">## [INFO] --------------------------------[ pom ]---------------------------------</span></span>
 <span><span class="co">## [INFO] </span></span>
 <span><span class="co">## [INFO] &gt;&gt;&gt; maven-archetype-plugin:3.2.1:generate (default-cli) &gt; generate-sources @ standalone-pom &gt;&gt;&gt;</span></span>
 <span><span class="co">## [INFO] </span></span>
 <span><span class="co">## [INFO] &lt;&lt;&lt; maven-archetype-plugin:3.2.1:generate (default-cli) &lt; generate-sources @ standalone-pom &lt;&lt;&lt;</span></span>
 <span><span class="co">## [INFO] </span></span>
+<span><span class="co">## [INFO] </span></span>
 <span><span class="co">## [INFO] --- maven-archetype-plugin:3.2.1:generate (default-cli) @ standalone-pom ---</span></span>
 <span><span class="co">## [INFO] Generating project in Batch mode</span></span>
-<span><span class="co">## [INFO] Archetype repository not defined. Using the one from [io.github.terminological:r6-generator-maven-archetype:0.5.5] found in catalog remote</span></span>
-<span><span class="co">## [INFO] ----------------------------------------------------------------------------</span></span>
-<span><span class="co">## [INFO] Using following parameters for creating project from Archetype: r6-generator-maven-archetype:0.5.6</span></span>
-<span><span class="co">## [INFO] ----------------------------------------------------------------------------</span></span>
-<span><span class="co">## [INFO] Parameter: groupId, Value: org.github.exampleOrganisation</span></span>
-<span><span class="co">## [INFO] Parameter: artifactId, Value: examplePackage</span></span>
-<span><span class="co">## [INFO] Parameter: version, Value: main-SNAPSHOT</span></span>
-<span><span class="co">## [INFO] Parameter: package, Value: io.github.exampleOrganisation</span></span>
-<span><span class="co">## [INFO] Parameter: packageInPathFormat, Value: io/github/exampleOrganisation</span></span>
-<span><span class="co">## [INFO] Parameter: archetypeVersion, Value: 0.5.6</span></span>
-<span><span class="co">## [INFO] Parameter: gitignore, Value: .gitignore</span></span>
-<span><span class="co">## [INFO] Parameter: maintainerEmail, Value: a.n.example@example.org</span></span>
-<span><span class="co">## [INFO] Parameter: libraryStyle, Value: fat-jar</span></span>
-<span><span class="co">## [INFO] Parameter: rPackageLicense, Value: MIT</span></span>
-<span><span class="co">## [INFO] Parameter: githubOrganisation, Value: exampleOrganisation</span></span>
-<span><span class="co">## [INFO] Parameter: rPackageVersion, Value: 0.0.0.9000</span></span>
-<span><span class="co">## [INFO] Parameter: groupId, Value: org.github.exampleOrganisation</span></span>
-<span><span class="co">## [INFO] Parameter: rPackageName, Value: examplePackage</span></span>
-<span><span class="co">## [INFO] Parameter: version, Value: main-SNAPSHOT</span></span>
-<span><span class="co">## [INFO] Parameter: maintainerOrganisation, Value: exampleOrganisation</span></span>
-<span><span class="co">## [INFO] Parameter: maintainerName, Value: Anne</span></span>
-<span><span class="co">## [INFO] Parameter: githubRepository, Value: examplePackage</span></span>
-<span><span class="co">## [INFO] Parameter: maintainerSurname, Value: Example</span></span>
-<span><span class="co">## [INFO] Parameter: package, Value: io.github.exampleOrganisation</span></span>
-<span><span class="co">## [INFO] Parameter: artifactId, Value: examplePackage</span></span>
-<span><span class="co">## [INFO] Project created from Archetype in dir: /tmp/RtmpYiE1of/testProject/examplePackage</span></span>
+<span><span class="co">## [INFO] Archetype repository not defined. Using the one from [io.github.terminological:r6-generator-maven-archetype:0.5.6] found in catalog remote</span></span>
+<span><span class="co">## [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/github/terminological/r6-generator-maven-archetype/0.6.1.9000/r6-generator-maven-archetype-0.6.1.9000.pom</span></span>
+<span><span class="co">## [WARNING] The POM for io.github.terminological:r6-generator-maven-archetype:jar:0.6.1.9000 is missing, no dependency information available</span></span>
+<span><span class="co">## [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/github/terminological/r6-generator-maven-archetype/0.6.1.9000/r6-generator-maven-archetype-0.6.1.9000.jar</span></span>
 <span><span class="co">## [INFO] ------------------------------------------------------------------------</span></span>
-<span><span class="co">## [INFO] BUILD SUCCESS</span></span>
+<span><span class="co">## [INFO] BUILD FAILURE</span></span>
 <span><span class="co">## [INFO] ------------------------------------------------------------------------</span></span>
-<span><span class="co">## [INFO] Total time: 5.440 s</span></span>
-<span><span class="co">## [INFO] Finished at: 2022-09-26T13:45:11+01:00</span></span>
-<span><span class="co">## [INFO] Final Memory: 21M/282M</span></span>
-<span><span class="co">## [INFO] ------------------------------------------------------------------------</span></span></code></pre>
-<div class="sourceCode"><pre class="downlit sourceCode r">
+<span><span class="co">## [INFO] Total time:  2.220 s</span></span>
+<span><span class="co">## [INFO] Finished at: 2024-04-22T20:51:46+01:00</span></span>
+<span><span class="co">## [INFO] ------------------------------------------------------------------------</span></span>
+<span><span class="co">## [ERROR] Failed to execute goal org.apache.maven.plugins:maven-archetype-plugin:3.2.1:generate (default-cli) on project standalone-pom: The desired archetype does not exist (io.github.terminological:r6-generator-maven-archetype:0.6.1.9000) -&gt; [Help 1]</span></span>
+<span><span class="co">## [ERROR] </span></span>
+<span><span class="co">## [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.</span></span>
+<span><span class="co">## [ERROR] Re-run Maven using the -X switch to enable full debug logging.</span></span>
+<span><span class="co">## [ERROR] </span></span>
+<span><span class="co">## [ERROR] For more information about the errors and possible solutions, please read the following articles:</span></span>
+<span><span class="co">## [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException</span></span></code></pre>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/dir_tree.html" class="external-link">dir_tree</a></span><span class="op">(</span><span class="va">dir</span>,regexp<span class="op">=</span><span class="st">"((.*/target)|docs)/.*"</span>, invert<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #0000BB; font-weight: bold;">/tmp/RtmpYiE1of/testProject</span></span></span>
-<span><span class="co">## └── <span style="color: #0000BB; font-weight: bold;">examplePackage</span></span></span>
-<span><span class="co">##     ├── README.md</span></span>
-<span><span class="co">##     ├── <span style="color: #0000BB; font-weight: bold;">data-raw</span></span></span>
-<span><span class="co">##     │   └── setup-test-data.R</span></span>
-<span><span class="co">##     ├── examplePackage.Rproj</span></span>
-<span><span class="co">##     ├── <span style="color: #0000BB; font-weight: bold;">java</span></span></span>
-<span><span class="co">##     │   ├── pom.xml</span></span>
-<span><span class="co">##     │   └── <span style="color: #0000BB; font-weight: bold;">src</span></span></span>
-<span><span class="co">##     │       ├── <span style="color: #0000BB; font-weight: bold;">main</span></span></span>
-<span><span class="co">##     │       │   └── <span style="color: #0000BB; font-weight: bold;">java</span></span></span>
-<span><span class="co">##     │       │       └── <span style="color: #0000BB; font-weight: bold;">io</span></span></span>
-<span><span class="co">##     │       │           └── <span style="color: #0000BB; font-weight: bold;">github</span></span></span>
-<span><span class="co">##     │       │               └── <span style="color: #0000BB; font-weight: bold;">exampleOrganisation</span></span></span>
-<span><span class="co">##     │       │                   ├── BasicExample.java</span></span>
-<span><span class="co">##     │       │                   └── TestDataGenerator.java</span></span>
-<span><span class="co">##     │       └── <span style="color: #0000BB; font-weight: bold;">test</span></span></span>
-<span><span class="co">##     │           ├── <span style="color: #0000BB; font-weight: bold;">java</span></span></span>
-<span><span class="co">##     │           │   └── <span style="color: #0000BB; font-weight: bold;">io</span></span></span>
-<span><span class="co">##     │           │       └── <span style="color: #0000BB; font-weight: bold;">github</span></span></span>
-<span><span class="co">##     │           │           └── <span style="color: #0000BB; font-weight: bold;">exampleOrganisation</span></span></span>
-<span><span class="co">##     │           │               └── TestData.java</span></span>
-<span><span class="co">##     │           └── <span style="color: #0000BB; font-weight: bold;">resources</span></span></span>
-<span><span class="co">##     ├── pom.xml</span></span>
-<span><span class="co">##     └── <span style="color: #0000BB; font-weight: bold;">vignettes</span></span></span>
-<span><span class="co">##         └── examplePackage.Rmd</span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #0000BB; font-weight: bold;">/tmp/Rtmp9DYdE1/testProject</span></span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="building-the-project">Building the project<a class="anchor" aria-label="anchor" href="#building-the-project"></a>
 </h3>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="bu">cd</span> <span class="va">$TMP_DIR</span>/examplePackage/java
-<span class="ex">mvn</span> install</code></pre></div>
-<pre><code><span><span class="co">## [INFO] Scanning for projects...</span></span>
-<span><span class="co">## [INFO]                                                                         </span></span>
-<span><span class="co">## [INFO] ------------------------------------------------------------------------</span></span>
-<span><span class="co">## [INFO] Building examplePackage main-SNAPSHOT</span></span>
-<span><span class="co">## [INFO] ------------------------------------------------------------------------</span></span>
-<span><span class="co">## [INFO] </span></span>
-<span><span class="co">## [INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ examplePackage ---</span></span>
-<span><span class="co">## [INFO] Using 'UTF-8' encoding to copy filtered resources.</span></span>
-<span><span class="co">## [INFO] skip non existing resourceDirectory /tmp/RtmpYiE1of/testProject/examplePackage/java/src/main/resources</span></span>
-<span><span class="co">## [INFO] </span></span>
-<span><span class="co">## [INFO] --- r6-generator-maven-plugin:0.5.6:flatten-pom (flatten-pom) @ examplePackage ---</span></span>
-<span><span class="co">## [INFO] Executing R6 generator</span></span>
-<span><span class="co">## [INFO] Generating flattened POM of project org.github.exampleOrganisation:examplePackage:jar:main-SNAPSHOT...</span></span>
-<span><span class="co">## [INFO] </span></span>
-<span><span class="co">## [INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ examplePackage ---</span></span>
-<span><span class="co">## [INFO] Changes detected - recompiling the module!</span></span>
-<span><span class="co">## [INFO] Compiling 2 source files to /tmp/RtmpYiE1of/testProject/examplePackage/java/target/classes</span></span>
-<span><span class="co">## [INFO] </span></span>
-<span><span class="co">## [INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ examplePackage ---</span></span>
-<span><span class="co">## [INFO] Using 'UTF-8' encoding to copy filtered resources.</span></span>
-<span><span class="co">## [INFO] Copying 0 resource</span></span>
-<span><span class="co">## [INFO] </span></span>
-<span><span class="co">## [INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ examplePackage ---</span></span>
-<span><span class="co">## [INFO] Changes detected - recompiling the module!</span></span>
-<span><span class="co">## [INFO] Compiling 1 source file to /tmp/RtmpYiE1of/testProject/examplePackage/java/target/test-classes</span></span>
-<span><span class="co">## [INFO] </span></span>
-<span><span class="co">## [INFO] --- maven-surefire-plugin:2.17:test (default-test) @ examplePackage ---</span></span>
-<span><span class="co">## [INFO] Surefire report directory: /tmp/RtmpYiE1of/testProject/examplePackage/java/target/surefire-reports</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## -------------------------------------------------------</span></span>
-<span><span class="co">##  T E S T S</span></span>
-<span><span class="co">## -------------------------------------------------------</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## Results :</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## Tests run: 0, Failures: 0, Errors: 0, Skipped: 0</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## [INFO] </span></span>
-<span><span class="co">## [INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ examplePackage ---</span></span>
-<span><span class="co">## [INFO] Building jar: /tmp/RtmpYiE1of/testProject/examplePackage/java/target/examplePackage-main-SNAPSHOT.jar</span></span>
-<span><span class="co">## [INFO] </span></span>
-<span><span class="co">## [INFO] --- maven-install-plugin:2.5.2:install (default-install) @ examplePackage ---</span></span>
-<span><span class="co">## [INFO] Installing /tmp/RtmpYiE1of/testProject/examplePackage/java/target/examplePackage-main-SNAPSHOT.jar to /home/rc538/.m2/repository/org/github/exampleOrganisation/examplePackage/main-SNAPSHOT/examplePackage-main-SNAPSHOT.jar</span></span>
-<span><span class="co">## [INFO] Installing /tmp/RtmpYiE1of/testProject/examplePackage/java/.flattened-pom.xml to /home/rc538/.m2/repository/org/github/exampleOrganisation/examplePackage/main-SNAPSHOT/examplePackage-main-SNAPSHOT.pom</span></span>
-<span><span class="co">## [INFO] </span></span>
-<span><span class="co">## [INFO] --- r6-generator-maven-plugin:0.5.6:generate-r-library (generate-r-library) @ examplePackage ---</span></span>
-<span><span class="co">## [INFO] Executing R6 generator</span></span>
-<span><span class="co">## [INFO] Building jar: /tmp/RtmpYiE1of/testProject/examplePackage/java/target/examplePackage-main-SNAPSHOT-jar-with-dependencies.jar</span></span>
-<span><span class="co">## [INFO] Copying fat jar into inst/java.</span></span>
-<span><span class="co">## [INFO] Reflections took 157 ms to scan 2 urls, producing 38 keys and 124 values</span></span>
-<span><span class="co">## [INFO] io.github.exampleOrganisation.TestDataGenerator</span></span>
-<span><span class="co">## [INFO] io.github.exampleOrganisation.BasicExample</span></span>
-<span><span class="co">## [INFO] Writing file: /tmp/RtmpYiE1of/testProject/examplePackage/DESCRIPTION</span></span>
-<span><span class="co">## [INFO] Writing file: /tmp/RtmpYiE1of/testProject/examplePackage/NAMESPACE</span></span>
-<span><span class="co">## [INFO] Writing file: /tmp/RtmpYiE1of/testProject/examplePackage/inst/CITATION</span></span>
-<span><span class="co">## [INFO] Writing file: /tmp/RtmpYiE1of/testProject/examplePackage/tests/testthat.R</span></span>
-<span><span class="co">## [INFO] Writing file: /tmp/RtmpYiE1of/testProject/examplePackage/LICENSE</span></span>
-<span><span class="co">## [INFO] Writing file: /tmp/RtmpYiE1of/testProject/examplePackage/LICENSE.md</span></span>
-<span><span class="co">## [INFO] Writing file: /tmp/RtmpYiE1of/testProject/examplePackage/man/JavaApi.Rd</span></span>
-<span><span class="co">## [INFO] Writing file: /tmp/RtmpYiE1of/testProject/examplePackage/man/pipe.Rd</span></span>
-<span><span class="co">## [INFO] Writing file: /tmp/RtmpYiE1of/testProject/examplePackage/man/examplePackage-package.Rd</span></span>
-<span><span class="co">## [INFO] Writing file: /tmp/RtmpYiE1of/testProject/examplePackage/R/JavaApi.R</span></span>
-<span><span class="co">## [INFO] Writing file: /tmp/RtmpYiE1of/testProject/examplePackage/R/StaticApi.R</span></span>
-<span><span class="co">## [INFO] Writing file: /tmp/RtmpYiE1of/testProject/examplePackage/R/zzz.R</span></span>
-<span><span class="co">## [INFO] Writing file: /tmp/RtmpYiE1of/testProject/examplePackage/cran-comments.md</span></span>
-<span><span class="co">## [INFO] Writing file: /tmp/RtmpYiE1of/testProject/examplePackage/.Rbuildignore</span></span>
-<span><span class="co">## [INFO] Writing file: /tmp/RtmpYiE1of/testProject/examplePackage/.github/workflows/R-CMD-check.yaml</span></span>
-<span><span class="co">## [INFO] Writing file: /tmp/RtmpYiE1of/testProject/examplePackage/man/TestDataGenerator.Rd</span></span>
-<span><span class="co">## [INFO] Writing file: /tmp/RtmpYiE1of/testProject/examplePackage/R/TestDataGenerator.R</span></span>
-<span><span class="co">## [INFO] Writing file: /tmp/RtmpYiE1of/testProject/examplePackage/tests/testthat/test-TestDataGenerator.R</span></span>
-<span><span class="co">## [INFO] Writing file: /tmp/RtmpYiE1of/testProject/examplePackage/man/serialise_dataframe.Rd</span></span>
-<span><span class="co">## [INFO] Writing file: /tmp/RtmpYiE1of/testProject/examplePackage/man/serialise_list.Rd</span></span>
-<span><span class="co">## [INFO] Writing file: /tmp/RtmpYiE1of/testProject/examplePackage/man/serialise_named_list.Rd</span></span>
-<span><span class="co">## [INFO] Writing file: /tmp/RtmpYiE1of/testProject/examplePackage/man/BasicExample.Rd</span></span>
-<span><span class="co">## [INFO] Writing file: /tmp/RtmpYiE1of/testProject/examplePackage/R/BasicExample.R</span></span>
-<span><span class="co">## [INFO] Writing file: /tmp/RtmpYiE1of/testProject/examplePackage/tests/testthat/test-BasicExample.R</span></span>
-<span><span class="co">## [INFO] Writing file: /tmp/RtmpYiE1of/testProject/examplePackage/man/greet.Rd</span></span>
-<span><span class="co">## [INFO] Generating pkgdown site - please be patient</span></span>
-<span><span class="co">## [INFO] </span></span>
-<span><span class="co">## [INFO] R version 3.6.3 (2020-02-29) -- "Holding the Windsock"</span></span>
-<span><span class="co">## [INFO] Copyright (C) 2020 The R Foundation for Statistical Computing</span></span>
-<span><span class="co">## [INFO] Platform: x86_64-pc-linux-gnu (64-bit)</span></span>
-<span><span class="co">## [INFO] </span></span>
-<span><span class="co">## [INFO] R is free software and comes with ABSOLUTELY NO WARRANTY.</span></span>
-<span><span class="co">## [INFO] You are welcome to redistribute it under certain conditions.</span></span>
-<span><span class="co">## [INFO] Type 'license()' or 'licence()' for distribution details.</span></span>
-<span><span class="co">## [INFO] </span></span>
-<span><span class="co">## [INFO]   Natural language support but running in an English locale</span></span>
-<span><span class="co">## [INFO] </span></span>
-<span><span class="co">## [INFO] R is a collaborative project with many contributors.</span></span>
-<span><span class="co">## [INFO] Type 'contributors()' for more information and</span></span>
-<span><span class="co">## [INFO] 'citation()' on how to cite R or R packages in publications.</span></span>
-<span><span class="co">## [INFO] </span></span>
-<span><span class="co">## [INFO] Type 'demo()' for some demos, 'help()' for on-line help, or</span></span>
-<span><span class="co">## [INFO] 'help.start()' for an HTML browser interface to help.</span></span>
-<span><span class="co">## [INFO] Type 'q()' to quit R.</span></span>
-<span><span class="co">## [INFO] </span></span>
-<span><span class="co">## [INFO] &gt; pkgdown::build_site(pkg = '/tmp/RtmpYiE1of/testProject/examplePackage')</span></span>
-<span><span class="co">## [INFO] -- <span style="font-weight: bold;">Installing package into temporary library</span> -----------------------------------</span></span>
-<span><span class="co">## [INFO] == <span style="font-weight: bold;">Building pkgdown site</span> =======================================================</span></span>
-<span><span class="co">## [INFO] Reading from: <span style="color: #00BB00;">'/tmp/RtmpYiE1of/testProject/examplePackage'</span></span></span>
-<span><span class="co">## [INFO] Writing to:   <span style="color: #0000BB;">'/tmp/RtmpYiE1of/testProject/examplePackage/docs'</span></span></span>
-<span><span class="co">## [INFO] -- <span style="font-weight: bold;">Initialising site</span> -----------------------------------------------------------</span></span>
-<span><span class="co">## [INFO] Copying <span style="color: #00BB00;">'../../../../home/rc538/R/x86_64-pc-linux-gnu-library/3.6/pkgdown/BS3/assets/bootstrap-toc.css'</span> to <span style="color: #0000BB;">'bootstrap-toc.css'</span></span></span>
-<span><span class="co">## [INFO] Copying <span style="color: #00BB00;">'../../../../home/rc538/R/x86_64-pc-linux-gnu-library/3.6/pkgdown/BS3/assets/bootstrap-toc.js'</span> to <span style="color: #0000BB;">'bootstrap-toc.js'</span></span></span>
-<span><span class="co">## [INFO] Copying <span style="color: #00BB00;">'../../../../home/rc538/R/x86_64-pc-linux-gnu-library/3.6/pkgdown/BS3/assets/docsearch.css'</span> to <span style="color: #0000BB;">'docsearch.css'</span></span></span>
-<span><span class="co">## [INFO] Copying <span style="color: #00BB00;">'../../../../home/rc538/R/x86_64-pc-linux-gnu-library/3.6/pkgdown/BS3/assets/docsearch.js'</span> to <span style="color: #0000BB;">'docsearch.js'</span></span></span>
-<span><span class="co">## [INFO] Copying <span style="color: #00BB00;">'../../../../home/rc538/R/x86_64-pc-linux-gnu-library/3.6/pkgdown/BS3/assets/link.svg'</span> to <span style="color: #0000BB;">'link.svg'</span></span></span>
-<span><span class="co">## [INFO] Copying <span style="color: #00BB00;">'../../../../home/rc538/R/x86_64-pc-linux-gnu-library/3.6/pkgdown/BS3/assets/pkgdown.css'</span> to <span style="color: #0000BB;">'pkgdown.css'</span></span></span>
-<span><span class="co">## [INFO] Copying <span style="color: #00BB00;">'../../../../home/rc538/R/x86_64-pc-linux-gnu-library/3.6/pkgdown/BS3/assets/pkgdown.js'</span> to <span style="color: #0000BB;">'pkgdown.js'</span></span></span>
-<span><span class="co">## [INFO] -- <span style="font-weight: bold;">Building home</span> ---------------------------------------------------------------</span></span>
-<span><span class="co">## [INFO] Writing <span style="color: #0000BB;">'authors.html'</span></span></span>
-<span><span class="co">## [INFO] Reading <span style="color: #00BB00;">'LICENSE.md'</span></span></span>
-<span><span class="co">## [INFO] Writing <span style="color: #0000BB;">'LICENSE.html'</span></span></span>
-<span><span class="co">## [INFO] Writing <span style="color: #0000BB;">'LICENSE-text.html'</span></span></span>
-<span><span class="co">## [INFO] Writing <span style="color: #0000BB;">'404.html'</span></span></span>
-<span><span class="co">## [INFO] -- <span style="font-weight: bold;">Building function reference</span> -------------------------------------------------</span></span>
-<span><span class="co">## [INFO] Writing <span style="color: #0000BB;">'reference/index.html'</span></span></span>
-<span><span class="co">## [INFO] Reading <span style="color: #00BB00;">'man/BasicExample.Rd'</span></span></span>
-<span><span class="co">## [INFO] Writing <span style="color: #0000BB;">'reference/BasicExample.html'</span></span></span>
-<span><span class="co">## [INFO] Reading <span style="color: #00BB00;">'man/JavaApi.Rd'</span></span></span>
-<span><span class="co">## [INFO] Writing <span style="color: #0000BB;">'reference/JavaApi.html'</span></span></span>
-<span><span class="co">## [INFO] Reading <span style="color: #00BB00;">'man/TestDataGenerator.Rd'</span></span></span>
-<span><span class="co">## [INFO] Writing <span style="color: #0000BB;">'reference/TestDataGenerator.html'</span></span></span>
-<span><span class="co">## [INFO] Reading <span style="color: #00BB00;">'man/examplePackage-package.Rd'</span></span></span>
-<span><span class="co">## [INFO] Writing <span style="color: #0000BB;">'reference/examplePackage-package.html'</span></span></span>
-<span><span class="co">## [INFO] Reading <span style="color: #00BB00;">'man/greet.Rd'</span></span></span>
-<span><span class="co">## [INFO] Writing <span style="color: #0000BB;">'reference/greet.html'</span></span></span>
-<span><span class="co">## [INFO] Reading <span style="color: #00BB00;">'man/pipe.Rd'</span></span></span>
-<span><span class="co">## [INFO] Writing <span style="color: #0000BB;">'reference/pipe.html'</span></span></span>
-<span><span class="co">## [INFO] Reading <span style="color: #00BB00;">'man/serialise_dataframe.Rd'</span></span></span>
-<span><span class="co">## [INFO] Writing <span style="color: #0000BB;">'reference/serialise_dataframe.html'</span></span></span>
-<span><span class="co">## [INFO] Reading <span style="color: #00BB00;">'man/serialise_list.Rd'</span></span></span>
-<span><span class="co">## [INFO] Writing <span style="color: #0000BB;">'reference/serialise_list.html'</span></span></span>
-<span><span class="co">## [INFO] Reading <span style="color: #00BB00;">'man/serialise_named_list.Rd'</span></span></span>
-<span><span class="co">## [INFO] Writing <span style="color: #0000BB;">'reference/serialise_named_list.html'</span></span></span>
-<span><span class="co">## [INFO] -- <span style="font-weight: bold;">Building articles</span> -----------------------------------------------------------</span></span>
-<span><span class="co">## [INFO] Writing <span style="color: #0000BB;">'articles/index.html'</span></span></span>
-<span><span class="co">## [INFO] Reading <span style="color: #00BB00;">'vignettes/examplePackage.Rmd'</span></span></span>
-<span><span class="co">## [INFO] Writing <span style="color: #0000BB;">'articles/examplePackage.html'</span></span></span>
-<span><span class="co">## [INFO] Writing <span style="color: #0000BB;">'sitemap.xml'</span></span></span>
-<span><span class="co">## [INFO] == <span style="font-weight: bold;">DONE</span> ========================================================================</span></span>
-<span><span class="co">## [INFO] &gt; </span></span>
-<span><span class="co">## [INFO] &gt; </span></span>
-<span><span class="co">## [INFO] ------------------------------------------------------------------------</span></span>
-<span><span class="co">## [INFO] BUILD SUCCESS</span></span>
-<span><span class="co">## [INFO] ------------------------------------------------------------------------</span></span>
-<span><span class="co">## [INFO] Total time: 25.294 s</span></span>
-<span><span class="co">## [INFO] Finished at: 2022-09-26T13:45:39+01:00</span></span>
-<span><span class="co">## [INFO] Final Memory: 44M/410M</span></span>
-<span><span class="co">## [INFO] ------------------------------------------------------------------------</span></span></code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="bu">cd</span> <span class="va">$TMP_DIR</span>/examplePackage/java</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a><span class="ex">mvn</span> install</span></code></pre></div>
+<pre><code><span><span class="co">## bash: line 1: cd: /tmp/Rtmp9DYdE1/testProject/examplePackage/java: No such file or directory</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Scanning for projects...</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="font-weight: bold;">------------------------------------------------------------------------</span></span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000; font-weight: bold;">BUILD FAILURE</span></span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="font-weight: bold;">------------------------------------------------------------------------</span></span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Total time:  0.045 s</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Finished at: 2024-04-22T20:51:47+01:00</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="font-weight: bold;">------------------------------------------------------------------------</span></span></span>
+<span><span class="co">## [<span style="color: #BB0000; font-weight: bold;">ERROR</span>] The goal you specified requires a project to execute but there is no POM in this directory (/home/vp22681/Dropbox/Git/r6-generator-docs/vignettes/web-only). Please verify you invoked Maven from the correct directory. -&gt; <span style="font-weight: bold;">[Help 1]</span></span></span>
+<span><span class="co">## [<span style="color: #BB0000; font-weight: bold;">ERROR</span>] </span></span>
+<span><span class="co">## [<span style="color: #BB0000; font-weight: bold;">ERROR</span>] To see the full stack trace of the errors, re-run Maven with the <span style="font-weight: bold;">-e</span> switch.</span></span>
+<span><span class="co">## [<span style="color: #BB0000; font-weight: bold;">ERROR</span>] Re-run Maven using the <span style="font-weight: bold;">-X</span> switch to enable full debug logging.</span></span>
+<span><span class="co">## [<span style="color: #BB0000; font-weight: bold;">ERROR</span>] </span></span>
+<span><span class="co">## [<span style="color: #BB0000; font-weight: bold;">ERROR</span>] For more information about the errors and possible solutions, please read the following articles:</span></span>
+<span><span class="co">## [<span style="color: #BB0000; font-weight: bold;">ERROR</span>] <span style="font-weight: bold;">[Help 1]</span> http://cwiki.apache.org/confluence/display/MAVEN/MissingProjectException</span></span></code></pre>
 </div>
 </div>
 <div class="section level2">
 <h2 id="generated-files">Generated files:<a class="anchor" aria-label="anchor" href="#generated-files"></a>
 </h2>
-<div class="sourceCode"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/dir_tree.html" class="external-link">dir_tree</a></span><span class="op">(</span><span class="va">dir</span>,regexp<span class="op">=</span><span class="st">"((.*/target)|docs)/.*"</span>, invert<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #0000BB; font-weight: bold;">/tmp/RtmpYiE1of/testProject</span></span></span>
-<span><span class="co">## └── <span style="color: #0000BB; font-weight: bold;">examplePackage</span></span></span>
-<span><span class="co">##     ├── DESCRIPTION</span></span>
-<span><span class="co">##     ├── LICENSE</span></span>
-<span><span class="co">##     ├── LICENSE.md</span></span>
-<span><span class="co">##     ├── NAMESPACE</span></span>
-<span><span class="co">##     ├── <span style="color: #0000BB; font-weight: bold;">R</span></span></span>
-<span><span class="co">##     │   ├── BasicExample.R</span></span>
-<span><span class="co">##     │   ├── JavaApi.R</span></span>
-<span><span class="co">##     │   ├── StaticApi.R</span></span>
-<span><span class="co">##     │   ├── TestDataGenerator.R</span></span>
-<span><span class="co">##     │   ├── aa_maven.R</span></span>
-<span><span class="co">##     │   └── zzz.R</span></span>
-<span><span class="co">##     ├── README.md</span></span>
-<span><span class="co">##     ├── cran-comments.md</span></span>
-<span><span class="co">##     ├── <span style="color: #0000BB; font-weight: bold;">data-raw</span></span></span>
-<span><span class="co">##     │   └── setup-test-data.R</span></span>
-<span><span class="co">##     ├── <span style="color: #0000BB; font-weight: bold;">docs</span></span></span>
-<span><span class="co">##     ├── examplePackage.Rproj</span></span>
-<span><span class="co">##     ├── <span style="color: #0000BB; font-weight: bold;">inst</span></span></span>
-<span><span class="co">##     │   ├── CITATION</span></span>
-<span><span class="co">##     │   └── <span style="color: #0000BB; font-weight: bold;">java</span></span></span>
-<span><span class="co">##     │       └── <span style="color: #BB0000; font-weight: bold;">examplePackage-main-SNAPSHOT-jar-with-dependencies.jar</span></span></span>
-<span><span class="co">##     ├── <span style="color: #0000BB; font-weight: bold;">java</span></span></span>
-<span><span class="co">##     │   ├── pom.xml</span></span>
-<span><span class="co">##     │   ├── <span style="color: #0000BB; font-weight: bold;">src</span></span></span>
-<span><span class="co">##     │   │   ├── <span style="color: #0000BB; font-weight: bold;">main</span></span></span>
-<span><span class="co">##     │   │   │   └── <span style="color: #0000BB; font-weight: bold;">java</span></span></span>
-<span><span class="co">##     │   │   │       └── <span style="color: #0000BB; font-weight: bold;">io</span></span></span>
-<span><span class="co">##     │   │   │           └── <span style="color: #0000BB; font-weight: bold;">github</span></span></span>
-<span><span class="co">##     │   │   │               └── <span style="color: #0000BB; font-weight: bold;">exampleOrganisation</span></span></span>
-<span><span class="co">##     │   │   │                   ├── BasicExample.java</span></span>
-<span><span class="co">##     │   │   │                   └── TestDataGenerator.java</span></span>
-<span><span class="co">##     │   │   └── <span style="color: #0000BB; font-weight: bold;">test</span></span></span>
-<span><span class="co">##     │   │       ├── <span style="color: #0000BB; font-weight: bold;">java</span></span></span>
-<span><span class="co">##     │   │       │   └── <span style="color: #0000BB; font-weight: bold;">io</span></span></span>
-<span><span class="co">##     │   │       │       └── <span style="color: #0000BB; font-weight: bold;">github</span></span></span>
-<span><span class="co">##     │   │       │           └── <span style="color: #0000BB; font-weight: bold;">exampleOrganisation</span></span></span>
-<span><span class="co">##     │   │       │               └── TestData.java</span></span>
-<span><span class="co">##     │   │       └── <span style="color: #0000BB; font-weight: bold;">resources</span></span></span>
-<span><span class="co">##     │   │           ├── test_iris.ser</span></span>
-<span><span class="co">##     │   │           ├── test_list.ser</span></span>
-<span><span class="co">##     │   │           └── test_namedlist.ser</span></span>
-<span><span class="co">##     │   └── <span style="color: #0000BB; font-weight: bold;">target</span></span></span>
-<span><span class="co">##     ├── <span style="color: #0000BB; font-weight: bold;">man</span></span></span>
-<span><span class="co">##     │   ├── BasicExample.Rd</span></span>
-<span><span class="co">##     │   ├── JavaApi.Rd</span></span>
-<span><span class="co">##     │   ├── TestDataGenerator.Rd</span></span>
-<span><span class="co">##     │   ├── examplePackage-package.Rd</span></span>
-<span><span class="co">##     │   ├── greet.Rd</span></span>
-<span><span class="co">##     │   ├── pipe.Rd</span></span>
-<span><span class="co">##     │   ├── serialise_dataframe.Rd</span></span>
-<span><span class="co">##     │   ├── serialise_list.Rd</span></span>
-<span><span class="co">##     │   └── serialise_named_list.Rd</span></span>
-<span><span class="co">##     ├── pom.xml</span></span>
-<span><span class="co">##     ├── <span style="color: #0000BB; font-weight: bold;">tests</span></span></span>
-<span><span class="co">##     │   ├── <span style="color: #0000BB; font-weight: bold;">testthat</span></span></span>
-<span><span class="co">##     │   │   ├── test-BasicExample.R</span></span>
-<span><span class="co">##     │   │   └── test-TestDataGenerator.R</span></span>
-<span><span class="co">##     │   └── testthat.R</span></span>
-<span><span class="co">##     └── <span style="color: #0000BB; font-weight: bold;">vignettes</span></span></span>
-<span><span class="co">##         └── examplePackage.Rmd</span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #0000BB; font-weight: bold;">/tmp/Rtmp9DYdE1/testProject</span></span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 id="package-website">Package website:<a class="anchor" aria-label="anchor" href="#package-website"></a>
 </h2>
-<div class="sourceCode"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/browseURL.html" class="external-link">browseURL</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"file:/"</span>,<span class="fu"><a href="https://rdrr.io/r/utils/URLencode.html" class="external-link">URLencode</a></span><span class="op">(</span><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/path.html" class="external-link">path</a></span><span class="op">(</span><span class="va">dir</span>,<span class="st">"examplePackage"</span>,<span class="st">"docs"</span>,<span class="st">"index.html"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -455,12 +218,12 @@
 
       <footer><div class="copyright">
   <p></p>
-<p>Developed by Rob Challen, terminological, Rob Challen.</p>
+<p>Developed by Rob Challen, Rob Challen, terminological.</p>
 </div>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

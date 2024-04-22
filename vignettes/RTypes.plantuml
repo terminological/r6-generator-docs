@@ -152,7 +152,9 @@ uk.co.terminological.rjava.types.RInteger ..|>  uk.co.terminological.rjava.types
 uk.co.terminological.rjava.types.RIntegerVector --|>  uk.co.terminological.rjava.types.RVector
 uk.co.terminological.rjava.types.RIntegerVector ..|>  uk.co.terminological.rjava.types.JNIPrimitive
 uk.co.terminological.rjava.types.RList ..|>  uk.co.terminological.rjava.types.RCollection
+uk.co.terminological.rjava.types.RLogical -->  uk.co.terminological.rjava.types.RLogical : FALSE
 uk.co.terminological.rjava.types.RLogical -->  uk.co.terminological.rjava.types.RLogical : NA
+uk.co.terminological.rjava.types.RLogical -->  uk.co.terminological.rjava.types.RLogical : TRUE
 uk.co.terminological.rjava.types.RLogical ..|>  uk.co.terminological.rjava.types.JNIPrimitive
 uk.co.terminological.rjava.types.RLogical ..|>  uk.co.terminological.rjava.types.RPrimitive
 uk.co.terminological.rjava.types.RLogicalVector --|>  uk.co.terminological.rjava.types.RVector

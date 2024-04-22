@@ -16,9 +16,9 @@
 \description{
 A test of the R6 generator templating
 
-Version: 0.5.6
+Version: 0.6.1.9000
 
-Generated: 2022-09-26T13:40:30.506
+Generated: 2024-04-22T20:47:47.409146558
 }
 
 \details{
@@ -36,12 +36,28 @@ this is a details comment
 ## -----------------------------------
 ## Construct new instance of FeatureTest
 ## -----------------------------------
+library(roxygen2)
+library(devtools)
+library(here)
+library(tidyverse)
+library(ggplot2)
+library(readr)
+library(dplyr)
+library(tibble)
 J = JavaApi$get()
 minExample = J$FeatureTest$new('Hello from Java constructor!')
 
 ## -----------------------------------
 ## Method `FeatureTest$doHelloWorld()`
 ## -----------------------------------
+library(roxygen2)
+library(devtools)
+library(here)
+library(tidyverse)
+library(ggplot2)
+library(readr)
+library(dplyr)
+library(tibble)
 J = JavaApi$get()
 minExample = J$FeatureTest$new('Hello, R World!')
 minExample$doHelloWorld()
@@ -49,6 +65,14 @@ minExample$doHelloWorld()
 ## -----------------------------------
 ## Method `FeatureTest$doSum(a, b)`
 ## -----------------------------------
+library(roxygen2)
+library(devtools)
+library(here)
+library(tidyverse)
+library(ggplot2)
+library(readr)
+library(dplyr)
+library(tibble)
 J = JavaApi$get()
 library(testthat)
 minExample = J$FeatureTest$new('Hello from Java constructor!')
@@ -118,6 +142,30 @@ instance$generateDataFrame()
 # appropriate parameter values must be provided
 instance$errorThrower()
 }
+
+## -----------------------------------
+## Method `FeatureTest$asyncCountdown()`
+## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$asyncCountdown()
+}
+
+## -----------------------------------
+## Method `FeatureTest$asyncRaceCountdown()`
+## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$asyncRaceCountdown()
+}
+
+## -----------------------------------
+## Method `FeatureTest$blockingCountdown()`
+## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$blockingCountdown()
+}
 }
 
 \keyword{java api}
@@ -140,6 +188,9 @@ instance$errorThrower()
 			\item \href{#method-doSomethingWithDataFrame}{\code{instance$doSomethingWithDataFrame(dataframe)}}
 			\item \href{#method-generateDataFrame}{\code{instance$generateDataFrame()}}
 			\item \href{#method-errorThrower}{\code{instance$errorThrower()}}
+			\item \href{#method-asyncCountdown}{\code{instance$asyncCountdown()}}
+			\item \href{#method-asyncRaceCountdown}{\code{instance$asyncRaceCountdown()}}
+			\item \href{#method-blockingCountdown}{\code{instance$blockingCountdown()}}
 			\item \code{instance$clone()}
 			\item \code{instance$print()}
 		}
@@ -182,6 +233,14 @@ the new R6 FeatureTest object
 		\subsection{Examples}{
 			\if{html}{\out{<div class="r example copy">}}
 			\preformatted{
+library(roxygen2)
+library(devtools)
+library(here)
+library(tidyverse)
+library(ggplot2)
+library(readr)
+library(dplyr)
+library(tibble)
 J = JavaApi$get()
 minExample = J$FeatureTest$new('Hello from Java constructor!')
 			}
@@ -222,6 +281,14 @@ RCharacter: this java method returns a String
 		\subsection{Examples}{
 			\if{html}{\out{<div class="r example copy">}}
 			\preformatted{
+library(roxygen2)
+library(devtools)
+library(here)
+library(tidyverse)
+library(ggplot2)
+library(readr)
+library(dplyr)
+library(tibble)
 J = JavaApi$get()
 minExample = J$FeatureTest$new('Hello, R World!')
 minExample$doHelloWorld()
@@ -264,6 +331,14 @@ This only matters if you care about the difference between NA_real_ and NaN in R
 		\subsection{Examples}{
 			\if{html}{\out{<div class="r example copy">}}
 			\preformatted{
+library(roxygen2)
+library(devtools)
+library(here)
+library(tidyverse)
+library(ggplot2)
+library(readr)
+library(dplyr)
+library(tibble)
 J = JavaApi$get()
 library(testthat)
 minExample = J$FeatureTest$new('Hello from Java constructor!')
@@ -297,7 +372,7 @@ instance$doSum2(a, b)
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
 				\item{a the A parameter}{ - (java expects a int)}
-				\item{b the B parameter - (defaulting to 10)}{ - (java expects a int)}
+				\item{b the B parameter - (defaulting to `10`)}{ - (java expects a int)}
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -362,7 +437,7 @@ instance$fluentSetMessage(message)
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{message the message is a string - (defaulting to \\"hello\\nworld\\")}{ - (java expects a RCharacter)}
+				\item{message the message is a string - (defaulting to `\\"hello\\nworld\\"`)}{ - (java expects a RCharacter)}
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -392,7 +467,7 @@ instance$factoryMethod(a, b)
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
 				\item{a the first parameter}{ - (java expects a RCharacter)}
-				\item{b the second parameter - (defaulting to as.character(Sys.Date()))}{ - (java expects a RCharacter)}
+				\item{b the second parameter - (defaulting to `as.character(Sys.Date())`)}{ - (java expects a RCharacter)}
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -515,6 +590,93 @@ instance$errorThrower()
 
 		\subsection{Returns}{
 void: 
+		}
+
+	}
+	\if{html}{\out{<hr>}}
+	\if{html}{\out{<a id="method-asyncCountdown"></a>}}
+	
+	\subsection{Method \code{asyncCountdown()}}{
+no title
+
+		\subsection{Usage}{
+			\if{html}{\out{<div class="r">}}
+			\preformatted{
+J = testRapi::JavaApi$get()
+instance = J$FeatureTest$new(logMessage);
+instance$asyncCountdown()
+  			}
+			\if{html}{\out{</div>}}
+		}
+	
+		\subsection{Arguments}{
+			\if{html}{\out{<div class="arguments">}}
+			\itemize{
+				\item{none}
+			}
+			\if{html}{\out{</div>}}
+		}
+
+		\subsection{Returns}{
+RCharacter: 
+		}
+
+	}
+	\if{html}{\out{<hr>}}
+	\if{html}{\out{<a id="method-asyncRaceCountdown"></a>}}
+	
+	\subsection{Method \code{asyncRaceCountdown()}}{
+no title
+
+		\subsection{Usage}{
+			\if{html}{\out{<div class="r">}}
+			\preformatted{
+J = testRapi::JavaApi$get()
+instance = J$FeatureTest$new(logMessage);
+instance$asyncRaceCountdown()
+  			}
+			\if{html}{\out{</div>}}
+		}
+	
+		\subsection{Arguments}{
+			\if{html}{\out{<div class="arguments">}}
+			\itemize{
+				\item{none}
+			}
+			\if{html}{\out{</div>}}
+		}
+
+		\subsection{Returns}{
+RCharacter: 
+		}
+
+	}
+	\if{html}{\out{<hr>}}
+	\if{html}{\out{<a id="method-blockingCountdown"></a>}}
+	
+	\subsection{Method \code{blockingCountdown()}}{
+no title
+
+		\subsection{Usage}{
+			\if{html}{\out{<div class="r">}}
+			\preformatted{
+J = testRapi::JavaApi$get()
+instance = J$FeatureTest$new(logMessage);
+instance$blockingCountdown()
+  			}
+			\if{html}{\out{</div>}}
+		}
+	
+		\subsection{Arguments}{
+			\if{html}{\out{<div class="arguments">}}
+			\itemize{
+				\item{none}
+			}
+			\if{html}{\out{</div>}}
+		}
+
+		\subsection{Returns}{
+RCharacter: 
 		}
 
 	}
