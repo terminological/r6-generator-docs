@@ -192,6 +192,23 @@ b$bounceLogicalVector(c(TRUE,TRUE,FALSE))
 b$bounceLogicalVector(c(TRUE,NA,FALSE))
 ```
 
+### Files
+
+Files in R need to be converted to absolute paths before they can be used in 
+Java. Tilde path expansion is also needed to correctly pick up the users home
+directory. Relative paths are considered to be relative to whatever the current 
+working directory is in R at the time the function is called. All of these edge
+cases can be ignored in Java. However we do not enforce that the parent 
+directory must exist, that is up to the Java developer.
+
+```{r}
+
+b$bounceFile("~/tmp/test1")
+b$bounceFile("../tmp/test2")
+b$bounceFile("tmp/test3")
+
+```
+
 
 ### Dataframes
 

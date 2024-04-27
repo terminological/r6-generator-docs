@@ -3,19 +3,19 @@ c(
 	bibentry(bibtype = "Manual",
 		title = "testRapi: A Test Library",
 		year = 2024,
-		note = "R package version 0.6.1.9000; Maven artifact: io.github.terminological:r6-generator-docs:0.6.2-SNAPSHOT",
+		note = "R package version 1.0.0; Maven artifact: io.github.terminological:r6-generator-docs:1.0.0",
 		doi = "10.5281/zenodo.6645134",
 		author = c(
 			person(given = "Rob",family = "Challen",email = "rob@terminological.co.uk",role = c("aut", "cre")),
-			person(given = "terminological",role = "aut"),
-			person(given = "Rob",family = "Challen",email = "rob@terminological.co.uk",comment = structure("0000-0002-5504-7768", .Names = "ORCID"),role = "aut")		)
+			person(given = "Rob",family = "Challen",email = "rob@terminological.co.uk",comment = structure("0000-0002-5504-7768", .Names = "ORCID"),role = "aut"),
+			person(given = "terminological",role = "aut")		)
 	),
 	bibentry(bibtype = "Manual",
 		title = "r6-generator: Code Generation Framework for using Java within R",
 		author = person(given="Rob", family="Challen",role="aut",email="rob.challen@bristol.ac.uk",comment = structure("0000-0002-5504-7768", .Names = "ORCID")),
-		note = "Maven plugin artifact: io.github.terminological:r6-generator-maven-plugin:0.6.2-SNAPSHOT",
-		year = 2022,
+		note = "Maven plugin artifact: io.github.terminological:r6-generator-maven-plugin:1.0.0",
+		year = 2024,
 		url = "https://github.com/terminological/r6-generator",
-		doi = "10.5281/zenodo.6644970"
+		doi = "10.5281/zenodo.7113300"
 	)
 )

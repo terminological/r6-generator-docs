@@ -52,6 +52,10 @@ class uk.co.terminological.rjava.types.RFactorVector {
 }
 
 
+class uk.co.terminological.rjava.types.RFile {
+}
+
+
 class uk.co.terminological.rjava.types.RInteger {
 }
 
@@ -144,6 +148,9 @@ uk.co.terminological.rjava.types.RDateVector ..|>  uk.co.terminological.rjava.ty
 uk.co.terminological.rjava.types.RFactor -->  uk.co.terminological.rjava.types.RFactor : NA
 uk.co.terminological.rjava.types.RFactor ..|>  uk.co.terminological.rjava.types.RPrimitive
 uk.co.terminological.rjava.types.RFactorVector --|>  uk.co.terminological.rjava.types.RVector
+uk.co.terminological.rjava.types.RFile -->  uk.co.terminological.rjava.types.RFile : NA
+uk.co.terminological.rjava.types.RFile ..|>  uk.co.terminological.rjava.types.JNIPrimitive
+uk.co.terminological.rjava.types.RFile ..|>  uk.co.terminological.rjava.types.RPrimitive
 uk.co.terminological.rjava.types.RInteger -->  uk.co.terminological.rjava.types.RInteger : MAX_VALUE
 uk.co.terminological.rjava.types.RInteger -->  uk.co.terminological.rjava.types.RInteger : MIN_VALUE
 uk.co.terminological.rjava.types.RInteger -->  uk.co.terminological.rjava.types.RInteger : NA

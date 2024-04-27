@@ -4,9 +4,9 @@
 #' @description
 #' A Test Library
 #'
-#' Version: 0.6.1.9000
+#' Version: 1.0.0
 #'
-#' Generated: 2024-04-22T20:47:47.318668334
+#' Generated: 2024-04-27T08:45:08.689286006
 #'
 #' Contact: rob@terminological.co.uk
 #' @import R6
@@ -95,9 +95,9 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 		  .jcall(self$.log,returnSig = "V",method = "debug", jar)
 		}
 		.jcall(self$.log,returnSig = "V",method = "info","Initialised testRapi");
-		.jcall(self$.log,returnSig = "V",method = "debug","R package version: 0.6.1.9000");
-		.jcall(self$.log,returnSig = "V",method = "debug","R package generated: 2024-04-22T20:47:47.319216095");
-		.jcall(self$.log,returnSig = "V",method = "debug","Java library version: io.github.terminological:r6-generator-docs:0.6.2-SNAPSHOT");
+		.jcall(self$.log,returnSig = "V",method = "debug","R package version: 1.0.0");
+		.jcall(self$.log,returnSig = "V",method = "debug","R package generated: 2024-04-27T08:45:08.689863866");
+		.jcall(self$.log,returnSig = "V",method = "debug","Java library version: io.github.terminological:r6-generator-docs:1.0.0");
 		.jcall(self$.log,returnSig = "V",method = "debug",paste0("Java library compiled: ",buildDate));
 		.jcall(self$.log,returnSig = "V",method = "debug","Contact: rob@terminological.co.uk");
 		self$printMessages()
@@ -268,6 +268,13 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 				if (is.null(rObj)) return(rJava::.new('uk/co/terminological/rjava/types/RUntypedNaVector'))
 				return(rJava::.jnew('uk/co/terminological/rjava/types/RUntypedNaVector',length(rObj)))
 			},
+			RFile=function(rObj) {
+				if (is.na(rObj)) return(rJava::.jnew('uk/co/terminological/rjava/types/RFile'))
+				if (length(rObj) > 1) stop('input too long')
+				if (!is.character(rObj)) stop('input must be a character representing a file path')
+				tmp = fs::path_abs(fs::path_expand(rObj),getwd())
+				return(rJava::.jnew('uk/co/terminological/rjava/types/RFile',tmp))
+			},
 			RUntypedNa=function(rObj) {
 				return(rJava::.jnew('uk/co/terminological/rjava/types/RUntypedNa'))
 			},
@@ -355,6 +362,7 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 				return(dplyr::group_by(convDf(jObj),!!!sapply(groups,as.symbol)))
 			},
 			RUntypedNaVector=function(jObj) rep(NA, rJava::.jcall(jObj,returnSig='I',method='size')),
+			RFile=function(jObj) {	fs::path(rJava::.jcall(jObj,returnSig='Ljava/lang/String;',method='rPrimitive'))},
 			RUntypedNa=function(jObj) return(NA),
 			RFactorVector=function(jObj) ordered(
 				x = rJava::.jcall(jObj,returnSig='[I',method='rValues'),
@@ -769,9 +777,9 @@ JavaApi$installDependencies = function() {
 JavaApi$versionInformation = function() {
 	out = list(
 		package = "testRapi",
-		r_package_version = "0.6.1.9000",
-		r_package_generated = "2024-04-22T20:47:47.348689451",
-		java_library_version = "io.github.terminological:r6-generator-docs:0.6.2-SNAPSHOT",
+		r_package_version = "1.0.0",
+		r_package_generated = "2024-04-27T08:45:08.721698837",
+		java_library_version = "io.github.terminological:r6-generator-docs:1.0.0",
 		maintainer = "rob@terminological.co.uk"
 	)
 	# try and get complilation information if library is loaded
@@ -788,7 +796,7 @@ JavaApi$versionInformation = function() {
 
 .checkDependencies = function(nocache = FALSE, ...) {
 	package_jar = .package_jars(package_name="testRapi",types="shaded")
-	package_jar = package_jar[startsWith(fs::path_file(package_jar),"r6-generator-docs-0.6.2-SNAPSHOT")]
+	package_jar = package_jar[startsWith(fs::path_file(package_jar),"r6-generator-docs-1.0.0")]
 	
 	# Java dependencies
 	# all java library code and dependencies have already been bundled into a single fat jar

@@ -11,9 +11,9 @@
 \description{
 missing description
 
-Version: 0.6.1.9000
+Version: 1.0.0
 
-Generated: 2024-04-22T20:47:47.439162100
+Generated: 2024-04-27T08:45:08.879804810
 }
 
 \details{
@@ -190,7 +190,7 @@ instance = J$FactoryTest$new();
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -220,7 +220,7 @@ instance$generateCharacter()
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -249,7 +249,7 @@ instance$generateNumeric()
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -278,7 +278,7 @@ instance$generateInteger()
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -307,7 +307,7 @@ instance$generateFactor()
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -336,7 +336,7 @@ instance$generateLogical()
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -365,7 +365,7 @@ instance$generateCharacterVec()
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -394,7 +394,7 @@ instance$generateNumericVec()
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -423,7 +423,7 @@ instance$generateIntegerVec()
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -452,7 +452,7 @@ instance$generateFactorVec()
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -481,7 +481,7 @@ instance$generateLogicalVec()
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -510,7 +510,7 @@ instance$generateDataframe()
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -539,7 +539,7 @@ instance$generateStreamDataframe()
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -568,7 +568,7 @@ instance$generateList()
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -597,7 +597,7 @@ instance$generateNamedList()
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}

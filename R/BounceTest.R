@@ -8,9 +8,9 @@
 #' 
 #' This is a class of the testRapi generated R library.
 #' 
-#' Version: 0.6.1.9000
+#' Version: 1.0.0
 #' 
-#' Generated: 2024-04-22T20:47:47.401431078
+#' Generated: 2024-04-27T08:45:08.807482387
 #'
 #' @details
 	#' no details
@@ -475,6 +475,32 @@ BounceTest = R6::R6Class("BounceTest", public=list(
 		.jcheck();
 		# convert java object back to R. Wrapping to R6 as needed. 
 		out = self$.api$.fromJava$RLogicalVector(tmp_out);
+		if(is.null(out)) return(invisible(out));
+		return(out);
+	},
+	
+	#' @description 
+	#' bounceFile: 
+	#' no title
+	#' @param x - (java expects a RFile)
+	#' @return RFile
+	#' 
+	bounceFile = function(x) {
+		# copy parameters into Java
+		tmp_x = self$.api$.toJava$RFile(x);
+		# execute method call
+		tmp_out = .jcall(
+			self$.jobj, 
+			returnSig = "Luk/co/terminological/rjava/types/RFile;", 
+			method = "bounceFile",
+			tmp_x, 
+			check=FALSE
+		);
+		self$.api$printMessages();
+		# check for exceptions and rethrow them
+		.jcheck();
+		# convert java object back to R. Wrapping to R6 as needed. 
+		out = self$.api$.fromJava$RFile(tmp_out);
 		if(is.null(out)) return(invisible(out));
 		return(out);
 	},

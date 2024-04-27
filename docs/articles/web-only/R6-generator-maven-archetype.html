@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>R6 Generator Maven Archetype: Recommended project setup • testRapi</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../../bootstrap-toc.css">
 <script src="../../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">testRapi</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0</span>
       </span>
     </div>
 
@@ -59,13 +59,13 @@
       <a href="../../articles/R6-generator-features.html">R6 Generator Maven Plugin: Key features</a>
     </li>
     <li>
+      <a href="../../articles/web-only/R6-generator-maven-archetype.html">R6 Generator Maven Archetype: Recommended project setup</a>
+    </li>
+    <li>
       <a href="../../articles/R6-generator-maven-config.html">R6 Generator Maven Plugin: Metadata and Maven configuration</a>
     </li>
     <li>
       <a href="../../articles/R6-generator-runtime.html">R6 Generator Runtime: Using R Datatypes in Java</a>
-    </li>
-    <li>
-      <a href="../../articles/web-only/R6-generator-maven-archetype.html">R6 Generator Maven Archetype: Recommended project setup</a>
     </li>
   </ul>
 </li>
@@ -94,7 +94,7 @@
                         <h4 data-toc-skip class="author">Rob Challen</h4>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/terminological/r6-generator-docs/blob/HEAD/java/vignettes/web-only/R6-generator-maven-archetype.Rmd" class="external-link"><code>java/vignettes/web-only/R6-generator-maven-archetype.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/terminological/r6-generator-docs/blob/HEAD/vignettes/web-only/R6-generator-maven-archetype.Rmd" class="external-link"><code>vignettes/web-only/R6-generator-maven-archetype.Rmd</code></a></small>
       <div class="hidden name"><code>R6-generator-maven-archetype.Rmd</code></div>
 
     </div>
@@ -109,19 +109,13 @@
 <span><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/create.html" class="external-link">dir_create</a></span><span class="op">(</span><span class="va">dir</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>TMP_DIR<span class="op">=</span><span class="va">dir</span><span class="op">)</span></span>
 <span><span class="va">dir</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #0000BB; font-weight: bold;">/tmp/Rtmp9DYdE1/testProject</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #0000BB; font-weight: bold;">/tmp/RtmpOlstSd/testProject</span></span></span></code></pre>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">v</span> <span class="op">=</span> <span class="fu">testRapi</span><span class="fu">::</span><span class="va"><a href="../../reference/JavaApi.html">JavaApi</a></span><span class="op">$</span><span class="fu">versionInformation</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="va">version</span> <span class="op">=</span> <span class="va">v</span><span class="op">$</span><span class="va">r_package_version</span></span>
-<span><span class="kw">if</span> <span class="op">(</span><span class="va">version</span><span class="op">==</span><span class="st">"0.0.0.9999"</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">version</span><span class="op">=</span><span class="st">"main-SNAPSHOT"</span></span>
-<span>  <span class="co"># as this is a web-only vignette we are assuming that this will work as it is being run on a development machine.</span></span>
-<span>  <span class="co"># with a locally installed snapshot maven snapshot - to make this work on another machine we need to adjust settings.xml</span></span>
-<span>  <span class="co"># to include sonatypes snapshot repository</span></span>
-<span><span class="op">}</span></span>
+<span><span class="va">version</span> <span class="op">=</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html" class="external-link">str_replace</a></span><span class="op">(</span><span class="va">v</span><span class="op">$</span><span class="va">java_library_version</span>, <span class="st">"io.github.terminological:r6-generator-docs:"</span>, <span class="st">""</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>TMP_VERSION<span class="op">=</span><span class="va">version</span><span class="op">)</span></span>
 <span><span class="va">version</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] "0.6.1.9000"</span></span></code></pre>
+<pre><code><span><span class="co">## [1] "1.0.0"</span></span></code></pre>
 <div class="section level3">
 <h3 id="maven-archetype">Maven archetype<a class="anchor" aria-label="anchor" href="#maven-archetype"></a>
 </h3>
@@ -148,46 +142,291 @@
 <span><span class="co">## [INFO] --- maven-archetype-plugin:3.2.1:generate (default-cli) @ standalone-pom ---</span></span>
 <span><span class="co">## [INFO] Generating project in Batch mode</span></span>
 <span><span class="co">## [INFO] Archetype repository not defined. Using the one from [io.github.terminological:r6-generator-maven-archetype:0.5.6] found in catalog remote</span></span>
-<span><span class="co">## [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/github/terminological/r6-generator-maven-archetype/0.6.1.9000/r6-generator-maven-archetype-0.6.1.9000.pom</span></span>
-<span><span class="co">## [WARNING] The POM for io.github.terminological:r6-generator-maven-archetype:jar:0.6.1.9000 is missing, no dependency information available</span></span>
-<span><span class="co">## [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/github/terminological/r6-generator-maven-archetype/0.6.1.9000/r6-generator-maven-archetype-0.6.1.9000.jar</span></span>
+<span><span class="co">## [INFO] ----------------------------------------------------------------------------</span></span>
+<span><span class="co">## [INFO] Using following parameters for creating project from Archetype: r6-generator-maven-archetype:1.0.0</span></span>
+<span><span class="co">## [INFO] ----------------------------------------------------------------------------</span></span>
+<span><span class="co">## [INFO] Parameter: groupId, Value: io.github.exampleOrganisation</span></span>
+<span><span class="co">## [INFO] Parameter: artifactId, Value: examplePackage</span></span>
+<span><span class="co">## [INFO] Parameter: version, Value: main-SNAPSHOT</span></span>
+<span><span class="co">## [INFO] Parameter: package, Value: io.github.exampleOrganisation</span></span>
+<span><span class="co">## [INFO] Parameter: packageInPathFormat, Value: io/github/exampleOrganisation</span></span>
+<span><span class="co">## [INFO] Parameter: githubOrganisation, Value: exampleOrganisation</span></span>
+<span><span class="co">## [INFO] Parameter: rPackageLicense, Value: MIT</span></span>
+<span><span class="co">## [INFO] Parameter: package, Value: io.github.exampleOrganisation</span></span>
+<span><span class="co">## [INFO] Parameter: libraryStyle, Value: fat-jar</span></span>
+<span><span class="co">## [INFO] Parameter: gitignore, Value: .gitignore</span></span>
+<span><span class="co">## [INFO] Parameter: groupId, Value: io.github.exampleOrganisation</span></span>
+<span><span class="co">## [INFO] Parameter: maintainerEmail, Value: a.n.example@example.org</span></span>
+<span><span class="co">## [INFO] Parameter: version, Value: main-SNAPSHOT</span></span>
+<span><span class="co">## [INFO] Parameter: rPackageVersion, Value: 0.0.0.9000</span></span>
+<span><span class="co">## [INFO] Parameter: rPackageName, Value: examplePackage</span></span>
+<span><span class="co">## [INFO] Parameter: archetypeVersion, Value: 1.0.0</span></span>
+<span><span class="co">## [INFO] Parameter: githubRepository, Value: examplePackage</span></span>
+<span><span class="co">## [INFO] Parameter: maintainerOrganisation, Value: exampleOrganisation</span></span>
+<span><span class="co">## [INFO] Parameter: maintainerSurname, Value: Example</span></span>
+<span><span class="co">## [INFO] Parameter: artifactId, Value: examplePackage</span></span>
+<span><span class="co">## [INFO] Parameter: maintainerName, Value: Anne</span></span>
+<span><span class="co">## [WARNING] Don't override file /tmp/RtmpOlstSd/testProject/examplePackage/java/src/main/java/io/github/exampleOrganisation</span></span>
+<span><span class="co">## [WARNING] Don't override file /tmp/RtmpOlstSd/testProject/examplePackage/java/src/test/java/io/github/exampleOrganisation</span></span>
+<span><span class="co">## [WARNING] Don't override file /tmp/RtmpOlstSd/testProject/examplePackage/data-raw</span></span>
+<span><span class="co">## [WARNING] Don't override file /tmp/RtmpOlstSd/testProject/examplePackage/vignettes</span></span>
+<span><span class="co">## [INFO] Project created from Archetype in dir: /tmp/RtmpOlstSd/testProject/examplePackage</span></span>
 <span><span class="co">## [INFO] ------------------------------------------------------------------------</span></span>
-<span><span class="co">## [INFO] BUILD FAILURE</span></span>
+<span><span class="co">## [INFO] BUILD SUCCESS</span></span>
 <span><span class="co">## [INFO] ------------------------------------------------------------------------</span></span>
-<span><span class="co">## [INFO] Total time:  2.220 s</span></span>
-<span><span class="co">## [INFO] Finished at: 2024-04-22T20:51:46+01:00</span></span>
-<span><span class="co">## [INFO] ------------------------------------------------------------------------</span></span>
-<span><span class="co">## [ERROR] Failed to execute goal org.apache.maven.plugins:maven-archetype-plugin:3.2.1:generate (default-cli) on project standalone-pom: The desired archetype does not exist (io.github.terminological:r6-generator-maven-archetype:0.6.1.9000) -&gt; [Help 1]</span></span>
-<span><span class="co">## [ERROR] </span></span>
-<span><span class="co">## [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.</span></span>
-<span><span class="co">## [ERROR] Re-run Maven using the -X switch to enable full debug logging.</span></span>
-<span><span class="co">## [ERROR] </span></span>
-<span><span class="co">## [ERROR] For more information about the errors and possible solutions, please read the following articles:</span></span>
-<span><span class="co">## [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException</span></span></code></pre>
+<span><span class="co">## [INFO] Total time:  7.112 s</span></span>
+<span><span class="co">## [INFO] Finished at: 2024-04-27T08:49:20+01:00</span></span>
+<span><span class="co">## [INFO] ------------------------------------------------------------------------</span></span></code></pre>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/dir_tree.html" class="external-link">dir_tree</a></span><span class="op">(</span><span class="va">dir</span>,regexp<span class="op">=</span><span class="st">"((.*/target)|docs)/.*"</span>, invert<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #0000BB; font-weight: bold;">/tmp/Rtmp9DYdE1/testProject</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #0000BB; font-weight: bold;">/tmp/RtmpOlstSd/testProject</span></span></span>
+<span><span class="co">## └── <span style="color: #0000BB; font-weight: bold;">examplePackage</span></span></span>
+<span><span class="co">##     ├── README.md</span></span>
+<span><span class="co">##     ├── <span style="color: #0000BB; font-weight: bold;">data-raw</span></span></span>
+<span><span class="co">##     │   └── <span style="color: #00BB00;">setup-test-data.R</span></span></span>
+<span><span class="co">##     ├── examplePackage.Rproj</span></span>
+<span><span class="co">##     ├── <span style="color: #0000BB; font-weight: bold;">java</span></span></span>
+<span><span class="co">##     │   ├── pom.xml</span></span>
+<span><span class="co">##     │   └── <span style="color: #0000BB; font-weight: bold;">src</span></span></span>
+<span><span class="co">##     │       ├── <span style="color: #0000BB; font-weight: bold;">main</span></span></span>
+<span><span class="co">##     │       │   └── <span style="color: #0000BB; font-weight: bold;">java</span></span></span>
+<span><span class="co">##     │       │       └── <span style="color: #0000BB; font-weight: bold;">io</span></span></span>
+<span><span class="co">##     │       │           └── <span style="color: #0000BB; font-weight: bold;">github</span></span></span>
+<span><span class="co">##     │       │               └── <span style="color: #0000BB; font-weight: bold;">exampleOrganisation</span></span></span>
+<span><span class="co">##     │       │                   ├── BasicExample.java</span></span>
+<span><span class="co">##     │       │                   ├── MoreComplexExample.java</span></span>
+<span><span class="co">##     │       │                   └── TestDataGenerator.java</span></span>
+<span><span class="co">##     │       └── <span style="color: #0000BB; font-weight: bold;">test</span></span></span>
+<span><span class="co">##     │           ├── <span style="color: #0000BB; font-weight: bold;">java</span></span></span>
+<span><span class="co">##     │           │   └── <span style="color: #0000BB; font-weight: bold;">io</span></span></span>
+<span><span class="co">##     │           │       └── <span style="color: #0000BB; font-weight: bold;">github</span></span></span>
+<span><span class="co">##     │           │           └── <span style="color: #0000BB; font-weight: bold;">exampleOrganisation</span></span></span>
+<span><span class="co">##     │           │               └── TestData.java</span></span>
+<span><span class="co">##     │           └── <span style="color: #0000BB; font-weight: bold;">resources</span></span></span>
+<span><span class="co">##     ├── pom.xml</span></span>
+<span><span class="co">##     └── <span style="color: #0000BB; font-weight: bold;">vignettes</span></span></span>
+<span><span class="co">##         └── <span style="color: #00BB00;">examplePackage.Rmd</span></span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="building-the-project">Building the project<a class="anchor" aria-label="anchor" href="#building-the-project"></a>
 </h3>
 <div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="bu">cd</span> <span class="va">$TMP_DIR</span>/examplePackage/java</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a><span class="ex">mvn</span> install</span></code></pre></div>
-<pre><code><span><span class="co">## bash: line 1: cd: /tmp/Rtmp9DYdE1/testProject/examplePackage/java: No such file or directory</span></span>
-<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Scanning for projects...</span></span>
+<pre><code><span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Scanning for projects...</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] </span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="font-weight: bold;">------------&lt; </span><span style="color: #00BBBB;">io.github.exampleOrganisation:examplePackage</span><span style="font-weight: bold;"> &gt;------------</span></span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="font-weight: bold;">Building examplePackage main-SNAPSHOT</span></span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="font-weight: bold;">--------------------------------[ jar ]---------------------------------</span></span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] </span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="font-weight: bold;">--- </span><span style="color: #00BB00;">maven-resources-plugin:2.6:resources</span> <span style="font-weight: bold;">(default-resources)</span> @ <span style="color: #00BBBB;">examplePackage</span><span style="font-weight: bold;"> ---</span></span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Using 'UTF-8' encoding to copy filtered resources.</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] skip non existing resourceDirectory /tmp/RtmpOlstSd/testProject/examplePackage/java/src/main/resources</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] </span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="font-weight: bold;">--- </span><span style="color: #00BB00;">r6-generator-maven-plugin:1.0.0:flatten-pom</span> <span style="font-weight: bold;">(flatten-pom)</span> @ <span style="color: #00BBBB;">examplePackage</span><span style="font-weight: bold;"> ---</span></span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Executing R6 generator</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Generating flattened POM of project io.github.exampleOrganisation:examplePackage:jar:main-SNAPSHOT...</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] </span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="font-weight: bold;">--- </span><span style="color: #00BB00;">maven-compiler-plugin:3.1:compile</span> <span style="font-weight: bold;">(default-compile)</span> @ <span style="color: #00BBBB;">examplePackage</span><span style="font-weight: bold;"> ---</span></span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Changes detected - recompiling the module!</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Compiling 3 source files to /tmp/RtmpOlstSd/testProject/examplePackage/java/target/classes</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] </span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="font-weight: bold;">--- </span><span style="color: #00BB00;">maven-resources-plugin:2.6:testResources</span> <span style="font-weight: bold;">(default-testResources)</span> @ <span style="color: #00BBBB;">examplePackage</span><span style="font-weight: bold;"> ---</span></span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Using 'UTF-8' encoding to copy filtered resources.</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Copying 0 resource</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] </span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="font-weight: bold;">--- </span><span style="color: #00BB00;">maven-compiler-plugin:3.1:testCompile</span> <span style="font-weight: bold;">(default-testCompile)</span> @ <span style="color: #00BBBB;">examplePackage</span><span style="font-weight: bold;"> ---</span></span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Changes detected - recompiling the module!</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Compiling 1 source file to /tmp/RtmpOlstSd/testProject/examplePackage/java/target/test-classes</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] </span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="font-weight: bold;">--- </span><span style="color: #00BB00;">maven-surefire-plugin:2.12.4:test</span> <span style="font-weight: bold;">(default-test)</span> @ <span style="color: #00BBBB;">examplePackage</span><span style="font-weight: bold;"> ---</span></span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Surefire report directory: /tmp/RtmpOlstSd/testProject/examplePackage/java/target/surefire-reports</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## -------------------------------------------------------</span></span>
+<span><span class="co">##  T E S T S</span></span>
+<span><span class="co">## -------------------------------------------------------</span></span>
+<span><span class="co">## Running io.github.exampleOrganisation.TestData</span></span>
+<span><span class="co">## Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Results :</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Tests run: 0, Failures: 0, Errors: 0, Skipped: 0</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] </span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="font-weight: bold;">--- </span><span style="color: #00BB00;">maven-jar-plugin:2.4:jar</span> <span style="font-weight: bold;">(default-jar)</span> @ <span style="color: #00BBBB;">examplePackage</span><span style="font-weight: bold;"> ---</span></span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Building jar: /tmp/RtmpOlstSd/testProject/examplePackage/java/target/examplePackage-main-SNAPSHOT.jar</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] </span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="font-weight: bold;">--- </span><span style="color: #00BB00;">maven-install-plugin:2.4:install</span> <span style="font-weight: bold;">(default-install)</span> @ <span style="color: #00BBBB;">examplePackage</span><span style="font-weight: bold;"> ---</span></span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Installing /tmp/RtmpOlstSd/testProject/examplePackage/java/target/examplePackage-main-SNAPSHOT.jar to /home/vp22681/.m2/repository/io/github/exampleOrganisation/examplePackage/main-SNAPSHOT/examplePackage-main-SNAPSHOT.jar</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Installing /tmp/RtmpOlstSd/testProject/examplePackage/java/.flattened-pom.xml to /home/vp22681/.m2/repository/io/github/exampleOrganisation/examplePackage/main-SNAPSHOT/examplePackage-main-SNAPSHOT.pom</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] </span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="font-weight: bold;">--- </span><span style="color: #00BB00;">r6-generator-maven-plugin:1.0.0:generate-r-library</span> <span style="font-weight: bold;">(generate-r-library)</span> @ <span style="color: #00BBBB;">examplePackage</span><span style="font-weight: bold;"> ---</span></span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Executing R6 generator</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Building jar: /tmp/RtmpOlstSd/testProject/examplePackage/java/target/examplePackage-main-SNAPSHOT-jar-with-dependencies.jar</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Copying fat jar into inst/java.</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Reflections took 37 ms to scan 2 urls, producing 42 keys and 141 values</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] io.github.exampleOrganisation.BasicExample</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] io.github.exampleOrganisation.MoreComplexExample</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] io.github.exampleOrganisation.TestDataGenerator</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Writing file: /tmp/RtmpOlstSd/testProject/examplePackage/DESCRIPTION</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Writing file: /tmp/RtmpOlstSd/testProject/examplePackage/NAMESPACE</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Writing file: /tmp/RtmpOlstSd/testProject/examplePackage/inst/CITATION</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Writing file: /tmp/RtmpOlstSd/testProject/examplePackage/tests/testthat.R</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Writing file: /tmp/RtmpOlstSd/testProject/examplePackage/LICENSE</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Writing file: /tmp/RtmpOlstSd/testProject/examplePackage/LICENSE.md</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Writing file: /tmp/RtmpOlstSd/testProject/examplePackage/man/JavaApi.Rd</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Writing file: /tmp/RtmpOlstSd/testProject/examplePackage/man/examplePackage-package.Rd</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Writing file: /tmp/RtmpOlstSd/testProject/examplePackage/R/JavaApi.R</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Writing file: /tmp/RtmpOlstSd/testProject/examplePackage/R/StaticApi.R</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Writing file: /tmp/RtmpOlstSd/testProject/examplePackage/R/zzz.R</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Writing file: /tmp/RtmpOlstSd/testProject/examplePackage/cran-comments.md</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Writing file: /tmp/RtmpOlstSd/testProject/examplePackage/.Rbuildignore</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Writing file: /tmp/RtmpOlstSd/testProject/examplePackage/.github/workflows/R-CMD-check.yaml</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Writing file: /tmp/RtmpOlstSd/testProject/examplePackage/man/BasicExample.Rd</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Writing file: /tmp/RtmpOlstSd/testProject/examplePackage/R/BasicExample.R</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Writing file: /tmp/RtmpOlstSd/testProject/examplePackage/tests/testthat/test-BasicExample.R</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Writing file: /tmp/RtmpOlstSd/testProject/examplePackage/man/greet.Rd</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Writing file: /tmp/RtmpOlstSd/testProject/examplePackage/man/MoreComplexExample.Rd</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Writing file: /tmp/RtmpOlstSd/testProject/examplePackage/R/MoreComplexExample.R</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Writing file: /tmp/RtmpOlstSd/testProject/examplePackage/tests/testthat/test-MoreComplexExample.R</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Writing file: /tmp/RtmpOlstSd/testProject/examplePackage/man/salutation.Rd</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Writing file: /tmp/RtmpOlstSd/testProject/examplePackage/man/TestDataGenerator.Rd</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Writing file: /tmp/RtmpOlstSd/testProject/examplePackage/R/TestDataGenerator.R</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Writing file: /tmp/RtmpOlstSd/testProject/examplePackage/tests/testthat/test-TestDataGenerator.R</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Writing file: /tmp/RtmpOlstSd/testProject/examplePackage/man/serialise_dataframe.Rd</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Writing file: /tmp/RtmpOlstSd/testProject/examplePackage/man/serialise_list.Rd</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Writing file: /tmp/RtmpOlstSd/testProject/examplePackage/man/serialise_named_list.Rd</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Generating pkgdown site - please be patient</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] </span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] R version 4.4.0 (2024-04-24) -- "Puppy Cup"</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Copyright (C) 2024 The R Foundation for Statistical Computing</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Platform: x86_64-pc-linux-gnu</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] </span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] R is free software and comes with ABSOLUTELY NO WARRANTY.</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] You are welcome to redistribute it under certain conditions.</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Type 'license()' or 'licence()' for distribution details.</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] </span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>]   Natural language support but running in an English locale</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] </span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] R is a collaborative project with many contributors.</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Type 'contributors()' for more information and</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] 'citation()' on how to cite R or R packages in publications.</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] </span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Type 'demo()' for some demos, 'help()' for on-line help, or</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] 'help.start()' for an HTML browser interface to help.</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Type 'q()' to quit R.</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] </span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] &gt; pkgdown::build_site(pkg = '/tmp/RtmpOlstSd/testProject/examplePackage')</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] ── Installing package <span style="color: #0000BB;">examplePackage</span> into temporary library ────────────────────</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">── Building pkgdown site for package </span><span style="color: #0000BB;">examplePackage</span><span style="color: #BB0000;"> ────────────────────────────</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">Reading from: </span><span style="color: #00BB00; font-weight: bold;">/tmp/RtmpOlstSd/testProject/examplePackage</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">Writing to: </span><span style="color: #00BBBB; font-weight: bold;">/tmp/RtmpOlstSd/testProject/examplePackage/docs</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">── Initialising site ───────────────────────────────────────────────────────────</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">Copying</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #00BB00; font-weight: bold;">../../../../home/vp22681/R/x86_64-pc-linux-gnu-library/4.4/pkgdown/BS3/assets/bootstrap-toc.css</span><span style="color: #BB0000;">,</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #00BB00; font-weight: bold;">../../../../home/vp22681/R/x86_64-pc-linux-gnu-library/4.4/pkgdown/BS3/assets/bootstrap-toc.js</span><span style="color: #BB0000;">,</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #00BB00; font-weight: bold;">../../../../home/vp22681/R/x86_64-pc-linux-gnu-library/4.4/pkgdown/BS3/assets/docsearch.css</span><span style="color: #BB0000;">,</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #00BB00; font-weight: bold;">../../../../home/vp22681/R/x86_64-pc-linux-gnu-library/4.4/pkgdown/BS3/assets/docsearch.js</span><span style="color: #BB0000;">,</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #00BB00; font-weight: bold;">../../../../home/vp22681/R/x86_64-pc-linux-gnu-library/4.4/pkgdown/BS3/assets/link.svg</span><span style="color: #BB0000;">,</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #00BB00; font-weight: bold;">../../../../home/vp22681/R/x86_64-pc-linux-gnu-library/4.4/pkgdown/BS3/assets/pkgdown.css</span><span style="color: #BB0000;">,</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] and</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #00BB00; font-weight: bold;">../../../../home/vp22681/R/x86_64-pc-linux-gnu-library/4.4/pkgdown/BS3/assets/pkgdown.js</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] to <span style="color: #00BBBB; font-weight: bold;">bootstrap-toc.css</span><span style="color: #BB0000;">, </span><span style="color: #00BBBB; font-weight: bold;">bootstrap-toc.js</span><span style="color: #BB0000;">, </span><span style="color: #00BBBB; font-weight: bold;">docsearch.css</span><span style="color: #BB0000;">, </span><span style="color: #00BBBB; font-weight: bold;">docsearch.js</span><span style="color: #BB0000;">, </span><span style="color: #00BBBB; font-weight: bold;">link.svg</span><span style="color: #BB0000;">,</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #00BBBB; font-weight: bold;">pkgdown.css</span><span style="color: #BB0000;">, and </span><span style="color: #00BBBB; font-weight: bold;">pkgdown.js</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">── Building home ───────────────────────────────────────────────────────────────</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">Writing `</span><span style="color: #00BBBB; font-weight: bold;">authors.html</span><span style="color: #BB0000;">`</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">Reading </span><span style="color: #00BB00; font-weight: bold;">LICENSE.md</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">Writing `</span><span style="color: #00BBBB; font-weight: bold;">LICENSE.html</span><span style="color: #BB0000;">`</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">Writing `</span><span style="color: #00BBBB; font-weight: bold;">LICENSE-text.html</span><span style="color: #BB0000;">`</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">Writing `</span><span style="color: #00BBBB; font-weight: bold;">404.html</span><span style="color: #BB0000;">`</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">── Building function reference ─────────────────────────────────────────────────</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">Writing `</span><span style="color: #00BBBB; font-weight: bold;">reference/index.html</span><span style="color: #BB0000;">`</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">Reading </span><span style="color: #00BB00; font-weight: bold;">man/BasicExample.Rd</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">Writing `</span><span style="color: #00BBBB; font-weight: bold;">reference/BasicExample.html</span><span style="color: #BB0000;">`</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">Reading </span><span style="color: #00BB00; font-weight: bold;">man/JavaApi.Rd</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">Writing `</span><span style="color: #00BBBB; font-weight: bold;">reference/JavaApi.html</span><span style="color: #BB0000;">`</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">Reading </span><span style="color: #00BB00; font-weight: bold;">man/MoreComplexExample.Rd</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">Writing `</span><span style="color: #00BBBB; font-weight: bold;">reference/MoreComplexExample.html</span><span style="color: #BB0000;">`</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">Reading </span><span style="color: #00BB00; font-weight: bold;">man/RFuture.Rd</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">Writing `</span><span style="color: #00BBBB; font-weight: bold;">reference/RFuture.html</span><span style="color: #BB0000;">`</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">Reading </span><span style="color: #00BB00; font-weight: bold;">man/TestDataGenerator.Rd</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">Writing `</span><span style="color: #00BBBB; font-weight: bold;">reference/TestDataGenerator.html</span><span style="color: #BB0000;">`</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">Reading </span><span style="color: #00BB00; font-weight: bold;">man/examplePackage-package.Rd</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">Writing `</span><span style="color: #00BBBB; font-weight: bold;">reference/examplePackage-package.html</span><span style="color: #BB0000;">`</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">Reading </span><span style="color: #00BB00; font-weight: bold;">man/greet.Rd</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">Writing `</span><span style="color: #00BBBB; font-weight: bold;">reference/greet.html</span><span style="color: #BB0000;">`</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">Reading </span><span style="color: #00BB00; font-weight: bold;">man/pipe.Rd</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">Writing `</span><span style="color: #00BBBB; font-weight: bold;">reference/pipe.html</span><span style="color: #BB0000;">`</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">Reading </span><span style="color: #00BB00; font-weight: bold;">man/salutation.Rd</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">Writing `</span><span style="color: #00BBBB; font-weight: bold;">reference/salutation.html</span><span style="color: #BB0000;">`</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">Reading </span><span style="color: #00BB00; font-weight: bold;">man/serialise_dataframe.Rd</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">Writing `</span><span style="color: #00BBBB; font-weight: bold;">reference/serialise_dataframe.html</span><span style="color: #BB0000;">`</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">Reading </span><span style="color: #00BB00; font-weight: bold;">man/serialise_list.Rd</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">Writing `</span><span style="color: #00BBBB; font-weight: bold;">reference/serialise_list.html</span><span style="color: #BB0000;">`</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">Reading </span><span style="color: #00BB00; font-weight: bold;">man/serialise_named_list.Rd</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">Writing `</span><span style="color: #00BBBB; font-weight: bold;">reference/serialise_named_list.html</span><span style="color: #BB0000;">`</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">── Building articles ───────────────────────────────────────────────────────────</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">Writing `</span><span style="color: #00BBBB; font-weight: bold;">articles/index.html</span><span style="color: #BB0000;">`</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">Reading </span><span style="color: #00BB00; font-weight: bold;">vignettes/examplePackage.Rmd</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">Writing `</span><span style="color: #00BBBB; font-weight: bold;">articles/examplePackage.html</span><span style="color: #BB0000;">`</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">Writing </span><span style="color: #00BBBB; font-weight: bold;">sitemap.xml</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000;">── Finished building pkgdown site for package </span><span style="color: #0000BB;">examplePackage</span><span style="color: #BB0000;"> ───────────────────</span></span></span>
+<span><span class="co"><span style="color: #BB0000;">## [</span><span style="color: #0000BB; font-weight: bold;">INFO</span>] ── Finished building pkgdown site for package <span style="color: #0000BB;">examplePackage</span> ───────────────────</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] &gt; </span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] &gt; </span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Installing R package</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] </span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] R version 4.4.0 (2024-04-24) -- "Puppy Cup"</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Copyright (C) 2024 The R Foundation for Statistical Computing</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Platform: x86_64-pc-linux-gnu</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] </span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] R is free software and comes with ABSOLUTELY NO WARRANTY.</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] You are welcome to redistribute it under certain conditions.</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Type 'license()' or 'licence()' for distribution details.</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] </span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>]   Natural language support but running in an English locale</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] </span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] R is a collaborative project with many contributors.</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Type 'contributors()' for more information and</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] 'citation()' on how to cite R or R packages in publications.</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] </span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Type 'demo()' for some demos, 'help()' for on-line help, or</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] 'help.start()' for an HTML browser interface to help.</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Type 'q()' to quit R.</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] </span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] &gt; devtools::install_local(path = '/tmp/RtmpOlstSd/testProject/examplePackage', force=TRUE, upgrade='never')</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #00BBBB;">──</span> <span style="color: #00BBBB;">R CMD build</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────────</span></span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] * checking for file ‘/tmp/RtmpbodENG/file2f39536c28fa5/examplePackage/DESCRIPTION’ ... OK</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] * preparing ‘examplePackage’:</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] * checking DESCRIPTION meta-information ... OK</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] * checking for LF line-endings in source and make files and shell scripts</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] * checking for empty or unneeded directories</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Removed empty directory ‘examplePackage/java’</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Omitted ‘LazyData’ from DESCRIPTION</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] * building ‘examplePackage_0.0.0.9000.tar.gz’</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] </span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Installing package into ‘/home/vp22681/R/x86_64-pc-linux-gnu-library/4.4’</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] (as ‘lib’ is unspecified)</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] * installing *source* package ‘examplePackage’ ...</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] ** using staged installation</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] ** R</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] ** inst</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] ** byte-compile and prepare package for lazy loading</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] ** help</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] *** installing help indices</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] ** building package indices</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] ** installing vignettes</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] ** testing if installed package can be loaded from temporary location</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] ** testing if installed package can be loaded from final location</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] ** testing if installed package keeps a record of temporary installation path</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] * DONE (examplePackage)</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] &gt; </span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] &gt; </span></span>
 <span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="font-weight: bold;">------------------------------------------------------------------------</span></span></span>
-<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #BB0000; font-weight: bold;">BUILD FAILURE</span></span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="color: #00BB00; font-weight: bold;">BUILD SUCCESS</span></span></span>
 <span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="font-weight: bold;">------------------------------------------------------------------------</span></span></span>
-<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Total time:  0.045 s</span></span>
-<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Finished at: 2024-04-22T20:51:47+01:00</span></span>
-<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="font-weight: bold;">------------------------------------------------------------------------</span></span></span>
-<span><span class="co">## [<span style="color: #BB0000; font-weight: bold;">ERROR</span>] The goal you specified requires a project to execute but there is no POM in this directory (/home/vp22681/Dropbox/Git/r6-generator-docs/vignettes/web-only). Please verify you invoked Maven from the correct directory. -&gt; <span style="font-weight: bold;">[Help 1]</span></span></span>
-<span><span class="co">## [<span style="color: #BB0000; font-weight: bold;">ERROR</span>] </span></span>
-<span><span class="co">## [<span style="color: #BB0000; font-weight: bold;">ERROR</span>] To see the full stack trace of the errors, re-run Maven with the <span style="font-weight: bold;">-e</span> switch.</span></span>
-<span><span class="co">## [<span style="color: #BB0000; font-weight: bold;">ERROR</span>] Re-run Maven using the <span style="font-weight: bold;">-X</span> switch to enable full debug logging.</span></span>
-<span><span class="co">## [<span style="color: #BB0000; font-weight: bold;">ERROR</span>] </span></span>
-<span><span class="co">## [<span style="color: #BB0000; font-weight: bold;">ERROR</span>] For more information about the errors and possible solutions, please read the following articles:</span></span>
-<span><span class="co">## [<span style="color: #BB0000; font-weight: bold;">ERROR</span>] <span style="font-weight: bold;">[Help 1]</span> http://cwiki.apache.org/confluence/display/MAVEN/MissingProjectException</span></span></code></pre>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Total time:  21.549 s</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] Finished at: 2024-04-27T08:49:42+01:00</span></span>
+<span><span class="co">## [<span style="color: #0000BB; font-weight: bold;">INFO</span>] <span style="font-weight: bold;">------------------------------------------------------------------------</span></span></span></code></pre>
 </div>
 </div>
 <div class="section level2">
@@ -195,7 +434,75 @@
 </h2>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/dir_tree.html" class="external-link">dir_tree</a></span><span class="op">(</span><span class="va">dir</span>,regexp<span class="op">=</span><span class="st">"((.*/target)|docs)/.*"</span>, invert<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #0000BB; font-weight: bold;">/tmp/Rtmp9DYdE1/testProject</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #0000BB; font-weight: bold;">/tmp/RtmpOlstSd/testProject</span></span></span>
+<span><span class="co">## └── <span style="color: #0000BB; font-weight: bold;">examplePackage</span></span></span>
+<span><span class="co">##     ├── DESCRIPTION</span></span>
+<span><span class="co">##     ├── LICENSE</span></span>
+<span><span class="co">##     ├── LICENSE.md</span></span>
+<span><span class="co">##     ├── NAMESPACE</span></span>
+<span><span class="co">##     ├── <span style="color: #0000BB; font-weight: bold;">R</span></span></span>
+<span><span class="co">##     │   ├── <span style="color: #00BB00;">BasicExample.R</span></span></span>
+<span><span class="co">##     │   ├── <span style="color: #00BB00;">JavaApi.R</span></span></span>
+<span><span class="co">##     │   ├── <span style="color: #00BB00;">MoreComplexExample.R</span></span></span>
+<span><span class="co">##     │   ├── <span style="color: #00BB00;">StaticApi.R</span></span></span>
+<span><span class="co">##     │   ├── <span style="color: #00BB00;">TestDataGenerator.R</span></span></span>
+<span><span class="co">##     │   ├── <span style="color: #00BB00;">aa_maven.R</span></span></span>
+<span><span class="co">##     │   ├── <span style="color: #00BB00;">aa_rfuture.R</span></span></span>
+<span><span class="co">##     │   └── <span style="color: #00BB00;">zzz.R</span></span></span>
+<span><span class="co">##     ├── README.md</span></span>
+<span><span class="co">##     ├── cran-comments.md</span></span>
+<span><span class="co">##     ├── <span style="color: #0000BB; font-weight: bold;">data-raw</span></span></span>
+<span><span class="co">##     │   └── <span style="color: #00BB00;">setup-test-data.R</span></span></span>
+<span><span class="co">##     ├── <span style="color: #0000BB; font-weight: bold;">docs</span></span></span>
+<span><span class="co">##     ├── examplePackage.Rproj</span></span>
+<span><span class="co">##     ├── <span style="color: #0000BB; font-weight: bold;">inst</span></span></span>
+<span><span class="co">##     │   ├── CITATION</span></span>
+<span><span class="co">##     │   └── <span style="color: #0000BB; font-weight: bold;">java</span></span></span>
+<span><span class="co">##     │       └── <span style="color: #BB0000; font-weight: bold;">examplePackage-main-SNAPSHOT-jar-with-dependencies.jar</span></span></span>
+<span><span class="co">##     ├── <span style="color: #0000BB; font-weight: bold;">java</span></span></span>
+<span><span class="co">##     │   ├── pom.xml</span></span>
+<span><span class="co">##     │   ├── <span style="color: #0000BB; font-weight: bold;">src</span></span></span>
+<span><span class="co">##     │   │   ├── <span style="color: #0000BB; font-weight: bold;">main</span></span></span>
+<span><span class="co">##     │   │   │   └── <span style="color: #0000BB; font-weight: bold;">java</span></span></span>
+<span><span class="co">##     │   │   │       └── <span style="color: #0000BB; font-weight: bold;">io</span></span></span>
+<span><span class="co">##     │   │   │           └── <span style="color: #0000BB; font-weight: bold;">github</span></span></span>
+<span><span class="co">##     │   │   │               └── <span style="color: #0000BB; font-weight: bold;">exampleOrganisation</span></span></span>
+<span><span class="co">##     │   │   │                   ├── BasicExample.java</span></span>
+<span><span class="co">##     │   │   │                   ├── MoreComplexExample.java</span></span>
+<span><span class="co">##     │   │   │                   └── TestDataGenerator.java</span></span>
+<span><span class="co">##     │   │   └── <span style="color: #0000BB; font-weight: bold;">test</span></span></span>
+<span><span class="co">##     │   │       ├── <span style="color: #0000BB; font-weight: bold;">java</span></span></span>
+<span><span class="co">##     │   │       │   └── <span style="color: #0000BB; font-weight: bold;">io</span></span></span>
+<span><span class="co">##     │   │       │       └── <span style="color: #0000BB; font-weight: bold;">github</span></span></span>
+<span><span class="co">##     │   │       │           └── <span style="color: #0000BB; font-weight: bold;">exampleOrganisation</span></span></span>
+<span><span class="co">##     │   │       │               └── TestData.java</span></span>
+<span><span class="co">##     │   │       └── <span style="color: #0000BB; font-weight: bold;">resources</span></span></span>
+<span><span class="co">##     │   │           ├── test_iris.ser</span></span>
+<span><span class="co">##     │   │           ├── test_list.ser</span></span>
+<span><span class="co">##     │   │           └── test_namedlist.ser</span></span>
+<span><span class="co">##     │   └── <span style="color: #0000BB; font-weight: bold;">target</span></span></span>
+<span><span class="co">##     ├── <span style="color: #0000BB; font-weight: bold;">man</span></span></span>
+<span><span class="co">##     │   ├── BasicExample.Rd</span></span>
+<span><span class="co">##     │   ├── JavaApi.Rd</span></span>
+<span><span class="co">##     │   ├── MoreComplexExample.Rd</span></span>
+<span><span class="co">##     │   ├── RFuture.Rd</span></span>
+<span><span class="co">##     │   ├── TestDataGenerator.Rd</span></span>
+<span><span class="co">##     │   ├── examplePackage-package.Rd</span></span>
+<span><span class="co">##     │   ├── greet.Rd</span></span>
+<span><span class="co">##     │   ├── pipe.Rd</span></span>
+<span><span class="co">##     │   ├── salutation.Rd</span></span>
+<span><span class="co">##     │   ├── serialise_dataframe.Rd</span></span>
+<span><span class="co">##     │   ├── serialise_list.Rd</span></span>
+<span><span class="co">##     │   └── serialise_named_list.Rd</span></span>
+<span><span class="co">##     ├── pom.xml</span></span>
+<span><span class="co">##     ├── <span style="color: #0000BB; font-weight: bold;">tests</span></span></span>
+<span><span class="co">##     │   ├── <span style="color: #0000BB; font-weight: bold;">testthat</span></span></span>
+<span><span class="co">##     │   │   ├── <span style="color: #00BB00;">test-BasicExample.R</span></span></span>
+<span><span class="co">##     │   │   ├── <span style="color: #00BB00;">test-MoreComplexExample.R</span></span></span>
+<span><span class="co">##     │   │   └── <span style="color: #00BB00;">test-TestDataGenerator.R</span></span></span>
+<span><span class="co">##     │   └── <span style="color: #00BB00;">testthat.R</span></span></span>
+<span><span class="co">##     └── <span style="color: #0000BB; font-weight: bold;">vignettes</span></span></span>
+<span><span class="co">##         └── <span style="color: #00BB00;">examplePackage.Rmd</span></span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 id="package-website">Package website:<a class="anchor" aria-label="anchor" href="#package-website"></a>
@@ -218,12 +525,12 @@
 
       <footer><div class="copyright">
   <p></p>
-<p>Developed by Rob Challen, Rob Challen, terminological.</p>
+<p>Developed by Rob Challen, terminological, Rob Challen.</p>
 </div>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
 </div>
 
       </footer>

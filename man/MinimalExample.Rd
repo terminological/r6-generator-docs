@@ -12,9 +12,9 @@
 This class is a very basic example of the features of the rJava maven plugin. 
 
 
-Version: 0.6.1.9000
+Version: 1.0.0
 
-Generated: 2024-04-22T20:47:47.381658210
+Generated: 2024-04-27T08:45:08.763255179
 }
 
 \details{
@@ -76,7 +76,7 @@ instance = J$MinimalExample$new();
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -105,7 +105,7 @@ instance$demo(dataframe, message)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{dataframe - a dataframe with an arbitrary number of columns}{ - (java expects a RDataframe)}
 				\item{message - a message}{ - (java expects a String)}
 			}

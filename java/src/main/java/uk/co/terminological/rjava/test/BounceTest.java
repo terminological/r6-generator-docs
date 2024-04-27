@@ -147,6 +147,12 @@ public class BounceTest {
 		return x;
 	}
 	
+	@RMethod
+	public RFile bounceFile(RFile x) {
+		log.info("java: "+x);
+		return x;
+	}
+	
 	//SECTION_08
 	
 	@RMethod

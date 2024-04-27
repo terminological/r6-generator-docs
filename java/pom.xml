@@ -8,9 +8,10 @@
 	<!--- DEPS_START -->
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<r6.version>0.6.2-SNAPSHOT</r6.version>
+		<r6.version>1.0.0</r6.version>
 	</properties>
 
 	<groupId>io.github.terminological</groupId>
@@ -45,12 +46,12 @@
 
 
 	<!-- REPOSITORIES_START -->
-	<!-- Resolve SNAPSHOTS of the runtime library on Github packages -->
-	<!-- not needed if you pare using a stable r6.version of the r6-generator-runtime 
-		and r6-generator-maven-plugin from Maven central rather than xx.xx.xx-SNAPSHOT -->
+	<!-- Resolve SNAPSHOTS of the runtime library on Github packages
+	not needed if you are using a stable r6.version of the r6-generator-runtime 
+	and r6-generator-maven-plugin from Maven central rather than xx.xx.xx-SNAPSHOT -->
 	<repositories>
 		<repository>
-			<id>terminological snapshots</id>
+			<id>github</id>
         	<url>https://maven.pkg.github.com/terminological/m2repo</url>
 		</repository>
 	</repositories>
@@ -58,11 +59,32 @@
 	<!-- Resolve SNAPSHOTS of the maven plugin on Github packages -->
 	<pluginRepositories>
 		<pluginRepository>
-			<id>terminological snapshots</id>
+			<id>github</id>
         	<url>https://maven.pkg.github.com/terminological/m2repo</url>
 		</pluginRepository>
 	</pluginRepositories>
+	
+	<!-- N.B. for this to work with Github packages you need a personal access token
+	defined in your ~/.m2/settings.xml file as a server with the id of `github`
+	to match the above, e.g.
+	
+	<settings>
+		<servers>
+			<server>
+				<id>github</id>
+				<username>GITHUB_USERNAME</username>
+				<password>GITHUB_TOKEN</password>
+			</server>
+		</servers>
+	</settings>
+	
+	All of which is probably a good reason to only use stable releases from Maven
+	Central.
+	-->
+	
 	<!-- REPOSITORIES_END -->
+	
+	
 
 	<!-- BUILD_START -->
 	<build>

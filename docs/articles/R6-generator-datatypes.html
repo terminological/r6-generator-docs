@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>R6 Generator Maven Plugin: Datatype conversion • testRapi</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">testRapi</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0</span>
       </span>
     </div>
 
@@ -59,13 +59,13 @@
       <a href="../articles/R6-generator-features.html">R6 Generator Maven Plugin: Key features</a>
     </li>
     <li>
+      <a href="../articles/web-only/R6-generator-maven-archetype.html">R6 Generator Maven Archetype: Recommended project setup</a>
+    </li>
+    <li>
       <a href="../articles/R6-generator-maven-config.html">R6 Generator Maven Plugin: Metadata and Maven configuration</a>
     </li>
     <li>
       <a href="../articles/R6-generator-runtime.html">R6 Generator Runtime: Using R Datatypes in Java</a>
-    </li>
-    <li>
-      <a href="../articles/web-only/R6-generator-maven-archetype.html">R6 Generator Maven Archetype: Recommended project setup</a>
     </li>
   </ul>
 </li>
@@ -94,7 +94,7 @@
                         <h4 data-toc-skip class="author">Rob Challen</h4>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/terminological/r6-generator-docs/blob/HEAD/java/vignettes/R6-generator-datatypes.Rmd" class="external-link"><code>java/vignettes/R6-generator-datatypes.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/terminological/r6-generator-docs/blob/HEAD/vignettes/R6-generator-datatypes.Rmd" class="external-link"><code>vignettes/R6-generator-datatypes.Rmd</code></a></small>
       <div class="hidden name"><code>R6-generator-datatypes.Rmd</code></div>
 
     </div>
@@ -143,8 +143,7 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># devtools::install("~/Git/r6-generator-docs/")</span></span>
 <span><span class="va">J</span> <span class="op">=</span> <span class="fu">testRapi</span><span class="fu">::</span><span class="va"><a href="../reference/JavaApi.html">JavaApi</a></span><span class="op">$</span><span class="fu">get</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## WARNING: sun.reflect.Reflection.getCallerClass is not supported. This will impact performance.</span></span>
-<span><span class="co">## Initialised testRapi</span></span></code></pre>
+<pre><code><span><span class="co">## Initialised testRapi</span></span></code></pre>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">b</span> <span class="op">=</span> <span class="va">J</span><span class="op">$</span><span class="va">BounceTest</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Tests the round tripping of supported datatypes</span></span></code></pre>
@@ -400,7 +399,13 @@
 <span id="cb91-13"><a href="#cb91-13" aria-hidden="true"></a>        <span class="co">//System.out.println(x.rCode());</span></span>
 <span id="cb91-14"><a href="#cb91-14" aria-hidden="true"></a>        <span class="kw">return</span> x;</span>
 <span id="cb91-15"><a href="#cb91-15" aria-hidden="true"></a>    }</span>
-<span id="cb91-16"><a href="#cb91-16" aria-hidden="true"></a>    </span></code></pre></div>
+<span id="cb91-16"><a href="#cb91-16" aria-hidden="true"></a>    </span>
+<span id="cb91-17"><a href="#cb91-17" aria-hidden="true"></a>    <span class="at">@RMethod</span></span>
+<span id="cb91-18"><a href="#cb91-18" aria-hidden="true"></a>    <span class="kw">public</span> RFile <span class="fu">bounceFile</span>(RFile x) {</span>
+<span id="cb91-19"><a href="#cb91-19" aria-hidden="true"></a>        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);</span>
+<span id="cb91-20"><a href="#cb91-20" aria-hidden="true"></a>        <span class="kw">return</span> x;</span>
+<span id="cb91-21"><a href="#cb91-21" aria-hidden="true"></a>    }</span>
+<span id="cb91-22"><a href="#cb91-22" aria-hidden="true"></a>    </span></code></pre></div>
 <div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">b</span><span class="op">$</span><span class="fu">bounceLogical</span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## java: true</span></span></code></pre>
@@ -415,19 +420,36 @@
 <pre><code><span><span class="co">## [1]  TRUE    NA FALSE</span></span></code></pre>
 </div>
 <div class="section level4">
+<h4 id="files">Files<a class="anchor" aria-label="anchor" href="#files"></a>
+</h4>
+<p>Files in R need to be converted to absolute paths before they can be used in Java. Tilde path expansion is also needed to correctly pick up the users home directory. Relative paths are considered to be relative to whatever the current working directory is in R at the time the function is called. All of these edge cases can be ignored in Java. However we do not enforce that the parent directory must exist, that is up to the Java developer.</p>
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">b</span><span class="op">$</span><span class="fu">bounceFile</span><span class="op">(</span><span class="st">"~/tmp/test1"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## java: /home/vp22681/tmp/test1</span></span></code></pre>
+<pre><code><span><span class="co">## /home/vp22681/tmp/test1</span></span></code></pre>
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">b</span><span class="op">$</span><span class="fu">bounceFile</span><span class="op">(</span><span class="st">"../tmp/test2"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## java: /home/vp22681/Dropbox/Git/r6-generator-docs/tmp/test2</span></span></code></pre>
+<pre><code><span><span class="co">## /home/vp22681/Dropbox/Git/r6-generator-docs/tmp/test2</span></span></code></pre>
+<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">b</span><span class="op">$</span><span class="fu">bounceFile</span><span class="op">(</span><span class="st">"tmp/test3"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## java: /home/vp22681/Dropbox/Git/r6-generator-docs/vignettes/tmp/test3</span></span></code></pre>
+<pre><code><span><span class="co">## /home/vp22681/Dropbox/Git/r6-generator-docs/vignettes/tmp/test3</span></span></code></pre>
+</div>
+<div class="section level4">
 <h4 id="dataframes">Dataframes<a class="anchor" aria-label="anchor" href="#dataframes"></a>
 </h4>
 <p>In Java R dataframes are modelled as a named list of <code>uk.co.terminological.rjava.types.RVector&lt;?&gt;</code> each holding columnar data of unspecified type. This is represented internally as a column wise Map, but the <code>uk.co.terminological.rjava.types.RDataframe</code> class contains a number of methods to make using dataframes intuitive in Java. This includes support for Iterable and Stream interfaces operating row-wise over the data. The <code>uk.co.terminological.rjava.types.RBoundDataframe</code> can map typed columns to a stream of proxy objects satisfying an interface specification. This can be used to convert a <code>RDataframe</code> into a stream of custom POJOs (more examples TBD). The dataframe can support any column with vector data types mentioned above. At present however it does not support named rows, as the focus is on tidy dataframes, nor does it support <code>purrr</code> style list columns.</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true"></a>    </span>
-<span id="cb101-2"><a href="#cb101-2" aria-hidden="true"></a>    <span class="at">@RMethod</span></span>
-<span id="cb101-3"><a href="#cb101-3" aria-hidden="true"></a>    <span class="kw">public</span> RDataframe <span class="fu">bounceDataframe</span>(RDataframe x) {</span>
-<span id="cb101-4"><a href="#cb101-4" aria-hidden="true"></a>        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);</span>
-<span id="cb101-5"><a href="#cb101-5" aria-hidden="true"></a>        <span class="co">//System.out.println(x.rCode());</span></span>
-<span id="cb101-6"><a href="#cb101-6" aria-hidden="true"></a>        <span class="co">//System.out.println(x.rConversion());</span></span>
-<span id="cb101-7"><a href="#cb101-7" aria-hidden="true"></a>        <span class="kw">return</span> x;</span>
-<span id="cb101-8"><a href="#cb101-8" aria-hidden="true"></a>    }</span>
-<span id="cb101-9"><a href="#cb101-9" aria-hidden="true"></a>    </span></code></pre></div>
-<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb110"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true"></a>    </span>
+<span id="cb110-2"><a href="#cb110-2" aria-hidden="true"></a>    <span class="at">@RMethod</span></span>
+<span id="cb110-3"><a href="#cb110-3" aria-hidden="true"></a>    <span class="kw">public</span> RDataframe <span class="fu">bounceDataframe</span>(RDataframe x) {</span>
+<span id="cb110-4"><a href="#cb110-4" aria-hidden="true"></a>        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);</span>
+<span id="cb110-5"><a href="#cb110-5" aria-hidden="true"></a>        <span class="co">//System.out.println(x.rCode());</span></span>
+<span id="cb110-6"><a href="#cb110-6" aria-hidden="true"></a>        <span class="co">//System.out.println(x.rConversion());</span></span>
+<span id="cb110-7"><a href="#cb110-7" aria-hidden="true"></a>        <span class="kw">return</span> x;</span>
+<span id="cb110-8"><a href="#cb110-8" aria-hidden="true"></a>    }</span>
+<span id="cb110-9"><a href="#cb110-9" aria-hidden="true"></a>    </span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">testDf</span> <span class="op">=</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span>
 <span>  grp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A"</span>,<span class="st">"A"</span>,<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"B"</span>,<span class="st">"B"</span><span class="op">)</span>,</span>
 <span>  x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">6</span><span class="op">)</span>,</span>
@@ -450,7 +472,7 @@
 <span><span class="co">## <span style="color: #BCBCBC;">4</span> B         4    -<span style="color: #BB0000;">1</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">5</span> B         5    -<span style="color: #BB0000;">2</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">6</span> B         6    -<span style="color: #BB0000;">3</span></span></span></code></pre>
-<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">b</span><span class="op">$</span><span class="fu">bounceDataframe</span><span class="op">(</span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span>
 <span>  u<span class="op">=</span><span class="va">factorVec</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>,</span>
 <span>  v<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">TRUE</span>,<span class="cn">NA</span>,<span class="cn">FALSE</span><span class="op">)</span>,</span>
@@ -476,7 +498,7 @@
 <div class="section level4">
 <h4 id="arrays">Arrays<a class="anchor" aria-label="anchor" href="#arrays"></a>
 </h4>
-<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">test2DArr</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">9.9</span>,<span class="fl">0.1</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>,<span class="fl">10</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">b</span><span class="op">$</span><span class="fu">bounceArray</span><span class="op">(</span><span class="va">test2DArr</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## java: &lt;rnumeric[10]&gt;{</span></span>
@@ -502,7 +524,7 @@
 <span><span class="co">##  [8,]  0.7  1.7  2.7  3.7  4.7  5.7  6.7  7.7  8.7   9.7</span></span>
 <span><span class="co">##  [9,]  0.8  1.8  2.8  3.8  4.8  5.8  6.8  7.8  8.8   9.8</span></span>
 <span><span class="co">## [10,]  0.9  1.9  2.9  3.9  4.9  5.9  6.9  7.9  8.9   9.9</span></span></code></pre>
-<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">test3DArr</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/array.html" class="external-link">array</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">63</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">8</span>,<span class="fl">4</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">b</span><span class="op">$</span><span class="fu">bounceArray</span><span class="op">(</span><span class="va">test3DArr</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## java: &lt;rnumeric[2]&gt;{</span></span>
@@ -547,22 +569,22 @@
 <h4 id="lists">Lists<a class="anchor" aria-label="anchor" href="#lists"></a>
 </h4>
 <p>in R lists and named are complex objects with optionally named sequences of arbitrary typed data. They are analgous to JSON objects and it is tempting to serialise all R lists to JSON and use a JSON library to interpret them in Java. This would be possible but lose some of the support built into the R classes mentioned above. As such we took a hybrid approach where R lists and named lists are dynamically and recursively mapped to collection types from R to Java, and exported back from Java to R serialised as a character string containing R code, which is evaluated by the R interpreter. Despite being somewhat hacky this does a surprisingly good job at transferring lists from R to Java and back to R faithfully. However it is probably not well suited to very large lists and definitely could not support lists that have cyclical structures in the object graph. To support fluent use of R Lists in Java all classes that derive from <code>RObject</code> support the visitor pattern, which can be used to relatively simply select out datatypes of interest. Support for a XPath like syntax to access specific elements of nested lists is planned.</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true"></a>    </span>
-<span id="cb114-2"><a href="#cb114-2" aria-hidden="true"></a>    <span class="at">@RMethod</span></span>
-<span id="cb114-3"><a href="#cb114-3" aria-hidden="true"></a>    <span class="kw">public</span> RList <span class="fu">bounceList</span>(RList x) {</span>
-<span id="cb114-4"><a href="#cb114-4" aria-hidden="true"></a>        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);</span>
-<span id="cb114-5"><a href="#cb114-5" aria-hidden="true"></a>        <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(x.<span class="fu">rCode</span>());</span>
-<span id="cb114-6"><a href="#cb114-6" aria-hidden="true"></a>        <span class="kw">return</span> x;</span>
-<span id="cb114-7"><a href="#cb114-7" aria-hidden="true"></a>    }</span>
-<span id="cb114-8"><a href="#cb114-8" aria-hidden="true"></a>    </span>
-<span id="cb114-9"><a href="#cb114-9" aria-hidden="true"></a>    <span class="at">@RMethod</span></span>
-<span id="cb114-10"><a href="#cb114-10" aria-hidden="true"></a>    <span class="kw">public</span> RNamedList <span class="fu">bounceNamedList</span>(RNamedList x) {</span>
-<span id="cb114-11"><a href="#cb114-11" aria-hidden="true"></a>        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);</span>
-<span id="cb114-12"><a href="#cb114-12" aria-hidden="true"></a>        <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(x.<span class="fu">rCode</span>());</span>
-<span id="cb114-13"><a href="#cb114-13" aria-hidden="true"></a>        <span class="kw">return</span> x;</span>
-<span id="cb114-14"><a href="#cb114-14" aria-hidden="true"></a>    }</span>
-<span id="cb114-15"><a href="#cb114-15" aria-hidden="true"></a>    </span></code></pre></div>
-<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb123"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true"></a>    </span>
+<span id="cb123-2"><a href="#cb123-2" aria-hidden="true"></a>    <span class="at">@RMethod</span></span>
+<span id="cb123-3"><a href="#cb123-3" aria-hidden="true"></a>    <span class="kw">public</span> RList <span class="fu">bounceList</span>(RList x) {</span>
+<span id="cb123-4"><a href="#cb123-4" aria-hidden="true"></a>        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);</span>
+<span id="cb123-5"><a href="#cb123-5" aria-hidden="true"></a>        <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(x.<span class="fu">rCode</span>());</span>
+<span id="cb123-6"><a href="#cb123-6" aria-hidden="true"></a>        <span class="kw">return</span> x;</span>
+<span id="cb123-7"><a href="#cb123-7" aria-hidden="true"></a>    }</span>
+<span id="cb123-8"><a href="#cb123-8" aria-hidden="true"></a>    </span>
+<span id="cb123-9"><a href="#cb123-9" aria-hidden="true"></a>    <span class="at">@RMethod</span></span>
+<span id="cb123-10"><a href="#cb123-10" aria-hidden="true"></a>    <span class="kw">public</span> RNamedList <span class="fu">bounceNamedList</span>(RNamedList x) {</span>
+<span id="cb123-11"><a href="#cb123-11" aria-hidden="true"></a>        log.<span class="fu">info</span>(<span class="st">"java: "</span>+x);</span>
+<span id="cb123-12"><a href="#cb123-12" aria-hidden="true"></a>        <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(x.<span class="fu">rCode</span>());</span>
+<span id="cb123-13"><a href="#cb123-13" aria-hidden="true"></a>        <span class="kw">return</span> x;</span>
+<span id="cb123-14"><a href="#cb123-14" aria-hidden="true"></a>    }</span>
+<span id="cb123-15"><a href="#cb123-15" aria-hidden="true"></a>    </span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">b</span><span class="op">$</span><span class="fu">bounceList</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"a"</span>,<span class="st">"b"</span>,<span class="st">"c"</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## java: &lt;rlist&gt;{</span></span>
 <span><span class="co">## a,</span></span>
@@ -582,7 +604,7 @@
 <span><span class="co">## </span></span>
 <span><span class="co">## [[4]]</span></span>
 <span><span class="co">## [1] 1 2 3</span></span></code></pre>
-<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">input</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"a"</span>,<span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"b"</span>,<span class="fl">1</span>,<span class="st">"z"</span><span class="op">)</span>,<span class="st">"c"</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">output</span> <span class="op">=</span> <span class="va">b</span><span class="op">$</span><span class="fu">bounceList</span><span class="op">(</span><span class="va">input</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## java: &lt;rlist&gt;{</span></span>
@@ -596,7 +618,7 @@
 <span><span class="co">## &lt;rnumeric[3]&gt;{1.0, 2.0, 3.0, ...}</span></span>
 <span><span class="co">## }</span></span>
 <span><span class="co">## list('a', list('b', 1.0, 'z'), 'c', c(1.0, 2.0, 3.0))</span></span></code></pre>
-<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="va">input</span>,<span class="va">output</span><span class="op">)</span><span class="op">)</span> <span class="kw"><a href="https://rdrr.io/r/base/stop.html" class="external-link">stop</a></span><span class="op">(</span><span class="st">"FAIL"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">b</span><span class="op">$</span><span class="fu">bounceNamedList</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>x<span class="op">=</span><span class="st">"a"</span>,b<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"a"</span>,<span class="cn">NA</span>,<span class="st">"c"</span><span class="op">)</span>,c<span class="op">=</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -624,52 +646,52 @@
 <h4 id="primitive-equivalents">Primitive equivalents<a class="anchor" aria-label="anchor" href="#primitive-equivalents"></a>
 </h4>
 <p>the <code>RPrimitive</code> interface possesses a range of factory methods to generate appropriately typed <code>RPrimitive</code>s from Java primitives, boxed types, and enums.</p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true"></a>    </span>
-<span id="cb123-2"><a href="#cb123-2" aria-hidden="true"></a>    <span class="at">@RMethod</span></span>
-<span id="cb123-3"><a href="#cb123-3" aria-hidden="true"></a>    <span class="kw">public</span> RCharacter <span class="fu">generateCharacter</span>() {</span>
-<span id="cb123-4"><a href="#cb123-4" aria-hidden="true"></a>        <span class="kw">return</span> RPrimitive.<span class="fu">of</span>(<span class="st">"Hello world"</span>);</span>
-<span id="cb123-5"><a href="#cb123-5" aria-hidden="true"></a>    }</span>
-<span id="cb123-6"><a href="#cb123-6" aria-hidden="true"></a>    </span>
-<span id="cb123-7"><a href="#cb123-7" aria-hidden="true"></a>    <span class="at">@RMethod</span></span>
-<span id="cb123-8"><a href="#cb123-8" aria-hidden="true"></a>    <span class="kw">public</span> RNumeric <span class="fu">generateNumeric</span>() {</span>
-<span id="cb123-9"><a href="#cb123-9" aria-hidden="true"></a>        <span class="kw">return</span> RPrimitive.<span class="fu">of</span>(<span class="fl">123.</span><span class="dv">0</span>);</span>
-<span id="cb123-10"><a href="#cb123-10" aria-hidden="true"></a>    }</span>
-<span id="cb123-11"><a href="#cb123-11" aria-hidden="true"></a>    </span>
-<span id="cb123-12"><a href="#cb123-12" aria-hidden="true"></a>    <span class="at">@RMethod</span></span>
-<span id="cb123-13"><a href="#cb123-13" aria-hidden="true"></a>    <span class="kw">public</span> RInteger <span class="fu">generateInteger</span>() {</span>
-<span id="cb123-14"><a href="#cb123-14" aria-hidden="true"></a>        <span class="kw">return</span> RPrimitive.<span class="fu">of</span>(<span class="dv">345</span>);</span>
-<span id="cb123-15"><a href="#cb123-15" aria-hidden="true"></a>    }</span>
-<span id="cb123-16"><a href="#cb123-16" aria-hidden="true"></a>    </span>
-<span id="cb123-17"><a href="#cb123-17" aria-hidden="true"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="kw">enum</span> Test {</span>
-<span id="cb123-18"><a href="#cb123-18" aria-hidden="true"></a>        ONE,TWO,THREE</span>
-<span id="cb123-19"><a href="#cb123-19" aria-hidden="true"></a>    }</span>
-<span id="cb123-20"><a href="#cb123-20" aria-hidden="true"></a>    </span>
-<span id="cb123-21"><a href="#cb123-21" aria-hidden="true"></a>    <span class="at">@RMethod</span></span>
-<span id="cb123-22"><a href="#cb123-22" aria-hidden="true"></a>    <span class="kw">public</span> RFactor <span class="fu">generateFactor</span>() {</span>
-<span id="cb123-23"><a href="#cb123-23" aria-hidden="true"></a>        <span class="kw">return</span> RPrimitive.<span class="fu">of</span>(Test.<span class="fu">ONE</span>);</span>
-<span id="cb123-24"><a href="#cb123-24" aria-hidden="true"></a>    }</span>
-<span id="cb123-25"><a href="#cb123-25" aria-hidden="true"></a>    </span>
-<span id="cb123-26"><a href="#cb123-26" aria-hidden="true"></a>    <span class="at">@RMethod</span></span>
-<span id="cb123-27"><a href="#cb123-27" aria-hidden="true"></a>    <span class="kw">public</span> RLogical <span class="fu">generateLogical</span>() {</span>
-<span id="cb123-28"><a href="#cb123-28" aria-hidden="true"></a>        <span class="kw">return</span> RPrimitive.<span class="fu">of</span>(<span class="kw">true</span>);</span>
-<span id="cb123-29"><a href="#cb123-29" aria-hidden="true"></a>    }</span>
-<span id="cb123-30"><a href="#cb123-30" aria-hidden="true"></a>    </span></code></pre></div>
-<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb132"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true"></a>    </span>
+<span id="cb132-2"><a href="#cb132-2" aria-hidden="true"></a>    <span class="at">@RMethod</span></span>
+<span id="cb132-3"><a href="#cb132-3" aria-hidden="true"></a>    <span class="kw">public</span> RCharacter <span class="fu">generateCharacter</span>() {</span>
+<span id="cb132-4"><a href="#cb132-4" aria-hidden="true"></a>        <span class="kw">return</span> RPrimitive.<span class="fu">of</span>(<span class="st">"Hello world"</span>);</span>
+<span id="cb132-5"><a href="#cb132-5" aria-hidden="true"></a>    }</span>
+<span id="cb132-6"><a href="#cb132-6" aria-hidden="true"></a>    </span>
+<span id="cb132-7"><a href="#cb132-7" aria-hidden="true"></a>    <span class="at">@RMethod</span></span>
+<span id="cb132-8"><a href="#cb132-8" aria-hidden="true"></a>    <span class="kw">public</span> RNumeric <span class="fu">generateNumeric</span>() {</span>
+<span id="cb132-9"><a href="#cb132-9" aria-hidden="true"></a>        <span class="kw">return</span> RPrimitive.<span class="fu">of</span>(<span class="fl">123.</span><span class="dv">0</span>);</span>
+<span id="cb132-10"><a href="#cb132-10" aria-hidden="true"></a>    }</span>
+<span id="cb132-11"><a href="#cb132-11" aria-hidden="true"></a>    </span>
+<span id="cb132-12"><a href="#cb132-12" aria-hidden="true"></a>    <span class="at">@RMethod</span></span>
+<span id="cb132-13"><a href="#cb132-13" aria-hidden="true"></a>    <span class="kw">public</span> RInteger <span class="fu">generateInteger</span>() {</span>
+<span id="cb132-14"><a href="#cb132-14" aria-hidden="true"></a>        <span class="kw">return</span> RPrimitive.<span class="fu">of</span>(<span class="dv">345</span>);</span>
+<span id="cb132-15"><a href="#cb132-15" aria-hidden="true"></a>    }</span>
+<span id="cb132-16"><a href="#cb132-16" aria-hidden="true"></a>    </span>
+<span id="cb132-17"><a href="#cb132-17" aria-hidden="true"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="kw">enum</span> Test {</span>
+<span id="cb132-18"><a href="#cb132-18" aria-hidden="true"></a>        ONE,TWO,THREE</span>
+<span id="cb132-19"><a href="#cb132-19" aria-hidden="true"></a>    }</span>
+<span id="cb132-20"><a href="#cb132-20" aria-hidden="true"></a>    </span>
+<span id="cb132-21"><a href="#cb132-21" aria-hidden="true"></a>    <span class="at">@RMethod</span></span>
+<span id="cb132-22"><a href="#cb132-22" aria-hidden="true"></a>    <span class="kw">public</span> RFactor <span class="fu">generateFactor</span>() {</span>
+<span id="cb132-23"><a href="#cb132-23" aria-hidden="true"></a>        <span class="kw">return</span> RPrimitive.<span class="fu">of</span>(Test.<span class="fu">ONE</span>);</span>
+<span id="cb132-24"><a href="#cb132-24" aria-hidden="true"></a>    }</span>
+<span id="cb132-25"><a href="#cb132-25" aria-hidden="true"></a>    </span>
+<span id="cb132-26"><a href="#cb132-26" aria-hidden="true"></a>    <span class="at">@RMethod</span></span>
+<span id="cb132-27"><a href="#cb132-27" aria-hidden="true"></a>    <span class="kw">public</span> RLogical <span class="fu">generateLogical</span>() {</span>
+<span id="cb132-28"><a href="#cb132-28" aria-hidden="true"></a>        <span class="kw">return</span> RPrimitive.<span class="fu">of</span>(<span class="kw">true</span>);</span>
+<span id="cb132-29"><a href="#cb132-29" aria-hidden="true"></a>    }</span>
+<span id="cb132-30"><a href="#cb132-30" aria-hidden="true"></a>    </span></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">g</span> <span class="op">=</span> <span class="va">J</span><span class="op">$</span><span class="va">FactoryTest</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Tests the java creation of supported datatypes</span></span></code></pre>
-<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">g</span><span class="op">$</span><span class="fu">generateCharacter</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] "Hello world"</span></span></code></pre>
-<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">g</span><span class="op">$</span><span class="fu">generateNumeric</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 123</span></span></code></pre>
-<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">g</span><span class="op">$</span><span class="fu">generateInteger</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 345</span></span></code></pre>
-<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">g</span><span class="op">$</span><span class="fu">generateFactor</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] "ONE"</span></span></code></pre>
-<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">g</span><span class="op">$</span><span class="fu">generateLogical</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] TRUE</span></span></code></pre>
 </div>
@@ -677,48 +699,48 @@
 <h4 id="vectors">Vectors<a class="anchor" aria-label="anchor" href="#vectors"></a>
 </h4>
 <p>Similarly the <code>RVector</code> class supports a range of fluent builder methods which allow de novo creation of correctly typed RVectors. The <code>RConverter</code> class also provides a range of collectors that facilitate mapping Java Streams to R Vectors.</p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true"></a>    </span>
-<span id="cb136-2"><a href="#cb136-2" aria-hidden="true"></a>    <span class="at">@RMethod</span></span>
-<span id="cb136-3"><a href="#cb136-3" aria-hidden="true"></a>    <span class="kw">public</span> RCharacterVector <span class="fu">generateCharacterVec</span>() {</span>
-<span id="cb136-4"><a href="#cb136-4" aria-hidden="true"></a>        <span class="kw">return</span> RVector.<span class="fu">with</span>(<span class="st">"Hello world"</span>,<span class="st">"Ola el mundo"</span>,<span class="st">"Bonjour le monde"</span>, <span class="kw">null</span>);</span>
-<span id="cb136-5"><a href="#cb136-5" aria-hidden="true"></a>    }</span>
-<span id="cb136-6"><a href="#cb136-6" aria-hidden="true"></a>    </span>
-<span id="cb136-7"><a href="#cb136-7" aria-hidden="true"></a>    <span class="at">@RMethod</span></span>
-<span id="cb136-8"><a href="#cb136-8" aria-hidden="true"></a>    <span class="kw">public</span> RNumericVector <span class="fu">generateNumericVec</span>() {</span>
-<span id="cb136-9"><a href="#cb136-9" aria-hidden="true"></a>        <span class="kw">return</span> DoubleStream</span>
-<span id="cb136-10"><a href="#cb136-10" aria-hidden="true"></a>                .<span class="fu">of</span>(<span class="fl">3.</span><span class="dv">0</span>, <span class="fl">4.</span><span class="dv">3</span>, <span class="fl">2.</span><span class="dv">1</span>, <span class="fl">2.</span><span class="dv">3</span>).<span class="fu">boxed</span>()</span>
-<span id="cb136-11"><a href="#cb136-11" aria-hidden="true"></a>                .<span class="fu">collect</span>(RConverter.<span class="fu">doubleCollector</span>());</span>
-<span id="cb136-12"><a href="#cb136-12" aria-hidden="true"></a>    }</span>
-<span id="cb136-13"><a href="#cb136-13" aria-hidden="true"></a>    </span>
-<span id="cb136-14"><a href="#cb136-14" aria-hidden="true"></a>    <span class="at">@RMethod</span></span>
-<span id="cb136-15"><a href="#cb136-15" aria-hidden="true"></a>    <span class="kw">public</span> RIntegerVector <span class="fu">generateIntegerVec</span>() {</span>
-<span id="cb136-16"><a href="#cb136-16" aria-hidden="true"></a>        <span class="kw">return</span> RVector.<span class="fu">with</span>(<span class="dv">345</span>, <span class="dv">678</span>, <span class="kw">null</span>, <span class="dv">89</span>);</span>
-<span id="cb136-17"><a href="#cb136-17" aria-hidden="true"></a>    }</span>
-<span id="cb136-18"><a href="#cb136-18" aria-hidden="true"></a>    </span>
-<span id="cb136-19"><a href="#cb136-19" aria-hidden="true"></a>    <span class="at">@RMethod</span></span>
-<span id="cb136-20"><a href="#cb136-20" aria-hidden="true"></a>    <span class="kw">public</span> RFactorVector <span class="fu">generateFactorVec</span>() {</span>
-<span id="cb136-21"><a href="#cb136-21" aria-hidden="true"></a>        <span class="kw">return</span> RVector.<span class="fu">with</span>(Test.<span class="fu">ONE</span>,Test.<span class="fu">THREE</span>,<span class="kw">null</span>,Test.<span class="fu">TWO</span>);</span>
-<span id="cb136-22"><a href="#cb136-22" aria-hidden="true"></a>    }</span>
-<span id="cb136-23"><a href="#cb136-23" aria-hidden="true"></a>    </span>
-<span id="cb136-24"><a href="#cb136-24" aria-hidden="true"></a>    <span class="at">@RMethod</span></span>
-<span id="cb136-25"><a href="#cb136-25" aria-hidden="true"></a>    <span class="kw">public</span> RLogicalVector <span class="fu">generateLogicalVec</span>() {</span>
-<span id="cb136-26"><a href="#cb136-26" aria-hidden="true"></a>        <span class="kw">return</span> RVector.<span class="fu">with</span>(<span class="kw">true</span>,<span class="kw">false</span>,<span class="kw">null</span>);</span>
-<span id="cb136-27"><a href="#cb136-27" aria-hidden="true"></a>    }</span>
-<span id="cb136-28"><a href="#cb136-28" aria-hidden="true"></a>    </span></code></pre></div>
-<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb145"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb145-1"><a href="#cb145-1" aria-hidden="true"></a>    </span>
+<span id="cb145-2"><a href="#cb145-2" aria-hidden="true"></a>    <span class="at">@RMethod</span></span>
+<span id="cb145-3"><a href="#cb145-3" aria-hidden="true"></a>    <span class="kw">public</span> RCharacterVector <span class="fu">generateCharacterVec</span>() {</span>
+<span id="cb145-4"><a href="#cb145-4" aria-hidden="true"></a>        <span class="kw">return</span> RVector.<span class="fu">with</span>(<span class="st">"Hello world"</span>,<span class="st">"Ola el mundo"</span>,<span class="st">"Bonjour le monde"</span>, <span class="kw">null</span>);</span>
+<span id="cb145-5"><a href="#cb145-5" aria-hidden="true"></a>    }</span>
+<span id="cb145-6"><a href="#cb145-6" aria-hidden="true"></a>    </span>
+<span id="cb145-7"><a href="#cb145-7" aria-hidden="true"></a>    <span class="at">@RMethod</span></span>
+<span id="cb145-8"><a href="#cb145-8" aria-hidden="true"></a>    <span class="kw">public</span> RNumericVector <span class="fu">generateNumericVec</span>() {</span>
+<span id="cb145-9"><a href="#cb145-9" aria-hidden="true"></a>        <span class="kw">return</span> DoubleStream</span>
+<span id="cb145-10"><a href="#cb145-10" aria-hidden="true"></a>                .<span class="fu">of</span>(<span class="fl">3.</span><span class="dv">0</span>, <span class="fl">4.</span><span class="dv">3</span>, <span class="fl">2.</span><span class="dv">1</span>, <span class="fl">2.</span><span class="dv">3</span>).<span class="fu">boxed</span>()</span>
+<span id="cb145-11"><a href="#cb145-11" aria-hidden="true"></a>                .<span class="fu">collect</span>(RConverter.<span class="fu">doubleCollector</span>());</span>
+<span id="cb145-12"><a href="#cb145-12" aria-hidden="true"></a>    }</span>
+<span id="cb145-13"><a href="#cb145-13" aria-hidden="true"></a>    </span>
+<span id="cb145-14"><a href="#cb145-14" aria-hidden="true"></a>    <span class="at">@RMethod</span></span>
+<span id="cb145-15"><a href="#cb145-15" aria-hidden="true"></a>    <span class="kw">public</span> RIntegerVector <span class="fu">generateIntegerVec</span>() {</span>
+<span id="cb145-16"><a href="#cb145-16" aria-hidden="true"></a>        <span class="kw">return</span> RVector.<span class="fu">with</span>(<span class="dv">345</span>, <span class="dv">678</span>, <span class="kw">null</span>, <span class="dv">89</span>);</span>
+<span id="cb145-17"><a href="#cb145-17" aria-hidden="true"></a>    }</span>
+<span id="cb145-18"><a href="#cb145-18" aria-hidden="true"></a>    </span>
+<span id="cb145-19"><a href="#cb145-19" aria-hidden="true"></a>    <span class="at">@RMethod</span></span>
+<span id="cb145-20"><a href="#cb145-20" aria-hidden="true"></a>    <span class="kw">public</span> RFactorVector <span class="fu">generateFactorVec</span>() {</span>
+<span id="cb145-21"><a href="#cb145-21" aria-hidden="true"></a>        <span class="kw">return</span> RVector.<span class="fu">with</span>(Test.<span class="fu">ONE</span>,Test.<span class="fu">THREE</span>,<span class="kw">null</span>,Test.<span class="fu">TWO</span>);</span>
+<span id="cb145-22"><a href="#cb145-22" aria-hidden="true"></a>    }</span>
+<span id="cb145-23"><a href="#cb145-23" aria-hidden="true"></a>    </span>
+<span id="cb145-24"><a href="#cb145-24" aria-hidden="true"></a>    <span class="at">@RMethod</span></span>
+<span id="cb145-25"><a href="#cb145-25" aria-hidden="true"></a>    <span class="kw">public</span> RLogicalVector <span class="fu">generateLogicalVec</span>() {</span>
+<span id="cb145-26"><a href="#cb145-26" aria-hidden="true"></a>        <span class="kw">return</span> RVector.<span class="fu">with</span>(<span class="kw">true</span>,<span class="kw">false</span>,<span class="kw">null</span>);</span>
+<span id="cb145-27"><a href="#cb145-27" aria-hidden="true"></a>    }</span>
+<span id="cb145-28"><a href="#cb145-28" aria-hidden="true"></a>    </span></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">g</span><span class="op">$</span><span class="fu">generateFactorVec</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] ONE   THREE &lt;NA&gt;  TWO  </span></span>
 <span><span class="co">## Levels: ONE &lt; TWO &lt; THREE</span></span></code></pre>
-<div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb148"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">g</span><span class="op">$</span><span class="fu">generateIntegerVec</span><span class="op">(</span><span class="op">)</span> </span></code></pre></div>
 <pre><code><span><span class="co">## [1] 345 678  NA  89</span></span></code></pre>
-<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb150"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">g</span><span class="op">$</span><span class="fu">generateCharacterVec</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] "Hello world"      "Ola el mundo"     "Bonjour le monde" NA</span></span></code></pre>
-<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">g</span><span class="op">$</span><span class="fu">generateNumericVec</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 3.0 4.3 2.1 2.3</span></span></code></pre>
-<div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb154"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">g</span><span class="op">$</span><span class="fu">generateLogicalVec</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1]  TRUE FALSE    NA</span></span></code></pre>
 </div>
@@ -726,31 +748,31 @@
 <h4 id="dataframes-and-lists">Dataframes and lists<a class="anchor" aria-label="anchor" href="#dataframes-and-lists"></a>
 </h4>
 <p>Both <code>RDataframe</code> and <code>RList</code> classes implement fluent methods to allow the creation of complex data structures in a method familiar to java programmers. Again <code>RConverter</code> provides specialised collectors to map a stream of objects representing sequential rows of data to the columnar format of the <code>RDataframe</code> using <code>MapRule</code>s specified using functional lambda syntax to define the mapping from object to dataframe column.</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb147-1"><a href="#cb147-1" aria-hidden="true"></a>    </span>
-<span id="cb147-2"><a href="#cb147-2" aria-hidden="true"></a>    <span class="at">@RMethod</span></span>
-<span id="cb147-3"><a href="#cb147-3" aria-hidden="true"></a>    <span class="kw">public</span> RDataframe <span class="fu">generateDataframe</span>() {</span>
-<span id="cb147-4"><a href="#cb147-4" aria-hidden="true"></a>        <span class="kw">return</span> RDataframe.<span class="fu">create</span>()</span>
-<span id="cb147-5"><a href="#cb147-5" aria-hidden="true"></a>            .<span class="fu">withCol</span>(<span class="st">"A"</span>, RVector.<span class="fu">with</span>(<span class="fl">3.</span><span class="dv">0</span>, <span class="fl">4.</span><span class="dv">3</span>, <span class="fl">2.</span><span class="dv">1</span>))</span>
-<span id="cb147-6"><a href="#cb147-6" aria-hidden="true"></a>            .<span class="fu">withCol</span>(<span class="st">"B"</span>, RVector.<span class="fu">with</span>(Test.<span class="fu">ONE</span>,Test.<span class="fu">THREE</span>,Test.<span class="fu">TWO</span>))</span>
-<span id="cb147-7"><a href="#cb147-7" aria-hidden="true"></a>            .<span class="fu">withCol</span>(<span class="st">"C"</span>, RVector.<span class="fu">with</span>(<span class="st">"Hello world"</span>,<span class="st">"Ola el mundo"</span>,<span class="st">"Bonjour le monde"</span>));</span>
-<span id="cb147-8"><a href="#cb147-8" aria-hidden="true"></a>    }</span>
-<span id="cb147-9"><a href="#cb147-9" aria-hidden="true"></a>    </span>
-<span id="cb147-10"><a href="#cb147-10" aria-hidden="true"></a>    <span class="at">@RMethod</span></span>
-<span id="cb147-11"><a href="#cb147-11" aria-hidden="true"></a>    <span class="kw">public</span> RDataframe <span class="fu">generateStreamDataframe</span>() {</span>
-<span id="cb147-12"><a href="#cb147-12" aria-hidden="true"></a>        <span class="kw">return</span> </span>
-<span id="cb147-13"><a href="#cb147-13" aria-hidden="true"></a>            <span class="bu">Arrays</span>.<span class="fu">asList</span>(<span class="st">"Hello"</span>,<span class="st">"World"</span>,<span class="st">"Stream"</span>,<span class="st">"Support"</span>,<span class="st">"in"</span>,<span class="st">"Java"</span>)</span>
-<span id="cb147-14"><a href="#cb147-14" aria-hidden="true"></a>            .<span class="fu">stream</span>()</span>
-<span id="cb147-15"><a href="#cb147-15" aria-hidden="true"></a>            .<span class="fu">collect</span>(RConverter.<span class="fu">dataframeCollector</span>(</span>
-<span id="cb147-16"><a href="#cb147-16" aria-hidden="true"></a>                RConverter.<span class="fu">mapping</span>(<span class="st">"original"</span>, s-&gt; s),</span>
-<span id="cb147-17"><a href="#cb147-17" aria-hidden="true"></a>                RConverter.<span class="fu">mapping</span>(<span class="st">"lowercase"</span>, s-&gt; s.<span class="fu">toLowerCase</span>()),</span>
-<span id="cb147-18"><a href="#cb147-18" aria-hidden="true"></a>                RConverter.<span class="fu">mapping</span>(<span class="st">"uppercase"</span>, s-&gt; s.<span class="fu">toUpperCase</span>()),</span>
-<span id="cb147-19"><a href="#cb147-19" aria-hidden="true"></a>                RConverter.<span class="fu">mapping</span>(<span class="st">"subst"</span>, s-&gt; s.<span class="fu">substring</span>(<span class="dv">0</span>,<span class="bu">Math</span>.<span class="fu">min</span>(<span class="dv">3</span>,s.<span class="fu">length</span>()))),</span>
-<span id="cb147-20"><a href="#cb147-20" aria-hidden="true"></a>                RConverter.<span class="fu">mapping</span>(<span class="st">"length"</span>, s-&gt; s.<span class="fu">length</span>())</span>
-<span id="cb147-21"><a href="#cb147-21" aria-hidden="true"></a>            ));</span>
-<span id="cb147-22"><a href="#cb147-22" aria-hidden="true"></a>        </span>
-<span id="cb147-23"><a href="#cb147-23" aria-hidden="true"></a>    }</span>
-<span id="cb147-24"><a href="#cb147-24" aria-hidden="true"></a>    </span></code></pre></div>
-<div class="sourceCode" id="cb148"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb156"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb156-1"><a href="#cb156-1" aria-hidden="true"></a>    </span>
+<span id="cb156-2"><a href="#cb156-2" aria-hidden="true"></a>    <span class="at">@RMethod</span></span>
+<span id="cb156-3"><a href="#cb156-3" aria-hidden="true"></a>    <span class="kw">public</span> RDataframe <span class="fu">generateDataframe</span>() {</span>
+<span id="cb156-4"><a href="#cb156-4" aria-hidden="true"></a>        <span class="kw">return</span> RDataframe.<span class="fu">create</span>()</span>
+<span id="cb156-5"><a href="#cb156-5" aria-hidden="true"></a>            .<span class="fu">withCol</span>(<span class="st">"A"</span>, RVector.<span class="fu">with</span>(<span class="fl">3.</span><span class="dv">0</span>, <span class="fl">4.</span><span class="dv">3</span>, <span class="fl">2.</span><span class="dv">1</span>))</span>
+<span id="cb156-6"><a href="#cb156-6" aria-hidden="true"></a>            .<span class="fu">withCol</span>(<span class="st">"B"</span>, RVector.<span class="fu">with</span>(Test.<span class="fu">ONE</span>,Test.<span class="fu">THREE</span>,Test.<span class="fu">TWO</span>))</span>
+<span id="cb156-7"><a href="#cb156-7" aria-hidden="true"></a>            .<span class="fu">withCol</span>(<span class="st">"C"</span>, RVector.<span class="fu">with</span>(<span class="st">"Hello world"</span>,<span class="st">"Ola el mundo"</span>,<span class="st">"Bonjour le monde"</span>));</span>
+<span id="cb156-8"><a href="#cb156-8" aria-hidden="true"></a>    }</span>
+<span id="cb156-9"><a href="#cb156-9" aria-hidden="true"></a>    </span>
+<span id="cb156-10"><a href="#cb156-10" aria-hidden="true"></a>    <span class="at">@RMethod</span></span>
+<span id="cb156-11"><a href="#cb156-11" aria-hidden="true"></a>    <span class="kw">public</span> RDataframe <span class="fu">generateStreamDataframe</span>() {</span>
+<span id="cb156-12"><a href="#cb156-12" aria-hidden="true"></a>        <span class="kw">return</span> </span>
+<span id="cb156-13"><a href="#cb156-13" aria-hidden="true"></a>            <span class="bu">Arrays</span>.<span class="fu">asList</span>(<span class="st">"Hello"</span>,<span class="st">"World"</span>,<span class="st">"Stream"</span>,<span class="st">"Support"</span>,<span class="st">"in"</span>,<span class="st">"Java"</span>)</span>
+<span id="cb156-14"><a href="#cb156-14" aria-hidden="true"></a>            .<span class="fu">stream</span>()</span>
+<span id="cb156-15"><a href="#cb156-15" aria-hidden="true"></a>            .<span class="fu">collect</span>(RConverter.<span class="fu">dataframeCollector</span>(</span>
+<span id="cb156-16"><a href="#cb156-16" aria-hidden="true"></a>                RConverter.<span class="fu">mapping</span>(<span class="st">"original"</span>, s-&gt; s),</span>
+<span id="cb156-17"><a href="#cb156-17" aria-hidden="true"></a>                RConverter.<span class="fu">mapping</span>(<span class="st">"lowercase"</span>, s-&gt; s.<span class="fu">toLowerCase</span>()),</span>
+<span id="cb156-18"><a href="#cb156-18" aria-hidden="true"></a>                RConverter.<span class="fu">mapping</span>(<span class="st">"uppercase"</span>, s-&gt; s.<span class="fu">toUpperCase</span>()),</span>
+<span id="cb156-19"><a href="#cb156-19" aria-hidden="true"></a>                RConverter.<span class="fu">mapping</span>(<span class="st">"subst"</span>, s-&gt; s.<span class="fu">substring</span>(<span class="dv">0</span>,<span class="bu">Math</span>.<span class="fu">min</span>(<span class="dv">3</span>,s.<span class="fu">length</span>()))),</span>
+<span id="cb156-20"><a href="#cb156-20" aria-hidden="true"></a>                RConverter.<span class="fu">mapping</span>(<span class="st">"length"</span>, s-&gt; s.<span class="fu">length</span>())</span>
+<span id="cb156-21"><a href="#cb156-21" aria-hidden="true"></a>            ));</span>
+<span id="cb156-22"><a href="#cb156-22" aria-hidden="true"></a>        </span>
+<span id="cb156-23"><a href="#cb156-23" aria-hidden="true"></a>    }</span>
+<span id="cb156-24"><a href="#cb156-24" aria-hidden="true"></a>    </span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">g</span><span class="op">$</span><span class="fu">generateDataframe</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 3 × 3</span></span></span>
 <span><span class="co">##       A B     C               </span></span>
@@ -758,7 +780,7 @@
 <span><span class="co">## <span style="color: #BCBCBC;">1</span>   3   ONE   Hello world     </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">2</span>   4.3 THREE Ola el mundo    </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">3</span>   2.1 TWO   Bonjour le monde</span></span></code></pre>
-<div class="sourceCode" id="cb150"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb159"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">g</span><span class="op">$</span><span class="fu">generateStreamDataframe</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 6 × 5</span></span></span>
 <span><span class="co">##   original lowercase uppercase subst length</span></span>
@@ -770,26 +792,26 @@
 <span><span class="co">## <span style="color: #BCBCBC;">5</span> in       in        IN        in         2</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">6</span> Java     java      JAVA      Jav        4</span></span></code></pre>
 <p>Finally a note on list generation that contains enum values in Java cannot always be converted to factors in R. If this is not possible then the conversion will fall back to a character string of the label of the factor value.</p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb152-1"><a href="#cb152-1" aria-hidden="true"></a>    </span>
-<span id="cb152-2"><a href="#cb152-2" aria-hidden="true"></a>    <span class="co">/**</span></span>
-<span id="cb152-3"><a href="#cb152-3" aria-hidden="true"></a>     <span class="co">*</span> Lists are much harder to type check than vectors hence RList builder methods throw checked exceptions </span>
-<span id="cb152-4"><a href="#cb152-4" aria-hidden="true"></a>     <span class="co">* </span><span class="an">@return </span>a RList containing the supplied Java objects converted into RObjects</span>
-<span id="cb152-5"><a href="#cb152-5" aria-hidden="true"></a>     <span class="co">*</span> <span class="an">@throws UnconvertableTypeException </span>if those objects are not themselves or cannot be converted into an RObject </span>
-<span id="cb152-6"><a href="#cb152-6" aria-hidden="true"></a>     <span class="co">*/</span></span>
-<span id="cb152-7"><a href="#cb152-7" aria-hidden="true"></a>    <span class="at">@RMethod</span></span>
-<span id="cb152-8"><a href="#cb152-8" aria-hidden="true"></a>    <span class="kw">public</span> RList <span class="fu">generateList</span>() <span class="kw">throws</span> UnconvertableTypeException {</span>
-<span id="cb152-9"><a href="#cb152-9" aria-hidden="true"></a>        <span class="kw">return</span> RList.<span class="fu">withRaw</span>(<span class="st">"one"</span>, Test.<span class="fu">TWO</span>, <span class="fl">3.</span><span class="dv">0</span>);</span>
-<span id="cb152-10"><a href="#cb152-10" aria-hidden="true"></a>    }</span>
-<span id="cb152-11"><a href="#cb152-11" aria-hidden="true"></a>    </span>
-<span id="cb152-12"><a href="#cb152-12" aria-hidden="true"></a>    <span class="at">@RMethod</span></span>
-<span id="cb152-13"><a href="#cb152-13" aria-hidden="true"></a>    <span class="kw">public</span> RNamedList <span class="fu">generateNamedList</span>() <span class="kw">throws</span> UnconvertableTypeException {</span>
-<span id="cb152-14"><a href="#cb152-14" aria-hidden="true"></a>        <span class="kw">return</span> RNamedList</span>
-<span id="cb152-15"><a href="#cb152-15" aria-hidden="true"></a>                .<span class="fu">withRaw</span>(<span class="st">"A"</span>,<span class="st">"one"</span>)</span>
-<span id="cb152-16"><a href="#cb152-16" aria-hidden="true"></a>                .<span class="fu">andRaw</span>(<span class="st">"B"</span>, Test.<span class="fu">TWO</span>)</span>
-<span id="cb152-17"><a href="#cb152-17" aria-hidden="true"></a>                .<span class="fu">andRaw</span>(<span class="st">"C"</span>, RVector.<span class="fu">with</span>(<span class="fl">3.</span><span class="dv">0</span>, <span class="fl">4.</span><span class="dv">3</span>, <span class="fl">2.</span><span class="dv">1</span>));</span>
-<span id="cb152-18"><a href="#cb152-18" aria-hidden="true"></a>    }</span>
-<span id="cb152-19"><a href="#cb152-19" aria-hidden="true"></a>    </span></code></pre></div>
-<div class="sourceCode" id="cb153"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb161"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb161-1"><a href="#cb161-1" aria-hidden="true"></a>    </span>
+<span id="cb161-2"><a href="#cb161-2" aria-hidden="true"></a>    <span class="co">/**</span></span>
+<span id="cb161-3"><a href="#cb161-3" aria-hidden="true"></a>     <span class="co">*</span> Lists are much harder to type check than vectors hence RList builder methods throw checked exceptions </span>
+<span id="cb161-4"><a href="#cb161-4" aria-hidden="true"></a>     <span class="co">* </span><span class="an">@return </span>a RList containing the supplied Java objects converted into RObjects</span>
+<span id="cb161-5"><a href="#cb161-5" aria-hidden="true"></a>     <span class="co">*</span> <span class="an">@throws UnconvertableTypeException </span>if those objects are not themselves or cannot be converted into an RObject </span>
+<span id="cb161-6"><a href="#cb161-6" aria-hidden="true"></a>     <span class="co">*/</span></span>
+<span id="cb161-7"><a href="#cb161-7" aria-hidden="true"></a>    <span class="at">@RMethod</span></span>
+<span id="cb161-8"><a href="#cb161-8" aria-hidden="true"></a>    <span class="kw">public</span> RList <span class="fu">generateList</span>() <span class="kw">throws</span> UnconvertableTypeException {</span>
+<span id="cb161-9"><a href="#cb161-9" aria-hidden="true"></a>        <span class="kw">return</span> RList.<span class="fu">withRaw</span>(<span class="st">"one"</span>, Test.<span class="fu">TWO</span>, <span class="fl">3.</span><span class="dv">0</span>);</span>
+<span id="cb161-10"><a href="#cb161-10" aria-hidden="true"></a>    }</span>
+<span id="cb161-11"><a href="#cb161-11" aria-hidden="true"></a>    </span>
+<span id="cb161-12"><a href="#cb161-12" aria-hidden="true"></a>    <span class="at">@RMethod</span></span>
+<span id="cb161-13"><a href="#cb161-13" aria-hidden="true"></a>    <span class="kw">public</span> RNamedList <span class="fu">generateNamedList</span>() <span class="kw">throws</span> UnconvertableTypeException {</span>
+<span id="cb161-14"><a href="#cb161-14" aria-hidden="true"></a>        <span class="kw">return</span> RNamedList</span>
+<span id="cb161-15"><a href="#cb161-15" aria-hidden="true"></a>                .<span class="fu">withRaw</span>(<span class="st">"A"</span>,<span class="st">"one"</span>)</span>
+<span id="cb161-16"><a href="#cb161-16" aria-hidden="true"></a>                .<span class="fu">andRaw</span>(<span class="st">"B"</span>, Test.<span class="fu">TWO</span>)</span>
+<span id="cb161-17"><a href="#cb161-17" aria-hidden="true"></a>                .<span class="fu">andRaw</span>(<span class="st">"C"</span>, RVector.<span class="fu">with</span>(<span class="fl">3.</span><span class="dv">0</span>, <span class="fl">4.</span><span class="dv">3</span>, <span class="fl">2.</span><span class="dv">1</span>));</span>
+<span id="cb161-18"><a href="#cb161-18" aria-hidden="true"></a>    }</span>
+<span id="cb161-19"><a href="#cb161-19" aria-hidden="true"></a>    </span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">g</span><span class="op">$</span><span class="fu">generateList</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [[1]]</span></span>
 <span><span class="co">## [1] "one"</span></span>
@@ -799,7 +821,7 @@
 <span><span class="co">## </span></span>
 <span><span class="co">## [[3]]</span></span>
 <span><span class="co">## [1] 3</span></span></code></pre>
-<div class="sourceCode" id="cb155"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">g</span><span class="op">$</span><span class="fu">generateNamedList</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## $A</span></span>
 <span><span class="co">## [1] "one"</span></span>
@@ -826,12 +848,12 @@
 
       <footer><div class="copyright">
   <p></p>
-<p>Developed by Rob Challen, Rob Challen, terminological.</p>
+<p>Developed by Rob Challen, terminological, Rob Challen.</p>
 </div>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
 </div>
 
       </footer>

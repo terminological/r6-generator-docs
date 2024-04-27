@@ -62,3 +62,13 @@ po/*~
 # RStudio Connect folder
 rsconnect/
 
+# Eclipse paths
+# build paths
+target/
+.classpath
+
+# eclipse project settings
+.project
+.settings/
+
+

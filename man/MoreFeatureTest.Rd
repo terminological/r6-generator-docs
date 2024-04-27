@@ -17,9 +17,9 @@
 \description{
 This has no documentation
 
-Version: 0.6.1.9000
+Version: 1.0.0
 
-Generated: 2024-04-22T20:47:47.434003263
+Generated: 2024-04-27T08:45:08.862872549
 }
 
 \details{
@@ -105,7 +105,7 @@ instance = J$MoreFeatureTest$new(message1, message2);
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{message1 - the message to be printed}{ - (java expects a RCharacter)}
 				\item{message2 - will be used for toString}{ - (java expects a RCharacter)}
 			}
@@ -137,7 +137,7 @@ instance$testLogging()
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -166,7 +166,7 @@ instance$throwCatchable()
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -195,7 +195,7 @@ instance$printMessage()
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -224,7 +224,7 @@ instance$throwRuntime()
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}

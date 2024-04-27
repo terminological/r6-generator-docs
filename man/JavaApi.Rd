@@ -25,9 +25,9 @@
 \description{
 Documents the features of the 'r6-generator-maven-plugin' by providing an example of an R package automatically generated from Java code by the plugin. It is not intended to be useful beyond testing, demonstrating and documenting the features of the r6 generator plugin.
 
-Version: 0.6.1.9000
+Version: 1.0.0
 
-Generated: 2024-04-22T20:47:47.268201664
+Generated: 2024-04-27T08:45:08.637536278
 }
 
 \author{\email{rob@terminological.co.uk}}
@@ -314,7 +314,7 @@ testRapi::JavaApi$installDependencies()
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -341,7 +341,7 @@ testRapi::JavaApi$rebuildDependencies()
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -367,7 +367,7 @@ testRapi::JavaApi$versionInformation()
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -394,7 +394,7 @@ J = testRapi::JavaApi$get()
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{logLevel}{ The desired verbosity of the package. One of "OFF", "FATAL", "ERROR", "WARN", "INFO", "DEBUG", "TRACE", "ALL".}
 			}
 			\if{html}{\out{</div>}}
@@ -421,7 +421,7 @@ J$changeLogLevel("DEBUG")
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{logLevel}{ The desired verbosity of the package. One of "OFF", "FATAL", "ERROR", "WARN", "INFO", "DEBUG", "TRACE", "ALL".}
 			}
 			\if{html}{\out{</div>}}
@@ -452,7 +452,7 @@ if (fs::file_exists(prp)) {
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{log4jproperties}{ a full path to a log4jproperies file}
 			}
 			\if{html}{\out{</div>}}
@@ -482,7 +482,7 @@ J$printMessages()
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -514,7 +514,7 @@ J$MinimalExample$new()
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -543,7 +543,7 @@ J$BounceTest$new()
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -578,7 +578,7 @@ J$FeatureTest$new(logMessage)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{logMessage - a message which will be logged}{ - (java expects a String)}
 			}
 			\if{html}{\out{</div>}}
@@ -619,7 +619,7 @@ testRapi::demo_static(message)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{message a message}{ - (java expects a String)}
 			}
 			\if{html}{\out{</div>}}
@@ -664,7 +664,7 @@ testRapi::diamonds()
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -701,7 +701,7 @@ testRapi::feature_test_collider(message1, message2)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{message1}{ - (java expects a RCharacter)}
 				\item{message2}{ - (java expects a RCharacter)}
 			}
@@ -733,7 +733,7 @@ testRapi::async_static_countdown(label, rtimer)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{label}{ - (java expects a RCharacter)}
 				\item{rtimer}{ - (java expects a RInteger)}
 			}
@@ -768,7 +768,7 @@ testRapi::async_factory()
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -798,7 +798,7 @@ J$MoreFeatureTest$new(message1, message2)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{message1 - the message to be printed}{ - (java expects a RCharacter)}
 				\item{message2 - will be used for toString}{ - (java expects a RCharacter)}
 			}
@@ -830,7 +830,7 @@ testRapi::create(message1, message2)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{message1 - the message to be printed}{ - (java expects a RCharacter)}
 				\item{message2 - will be used for toString}{ - (java expects a RCharacter)}
 			}
@@ -870,7 +870,7 @@ testRapi::concat(message1, message2)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{message1}{ - (java expects a RCharacter)}
 				\item{message2}{ - (java expects a RCharacter)}
 			}
@@ -902,7 +902,7 @@ testRapi::more_feature_test_collider(message1, message2)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{message1}{ - (java expects a RCharacter)}
 				\item{message2}{ - (java expects a RCharacter)}
 			}
@@ -942,7 +942,7 @@ J$FactoryTest$new()
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -971,7 +971,7 @@ J$Serialiser$new()
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -1001,7 +1001,7 @@ testRapi::serialise_dataframe(dataframe, filename)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{dataframe}{ - (java expects a RDataframe)}
 				\item{filename}{ - (java expects a String)}
 			}
@@ -1033,7 +1033,7 @@ testRapi::deserialise_dataframe(filename)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{filename}{ - (java expects a String)}
 			}
 			\if{html}{\out{</div>}}
@@ -1064,7 +1064,7 @@ testRapi::serialise_list(dataframe, filename)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{dataframe}{ - (java expects a RList)}
 				\item{filename}{ - (java expects a String)}
 			}
@@ -1096,7 +1096,7 @@ testRapi::deserialise_list(filename)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{filename}{ - (java expects a String)}
 			}
 			\if{html}{\out{</div>}}
@@ -1127,7 +1127,7 @@ testRapi::serialise_named_list(dataframe, filename)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{dataframe}{ - (java expects a RNamedList)}
 				\item{filename}{ - (java expects a String)}
 			}
@@ -1159,7 +1159,7 @@ testRapi::deserialise_named_list(filename)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{filename}{ - (java expects a String)}
 			}
 			\if{html}{\out{</div>}}

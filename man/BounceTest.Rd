@@ -11,9 +11,9 @@
 \description{
 missing description
 
-Version: 0.6.1.9000
+Version: 1.0.0
 
-Generated: 2024-04-22T20:47:47.393735729
+Generated: 2024-04-27T08:45:08.794921496
 }
 
 \details{
@@ -167,6 +167,14 @@ instance$bounceLogicalVector(x)
 }
 
 ## -----------------------------------
+## Method `BounceTest$bounceFile(x)`
+## -----------------------------------
+\dontrun{
+# appropriate parameter values must be provided
+instance$bounceFile(x)
+}
+
+## -----------------------------------
 ## Method `BounceTest$bounceDataframe(x)`
 ## -----------------------------------
 \dontrun{
@@ -226,6 +234,7 @@ instance$bounceArray(x)
 			\item \href{#method-bounceDateVector}{\code{instance$bounceDateVector(x)}}
 			\item \href{#method-bounceLogical}{\code{instance$bounceLogical(x)}}
 			\item \href{#method-bounceLogicalVector}{\code{instance$bounceLogicalVector(x)}}
+			\item \href{#method-bounceFile}{\code{instance$bounceFile(x)}}
 			\item \href{#method-bounceDataframe}{\code{instance$bounceDataframe(x)}}
 			\item \href{#method-bounceList}{\code{instance$bounceList(x)}}
 			\item \href{#method-bounceNamedList}{\code{instance$bounceNamedList(x)}}
@@ -253,7 +262,7 @@ instance = J$BounceTest$new();
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -282,7 +291,7 @@ instance$bounceNull(x)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{x}{ - (java expects a RNull)}
 			}
 			\if{html}{\out{</div>}}
@@ -312,7 +321,7 @@ instance$bounceVoid()
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -340,7 +349,7 @@ instance$bounceString(x)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{x}{ - (java expects a String)}
 			}
 			\if{html}{\out{</div>}}
@@ -369,7 +378,7 @@ instance$bounceCharacter(x)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{x}{ - (java expects a RCharacter)}
 			}
 			\if{html}{\out{</div>}}
@@ -398,7 +407,7 @@ instance$bounceCharacterVector(x)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{x}{ - (java expects a RCharacterVector)}
 			}
 			\if{html}{\out{</div>}}
@@ -427,7 +436,7 @@ instance$bounceDouble(x)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{x}{ - (java expects a double)}
 			}
 			\if{html}{\out{</div>}}
@@ -456,7 +465,7 @@ instance$bounceNumeric(x)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{x}{ - (java expects a RNumeric)}
 			}
 			\if{html}{\out{</div>}}
@@ -485,7 +494,7 @@ instance$bounceNumericVector(x)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{x}{ - (java expects a RNumericVector)}
 			}
 			\if{html}{\out{</div>}}
@@ -514,7 +523,7 @@ instance$bounceInt(x)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{x}{ - (java expects a int)}
 			}
 			\if{html}{\out{</div>}}
@@ -543,7 +552,7 @@ instance$bounceInteger(x)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{x}{ - (java expects a RInteger)}
 			}
 			\if{html}{\out{</div>}}
@@ -572,7 +581,7 @@ instance$bounceIntegerVector(x)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{x}{ - (java expects a RIntegerVector)}
 			}
 			\if{html}{\out{</div>}}
@@ -601,7 +610,7 @@ instance$bounceFactor(x)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{x}{ - (java expects a RFactor)}
 			}
 			\if{html}{\out{</div>}}
@@ -630,7 +639,7 @@ instance$bounceFactorVector(x)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{x}{ - (java expects a RFactorVector)}
 			}
 			\if{html}{\out{</div>}}
@@ -659,7 +668,7 @@ instance$bounceDate(x)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{x}{ - (java expects a RDate)}
 			}
 			\if{html}{\out{</div>}}
@@ -688,7 +697,7 @@ instance$bounceDateVector(x)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{x}{ - (java expects a RDateVector)}
 			}
 			\if{html}{\out{</div>}}
@@ -717,7 +726,7 @@ instance$bounceLogical(x)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{x}{ - (java expects a RLogical)}
 			}
 			\if{html}{\out{</div>}}
@@ -746,7 +755,7 @@ instance$bounceLogicalVector(x)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{x}{ - (java expects a RLogicalVector)}
 			}
 			\if{html}{\out{</div>}}
@@ -754,6 +763,35 @@ instance$bounceLogicalVector(x)
 
 		\subsection{Returns}{
 RLogicalVector: 
+		}
+
+	}
+	\if{html}{\out{<hr>}}
+	\if{html}{\out{<a id="method-bounceFile"></a>}}
+	
+	\subsection{Method \code{bounceFile()}}{
+no title
+
+		\subsection{Usage}{
+			\if{html}{\out{<div class="r">}}
+			\preformatted{
+J = testRapi::JavaApi$get()
+instance = J$BounceTest$new();
+instance$bounceFile(x)
+  			}
+			\if{html}{\out{</div>}}
+		}
+	
+		\subsection{Arguments}{
+			\if{html}{\out{<div class="arguments">}}
+			\describe{
+				\item{x}{ - (java expects a RFile)}
+			}
+			\if{html}{\out{</div>}}
+		}
+
+		\subsection{Returns}{
+RFile: 
 		}
 
 	}
@@ -775,7 +813,7 @@ instance$bounceDataframe(x)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{x}{ - (java expects a RDataframe)}
 			}
 			\if{html}{\out{</div>}}
@@ -804,7 +842,7 @@ instance$bounceList(x)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{x}{ - (java expects a RList)}
 			}
 			\if{html}{\out{</div>}}
@@ -833,7 +871,7 @@ instance$bounceNamedList(x)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{x}{ - (java expects a RNamedList)}
 			}
 			\if{html}{\out{</div>}}
@@ -862,7 +900,7 @@ instance$bounceArray(x)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{x}{ - (java expects a RNumericArray)}
 			}
 			\if{html}{\out{</div>}}

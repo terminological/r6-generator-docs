@@ -8,7 +8,7 @@
 % \if{html}{\figure{logo.png}{options: align='right'}}
 Documents the features of the 'r6-generator-maven-plugin' by providing an example of an R package automatically generated from Java code by the plugin. It is not intended to be useful beyond testing, demonstrating and documenting the features of the r6 generator plugin.
 
-Version: 0.6.1.9000
+Version: 1.0.0
 
 Classes:
 \itemize{ 

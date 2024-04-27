@@ -11,9 +11,9 @@
 \description{
 Actually useful class which takes an R dataframe and a filename
 
-Version: 0.6.1.9000
+Version: 1.0.0
 
-Generated: 2024-04-22T20:47:47.444182924
+Generated: 2024-04-27T08:45:08.886557154
 }
 
 \details{
@@ -43,7 +43,7 @@ instance = J$Serialiser$new()
 	}
 	\subsection{Class methods}{
 		\itemize{
-			\item{none}
+			\item none
 			\item \code{instance$clone()}
 			\item \code{instance$print()}
 		}
@@ -67,7 +67,7 @@ instance = J$Serialiser$new();
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}

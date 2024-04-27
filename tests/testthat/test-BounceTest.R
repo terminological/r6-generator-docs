@@ -21,6 +21,7 @@
 # ├ bounceDateVector() R6 method ----
 # ├ bounceLogical() R6 method ----
 # ├ bounceLogicalVector() R6 method ----
+# ├ bounceFile() R6 method ----
 # ├ bounceDataframe() R6 method ----
 # ├ bounceList() R6 method ----
 # ├ bounceNamedList() R6 method ----

@@ -39,13 +39,7 @@ Sys.setenv(TMP_DIR=dir)
 dir
 
 v = testRapi::JavaApi$versionInformation()
-version = v$r_package_version
-if (version=="0.0.0.9999") {
-  version="main-SNAPSHOT"
-  # as this is a web-only vignette we are assuming that this will work as it is being run on a development machine.
-  # with a locally installed snapshot maven snapshot - to make this work on another machine we need to adjust settings.xml
-  # to include sonatypes snapshot repository
-}
+version = stringr::str_replace(v$java_library_version, "io.github.terminological:r6-generator-docs:", "")
 Sys.setenv(TMP_VERSION=version)
 version
 ```

@@ -16,9 +16,9 @@
 \description{
 A test of the R6 generator templating
 
-Version: 0.6.1.9000
+Version: 1.0.0
 
-Generated: 2024-04-22T20:47:47.409146558
+Generated: 2024-04-27T08:45:08.819317869
 }
 
 \details{
@@ -220,7 +220,7 @@ instance = J$FeatureTest$new(logMessage);
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{logMessage - a message which will be logged}{ - (java expects a String)}
 			}
 			\if{html}{\out{</div>}}
@@ -269,7 +269,7 @@ instance$doHelloWorld()
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -316,7 +316,7 @@ instance$doSum(a, b)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{a the A parameter, can be NA}{ - (java expects a RNumeric)}
 				\item{b the B parameter}{ - (java expects a RNumeric)}
 			}
@@ -370,7 +370,7 @@ instance$doSum2(a, b)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{a the A parameter}{ - (java expects a int)}
 				\item{b the B parameter - (defaulting to `10`)}{ - (java expects a int)}
 			}
@@ -403,7 +403,7 @@ instance$getMessage()
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -436,7 +436,7 @@ instance$fluentSetMessage(message)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{message the message is a string - (defaulting to `\\"hello\\nworld\\"`)}{ - (java expects a RCharacter)}
 			}
 			\if{html}{\out{</div>}}
@@ -465,7 +465,7 @@ instance$factoryMethod(a, b)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{a the first parameter}{ - (java expects a RCharacter)}
 				\item{b the second parameter - (defaulting to `as.character(Sys.Date())`)}{ - (java expects a RCharacter)}
 			}
@@ -495,7 +495,7 @@ instance$objectAsParameter(otherObj)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{otherObj}{ - (java expects a MoreFeatureTest)}
 			}
 			\if{html}{\out{</div>}}
@@ -524,7 +524,7 @@ instance$doSomethingWithDataFrame(dataframe)
 	
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
-			\itemize{
+			\describe{
 				\item{dataframe a dataframe}{ - (java expects a RDataframe)}
 			}
 			\if{html}{\out{</div>}}
@@ -554,7 +554,7 @@ instance$generateDataFrame()
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -583,7 +583,7 @@ instance$errorThrower()
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -612,7 +612,7 @@ instance$asyncCountdown()
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -641,7 +641,7 @@ instance$asyncRaceCountdown()
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}
@@ -670,7 +670,7 @@ instance$blockingCountdown()
 		\subsection{Arguments}{
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
-				\item{none}
+				\item none
 			}
 			\if{html}{\out{</div>}}
 		}

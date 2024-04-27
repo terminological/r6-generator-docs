@@ -54,11 +54,21 @@ development of an R centric API in Java.
 ## Github maven repository declarations for both code and plugins
 
 Both the core maven plugin and the `runtime` library are available through the
-the maven central repository. The `${r6.version}` property is here set to
+the Maven central repository. The `${r6.version}` property is here set to
 `xx.xx.xx-SNAPSHOT` which retrieves the development version of the plugin. or
 could be `1.0` for stable versions. The most recent stable release version
 numbers will be available [on the github releases
-page](https://github.com/terminological/r6-generator-maven-plugin/tags)
+page](https://github.com/terminological/r6-generator/tags) or [on maven
+central](https://central.sonatype.com/artifact/io.github.terminological/r6-generator).
+
+Unstable releases are managed on Github packages. Use of Github SNAPSHOT releases 
+is only possible if you have set up a Github personal access token (classic). This process is 
+[described here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) 
+and your personal tokens can be set up [here](https://github.com/settings/tokens). 
+For package read access ticking the box for `read:packages` is sufficient. The
+token generated must then be copied into your `~/.m2/settings.xml` to allow
+Maven to pick up the SNAPSHOTs. It is generally easier to just use Maven central
+releases.
 
 ## Plugin configuration for the r6-generator-maven-plugin
 

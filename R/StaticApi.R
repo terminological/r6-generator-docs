@@ -2,8 +2,8 @@
 # This is a collection of the static methods described in the Java API
 # and serves as an alternative R centric entry point of the testRapi generated R library.
 
-# Version: 0.6.1.9000
-# Generated: 2024-04-22T20:47:47.350770646
+# Version: 1.0.0
+# Generated: 2024-04-27T08:45:08.723914174
 # Contact: rob@terminological.co.uk
 
 # MinimalExample class static methods ----
