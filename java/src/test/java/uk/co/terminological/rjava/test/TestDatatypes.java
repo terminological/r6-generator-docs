@@ -224,8 +224,8 @@ class TestDatatypes {
 	
 	@Test
 	final void testDataframe() {
+		//CS05
 		//Use a stream + dataframe collector to generate data frame:
-		
 		Arrays.asList("Hello","World","Stream","Support","in","Java")
 		.stream()
 		.collect(dataframeCollector(
@@ -235,6 +235,7 @@ class TestDatatypes {
 			mapping("subst", s-> s.substring(0,Math.min(3,s.length()))),
 			mapping("length", s-> s.length())
 		));
+		//CE05
 	}
 	
 	static RDataframe getDiamonds() throws IOException {
@@ -243,8 +244,9 @@ class TestDatatypes {
 		return RObject.readRDS(RDataframe.class, is);
 	}
 	
-	
-	static interface Diamonds {
+	//CS06
+	// N.B. interface specification must be public
+	public static interface Diamonds {
 		@RName("carat") public RNumeric getCarats();
 		@RName("cut") public RFactor getCuts();
 		public RInteger price(); //doesn't have to be named if 
@@ -264,6 +266,7 @@ class TestDatatypes {
 		dia.attach(Diamonds.class).getCoercedRow(100).getCuts().get();
 		dia.attach(Diamonds.class).getRow(100).lag().coerce().getCuts().get();
 	}
+	//CE06
 	
 	@Test void testNumericArray() throws ZeroDimensionalArrayException {
 		RNumericArray tmp = new RNumericArray(testNumeric(), new int[] {3,5});

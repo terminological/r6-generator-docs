@@ -30,9 +30,16 @@ if (.Platform$OS.type == "windows") {
 }
 ```
 
-# Set up temporary location:
+The project configuration needed for a Java project with generated R package
+can be automated to allow easy best practice using a maven archetype.
 
-```{r}
+# STEP 1: Set up temporary location:
+
+For the purposes of this vignette we are using a temporary directory and the 
+most up to date version of the generator library available which we are setting
+as the $TMP_VERSION environment variable. 
+
+```{r echo=FALSE}
 dir = fs::path(tempdir(),"testProject")
 fs::dir_create(dir)
 Sys.setenv(TMP_DIR=dir)
@@ -46,6 +53,9 @@ version
 
 ## Maven archetype
 
+The maven archetype is triggered from the command line and will interactively 
+ask for the details if not provided inline as in this example:
+
 ```{bash}
 cd $TMP_DIR
 rm -r examplePackage ||: 
@@ -57,11 +67,17 @@ mvn archetype:generate -B \
   -DgithubRepository=examplePackage
 ```
 
-```{r}
+with this configuration it creates a skeleton example project consisting mostly of
+Java and maven files set up as follows.
+
+```{r echo=FALSE}
 fs::dir_tree(dir,regexp="((.*/target)|docs)/.*", invert=TRUE)
 ```
 
 ## Building the project
+
+The project should be fully ready to be built as a R package, with the minimal
+example class provided.
 
 ```{bash}
 cd $TMP_DIR/examplePackage/java
@@ -70,11 +86,18 @@ mvn install
 
 # Generated files:
 
-```{r}
+Building the project creates a set of generated R package files, which provide 
+all the R package infrastructure, to execute the Java code from R. These 
+additional files are all generated from the Java code by the maven plugin.
+
+```{r echo=FALSE}
 fs::dir_tree(dir,regexp="((.*/target)|docs)/.*", invert=TRUE)
 ```
 
 # Package website:
+
+The maven package installation in this example is configured to build a 
+`pkgdown` site which can be viewed as follows:
 
 ```{r}
 if (interactive()) 

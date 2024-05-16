@@ -44,6 +44,9 @@ public class MoreFeatureTest {
 		return new MoreFeatureTest(message1,message2);
 	}
 	
+	public String toString() {
+		return "toString: "+message2;
+	}
 	//END_SNIP_1
 	//START_SNIP_2
 	
@@ -71,9 +74,7 @@ public class MoreFeatureTest {
 		throw new RuntimeException("A runtime exception has been thrown");
 	}
 	
-	public String toString() {
-		return "toString: "+message2;
-	}
+	
 	//END_SNIP_2
 	
 	@RMethod
@@ -83,11 +84,14 @@ public class MoreFeatureTest {
 	
 	@RMethod(
 		tests = {
-			"tmp = more_feature_test_collider('should ','work')",
+			"tmp = collider.more_feature_test('should ','work')",
 			"expect_equal(tmp,'more feature test: should work')"
 		}
 	)
 	public static RCharacter collider(RCharacter message1, RCharacter message2) {
+		// This method name collides with another static method name.
+		// the collision is resolved by adding the class name to the end of the 
+		// static method name.
 		return RConverter.convert("more feature test: "+message1.toString()+message2.toString());
 	}
 		

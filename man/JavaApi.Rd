@@ -25,9 +25,9 @@
 \description{
 Documents the features of the 'r6-generator-maven-plugin' by providing an example of an R package automatically generated from Java code by the plugin. It is not intended to be useful beyond testing, demonstrating and documenting the features of the r6 generator plugin.
 
-Version: 1.0.0
+Version: 1.1.0
 
-Generated: 2024-04-27T08:45:08.637536278
+Generated: 2024-05-16T16:22:15.382427434
 }
 
 \author{\email{rob@terminological.co.uk}}
@@ -88,13 +88,13 @@ dplyr::glimpse( diamonds() )
 
 ## -----------------------------------
 ## Method `J$FeatureTest$collider(...)`
-## Aliased as `testRapi::feature_test_collider(...)`
+## Aliased as `testRapi::collider.feature_test(...)`
 ## -----------------------------------
 \dontrun{
 # no example given - appropriate parameter values must be provided:
 J$FeatureTest$collider(message1, message2)
 # or alternatively:
-testRapi::feature_test_collider(message1, message2)
+testRapi::collider.feature_test(message1, message2)
 }
 
 ## -----------------------------------
@@ -149,10 +149,10 @@ testRapi::concat(message1, message2)
 
 ## -----------------------------------
 ## Method `J$MoreFeatureTest$collider(...)`
-## Aliased as `testRapi::more_feature_test_collider(...)`
+## Aliased as `testRapi::collider.more_feature_test(...)`
 ## -----------------------------------
 library(testthat)
-tmp = more_feature_test_collider('should ','work')
+tmp = collider.more_feature_test('should ','work')
 expect_equal(tmp,'more feature test: should work')
 
 ## -----------------------------------
@@ -694,7 +694,7 @@ dplyr::glimpse( diamonds() )
 J = testRapi::JavaApi$get()
 J$FeatureTest$collider(message1, message2)
 # this method is also exposed as a package function:
-testRapi::feature_test_collider(message1, message2)
+testRapi::collider.feature_test(message1, message2)
 	  		}
 			\if{html}{\out{</div>}}
 		}
@@ -895,7 +895,7 @@ testRapi::concat(message1, message2)
 J = testRapi::JavaApi$get()
 J$MoreFeatureTest$collider(message1, message2)
 # this method is also exposed as a package function:
-testRapi::more_feature_test_collider(message1, message2)
+testRapi::collider.more_feature_test(message1, message2)
 	  		}
 			\if{html}{\out{</div>}}
 		}
@@ -918,7 +918,7 @@ testRapi::more_feature_test_collider(message1, message2)
 			\if{html}{\out{<div class="r example copy">}}
 			\preformatted{
 library(testthat)
-tmp = more_feature_test_collider('should ','work')
+tmp = collider.more_feature_test('should ','work')
 expect_equal(tmp,'more feature test: should work')
 			}
 			\if{html}{\out{</div>}}

@@ -2,8 +2,8 @@
 # This is a collection of the static methods described in the Java API
 # and serves as an alternative R centric entry point of the testRapi generated R library.
 
-# Version: 1.0.0
-# Generated: 2024-04-27T08:45:08.723914174
+# Version: 1.1.0
+# Generated: 2024-05-16T16:22:15.421320898
 # Contact: rob@terminological.co.uk
 
 # MinimalExample class static methods ----
@@ -67,7 +67,7 @@ diamonds = function() {
 #' @return RCharacter: 
 #' 
 #' @export
-feature_test_collider = function(message1, message2) {
+collider.feature_test = function(message1, message2) {
 	# get the API singleton
 	J = JavaApi$get()
 	# execute the R6 function call with the same parameters
@@ -162,10 +162,10 @@ concat = function(message1, message2) {
 #' 
 #' @examples
 #' library(testthat)
-#' tmp = more_feature_test_collider('should ','work')
+#' tmp = collider.more_feature_test('should ','work')
 #' expect_equal(tmp,'more feature test: should work')
 #' @export
-more_feature_test_collider = function(message1, message2) {
+collider.more_feature_test = function(message1, message2) {
 	# get the API singleton
 	J = JavaApi$get()
 	# execute the R6 function call with the same parameters

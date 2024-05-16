@@ -22,15 +22,26 @@ here::i_am("vignettes/R6-generator-runtime.Rmd")
 source(here::here("vignettes/codeSnip.R"))
 ```
 
+There are a number of utility classes in the runtime java library to facilitate
+data marshalling between Java and R. This is an incomplete overview of some of
+the patterns you can use to convert Java data to an R friendly form.
 
 ## Imports
 
+The main imports that are useful in Java code that provides an R api are:
 
 ```{r results='asis', echo=FALSE}
 codeSnip("java",filename=here::here("java/src/test/java/uk/co/terminological/rjava/test/TestDatatypes.java"),startMatches = "CS01",endMatches = "CE01")
 ```
 
 ## Wrapping and unwrapping
+
+Unwrapping data that arrives from R is usually the case of calling `.get()` on 
+the `RObject` class, which should give you the standard Java object. For 
+primitives this will be in their boxed form with NA values represented
+as null. A `.opt()` call will attempt to coerce the input to a specific Java 
+class and give you the result as a `Optional` if it can do so. In this case empty
+optionals may be NA or incompatible values in R.
 
 ```{r results='asis', echo=FALSE}
 codeSnip("java",filename=here::here("java/src/test/java/uk/co/terminological/rjava/test/TestDatatypes.java"),startMatches = "CS04",endMatches = "CE04")
@@ -39,30 +50,60 @@ codeSnip("java",filename=here::here("java/src/test/java/uk/co/terminological/rja
 
 ## RVector creation and transformation
 
-`RIntegerVector` examples:
+RVectors can be created from Java collections, arrays or Streams, using either
+static methods on the `RVector` class or using the `RConverter` static collector 
+methods or `convert()` method.
 
 ```{r results='asis', echo=FALSE}
 codeSnip("java",filename=here::here("java/src/test/java/uk/co/terminological/rjava/test/TestDatatypes.java"),startMatches = "CS02",endMatches = "CE02")
 ```
 
-Other `RVector<?>` examples:
+Other `RVector` examples show using the `RConverter` collector methods for 
+different data types:
 
 ```{r results='asis', echo=FALSE}
 codeSnip("java",filename=here::here("java/src/test/java/uk/co/terminological/rjava/test/TestDatatypes.java"),startMatches = "CS03",endMatches = "CE03")
 ```
-TODO: many other code snippets in the data types test file.
 
 ## RDataframe binding to POJOs
 
-Define a POJO using `@RName` annotations
+Whe inputting data it is possible to convert dataframe input by defining a interface 
+using `@RName` annotations where the name matched the column names. The type of
+the data must also be given as the columns in an `RDataframe` class are loosely 
+typed.
 
 ```{r results='asis', echo=FALSE}
 codeSnip("java",filename=here::here("java/src/test/java/uk/co/terminological/rjava/test/DiamondPOJO.java"))
 ```
-Bind that to a dataframe and stream the result:
+
+Once an interface is defined binding that to a dataframe and streaming the 
+result gives a :
 
 ```{r results='asis', echo=FALSE}
 codeSnip("java",filename=here::here("java/src/test/java/uk/co/terminological/rjava/test/JavaConversionTest.java"),startMatches = "BOUND_START",endMatches = "BOUND_END")
 ```
+In another example you can see the `@RName` annotation is only needed if the
+name does not match exactly (which if you are following POJO conventions it 
+will not).
+
+The interface can define default methods which can be used to transform the 
+data. 
+
+```{r results='asis', echo=FALSE}
+codeSnip("java",filename=here::here("java/src/test/java/uk/co/terminological/rjava/test/TestDatatypes.java"),startMatches = "CS06",endMatches = "CE06")
+```
 
 ## Streaming POJOs to RDataframes
+
+A stream of Java objects can be collected into a R data frame using
+a dataframe collector. This defines the mappings from object to value associated
+with each column name. The result is an `RDataframe` that can be passed back to 
+R as the result of a Java method.
+
+```{r results='asis', echo=FALSE}
+codeSnip("java",filename=here::here("java/src/test/java/uk/co/terminological/rjava/test/TestDatatypes.java"),startMatches = "CS05",endMatches = "CE05")
+```
+
+
+## Lists and named lists
+

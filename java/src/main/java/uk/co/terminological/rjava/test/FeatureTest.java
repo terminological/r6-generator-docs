@@ -16,6 +16,7 @@ import uk.co.terminological.rjava.RConverter;
 import uk.co.terminological.rjava.RDefault;
 import uk.co.terminological.rjava.RFinalize;
 import uk.co.terminological.rjava.RMethod;
+import uk.co.terminological.rjava.threads.RProgressMonitor;
 import uk.co.terminological.rjava.types.RCharacter;
 import uk.co.terminological.rjava.types.RDataframe;
 import uk.co.terminological.rjava.types.RInteger;
@@ -269,12 +270,26 @@ public class FeatureTest {
 		timer = 10;
 		String label = "Async and run thread safe "+invocation;
 		// This example deliberately uses a not thread
-		// safe design
+		// safe design. However the synchronise=true annotation
+		// forces it to be synchronised on the feature test class.
+		
+		// Progress in this thread can be recorded and displayed in R
+		// when `get()` is called on a result in progress. The total is 
+		// not actually required
+		RProgressMonitor.setTotal(timer);
+		
 		while (timer > 0) {
 			System.out.println(label+" ... "+timer);
 			Thread.sleep(1000);
 			timer--;
+			
+			// This static method is keyed off the thread id so can be placed
+			// anywhere in code.
+			RProgressMonitor.increment();
 		}
+		
+		RProgressMonitor.complete();
+		
 		return RCharacter.from(label+" completed.");
 	}
 	
@@ -284,12 +299,17 @@ public class FeatureTest {
 		timer = 10;
 		String label = "Async and not thread safe "+invocation;
 		// This example deliberately uses a not thread
-		// safe design
+		// safe design to demonstrate race conditions. These are the
+		// responsiblity of the Java programmer to avoid.
+		
+		RProgressMonitor.setTotal(timer);
 		while (timer > 0) {
 			System.out.println(label+" ... "+timer);
 			Thread.sleep(1000);
 			timer--;
+			RProgressMonitor.increment();
 		}
+		RProgressMonitor.complete();
 		return RCharacter.from(label+" completed.");
 	}
 	
@@ -302,11 +322,16 @@ public class FeatureTest {
 		invocation = invocation + 1;
 		timer = 10;
 		String label = "Blocking "+invocation;
+		RProgressMonitor.setTotal(timer);
+		
 		while (timer > 0) {
 			System.out.println(label+" ... "+timer);
 			Thread.sleep(1000);
 			timer--;
+			RProgressMonitor.increment();
 		}
+		
+		RProgressMonitor.complete();
 		return RCharacter.from(label+" completed.");
 	}
 	
@@ -319,11 +344,14 @@ public class FeatureTest {
 	public static RCharacter asyncStaticCountdown(RCharacter label, @RDefault(rCode = "10") RInteger rtimer) throws InterruptedException {
 		// N.B. inputs in Async classes cannot be Java primitives
 		int timer = rtimer.javaPrimitive();
+		RProgressMonitor.setTotal(timer);;
 		while (timer > 0) {
 			System.out.println(label.get()+" ... "+timer);
 			Thread.sleep(1000);
 			timer--;
+			RProgressMonitor.increment();
 		}
+		RProgressMonitor.complete();
 		return RCharacter.from(label+" completed.");
 	}
 	

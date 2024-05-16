@@ -137,6 +137,12 @@ The package data section includes metadata that describes the R library and a fe
   + Along side the R documentation it may be helpful to provide Javadocs of the
   Java back end of the library. These are generated into the `docs\javadoc`
   sub-folder.
+* `installLocal` (optional - defaults to `false`)
+  + If building the R package is successful maven will try and use 
+  `pak::local_install` to install it and any dependencies on the local machine.
+  This is useful during development as it gets around some of the potential
+  version inconsistencies that crop up during iterative development. It is not 
+  intended for use outside of development e.g. in a CI environment.
 * `precompileBinary` (defaults to `true`)
   + Usually we wish to distribute a package with a compiled jar file of the Java
   code. In exceptional circumstances this can be replaced with a sources only

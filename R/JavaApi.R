@@ -4,9 +4,9 @@
 #' @description
 #' A Test Library
 #'
-#' Version: 1.0.0
+#' Version: 1.1.0
 #'
-#' Generated: 2024-04-27T08:45:08.689286006
+#' Generated: 2024-05-16T16:22:15.406821417
 #'
 #' Contact: rob@terminological.co.uk
 #' @import R6
@@ -44,7 +44,7 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 	#' @param logLevel A string such as "DEBUG", "INFO", "WARN"
 	#' @return nothing
 	changeLogLevel = function(logLevel) {
-		.jcall("uk/co/terminological/rjava/LogController", returnSig = "V", method = "changeLogLevel" , logLevel)
+		.jcall("uk/co/terminological/rjava/RLogController", returnSig = "V", method = "changeLogLevel" , logLevel)
 		invisible(NULL)
 	},
 	
@@ -53,7 +53,7 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 	#' @param log4jproperties An absolute filepath to the log4j propertied file
 	#' @return nothing
 	reconfigureLog = function(log4jproperties) {
-		.jcall("uk/co/terminological/rjava/LogController", returnSig = "V", method = "reconfigureLog" , log4jproperties)
+		.jcall("uk/co/terminological/rjava/RLogController", returnSig = "V", method = "reconfigureLog" , log4jproperties)
 		invisible(NULL)
 	},
 	
@@ -62,8 +62,8 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 	#' @return nothing
 	printMessages = function() {
 		# check = FALSE here to stop exceptions being cleared from the stack.
-		msg = .jcall("uk/co/terminological/rjava/LogController", returnSig = "Ljava/lang/String;", method = "getSystemMessages", check=FALSE)
-		if (!is.null(msg) && trimws(msg) != "") message(trimws(msg))
+		msg = .jcall("uk/co/terminological/rjava/RSystemOut", returnSig = "Ljava/lang/String;", method = "getSystemMessages", check=FALSE)
+		.message(msg)
 		invisible(NULL)
 	},
 	
@@ -84,20 +84,20 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 		jars = .checkDependencies(quiet = TRUE)
 		.jaddClassPath(jars)
 		
-		# configure logging
- 		.jcall("uk/co/terminological/rjava/LogController", returnSig = "V", method = "setupRConsole")
- 		.jcall("uk/co/terminological/rjava/LogController", returnSig = "V", method = "configureLog" , logLevel)
+		# configure system console and logging
+ 		.jcall("uk/co/terminological/rjava/RSystemOut", returnSig = "V", method = "setup")
+ 		.jcall("uk/co/terminological/rjava/RLogController", returnSig = "V", method = "configureLog" , logLevel)
  		# TODO: this is the library build date code but it requires testing
- 		buildDate = .jcall("uk/co/terminological/rjava/LogController", returnSig = "S", method = "getClassBuildTime")
+ 		buildDate = .jcall("uk/co/terminological/rjava/RLogController", returnSig = "S", method = "getClassBuildTime")
 		self$.log = .jcall("org/slf4j/LoggerFactory", returnSig = "Lorg/slf4j/Logger;", method = "getLogger", "testRapi");
 		.jcall(self$.log,returnSig = "V",method = "debug", "Adding to classpath: ")
 		for (jar in jars) {
 		  .jcall(self$.log,returnSig = "V",method = "debug", jar)
 		}
 		.jcall(self$.log,returnSig = "V",method = "info","Initialised testRapi");
-		.jcall(self$.log,returnSig = "V",method = "debug","R package version: 1.0.0");
-		.jcall(self$.log,returnSig = "V",method = "debug","R package generated: 2024-04-27T08:45:08.689863866");
-		.jcall(self$.log,returnSig = "V",method = "debug","Java library version: io.github.terminological:r6-generator-docs:1.0.0");
+		.jcall(self$.log,returnSig = "V",method = "debug","R package version: 1.1.0");
+		.jcall(self$.log,returnSig = "V",method = "debug","R package generated: 2024-05-16T16:22:15.407409258");
+		.jcall(self$.log,returnSig = "V",method = "debug","Java library version: io.github.terminological:r6-generator-docs:1.1.0");
 		.jcall(self$.log,returnSig = "V",method = "debug",paste0("Java library compiled: ",buildDate));
 		.jcall(self$.log,returnSig = "V",method = "debug","Contact: rob@terminological.co.uk");
 		self$printMessages()
@@ -116,13 +116,13 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 			RDate=function(rObj) {
 				if (is.na(rObj)) return(rJava::.jnew('uk/co/terminological/rjava/types/RDate'))
 				if (length(rObj) > 1) stop('input too long')
-			   if (rObj<'0001-01-01') message('dates smaller than 0001-01-01 will be converted to NA')
+			   if (rObj<'0001-01-01') cli::cli_inform('dates smaller than 0001-01-01 will be converted to NA')
 				tmp = format(rObj,format='%C%y-%m-%d')[[1]]
 				return(rJava::.jnew('uk/co/terminological/rjava/types/RDate',tmp))
 			},
 			RDateVector=function(rObj) {
 				if (is.null(rObj)) return(rJava::.new('uk/co/terminological/rjava/types/RDateVector'))
-				if (any(na.omit(rObj)<'0001-01-01')) message('dates smaller than 0001-01-01 will be converted to NA')
+				if (any(na.omit(rObj)<'0001-01-01')) cli::cli_inform('dates smaller than 0001-01-01 will be converted to NA')
 				tmp = format(rObj,format='%C%y-%m-%d')
 				return(rJava::.jnew('uk/co/terminological/rjava/types/RDateVector',rJava::.jarray(tmp)))
 			},
@@ -392,7 +392,7 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 				);
 				return(tmp_r6)
 			}
-	)
+		)
 		self$BounceTest = list(
 			new = function() {
 				# constructor
@@ -408,7 +408,7 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 				);
 				return(tmp_r6)
 			}
-	)
+		)
 		self$FeatureTest = list(
 			new = function(logMessage) {
 				# constructor
@@ -516,7 +516,7 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 				self$printMessages();
 				.jcheck();
 				return(out);
-			}	)
+			}		)
 		self$MoreFeatureTest = list(
 			new = function(message1, message2) {
 				# constructor
@@ -593,7 +593,7 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 				out = self$.fromJava$RCharacter(tmp_out);
 				if(is.null(out)) return(invisible(out))
 				return(out)
-			}	)
+			}		)
 		self$FactoryTest = list(
 			new = function() {
 				# constructor
@@ -609,7 +609,7 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 				);
 				return(tmp_r6)
 			}
-	)
+		)
 		self$Serialiser = list(
 			new = function() {
 				# constructor
@@ -738,7 +738,13 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 				out = self$.fromJava$RNamedList(tmp_out);
 				if(is.null(out)) return(invisible(out))
 				return(out)
-			}	)
+			}		)
+	},
+	
+	#' @description Allow this object to be garbage collected.
+	finalize = function() {
+		# shutdown system console and logging
+		.jcall("uk/co/terminological/rjava/RSystemOut", returnSig = "V", method = "release")
 	}
 ))
 
@@ -777,14 +783,14 @@ JavaApi$installDependencies = function() {
 JavaApi$versionInformation = function() {
 	out = list(
 		package = "testRapi",
-		r_package_version = "1.0.0",
-		r_package_generated = "2024-04-27T08:45:08.721698837",
-		java_library_version = "io.github.terminological:r6-generator-docs:1.0.0",
+		r_package_version = "1.1.0",
+		r_package_generated = "2024-05-16T16:22:15.419254778",
+		java_library_version = "io.github.terminological:r6-generator-docs:1.1.0",
 		maintainer = "rob@terminological.co.uk"
 	)
 	# try and get complilation information if library is loaded
 	try({
-		out$java_library_compiled = .jcall("uk/co/terminological/rjava/LogController", returnSig = "S", method = "getClassBuildTime")
+		out$java_library_compiled = .jcall("uk/co/terminological/rjava/RLogController", returnSig = "S", method = "getClassBuildTime")
 	}, silent=TRUE)
 	return(out)
 }
@@ -796,7 +802,7 @@ JavaApi$versionInformation = function() {
 
 .checkDependencies = function(nocache = FALSE, ...) {
 	package_jar = .package_jars(package_name="testRapi",types="shaded")
-	package_jar = package_jar[startsWith(fs::path_file(package_jar),"r6-generator-docs-1.0.0")]
+	package_jar = package_jar[startsWith(fs::path_file(package_jar),"r6-generator-docs-1.1.0")]
 	
 	# Java dependencies
 	# all java library code and dependencies have already been bundled into a single fat jar
@@ -813,3 +819,6 @@ JavaApi$versionInformation = function() {
 	.start_jvm(debug=FALSE)
 }
 
+.message = function(msg) {
+	if (!is.null(msg) && trimws(msg) != "") rlang::inform(paste0(trimws(msg),"\n"))
+}

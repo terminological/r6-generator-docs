@@ -1,4 +1,4 @@
-pandoc: 2.9.2.1
+pandoc: 3.1.13
 pkgdown: 2.0.9
 pkgdown_sha: ~
 articles:
@@ -8,5 +8,5 @@ articles:
   R6-generator-maven-config: R6-generator-maven-config.html
   R6-generator-runtime: R6-generator-runtime.html
   testRapi: testRapi.html
-last_built: 2024-04-27T07:47Z
+last_built: 2024-05-16T15:25Z
 

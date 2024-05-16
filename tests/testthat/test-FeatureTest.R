@@ -41,6 +41,6 @@ test_that("testRapi::diamonds() static method", {
 	testthat::expect_equal(diamonds(), ggplot2::diamonds)
 	expect_message(message("test case complete"))
 })
-# ├ feature_test_collider() package method ----
+# ├ collider.feature_test() package method ----
 # ├ async_static_countdown() package method ----
 # ├ async_factory() package method ----

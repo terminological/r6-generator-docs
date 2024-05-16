@@ -67,6 +67,12 @@
     <loc>/reference/async_static_countdown.html</loc>
   </url>
   <url>
+    <loc>/reference/collider.feature_test.html</loc>
+  </url>
+  <url>
+    <loc>/reference/collider.more_feature_test.html</loc>
+  </url>
+  <url>
     <loc>/reference/concat.html</loc>
   </url>
   <url>
@@ -89,6 +95,21 @@
   </url>
   <url>
     <loc>/reference/dot-as.coordinates.html</loc>
+  </url>
+  <url>
+    <loc>/reference/dot-background_cancel.html</loc>
+  </url>
+  <url>
+    <loc>/reference/dot-background_cancel_all.html</loc>
+  </url>
+  <url>
+    <loc>/reference/dot-background_get_by_id.html</loc>
+  </url>
+  <url>
+    <loc>/reference/dot-background_status.html</loc>
+  </url>
+  <url>
+    <loc>/reference/dot-background_tidy_up.html</loc>
   </url>
   <url>
     <loc>/reference/dot-clear_rmaven_cache.html</loc>
@@ -127,16 +148,10 @@
     <loc>/reference/dot-start_jvm.html</loc>
   </url>
   <url>
-    <loc>/reference/feature_test_collider.html</loc>
-  </url>
-  <url>
     <loc>/reference/index.html</loc>
   </url>
   <url>
     <loc>/reference/manualFunction.html</loc>
-  </url>
-  <url>
-    <loc>/reference/more_feature_test_collider.html</loc>
   </url>
   <url>
     <loc>/reference/pipe.html</loc>

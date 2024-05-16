@@ -81,7 +81,7 @@ codeSnip("java",
          filename=here::here("java/src/main/java/uk/co/terminological/rjava/test/FeatureTest.java"),"START_SNIP_2","END_SNIP_2")
 ```
 
-The `FeatureClass.doHelloWorld()` method takes no arguments and returns a value to R. A detailed discussion of R and Java data types is to be found elsewhere but our approach has involved developing a specific set of Java datatypes that have close relationships to the native R datatypes. This enables loss-less round tripping of data from R to Java and back again, but requires the mapping of Java data types to R. This is handled by the `uk.co.terminological.rjava.RConverter` class which provides a range of datatype transformers, and the `uk.co.terminological.rjava.types.*` classes which specify Java equivalents to R data types. These are needed as R's dynamic datatypes contain concepts which are not readily represented in the primitive java datatypes that are transferred across the JNI. Thus some marshaling is required on both sides to ensure translation is 100% accurate, including for example, conversion of R logical vectors containing NA values, to java `List<Boolean>` via JNI primitive arrays, or support for typed NA values (e.g. `NA_int_` versus `NA_logical_`). 
+The `FeatureClass.doHelloWorld()` method takes no arguments and returns a value to R. A detailed discussion of R and Java data types is to be found elsewhere but our approach has involved developing a specific set of Java datatypes that have close relationships to the native R datatypes. This enables loss-less round tripping of data from R to Java and back again, but requires the mapping of Java data types to R. This is handled by the `uk.co.terminological.rjava.RConverter` class which provides a range of datatype transformers, and the `uk.co.terminological.rjava.types.*` classes which specify Java equivalents to R data types. These are needed as R's dynamic datatypes contain concepts which are not readily represented in the primitive Java datatypes that are transferred across the JNI. Thus some marshaling is required on both sides to ensure translation is 100% accurate, including for example, conversion of R logical vectors containing NA values, to Java `List<Boolean>` via JNI primitive arrays, or support for typed NA values (e.g. `NA_int_` versus `NA_logical_`). 
 
 The `doHelloWorld()` function returns a character vector, The `doSum()` function expects 2 R numeric values and seamlessly handles both datatype coercion and NA values.
 
@@ -99,6 +99,7 @@ class(feat1$doSum(3L, 4.1))
 feat1$doSum(3.0, NA_real_)
 class(feat1$doSum(3.0, NA_real_))
 ```
+
 Wrapping and unwrapping every datatype is inconvenient for the Java programmer so some single valued primitive types are supported as parameters and return types of Java functions, particularly `int`, `char`, `double`, `boolean`, and `java.lang.String`, but these come with constraints on use, particularly around NA values in R, and use in asynchronous code.
 
 ```{r}
@@ -300,7 +301,7 @@ With serialised test data, as dataframes, lists or named lists, development of J
 
 ```BASH
 # compile Java code and package R library using `mvn install` command
-cd ~/Git/r6-generator-docs/src
+cd ~/Git/r6-generator-docs
 mvn install
 ```
 
@@ -316,17 +317,44 @@ devtools::install("~/Git/r6-generator-docs", upgrade = "never")
 # N.B. devtools::load_all() does not appear to always successfully pick up changes in the compiled java code
 ```
 
-For initial integration testing there is a debug flag in the maven `pom.xml` that enables remote Java debugging to the initialized when the library is first loaded in R. When set to true a Java debugging session on port 8998 is opened which can be connected to as a remote Java application. This allows breakpoints to be set on Java code and the state of the JVM to be inspected when Java code is executed from R, however Java code changes cannot be hot-swapped into the running JVM, and so debugging integration issues is relatively limited. For more details see the [Maven configuration vignette](./R6-generator-maven-config).
+For initial integration testing there is a debug flag in the maven `pom.xml`
+that enables remote Java debugging to the initialized when the library is first
+loaded in R. When set to true a Java debugging session on port 8998 is opened
+which can be connected to as a remote Java application. This allows breakpoints
+to be set on Java code and the state of the JVM to be inspected when Java code
+is executed from R, however Java code changes cannot be hot-swapped into the
+running JVM, and so debugging integration issues is relatively limited. For more
+details see the [Maven configuration vignette](./R6-generator-maven-config).
 
-There are other limitations with enabling Java debugging, not least being the potential for port conflicts with multiple running instances of the development library, and caching issues between running and loaded versions of the Java code. Whilst not too painful (compared to the alternatives) this is very definitely not a REPL experience and reserved for the last stage of debugging. Part of the purpose of strongly enforcing a datatype conversion contract between Java and R, and extensive use of code generation, is to decouple Java and R development as much as possible (N.B. do as I say - not as I do).
+There are other limitations with enabling Java debugging, not least being the
+potential for port conflicts with multiple running instances of the development
+library, and caching issues between running and loaded versions of the Java
+code. Whilst not too painful (compared to the alternatives) this is very
+definitely not a REPL experience and reserved for the last stage of debugging.
+Part of the purpose of strongly enforcing a datatype conversion contract between
+Java and R, and extensive use of code generation, is to decouple Java and R
+development as much as possible (N.B. do as I say - not as I do).
 
 ## Asychronous and long running code
 
-Java code that takes a long time to complete or requires interaction from the user creates a problem for `rJava` as the program control is passed completely to Java during the code execution. This can lock the R session until the Java code is finished. The fact that the R session is blocked pending the result from Java means there is no obvious way to terminate a running Java process from within R, and if a Java process goes rogue then the R session hangs.
+Java code that takes a long time to complete or requires interaction from the
+user creates a problem for `rJava` as the program control is passed completely
+to Java during the code execution. This can lock the R session until the Java
+code is finished. The fact that the R session is blocked pending the result from
+Java means there is no obvious way to terminate a running Java process from
+within R, and if a Java process goes rogue then the R session hangs.
 
-We have approached this by creating a `RFuture` class which is bundled in any R package built with `r6-generator-maven-plugin`, and some Java infrastructure to allow a Java method call, initiated by R, to be run in its own thread. The thread is monitored using the `R6` `RFuture` class. This allows instantaneous return from the Java call which executes asynchronously in the background, freeing up the R process to continue. The `RFuture` class has functions to `cancel()` a thread, or check whether it is complete (`isDone()`), cancelled (`isCanceled()`), or to wait for the result and `get()` it.
+We have approached this by creating a `RFuture` class which is bundled in any R
+package built with `r6-generator-maven-plugin`, and some Java infrastructure to
+allow a Java method call, initiated by R, to be run in its own thread. The
+thread is monitored using the `R6` `RFuture` class. This allows instantaneous
+return from the Java call which executes asynchronously in the background,
+freeing up the R process to continue. The `RFuture` class has functions to
+`cancel()` a thread, or check whether it is complete (`isDone()`), cancelled
+(`isCanceled()`), or to wait for the result and `get()` it.
 
-The `RFuture` thread wrapper is used for Java methods annotated with `@RAsync` instead of `@RMethod`.
+The `RFuture` thread wrapper is used for Java methods annotated with `@RAsync`
+instead of `@RMethod`.
 
 ```{r results='asis', echo=FALSE}
 codeSnip("java",
@@ -340,11 +368,16 @@ A basic test of this follows which starts the execution of a 10 second countdown
 featAsyn = J$FeatureTest$new("Async testing")
 # The asyncCountdown resets a timer in the FeatureTest class
 tmp = featAsyn$asyncCountdown()
-cat("Control returned immediately.")
+message("Control returned immediately.")
+
 Sys.sleep(4)
-cat("4 seconds later the countdown is still running.")
 # The countdown is not finished
-if (tmp$isDone()) stop("FAIL: Too soon for the countdown to have finished..!")
+if (tmp$isDone()){
+  stop("FAIL: Too soon for the countdown to have finished..!")
+} else {
+  message("PASS: 4 seconds later the countdown is still running.")
+}
+
 Sys.sleep(8)
 if (!tmp$isDone()) {
   stop("FAIL: It should have been finished by now!")
@@ -352,14 +385,20 @@ if (!tmp$isDone()) {
   message("PASS: the countdown is finished.")
   # in this case getting the result returns nothing as the java method is void
   # but it should trigger printing the java output.
-  tmp$get()
 }
 ```
+System output from asynchronous code can be very confusing if it appears out of
+sequence to other code. The system output of Java code running asynchronously 
+is cached and only displayed when the result is retrieved via `get()`
 
+```{r}
+tmp$get()
+```
 
 `RFuture` does not ensure thread safety, which in general is up to the Java programmer
 however in the situation where you are annotating a non thread safe class that might be
-used in an `@RAsync` annotated method there is a basic locking mechanism that prevents multiple synchronous calls of the same method in the same object.
+used in an `@RAsync` annotated method there is a basic locking mechanism that 
+prevents multiple synchronous calls of the same method in the same object.
 
 ```{r}
 # Potential for race condition is prevented by the sychronise=true annotation
@@ -367,21 +406,58 @@ tmp = featAsyn$asyncCountdown()
 tmp2 = featAsyn$asyncCountdown()
 Sys.sleep(5)
 if (tmp$cancel()) print("First counter cancelled.")
-try(tmp$get())
-tmp2$get()
 ```
 
-If the default  `@RAsync(synchronise=false)` is used then race conditions may occur if the Java method changes the state of other objects. This is demonstrated here:
+Although both counters were triggered at the same time the second one is 
+waiting to obtain a lock. In this example we cancel the first call after 5
+seconds:
+
+```{r}
+system.time({
+  try(tmp$get())
+})
+```
+
+After which the second call starts processing. If you are running this 
+interactively you will notice a progress indicator appears.
+
+```{r}
+system.time({
+  tmp2$get()
+})
+```
+If the default  `@RAsync(synchronise=false)` is used then race conditions may 
+occur if the Java method changes the state of other objects. 
+This is demonstrated here where both methods are altering the underlying 
+counter alternating. As before, the output is only displayed when the result is 
+requested:
 
 ```{r}
 # Potential for race condition is prevented by the sychronise=true annotation
-tmp = featAsyn$asyncRaceCountdown()
-tmp2 = featAsyn$asyncRaceCountdown()
-tmp$get()
-tmp2$get()
+system.time({
+  tmp = featAsyn$asyncRaceCountdown()
+  tmp2 = featAsyn$asyncRaceCountdown()
+  tmp$get()
+})
 ```
 
-The `RFuture` class is also useful to prevent lockups. Sometimes blocking the R process is useful, as long as the Java process can be terminated at the same time as the R process, so that we can be sure that a Java process is finished. This is supported by the `@RBlocking` annotation which places the Java method call in a thread that can be cleanly interrupted from R, but otherwise makes R wait for Java to finish.
+In this case the execution takes far less that 10 seconds as both countdowns are
+running in parallel and using the same timer. The output from the second 
+function
+
+```{r}
+system.time({
+  tmp2$get()
+})
+```
+
+The `RFuture` class is also useful to prevent lock-ups due to Java code entering
+an infinite loop or waiting on external input that never arrives. Sometimes
+blocking the R process is useful, as long as the Java process can be terminated
+at the same time as the R process, so that we can be sure that a Java process is
+finished. This is supported by the `@RBlocking` annotation which places the Java
+method call in a thread that can be cleanly interrupted from R, but otherwise
+makes R wait for Java to finish.
 
 ```{r results='asis', echo=FALSE}
 codeSnip("java",
@@ -392,7 +468,9 @@ codeSnip("java",
 tmp = featAsyn$blockingCountdown()
 ```
 
-Static methods are more likely to be type safe. Async methods can be static in which case there is no potential for race conditions and we don't need to check for them.
+Static methods are more likely to be type safe. Async methods can be static in
+which case there is no potential for race conditions and we don't need to check
+for them.
 
 ```{r results='asis', echo=FALSE}
 codeSnip("java",
@@ -408,13 +486,51 @@ tmp$get()
 tmp2$get()
 ```
 
-ASync and blocking methods are handled slightly different internally. When writing a Java method you must use inputs that are subtypes of `RObject` such as `RInteger` rather than the primitive equivalent `int` as the input parameters. This is a result of type checking and may be dealt with in the future. Async methods can happily return Java objects annotated with `@RClass` which will be appropriately passed to R wrapped in an `R6` class.
+## Parameters and return types in asynchronous methods
+
+ASync and blocking methods are handled slightly different internally. When
+writing a Java method you cannot use inputs that are primitives. All parameters 
+must be subtypes of `RObject` such as `RInteger` rather than the primitive 
+equivalent `int`. This is a result of dynamic type checking using reflection 
+when calling the java method and may be dealt with in the future. Async
+methods can happily return Java objects annotated with `@RClass` which will be
+appropriately passed to R wrapped in an `R6` class.
 
 ```{r}
 tmp3 = J$FeatureTest$asyncFactory()
-factory = tmp3$get()
+result = tmp3$get()
+result$generateFactorVec()
+```
+
+## Monitoring the status of long running operations
+
+As long running jobs are in the background the status of all long running jobs 
+may need to be queried. The status may be "cancelled", "in progress", "result ready"
+or if the result has been already retrieved by `get()` it may be "processed".
+
+```{r}
+tmp = featAsyn$asyncCountdown()
+status = testRapi::.background_status()
+status
+```
+
+Previous results can be retrieved from this list using the id.
+
+```{r}
+
+oldFut = testRapi::.background_get_by_id(status$id[1])
+oldFut$get()
+
+```
+
+Releasing old results may be necessary if memory is an issue. The tidy up clears
+all processed and cancelled background tasks, and frees up associated JVM memory.
+
+```{r}
+testRapi::.background_tidy_up()
+testRapi::.background_status()
 ```
 
 # Summary
 
-The `r6-generator-maven-plugin` can be used to generate an R package with `R6` classes that exposes selected Java methods to R. Given enough detail in Java the resulting generated R package can be quite feature rich and setup in a format ready to deploy to `r-universe`. The aim is to make bridging out from R to Java libraries easy and maintainable.
+The `r6-generator-maven-plugin` can be used to generate an R package with `R6` classes that exposes selected Java methods to R. Given enough detail in Java the resulting generated R package can be quite feature rich and setup in a format ready to deploy to `r-universe`. The aim is to make the process of creating R clients for Java libraries easy and maintainable.

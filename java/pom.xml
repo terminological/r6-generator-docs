@@ -11,7 +11,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<r6.version>1.0.0</r6.version>
+		<r6.version>1.1.0</r6.version>
 	</properties>
 
 	<groupId>io.github.terminological</groupId>
@@ -207,6 +207,9 @@
 						
 						 <!-- Pkgdown will generate a nice looking site. if it fails the build will abort --> 
 						<usePkgdown>true</usePkgdown>
+						
+						<!-- Install the library on the local machine when finished. disable for CI -->
+						<installLocal>true</installLocal> 
 						
 						<!-- building the javadocs into the documentation is nice but can add 
 						to the size of the package which is not helpful if submitting to CRAN -->
